@@ -1,6 +1,6 @@
 # Engineering Island Lab
 
-童話微型模型風格的 Three.js 課程群島。Phase 0／1 與木橋已經教師 Windows 11 驗收、PR #1 已合併。Phase 2 前版的標籤、NPC 操作及 12／15 島硬體 GPU 流暢已獲教師 Windows 11 確認。本輪沿用 **Draft PR #2** 加強海面、外海鯨魚與背景小旅人，等待新增項目再驗收；不進 Phase 3。
+童話微型模型風格的 Three.js 課程群島。Phase 0／1 與木橋已經教師 Windows 11 驗收、PR #1 已合併。Phase 2 前版的標籤、NPC 操作及 12／15 島硬體 GPU 流暢已獲教師 Windows 11 確認。海面、外海鯨魚與背景小旅人已交付；本輪沿用 **Draft PR #2** 改善共用 Modal 的大字、對比與版面，等待教師再驗收，不進 Phase 3。
 
 中央學院周圍依 `totalUnits` 產生 1–15 座主題島，六條主幹與短支線木橋構成放射網路。每島有獨特地貌、小屋、岩崖裝飾及三隻自主動物。Quiz Demo NPC 緩慢漫遊；點模型或頭標立即停止並開說明，關閉後恢復。動物完全不可互動。海面柔和流動，四隻大型鯨魚在群島外海巡遊噴水；另有最多八位較小、無編號的背景小旅人，沿安全地表及已開放橋網來回活動。
 
@@ -40,7 +40,7 @@ Chrome 與 Edge 各以 1366×768、1920×1080、瀏覽器 100% 驗收：
 5. 滾輪縮放、左／右鍵拖曳、點島聚焦、返回總覽正常。拖出再回原點不誤開內容。Canvas 焦點下 `+`／`-` 縮放，Home／Esc 返回總覽；橋供背景小旅人沿路點巡遊；沒有學生化身、角色控制或物理碰撞。
 6. 預設 S05–S12 橋口有木柵欄／鎖牌，可用選單欣賞；點島／小屋／鎖牌只提示尚未開放。以全部開放網址重載後柵欄消失。
 7. NPC 在約 1.05 單位半徑內緩慢走、停、轉身，避開水面／建築／岸邊／同伴。Q01–Q05 頭標跟隨，衣帽編號保留。分別點移動模型及頭標，確認立即停止並開 Demo Modal；關閉後恢復。
-8. Lecture 小屋仍開視覺占位說明，沒有正式題目、答案、影片或 Form。Modal 滾輪／鍵盤不操作地圖；關閉／Esc 回復焦點及 NPC 活動。
+8. Lecture／Q01–Q05／操作說明共用置中 Modal：桌面最大620px、主標28px／內文18px／行高1.75；窄畫面內文16px，44px關閉鈕固定可見。長內容在視窗內捲動，也可Tab聚焦內容區後PageDown。滾輪／鍵盤不操作地圖，關閉／Esc回復焦點及NPC活動。仍無正式題目、答案、影片或Form。
 9. 每島數出三隻獨立動物，體型、顏色及動畫相位不同；不同島代表物種見下表。鎖定島仍活動，游標／點擊無法控制牠們。
 10. Video-only 無 NPC、Q 標或 NPC 點擊目標，全部裝飾、45 隻特色動物、四隻外海鯨魚與小旅人保留。以 Quiz 網址重載可回四／五題 Demo。
 11. 390px 窄視窗選單／Modal 可用；F12 Console 無應用錯誤。親自確認一般筆電流暢度，記錄 GPU、FPS、draw calls、triangles。
@@ -50,7 +50,7 @@ Chrome 與 Edge 各以 1366×768、1920×1080、瀏覽器 100% 驗收：
 14. 在已開放島找較小、沒有 Q 標的背景小旅人。預設開四島有四人，全開 15 島有八人；停留 2–3 分鐘，觀察登橋、到其他開放島停留與返回。放大確認不穿建築、海面或橋欄，遇題目 NPC 會等待／繞讓。
 15. 開放數改為 0（開發參數 `?demo=1&units=12&open=0`）後沒有小旅人，仍有鯨魚與每島三隻動物。Video-only 仍有背景小人，但沒有題目 NPC；背景小人不可被選取、控制或暫停。
 
-[修正驗收報告](docs/PHASE_2_ACCEPTANCE.md) 包含前後總覽、主題近景、NPC 暫停及效能數據。**本輪停止在同一 Draft PR #2，等待教師再次驗收，不合併、不部署。**
+[Modal 閱讀驗收](docs/PHASE_2_MODAL_ACCEPTANCE.md) 提供1366×768、1920×1080與390px的新版Lecture／NPC截圖及原始版面量測；[場景驗收報告](docs/PHASE_2_ACCEPTANCE.md) 保留群島與生命感紀錄。**本輪停止在同一 Draft PR #2，等待教師再次驗收，不合併、不部署。**
 
 ## 島嶼與三隻代表動物
 
@@ -108,10 +108,10 @@ npm run test:browser
 版本固定於 lockfile：Node 24、npm 11+、Vite 8.3.5、Three.js 0.186.1、Playwright 1.64.1。可用 `CHROMIUM_PATH` 指定瀏覽器，例如 PowerShell 的 `$env:CHROMIUM_PATH = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'`。
 
 - 單元測試 **91/91 通過**，保留原 68 項 Phase 1／2 回歸，新增外海幾何安全距離、噴水錯相、非互動背景系統、路網開放狀態、跨島／返回、橋中央線、會車／避讓及 GPU 資源釋放測試。
-- 瀏覽器 **32/32 通過**，保留原 24 項並增加生命感檢查，涵蓋 production 隔離、移動模型射線與頭標、12／15／窄視窗、鯨魚無互動、橋上小旅人、兩模式與空 Manifest；輸出 `test-results/life-*.png` 和 `life-performance.json`。
+- 瀏覽器 **44/44 通過**，保留原32項並新增12項Modal字級／對比／置中／內部捲動檢查，涵蓋 production 隔離、移動模型射線與頭標、12／15／窄視窗、鯨魚無互動、橋上小旅人、兩模式與空 Manifest；輸出 `test-results/modal-*.png`／`modal-layout.json`，並保留生命感截圖和效能紀錄。
 - Smoke 將 dist 掛到 `/~wildwolf/engineering-island-lab/`，檢查 HTML／JS／CSS／favicon／JSON／空 Manifest。
 - 共用幾何／材質、靜態合批及 InstancedMesh；遠景動物與 NPC 為 6Hz，近景完整更新。可動根／關節在自己的局部框架合批，聚焦才啟用陰影；保留 GPU 資源釋放。外海鯨魚不投影，海面只更新時間 uniform；小旅人總覽為 6Hz，近景逐畫面。
-- Linux SwiftShader **軟體 GPU** 本輪約 2.94–4.29 FPS；完整數據見驗收報告，與教師已確認的前版 Windows 硬體加速流暢度分開。未取得實體 GPU 數值；新增背景生命感仍待 Windows 重驗。
+- Linux SwiftShader **軟體 GPU** 的生命感基準約2.94–4.29 FPS，本次完整回歸約2.59–4.32 FPS；完整數據見驗收報告，與教師已確認的前版 Windows 硬體加速流暢度分開。未取得實體 GPU 數值；新增背景生命感仍待 Windows 重驗。
 - 主 JS 仍有 Three.js >500kB 提示；沒有大型外部模型、貼圖、後製或 CDN。原有 45 個海面泡沫合成一批，以抵銷新增背景模型呼叫。
 
 ## 後續與素材

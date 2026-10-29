@@ -22,3 +22,5 @@
 - 本輪三位修訂 Subagents 已實際平行交付並停止；所有權及凍結介面見 docs/REVISION_INTERFACES.md。NPC 根與活動關節必須標記 animated，僅於局部框架合批；Modal 使用 world.setNpcPaused 接口。一般畫面不留測試面板，production 忽略全部 Demo 參數。
 
 - 最新一輪教師已確認 Windows 11 的標籤、題目 NPC 操作與 12/15 島硬體 GPU 流暢。本輪只增海面、四隻外海鯨魚與 3–8 位不可互動 visitors；背景小人可沿已開放島橋網巡遊（本輪明確授權），不建立學生角色或完整遊戲尋路。檔案所有權與介面見 docs/LIFE_INTERFACES.md；仍更新同一 Draft PR #2 後等教師再次驗收，不合併／部署／進 Phase 3。
+
+- 最新 Modal 修正：同一分支與 Draft PR #2，只調整共用 dialog 的字級／對比／620px 寬度與內部捲動、44px 關閉鈕及窄畫面。保留 Lecture／Q01–Q05／操作說明共用設計；不修改 3D 場景、相機、布局、課程 JSON 或 NPC pause/resume。三種驗收尺寸為 1366×768、1920×1080、390px，完成後仍等教師驗收。

@@ -5,6 +5,7 @@ import { chromium } from 'playwright';
 import { createServer, preview } from 'vite';
 import { checkArchipelago } from './archipelago-browser.js';
 import { checkBackgroundLife } from './life-browser.js';
+import { checkModalReadability } from './modal-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -156,6 +157,7 @@ try {
   assert.ok(await page.locator('canvas').isVisible());
   assert.equal(await page.locator('select').count(), 1);
   pass('Apache production renders, ignores every Demo override and exposes only student controls');
+  await checkModalReadability(page, base, pass);
   await checkArchipelago(page, base, pass);
   await checkBackgroundLife(page, base, pass);
   assert.deepEqual(errors, []);

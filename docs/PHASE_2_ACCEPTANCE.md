@@ -1,4 +1,6 @@
-# Phase 2 — 最後一輪場景生命感驗收
+# Phase 2 — 場景整合與教師驗收
+
+> 最新 Modal 修訂（基準1854e26）：共用視窗改為桌面28／18px、最大620px，窄畫面內文16px與44px關閉鈕。新版三尺寸截圖、兩次91/91單元及44/44瀏覽器結果見 [Modal驗收報告](PHASE_2_MODAL_ACCEPTANCE.md)。以下保留生命感修訂的場景與效能紀錄。
 
 日期：2026-10-29（台北）。沿用 `feature/phase-2-full-archipelago` 與 [Draft PR #2](https://github.com/chingchechung/engineering-island-lab/pull/2)，本輪基準 `25f2c62`，main 仍為 `3e5c883`。
 
