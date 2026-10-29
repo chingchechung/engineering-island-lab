@@ -11,7 +11,7 @@
 ```text
 course-config + empty manifest → config validation → main
 explicit local Demo → src/demo/fixture → scene
-scene → terrain + props + animals (original geometry)
+scene → terrain + props + animals + scenic bridge (original geometry)
 camera rig ← interaction state / raycast registry → UI dialog
 scene anchors → CSS2D accessible labels
 ```
@@ -36,4 +36,8 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 
 ## 最終驗證與交付狀態
 
-19/19 Node 測試、build、Apache 子目錄 smoke、12/12 Chromium/WebGL 驗收通過；直接點 Q03 與 Lecture 模型亦通過。截圖與測試限制見 [Phase 1 驗收紀錄](docs/PHASE_1_ACCEPTANCE.md)。Windows 11 Chrome/Edge、美術品質及一般筆電效能仍待教師實際驗收。Draft PR 為本次停止點，不自行繼續下一 Phase。
+22/22 Node 測試、build、Apache 子目錄 smoke、12/12 Chromium/WebGL 驗收通過；直接點 Q03 與 Lecture 模型亦通過。截圖與測試限制見 [Phase 1 驗收紀錄](docs/PHASE_1_ACCEPTANCE.md)。Windows 11 Chrome/Edge、美術品質及一般筆電效能仍待教師實際驗收。Draft PR 為本次停止點，不自行繼續下一 Phase。
+
+## Phase 1 小幅修訂：雙島木橋
+
+依教師要求在同一 Draft PR #1 加入純視覺木橋：微拱及平面弧線、交錯木板、細木柱與繩欄。橋兩端接上既有岸邊，不移島、不改相機或互動／模式程式，不加入通行／碰撞／導航／點擊功能。新增橋端落岸、取景、排除拾取與不遮地標測試，更新總覽／聚焦／video-only／窄視窗截圖與 README 驗收項目。仍屬 Phase 0/1 修訂，Phase 2 未開始。

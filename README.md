@@ -1,6 +1,6 @@
 # Engineering Island Lab
 
-以 Three.js 建造的 3D 工程課程群島。目前完成 **Phase 0 與 Phase 1 實作，等待教師視覺／操作驗收**：中央學院與 S01 森林島、正交鏡頭、縮放／平移／聚焦、Lecture 小屋與 Q01–Q04 角色原型，以及自主跳動的鯊魚。
+以 Three.js 建造的 3D 工程課程群島。目前完成 **Phase 0 與 Phase 1 實作，等待教師視覺／操作驗收**：中央學院與 S01 森林島、連接兩島的弧形木橋、正交鏡頭、縮放／平移／聚焦、Lecture 小屋與 Q01–Q04 角色原型，以及自主跳動的鯊魚。
 
 這是視覺原型，尚未完成正式教學功能。數位電子學設定仍為 12 單元，本階段只繪製 S01；其餘 11 座島，以及其他課程上限所需的 S13–S15 尚未製作。美術仍待教師驗收及精修。
 
@@ -19,12 +19,12 @@ npm run build
 npm run demo
 ```
 
-已經 clone 的教師可先 `git fetch origin`、`git switch feat/phase-0-1-island-prototype`，再安裝及驗收。請保留自己的未提交修改。
+已經 clone 的教師可先 `git fetch origin`、`git switch feat/phase-0-1-island-prototype`，再安裝及驗收。請保留自己的未提交修改。已在本功能分支且工作樹乾淨時，可執行 `git pull --ff-only origin feat/phase-0-1-island-prototype` 取得木橋更新。
 
 `npm run demo` 啟動 Vite 並開啟明確的本機 Demo。若瀏覽器沒有自動打開，請開 [http://localhost:5173/?demo=1](http://localhost:5173/?demo=1)。Chrome、Edge 各執行一次以下清單；1366×768、100% 瀏覽器縮放為基本驗收尺寸。
 
 1. 總覽同時看見中央學院與 S01，主島標牌顯示「數位電子學」。島嶼有不規則海岸、草丘、斜岩壁及厚度，無規則方／六角柱島體。
-2. 放大欣賞森林、彩色花草、小瀑布、小屋、學院塔樓。評估色彩、童話感和造型是否符合參考方向；**需教師實際判斷美術品質**。
+2. 總覽確認木橋清楚連接兩岸，放大檢查微拱木板、弧線與繩欄自然融入場景；橋不遮住兩島標牌、小屋或 NPC。橋只供欣賞，點擊不開視窗；拖曳／滾輪仍操作鏡頭。放大欣賞森林、彩色花草、小瀑布、小屋、學院塔樓。評估色彩、童話感和造型是否符合參考方向；**需教師實際判斷美術品質**。
 3. 滾輪平滑縮放，拖曳海面或地圖平移；拖出去又回原點鬆手也不應開啟 NPC 視窗。左鍵和右鍵皆可拖曳平移。
 4. 點 S01 地形、S01 標牌或「探索 S01」平滑聚焦，仍能繼續滾輪放大。按「返回總覽」應回到雙島構圖；也可聚焦主島。聚焦後鄰島可能超出畫面，符合連續世界近看行為。
 5. S01 聚焦後四名角色各有清晰 Q01–Q04 頭頂標牌及衣服識別。點角色模型或標牌開啟對應的 **Demo 說明**，不出現真題、答案或外部影片。
@@ -54,6 +54,7 @@ npm run demo
 | `src/interaction.js` | 最大移動距離 click/drag 閾值、pointer cancel、白名單射線拾取 |
 | `src/scene.js` | 同一世界內的主島／S01、光源、標籤 anchor 及拾取註冊 |
 | `src/world/terrain.js` | 可重現的多層不規則海岸、收縮漂移岩坡、原創頂點色幾何 |
+| `src/world/bridge.js` | 兩岸間微拱、彎曲的木板橋與繩欄，純裝飾且無互動／碰撞／導航 |
 | `src/world/props.js` | 學院、小屋、探索者、植被、花草、步道、瀑布 |
 | `src/world/animals.js` | 只接受時間的自主鯊魚動畫，完全不註冊互動 |
 | `src/ui.js` | 可鍵盤操作的 CSS2D 標牌、原生 dialog、關閉後焦點回復 |
@@ -72,7 +73,7 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-- `npm test`：19 個 Node 內建測試，涵蓋 1/12/15 設定及非法值、相對根／子目錄、空 Manifest／安全路徑、錯誤 JSON、無 GPU 場景、自然地貌、video-only、裝飾動物不被拾取、正交取景、zoom 邊界、focus/reset、click/drag/cancel。
+- `npm test`：22 個 Node 內建測試，涵蓋 1/12/15 設定及非法值、相對根／子目錄、空 Manifest／安全路徑、錯誤 JSON、無 GPU 場景、自然地貌、video-only、裝飾動物不被拾取、正交取景、zoom 邊界、focus/reset、click/drag/cancel，以及橋端落岸、橋面弧度、裝飾拾取排除與標牌／小屋／NPC 視線不被橋遮擋。
 - `test:smoke`：建置後把 dist 掛在 `/~wildwolf/engineering-island-lab/`，驗證 HTML／JS／CSS／favicon／course-config／空 Manifest，無需 Apache。
 - `test:browser`：Playwright 真正執行 Chromium/WebGL。使用系統 `/usr/bin/chromium`（若有），或 Playwright 安裝的 Chromium；可用 `CHROMIUM_PATH` 指定執行檔。結果圖放 `test-results/`（不納入 Git）。先執行 `npm run build`，用於正式子目錄入口測試。
 - 三維幾何由原創程式產生。Node 測試與 Linux Chromium **不能取代 Windows Chrome／Edge 的教師驗收**。

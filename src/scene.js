@@ -13,6 +13,7 @@ import {
   Box3,
 } from 'three';
 import { createTerrain } from './world/terrain.js';
+import { createBridge } from './world/bridge.js';
 import {
   createAcademy,
   createLecture,
@@ -197,6 +198,13 @@ export function createIslandScene(config, fixture = null) {
   animated.push(shark);
   animateShark(shark, 0);
 
+  // Keep the crossing in the gap, away from the academy, cottage and NPC clearing.
+  const { group: bridge } = createBridge(
+    new Vector3(-2.1, 1.02, -0.3),
+    new Vector3(2.9, 1.02, 1.25),
+  );
+  scene.add(bridge);
+
   const sea = new Mesh(
     new PlaneGeometry(200, 200),
     new ShadowMaterial({ color: '#4e7665', opacity: 0.23 }),
@@ -254,6 +262,7 @@ export function createIslandScene(config, fixture = null) {
     islands,
     academy,
     forest,
+    bridge,
     npcs,
     shark,
     pickables,

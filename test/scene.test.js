@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { Vector3 } from 'three';
+import { Box3, Raycaster, Vector2, Vector3 } from 'three';
 import { createIslandScene } from '../src/scene.js';
 import { createTerrain } from '../src/world/terrain.js';
 import { sharkPose } from '../src/world/animals.js';
@@ -128,4 +128,68 @@ test('click/drag tracks maximum excursion, exact threshold, cancellation and orp
   gesture.begin(0, 0);
   gesture.cancel();
   assert.equal(gesture.end(0, 0), false);
+});
+
+test('scenic bridge lands on both banks and curves above the water inside the overview', () => {
+  const world = createIslandScene(config, demoFixture);
+  const bridge = world.bridge;
+  world.scene.updateMatrixWorld(true);
+  const banks = [world.academy, world.forest];
+  const deck = bridge.getObjectByName('bridge-deck').children;
+  for (const [i, plank] of [deck[0], deck.at(-1)].entries()) {
+    const terrain = banks[i].getObjectByName('coast-and-cliffs');
+    const ray = new Raycaster(
+      plank.position.clone().add(new Vector3(0, 5, 0)),
+      new Vector3(0, -1, 0),
+    );
+    const hit = ray.intersectObject(terrain)[0];
+    assert.ok(hit, 'each bridge end overlaps solid island terrain');
+    assert.ok(plank.position.y - hit.point.y > 0 && plank.position.y - hit.point.y < 0.4);
+  }
+  const middle = deck[Math.floor(deck.length / 2)].position;
+  const straight = deck[0].position.clone().lerp(deck.at(-1).position, 0.5);
+  assert.ok(middle.y - straight.y > 0.45, 'arched deck remains visibly three-dimensional');
+  assert.ok(
+    middle.z - straight.z > 0.25,
+    'deck bends gently in plan rather than forming a straight road',
+  );
+  assert.ok(
+    world.bounds.containsBox(new Box3().setFromObject(bridge)),
+    'bridge fits existing overview bounds',
+  );
+});
+
+test('bridge stays decorative in both modes and clear of the Lecture/NPC interaction areas', () => {
+  for (const assignmentMode of ['quiz', 'video-only']) {
+    const world = createIslandScene({ ...config, assignmentMode }, demoFixture);
+    world.bridge.traverse((object) => {
+      assert.ok(!world.pickables.includes(object));
+      assert.equal(object.userData.action, undefined);
+    });
+    const bridgeBounds = new Box3().setFromObject(world.bridge);
+    for (const object of [world.forest.getObjectByName('lecture-cottage'), ...world.npcs]) {
+      assert.equal(bridgeBounds.intersectsBox(new Box3().setFromObject(object)), false);
+    }
+    assert.equal(world.npcs.length, assignmentMode === 'quiz' ? 4 : 0);
+  }
+});
+
+test('bridge leaves direct camera sightlines to both island signs, Lecture and all NPCs', () => {
+  const world = createIslandScene(config, demoFixture);
+  const rig = new CameraRig(world.bounds, 1366 / 543);
+  const targets = world.labels.map((item) => item.anchor.getWorldPosition(new Vector3()));
+  for (const object of [world.forest.getObjectByName('lecture-cottage'), ...world.npcs]) {
+    targets.push(new Box3().setFromObject(object).getCenter(new Vector3()));
+  }
+  for (const target of targets) {
+    const projected = target.clone().project(rig.camera);
+    const ray = new Raycaster();
+    ray.setFromCamera(new Vector2(projected.x, projected.y), rig.camera);
+    ray.far = ray.ray.origin.distanceTo(target) - 0.01;
+    assert.equal(
+      ray.intersectObject(world.bridge, true).length,
+      0,
+      'bridge must not obstruct a landmark',
+    );
+  }
 });
