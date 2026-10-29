@@ -1,5 +1,14 @@
-import { Group, Shape, ExtrudeGeometry, TorusGeometry } from 'three';
-import { ball, box, cone, cylinder, mesh, random } from './primitives.js';
+import {
+  Group,
+  Shape,
+  ExtrudeGeometry,
+  TorusGeometry,
+  InstancedMesh,
+  Object3D,
+  SphereGeometry,
+  CylinderGeometry,
+} from 'three';
+import { ball, box, cone, cylinder, mesh, random, material } from './primitives.js';
 import { createTerrain } from './terrain.js';
 
 export function tree(parent, x, y, z, size = 1, variant = 0) {
@@ -23,17 +32,42 @@ export function tree(parent, x, y, z, size = 1, variant = 0) {
 export function scatterFlowers(parent, { seed, count, radius, y = 0.97, exclude = () => false }) {
   const rng = random(seed),
     colors = ['#ffe8a4', '#fff7df', '#e99398', '#bd9cce', '#f6be64'];
+  const sets = new Map(),
+    stems = [];
+  const push = (color, position, scale) => {
+    if (!sets.has(color)) sets.set(color, []);
+    sets.get(color).push({ position, scale });
+  };
   for (let i = 0; i < count; i++) {
     const a = rng() * Math.PI * 2,
-      r = Math.sqrt(rng()) * radius;
-    const x = Math.cos(a) * r,
+      r = Math.sqrt(rng()) * radius,
+      x = Math.cos(a) * r,
       z = Math.sin(a) * r;
     if (exclude(x, z)) continue;
-    cylinder(parent, '#62976d', [x, y + 0.09, z], 0.018, 0.18, 4);
-    const color = colors[i % colors.length];
-    ball(parent, color, [x, y + 0.22, z], [0.095, 0.075, 0.095], 5);
-    if (i % 4 === 0) ball(parent, '#f6cf63', [x, y + 0.27, z], [0.04, 0.035, 0.04], 5);
+    stems.push({ position: [x, y + 0.09, z], scale: [0.018, 0.18, 0.018] });
+    push(colors[i % colors.length], [x, y + 0.22, z], [0.095, 0.075, 0.095]);
+    if (i % 4 === 0) push('#f6cf63', [x, y + 0.27, z], [0.04, 0.035, 0.04]);
   }
+  const sphere = new SphereGeometry(1, 5, 7),
+    stemGeometry = new CylinderGeometry(1, 1, 1, 4);
+  const dummy = new Object3D();
+  const add = (geometry, color, instances) => {
+    if (!instances.length) return;
+    const flowers = new InstancedMesh(geometry, material(color), instances.length);
+    flowers.name = 'instanced-flowers';
+    flowers.userData.detail = true;
+    flowers.castShadow = true;
+    instances.forEach((value, i) => {
+      dummy.position.set(...value.position);
+      dummy.scale.set(...value.scale);
+      dummy.updateMatrix();
+      flowers.setMatrixAt(i, dummy.matrix);
+    });
+    flowers.computeBoundingSphere();
+    parent.add(flowers);
+  };
+  add(stemGeometry, '#62976d', stems);
+  for (const [color, instances] of sets) add(sphere, color, instances);
 }
 
 export function path(parent, points, y = 1.01, width = 0.5) {

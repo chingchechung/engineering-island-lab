@@ -57,3 +57,25 @@ export async function loadManifest(baseUrl, totalUnits) {
 export function isLocalDemo(search, isDevelopment) {
   return isDevelopment && new URLSearchParams(search).get('demo') === '1';
 }
+
+export function resolvePreviewOptions(search, isDevelopment, course) {
+  const base = validateCourseConfig(course),
+    demo = isLocalDemo(search, isDevelopment);
+  if (!demo) return { demo: false, course: base, openCount: null, questionCount: 0 };
+  const params = new URLSearchParams(search);
+  const number = (name, fallback, min, max) => {
+    if (!params.has(name)) return fallback;
+    const value = Number(params.get(name));
+    return Number.isInteger(value) && value >= min && value <= max ? value : fallback;
+  };
+  const totalUnits = number('units', base.totalUnits, 1, 15);
+  const assignmentMode = ['quiz', 'video-only'].includes(params.get('mode'))
+    ? params.get('mode')
+    : base.assignmentMode;
+  return {
+    demo: true,
+    course: { ...base, totalUnits, assignmentMode },
+    openCount: Math.min(totalUnits, number('open', 4, 0, 15)),
+    questionCount: number('questions', 4, 4, 5),
+  };
+}

@@ -4,7 +4,7 @@
 
 已完整閱讀啟動文件及四份 docs，查看 00–03 全部圖片：自然海岸與岩坡、多層瀑布、少量童話學院塔樓；排除規則柱體。參考圖不作網站素材。
 
-遠端為 chingchechung/engineering-island-lab，main 基準 d917afd；本機初始化檔案尚未追蹤，已保留，功能分支 `feat/phase-0-1-island-prototype` 從遠端 main 建立。Node 24.19.0 / npm 11.9.0 / Vite 8.3.5 / Three.js 0.186.1。既有 5/5 測試、build 通過；原 build 有 >500 kB 的 Three.js chunk 提示。環境測試本機 HTTP 必須允許 loopback 網路。
+遠端為 chingchechung/engineering-island-lab，main 基準 d917afd；Phase 0 初始化檔案當時尚未追蹤，已保留，功能分支 `feat/phase-0-1-island-prototype` 從遠端 main 建立。Node 24.19.0 / npm 11.9.0 / Vite 8.3.5 / Three.js 0.186.1。既有 5/5 測試、build 通過；原 build 有 >500 kB 的 Three.js chunk 提示。環境測試本機 HTTP 必須允許 loopback 網路。
 
 ## 模組與資料流
 
@@ -22,8 +22,8 @@ scene anchors → CSS2D accessible labels
 
 - [x] Phase 0：基準、完整閱讀、獨立分支與模組/驗收規範。
 - [x] Phase 1：中央學院與 S01 自然地貌、森林/瀑布、小屋與四名 NPC、自主鯊魚、正交相機/互動、明確 Demo 與 video-only、測試、README、Draft PR。
-- [ ] 教師 Windows 11 Chrome/Edge 實機美術及操作驗收。
-- [ ] Phase 2（未授權）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
+- [x] 教師 Windows 11 Chrome/Edge 已驗收 Phase 0/1 與木橋，PR #1 已合併（教師本輪指示）。
+- [ ] Phase 2（實作完成，待教師驗收）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
 - [ ] Phase 3（未授權）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
 - [ ] Phase 4（未授權）：舊題庫 v1/v2 相容、四/五題、解答及 Form；舊 GUI S13–S15 為獨立待辦。
 - [ ] Phase 5（未授權）：Windows/Apache 完整回歸、素材授權、正式發布準備。
@@ -41,3 +41,64 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 ## Phase 1 小幅修訂：雙島木橋
 
 依教師要求在同一 Draft PR #1 加入純視覺木橋：微拱及平面弧線、交錯木板、細木柱與繩欄。橋兩端接上既有岸邊，不移島、不改相機或互動／模式程式，不加入通行／碰撞／導航／點擊功能。新增橋端落岸、取景、排除拾取與不遮地標測試，更新總覽／聚焦／video-only／窄視窗截圖與 README 驗收項目。仍屬 Phase 0/1 修訂，Phase 2 未開始。
+
+## Phase 2 實作計畫（最新授權）
+
+基準 main `3e5c883`，新分支 `feature/phase-2-full-archipelago`，基準 22/22 測試。教師原始指示保存在 docs/PHASE_2_BRIEF.md；此授權取代歷史 Phase 1 停止條件，本輪停止點為 Phase 2 Draft PR，Phase 3/4 仍未授權。
+
+- [x] 保留雙島模型，分離已驗收 Phase 1 建構；新加固定主題、分支布局及 14 座獨特地貌。
+- [x] 完整木橋網路、岸邊銜接、Manifest 開放狀態與可愛柵欄；鎖定內容阻擋。
+- [x] 每島主題小屋、4/5 個 NPC 位置與自主動物；video-only 完全不建立 NPC。
+- [x] 1–15 全域 fit、單島近看、標牌/導覽與窄視窗，保留滑鼠操作。
+- [x] 共用幾何/材質、花草 InstancedMesh、靜態合批、遠景動畫降頻、聚焦陰影與 GPU 釋放。
+- [x] 既有行為回歸與新測試、12/15 總覽及指定主題截圖、FPS/draw calls/triangles 實測。
+- [x] Windows 驗收文件與整合報告。
+
+交付方式：僅建立一個新的 Phase 2 Draft PR，停止等待教師，不進 Phase 3。
+
+## Phase 2 實際平行整合紀錄
+
+依教師追加指示，主 Agent 先完成 docs/ISLAND_FACTORY.md 與固定契約，再實際 spawn 四組 Subagents：A nature.js（S02–S04）、B fantasy.js（S05–S08）、C dream.js（S09–S12）、D extended.js（S13–S15）。四組只改各自模組，已全部交付並停止編輯，沒有建立 PR 或修改共享核心。主 Agent 審查程式、Scoped 驗證與實際近景截圖後統一整合；同時處理布局／橋／柵欄／相機／狀態及效能。
+
+實作細節與量測限制見 docs/PHASE_2_ACCEPTANCE.md。Windows 本輪美術及一般筆電效能仍待教師驗收；Phase 3／4 不在本次範圍。
+
+最終驗證：41/41 單元測試依要求連續執行三次皆通過；build、Apache 子目錄 smoke、20/20 瀏覽器驗收通過。75 NPC 的可見／拾取測試涵蓋所有 15 島。SwiftShader 實測約 4.31–6.00 FPS，15 島總覽 203 calls／236,364 triangles；本輪 Windows 硬體加速與一般筆電流暢度尚待教師確認。
+
+## Phase 2 教師驗收修訂（最新交付）
+
+沿用 feature/phase-2-full-archipelago 與 Draft PR #2，修訂基準 978be95。最新教師原文存 docs/PHASE_2_REVISION_BRIEF.md；凍結介面與檔案所有權見 docs/REVISION_INTERFACES.md。
+
+- [x] Main：單列動態課名、左下唯一導覽、去除 Demo 面板、dev-only 參數、大字標籤與避讓、六主幹一層支線放射布局、實際島體投影 fit 與橋端。
+- [x] Agent A /root/revision_dressing：實際平行交付 dressing.js 與 4 項測試，15 主題岩崖／水景／植被／道具，保留漫遊、動物及小屋區。
+- [x] Agent B /root/revision_npc：實際平行交付 npc-motion.js 與 10 項測試；安全慢速漫遊、局部關節、pause/resume，禁止世界座標烘焙。
+- [x] Agent C /root/revision_fauna：實際平行交付 fauna.js 與 6 項測試；每島三隻、15 特色物種、錯相動畫，保留原 S01 第一隻。
+- [x] Main：審查三者實際結果後整合地表／水面／建築／視線安全及 Modal 暫停；修正高度快取階梯誤差，75 人均能在安全圈內移動。
+- [x] Main：保留原 41 項並新增 27 項單元測試，24 項瀏覽器檢查、build 與 Apache smoke；保存修正前後總覽、12／15／聚焦與窄畫面截圖及軟體 GPU 數據。
+- [x] Main：更新 README、PHASE_2_ACCEPTANCE、開發契約與同一 Draft PR #2 的交付內容。
+- [x] 教師後續已確認此前版 Windows 11 島名、題目 NPC 漫遊／點擊停止，以及 12／15 島硬體 GPU 流暢。新增生命感仍另列待驗收，未授權合併或部署。
+
+本輪 SwiftShader 軟體 GPU 1.53–4.28 FPS；12 島總覽 298 calls／260,364 triangles，15 島總覽 364 calls／335,188 triangles。不能視為一般筆電流暢度通過。完整數據、截圖與測試限制見 docs/PHASE_2_ACCEPTANCE.md。前面的 Phase 1／初版 Phase 2 數據均為歷史紀錄。
+
+## Phase 2 最後生命感修訂（目前工作）
+
+教師已確認前版 Windows 11 標籤、NPC 漫遊／點擊停止、12／15 島硬體 GPU 流暢。此回覆更新前面的「待重驗」狀態；沒有提供數值 FPS。本輪從 25f2c62 繼續同一分支／Draft PR #2。
+
+- [x] Agent A /root/sea_life：實際平行交付 sea-life.js 與 7 項測試；柔和動態海面、四隻外海巡遊鯨魚、錯相噴水及尾波，最多 19 draws／8,866 triangles。
+- [x] Agent B /root/visitors：實際平行交付 visitors.js／visitor-navigation.js 與 11 項測試；地表分區與開放橋網、跨島返回、會車排隊、NPC 避讓，與題目 NPC 完全分離。
+- [x] Main：依 LIFE_INTERFACES 審查後整合；91/91 單元、build、Apache smoke、32/32 瀏覽器通過；原 75 題目 NPC／取景／每島三動物／鎖定／模式均保留，完成八情境效能與代表截圖。
+- [x] 更新同一 Draft PR #2 的交付文件與代表截圖；不另建 PR。
+- [ ] 教師對本輪新增生命感再次驗收；等待期間不得合併／部署／進 Phase 3。
+
+本輪軟體 GPU：SwiftShader／Chromium154／DPR1，2.94–4.29FPS；12／15 島總覽293／359calls、272,982／347,806triangles。四鯨魚背景最多19draws／8,866triangles；原45個海泡沫合成1批，抵銷新增呼叫。地表分區及六個不安全既有橋口不納入背景通行，詳見驗收報告；仍可在多座安全連通的開放島間巡遊返回。沒有新的實體GPU數值，新增項目待教師Windows再驗收。
+
+## Phase 2 Modal 字體與版面修訂（最新交付）
+
+基準1854e26，工作樹乾淨、原Draft PR #2仍開啟。基準91/91測試通過。教師要求所有Lecture／NPC／操作說明視窗共享更易讀的字體及620px版面，不授權Phase3。
+
+- [x] 共用Modal：桌面28／18／14／13px，內文1.75行高與更高對比；寬620px，固定標頭／關閉鈕與附註，長內容內部捲動。
+- [x] 手機內文16px、響應寬度、44px關閉鈕；可聚焦內容區支援鍵盤捲動，避免整頁溢出。
+- [x] 三尺寸的Lecture／Q05／操作說明截圖，Q01–Q05暫停／恢復，背景動畫、相機隔離與長內容回歸。
+- [x] npm test → build → npm run test，smoke與完整瀏覽器回歸；更新文件及同一Draft PR #2。
+- [ ] 教師再次驗收；不合併、不部署、不進Phase3。
+
+最終結果：兩次各91/91通過；build／Apache smoke及44/44完整瀏覽器通過。新增12項Modal檢查，保存九個一般視窗與兩個長內容量測，內文對比8.39:1。執行時只修改style.css及共用內容區HTML屬性，3D／相機／JSON均未更動。

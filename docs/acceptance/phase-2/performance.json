@@ -1,0 +1,61 @@
+{
+  "browser": "154.0.8037.57",
+  "samples": [
+    {
+      "name": "15-unit overview / 1366x768",
+      "fps": 4.958841614598839,
+      "drawCalls": 203,
+      "triangles": 236364,
+      "geometries": 141,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "15-unit S01 focus / 1366x768",
+      "fps": 4.306446750785934,
+      "drawCalls": 92,
+      "triangles": 138032,
+      "geometries": 147,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit overview / 1366x768",
+      "fps": 6.000240009600381,
+      "drawCalls": 167,
+      "triangles": 179190,
+      "geometries": 112,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit overview / 1920x1080",
+      "fps": 4.712165239927747,
+      "drawCalls": 167,
+      "triangles": 179190,
+      "geometries": 112,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1
+    }
+  ]
+}

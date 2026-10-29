@@ -28,7 +28,8 @@ export class PointerGesture {
   }
 }
 
-export function attachInteraction({ canvas, rig, getPickables, blocked, onAction, onHover }) {
+export function attachInteraction(options) {
+  const { canvas, getPickables, blocked, onAction, onHover } = options;
   const ray = new Raycaster(),
     pointer = new Vector2(),
     plane = new Plane(new Vector3(0, 1, 0), 0);
@@ -38,7 +39,7 @@ export function attachInteraction({ canvas, rig, getPickables, blocked, onAction
   const setRay = (x, y) => {
     const rect = canvas.getBoundingClientRect();
     pointer.set(((x - rect.left) / rect.width) * 2 - 1, (-(y - rect.top) / rect.height) * 2 + 1);
-    ray.setFromCamera(pointer, rig.camera);
+    ray.setFromCamera(pointer, options.rig.camera);
   };
   const groundPoint = (x, y) => {
     setRay(x, y);
@@ -71,7 +72,7 @@ export function attachInteraction({ canvas, rig, getPickables, blocked, onAction
       if (gesture.dragging) {
         const before = groundPoint(last.x, last.y),
           after = groundPoint(event.clientX, event.clientY);
-        if (before && after) rig.pan(before.sub(after));
+        if (before && after) options.rig.pan(before.sub(after));
         canvas.classList.add('dragging');
         onHover(null);
       }
@@ -111,7 +112,7 @@ export function attachInteraction({ canvas, rig, getPickables, blocked, onAction
       const delta =
         event.deltaY *
         (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? canvas.clientHeight : 1);
-      rig.zoom(delta);
+      options.rig.zoom(delta);
     },
     { passive: false },
   );

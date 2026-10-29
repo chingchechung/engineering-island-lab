@@ -1,0 +1,24 @@
+# Phase 2 revision — ownership and frozen integration interfaces
+
+Main owns scene.js/main.js/style.css/ui.js/config.js/presets.js/bridge.js/optimize.js, existing factories, all shared tests, HTML, package files, docs and Git/PR. Three agents edit only these isolated files:
+
+- Agent A: `src/world/dressing.js` and optionally `test/dressing.test.js`.
+- Agent B: `src/world/npc-motion.js` and optionally `test/npc-motion.test.js`.
+- Agent C: `src/world/fauna.js` and optionally `test/fauna.test.js`.
+
+Never edit another agent/core file, shared tests, package/lock, AGENTS/Plan, Git refs, PRs or deployment. Notify main before changing these interfaces.
+
+Common record: `{root:Group, terrain:Mesh, house:Group, top:number, preset:{id,title,radius,...}, creatures?:[{group,kind,update(seconds)}], animals?:Object3D[], animate:Function[]}`. Coordinates are LOCAL to root; top usually 0.8, S11 2.0. Main owns world placement, NPCs/labels/actions/Manifest/bridges/gates. Static materials/primitives/helpers can be imported read-only; all assets original geometry. Reserved NPC centers x/z: (-2.8,2),(-0.9,3.1),(1.3,2.8),(3,1.5),(3.6,0.1), with roam radius ≈1.0. Keep structures behind z≈0 or at the rim; avoid tall objects around those front centers and cottage face (+z). Animal clearings approximately (0.4,0.3),(1.7,-0.4),(0.15,-1.3), small bodies, no structure atop them. Main supplies safety checks against actual ground and static obstacles.
+
+## A: static dressing
+
+Export `addIslandDressing(record)`; attach a Group named `themed-dressing` to root and return `{group, count:number}` (metadata may add placements). It is invoked after themed factory construction, before NPC movement and static batching. Rich varied cliffs/ledges/rock layers/vines/foliage/water/props matching all 15 themes, including tasteful additions to S01. No interaction/physics/input/animal/NPC behavior. Avoid filling with identical balls/boxes; use efficient original low-poly geometry/shared materials/InstancedMesh. Decoration must remain equally present in quiz/video-only and not disappear entirely at overview. Mark small optional extra detail only if useful. Moving environment effects are out of this agent's scope; keep dressing static. No geometry relocation of the base island.
+
+## B: NPC controller
+
+Export `createNpcMotion(npc, {center:Vector3, radius=1.05, seed:number, isSafe:(x,z)=>boolean, heightAt?:(x,z)=>number|null, peers:()=>Object3D[]})`.
+Return `{update(seconds), setPaused(boolean), getState()}`; state includes `paused`, `phase` and target (serializable). Seconds are absolute simulation time; while paused, update must maintain last time without movement/catch-up. Own deterministic PRNG, slow safe targets/segments, idle/turn/walk phases, finite radius, peer separation. Check full segments and each step; no teleport into unsafe cells. Root starts at center; preserve Q meshes, keep all animations local to NPC. Set `npc.userData.animated=true` so core never bakes it into island coordinates. Mark independently moving limbs animated too. Core registers existing actions and labels, invokes controller at near/far frequencies, and pauses target immediately before Modal opens, resumes on close. Controller has no DOM or Quiz logic. Main computes actual ground/building/landmark obstacle safety before batching and provides callbacks. Test pure unit behavior without GPU/DOM.
+
+## C: independent fauna
+
+Export `createIslandFauna(record)` => exactly 3 `{group,kind,update(seconds)}` descriptors, all attached to record.root. Remove/detach prior record.creatures as appropriate; main replaces the list with returned motions and aggregates it. For S01 KEEP original shark object as first (provided as record.animals[0]), preserve its geometry and primary autonomous behavior; add two companions. Other themes may reuse the existing primary where species matches or create new ones. New unique representatives: S01 shark, S02 fish, S03 penguin, S04 jellyfish, S05 dinosaur, S06 sheep, S07 arctic-fox, S08 duck, S09 butterfly (no extra jellyfish counted), S10 camel, S11 whale, S12 flamingo, S13 panda, S14 crystal, S15 turtle. Three visible independent individuals, varied scale/color/phase; motion only depends on absolute time, never input/camera. Use reusable primitives and read-only createCreature/helpers where appropriate, implement missing species in this owned module. Animal roots MUST have decoration=true and animated=true, no actions; independently moving children animated. Maintain a compact clear area behind NPCs/cottage, adjust y to raised surfaces as necessary. Main batches each moving root in its own frame and releases detached resources via shared disposeScene when appropriate. Do not edit existing island/creature factories or shared presets; main updates species metadata and invokes this new factory for all islands.

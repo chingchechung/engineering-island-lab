@@ -3,8 +3,9 @@ import { existsSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { createServer, preview } from 'vite';
-
-// Run against a real WebGL renderer, using installed Chromium or Playwright's browser.
+import { checkArchipelago } from './archipelago-browser.js';
+import { checkBackgroundLife } from './life-browser.js';
+import { checkModalReadability } from './modal-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -16,12 +17,9 @@ const server = await createServer({ server: { host: '127.0.0.1', port: 0, open: 
 await server.listen();
 const base = `http://127.0.0.1:${server.httpServer.address().port}`;
 await mkdir('test-results', { recursive: true });
-let checks = 0;
-function pass(name) {
-  checks++;
-  console.log(`PASS ${name}`);
-}
-let production;
+let checks = 0,
+  production;
+const pass = (name) => console.log(`PASS ${++checks} ${name}`);
 try {
   const page = await browser.newPage({
     viewport: { width: 1366, height: 768 },
@@ -30,80 +28,75 @@ try {
   const errors = [],
     requests = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (msg) => {
-    if (msg.type() === 'error') errors.push(msg.text());
+  page.on('console', (m) => {
+    if (m.type() === 'error') errors.push(m.text());
   });
-  page.on('request', (request) => requests.push(request.url()));
-  const snapshot = () => page.evaluate(() => window.__islandLab.snapshot());
-  await page.goto(`${base}/?demo=1`);
-  await page.waitForFunction(() => window.__islandLab?.snapshot().demo);
-  await page.screenshot({ path: 'test-results/overview.png' });
-  assert.equal((await snapshot()).npcCount, 4);
-  assert.equal((await snapshot()).pickableAnimals, 0);
-  pass('Quiz Demo renders four NPCs; animal pick registry is empty');
-
+  page.on('request', (r) => requests.push(r.url()));
+  const state = () => page.evaluate(() => window.__islandLab.snapshot());
+  const load = async (query) => {
+    await page.goto(`${base}/${query}`);
+    await page.waitForFunction(() => window.__islandLab);
+  };
+  const focus = async (id) => {
+    await page.selectOption('#unit-navigation', id);
+    await page.waitForFunction((expected) => window.__islandLab.snapshot().view === expected, id);
+    await page.waitForTimeout(1400);
+  };
+  await load('?demo=1&units=1&open=1');
+  assert.equal((await state()).npcCount, 4);
+  assert.equal((await state()).pickableAnimals, 0);
+  pass('Quiz fixture, independent animals and empty animal pick registry');
   await page.locator('[data-label="S01"]').click();
   await page.waitForFunction(
     () => window.__islandLab.snapshot().view === 'S01' && window.__islandLab.snapshot().zoom > 1.6,
   );
-  // Wait for the smooth camera transition to settle before pixel/drag assertions.
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1000);
   for (const id of ['Q01', 'Q02', 'Q03', 'Q04'])
     assert.ok(await page.locator(`[data-label="${id}"]`).isVisible());
-  await page.screenshot({ path: 'test-results/s01-focus.png' });
-  pass('3D label click focuses S01 with all four readable Q labels');
-
+  pass('island label smoothly focuses S01 with readable Q labels');
   await page.locator('[data-label="Q01"]').click();
-  assert.ok((await snapshot()).dialog);
+  assert.equal((await state()).dialog, true);
   assert.match(await page.locator('#dialog-title').textContent(), /Q01/);
-  const modalState = await snapshot();
+  const modal = await state();
   await page.mouse.wheel(0, 600);
   await page.keyboard.press('+');
-  await page.waitForTimeout(200);
-  const duringModal = await snapshot();
-  assert.ok(Math.abs(duringModal.zoom - modalState.zoom) < 0.01);
+  await page.waitForTimeout(300);
+  const during = await state();
+  assert.ok(Math.abs(during.zoom - modal.zoom) < 0.01);
   assert.deepEqual(
-    duringModal.target.map((n) => n.toFixed(2)),
-    modalState.target.map((n) => n.toFixed(2)),
+    during.target.map((n) => n.toFixed(2)),
+    modal.target.map((n) => n.toFixed(2)),
   );
-  assert.notDeepEqual(duringModal.shark, modalState.shark);
-  assert.match(
-    await page
-      .locator('#detail-dialog')
-      .evaluate((el) => document.activeElement.closest('dialog')?.id),
-    /detail-dialog/,
+  assert.notDeepEqual(during.shark, modal.shark);
+  assert.deepEqual(
+    during.npcs.find((n) => n.id === 'Q01').position,
+    modal.npcs.find((n) => n.id === 'Q01').position,
   );
   await page.keyboard.press('Escape');
-  assert.equal((await snapshot()).dialog, false);
+  await page.waitForFunction(() => !window.__islandLab.snapshot().dialog);
   assert.equal(await page.evaluate(() => document.activeElement.dataset.label), 'Q01');
-  pass(
-    'NPC placeholder, modal scroll/key isolation, autonomous animation and Escape focus restoration',
-  );
-
+  pass('NPC Modal isolation, pause, autonomous animals and Escape focus restoration');
   await page.locator('[data-label="lecture"]').click();
   assert.match(await page.locator('#dialog-title').textContent(), /Lecture/);
-  assert.equal(await page.locator('#detail-dialog a, #detail-dialog iframe').count(), 0);
+  assert.equal(await page.locator('#detail-dialog a,#detail-dialog iframe').count(), 0);
   await page.locator('#close-dialog').click();
-  pass('Lecture opens an honest placeholder with no external course link or embedded player');
-
-  const canvas = await page.locator('canvas').boundingBox();
-  const beforeDrag = await snapshot();
+  pass('Lecture placeholder has no external course link or embedded player');
+  const canvas = await page.locator('canvas').boundingBox(),
+    before = await state();
   await page.mouse.move(canvas.x + canvas.width * 0.78, canvas.y + canvas.height * 0.58);
   await page.mouse.down();
   await page.mouse.move(canvas.x + canvas.width * 0.78 + 80, canvas.y + canvas.height * 0.58 + 30, {
     steps: 8,
   });
   await page.mouse.up();
-  await page.waitForTimeout(500);
-  const afterDrag = await snapshot();
-  assert.notDeepEqual(afterDrag.target, beforeDrag.target);
-  assert.equal(afterDrag.dialog, false);
-  pass('drag pans continuously without opening content');
-
-  const beforeWheel = afterDrag.zoom;
+  await page.waitForTimeout(600);
+  const dragged = await state();
+  assert.notDeepEqual(dragged.target, before.target);
+  assert.equal(dragged.dialog, false);
+  pass('drag pans without opening content');
   await page.mouse.wheel(0, -250);
-  await page.waitForTimeout(500);
-  assert.ok((await snapshot()).zoom > beforeWheel);
+  await page.waitForTimeout(600);
+  assert.ok((await state()).zoom > dragged.zoom);
   await page.locator('#overview').click();
   await page.waitForFunction(
     () =>
@@ -111,66 +104,64 @@ try {
       Math.abs(window.__islandLab.snapshot().zoom - 1) < 0.01,
   );
   pass('wheel zoom and return to overview');
-
-  await page.locator('#mode-video').click();
-  assert.equal((await snapshot()).npcCount, 0);
+  await load('?demo=1&units=1&open=1&mode=video-only');
+  assert.equal((await state()).npcCount, 0);
+  assert.equal((await state()).animals.length, 3);
   assert.equal(await page.locator('[data-label^="Q"]').count(), 0);
-  await page.locator('#explore').click();
-  await page.waitForTimeout(800);
+  await focus('S01');
   await page.locator('[data-label="lecture"]').click();
-  assert.match(await page.locator('#dialog-title').textContent(), /Lecture/);
+  assert.equal((await state()).dialog, true);
   await page.keyboard.press('Escape');
-  await page.screenshot({ path: 'test-results/video-only.png' });
-  pass('video-only removes all NPC geometry/labels while retaining Lecture and shark');
-  await page.locator('#mode-quiz').click();
-  assert.equal((await snapshot()).npcCount, 4);
+  pass('video-only removes every NPC and retains Lecture and three animals');
+  await load('?demo=1&units=1&open=1&mode=quiz');
+  assert.equal((await state()).npcCount, 4);
+  await focus('S01');
   await page.locator('[data-label="Q04"]').click();
   assert.match(await page.locator('#dialog-title').textContent(), /Q04/);
   await page.keyboard.press('Escape');
-  pass('mode rebuild keeps current scene pick targets functional');
-
+  pass('returning to Quiz restores current geometry and click targets');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('#overview').click();
-  await page.waitForTimeout(500);
-  await page.screenshot({ path: 'test-results/narrow.png' });
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-  await page.locator('#explore').click();
-  await page.waitForTimeout(700);
+  await page.waitForTimeout(800);
+  await focus('S01');
   await page.locator('[data-label="Q02"]').click();
   const box = await page.locator('dialog').boundingBox();
   assert.ok(box.x >= 0 && box.y >= 0 && box.x + box.width <= 391 && box.y + box.height <= 845);
   await page.keyboard.press('Escape');
-  pass('narrow viewport remains operable and modal stays within viewport');
-
-  await page.goto(base);
-  await page.waitForFunction(() => window.__islandLab);
-  assert.equal((await snapshot()).demo, false);
-  assert.equal((await snapshot()).npcCount, 0);
-  assert.equal(await page.locator('#demo-controls').isVisible(), false);
-  assert.ok(await page.locator('.label-locked').isVisible());
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+  pass('narrow viewport navigation and bounded Modal');
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await load('');
+  assert.equal((await state()).demo, false);
+  assert.equal((await state()).npcCount, 0);
+  assert.equal((await state()).gates.length, 12);
+  assert.equal(await page.locator('.label-locked').count(), 12);
   assert.equal(
     requests.filter((url) => /assignments\/S\d+\.json|course-videos\//.test(url)).length,
     0,
   );
-  pass('default entry keeps empty-manifest curriculum locked and fetches no teaching material');
+  pass('default empty Manifest locks all curriculum and fetches no material');
   assert.deepEqual(errors, []);
-  pass('no browser JavaScript or console errors');
-
+  pass('no application JavaScript or Console errors');
   production = await preview({
     base: '/~wildwolf/engineering-island-lab/',
     preview: { host: '127.0.0.1', port: 0, open: false },
   });
   await page.goto(
-    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/?demo=1`,
+    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/?demo=1&units=15&open=15&questions=5&mode=video-only`,
   );
   await page.waitForSelector('#loading[hidden]', { state: 'attached' });
-  assert.equal(await page.locator('[data-label^="Q"]').count(), 0);
-  assert.equal(await page.locator('#demo-controls').isVisible(), false);
+  assert.equal(await page.locator('[data-label*="Q0"]').count(), 0);
+  assert.equal(await page.locator('.label-locked').count(), 12);
   assert.equal(await page.evaluate(() => typeof window.__islandLab), 'undefined');
   assert.ok(await page.locator('canvas').isVisible());
-  pass('built site renders from Apache subdirectory; query cannot enable local Demo');
+  assert.equal(await page.locator('select').count(), 1);
+  pass('Apache production renders, ignores every Demo override and exposes only student controls');
+  await checkModalReadability(page, base, pass);
+  await checkArchipelago(page, base, pass);
+  await checkBackgroundLife(page, base, pass);
   assert.deepEqual(errors, []);
-  console.log(`${checks} browser acceptance checks passed. Screenshots: test-results/`);
+  console.log(`${checks} browser acceptance checks passed. Screenshots and metrics: test-results/`);
 } finally {
   if (production) await new Promise((resolve) => production.httpServer.close(resolve));
   await browser.close();

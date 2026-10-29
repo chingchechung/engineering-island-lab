@@ -1,283 +1,405 @@
 import {
-  Scene,
-  Color,
-  Group,
-  HemisphereLight,
-  DirectionalLight,
-  PlaneGeometry,
-  Mesh,
-  MeshStandardMaterial,
-  ShadowMaterial,
-  RingGeometry,
-  Vector3,
   Box3,
+  Group,
+  Vector3,
+  InstancedMesh,
+  CircleGeometry,
+  MeshBasicMaterial,
+  Object3D,
 } from 'three';
-import { createTerrain } from './world/terrain.js';
-import { createBridge } from './world/bridge.js';
-import {
-  createAcademy,
-  createLecture,
-  createNpc,
-  tree,
-  path,
-  addHill,
-  scatterFlowers,
-  addPond,
-  addWaterfall,
-} from './world/props.js';
-import { ball, random } from './world/primitives.js';
-import { createShark, animateShark } from './world/animals.js';
+import { createPhaseOneScene } from './world/phase-one.js';
+import { PRESETS, isUnitOpen } from './world/presets.js';
+import { createThemeIsland } from './world/themes.js';
+import { createNpc } from './world/props.js';
+import { createBridge, createGate, findShore } from './world/bridge.js';
+import { batchStatic, disposeScene } from './world/optimize.js';
+import { addIslandDressing } from './world/dressing.js';
+import { createIslandFauna } from './world/fauna.js';
+import { createNpcMotion } from './world/npc-motion.js';
+import { createNpcSafety } from './world/npc-safety.js';
+import { createRadialLayout } from './world/layout.js';
+import { createSeaLife } from './world/sea-life.js';
+import { createVisitors } from './world/visitors.js';
+import { validateCourseConfig, validateManifest } from './config.js';
 
-export function createIslandScene(config, fixture = null) {
-  const scene = new Scene();
-  scene.background = new Color('#d5e9df');
-  const islands = new Group();
-  islands.name = 'islands';
-  scene.add(islands);
-  const pickables = [],
-    labels = [],
-    animated = [];
-  const register = (object, action) => {
+export function createIslandScene(input, fixture = null, options = {}) {
+  const config = validateCourseConfig(input);
+  const manifest = validateManifest(
+    options.manifest ?? {
+      schemaVersion: 1,
+      units: fixture ? [{ unitId: 'S01', title: 'Demo', file: 'S01.json' }] : [],
+    },
+    config.totalUnits,
+  );
+  const layout = createRadialLayout(config.totalUnits);
+  const motions = new Map();
+  const open = (id) => isUnitOpen(manifest, id);
+  const base = createPhaseOneScene(config, open('S01') ? fixture : null);
+  const { scene, islands, academy, forest, shark } = base;
+  const records = new Map();
+  const labels = base.labels,
+    npcs = base.npcs,
+    animals = [],
+    bridges = [];
+  let pickables = base.pickables;
+  const register = (object, action) =>
     object.traverse((child) => {
-      if (child.isMesh) {
-        child.userData.action = action;
-        pickables.push(child);
-      }
+      if (child.isMesh) child.userData.action = action;
     });
-  };
-  const label = (parent, id, text, position, action, kind = '') => {
+  const label = (parent, id, text, position, action, kind, unitId) => {
     const anchor = new Group();
     anchor.position.set(...position);
     parent.add(anchor);
-    labels.push({ anchor, id, text, action, kind });
+    labels.push({ anchor, id, text, action, kind, unitId });
   };
-
-  const academy = new Group();
-  academy.name = 'academy-island';
-  academy.position.set(-7.2, 0, -0.8);
-  islands.add(academy);
-  const mainTerrain = createTerrain({ radius: 5.8, depth: 3.5, seed: 6, stretch: 0.85 });
-  academy.add(mainTerrain.group);
-  register(mainTerrain.group, { type: 'island', id: 'academy' });
-  addHill(academy, -0.6, -1.3, 3.3, 1.9, 4);
-  const campus = createAcademy();
-  campus.position.set(-0.55, 1.95, -1.25);
-  academy.add(campus);
-  register(campus, { type: 'island', id: 'academy' });
-  path(
-    academy,
-    [
-      [-0.5, 1.2],
-      [-0.5, 1.7],
-      [-0.8, 2.2],
-      [-1.3, 2.6],
-      [-2, 2.9],
-      [-2.7, 2.7],
-    ],
-    1.01,
-    0.43,
-  );
-  addPond(academy, 2.35, 1.01, 2.0, 1.2);
-  for (let i = 0; i < 5; i++)
-    ball(academy, '#79c7c2', [2.35 + i * 0.085, 1.01, 2.4 + i * 0.31], [0.4, 0.04, 0.35]);
-  addWaterfall(academy, 2.7, 3.8, 0.96, -2.4, 0.9);
-  for (const [i, point] of [
-    [-3.8, 0.2],
-    [-3.7, -2.4],
-    [3.7, -1.5],
-    [4, 0.3],
-    [-2.5, 1.1],
-    [0.8, -3.8],
-  ].entries()) {
-    tree(academy, point[0], 0.93, point[1], 0.65 + (i % 2) * 0.15, i);
+  for (const item of labels) {
+    if (item.id !== 'academy') item.unitId = 'S01';
+    if (item.action) item.action.unitId = item.id === 'academy' ? 'academy' : 'S01';
   }
-  scatterFlowers(academy, {
-    seed: 22,
-    count: 65,
-    radius: 4.6,
-    exclude: (x, z) => (Math.abs(x) < 2.7 && z < 1.4) || (x > 1 && z > 1),
-  });
-  label(
-    academy,
-    'academy',
-    config.courseTitle,
-    [0, 9.7, -1.3],
-    { type: 'island', id: 'academy' },
-    'academy',
-  );
-
-  const forest = new Group();
-  forest.name = 'S01-island';
-  forest.position.set(7.2, 0, 1.2);
-  islands.add(forest);
-  const forestTerrain = createTerrain({ radius: 5.15, depth: 3.3, seed: 12, stretch: 0.9 });
-  forest.add(forestTerrain.group);
-  register(forestTerrain.group, { type: 'island', id: 'S01' });
-  addHill(forest, 1.45, -2.2, 2.7, 1.65, 18);
-  for (const [i, point] of [
-    [-3.5, -1.7],
-    [-2.2, -3],
-    [-0.7, -2.9],
-    [0.9, -2.2],
-    [2.2, -2.2],
-    [3.3, -1.1],
-    [3.7, -0.25],
-  ].entries()) {
-    tree(forest, point[0], i >= 3 && i < 5 ? 1.7 : 0.96, point[1], i === 4 ? 1.08 : 0.8, i);
+  for (const object of pickables) {
+    if (object.userData.action)
+      object.userData.action.unitId = object.userData.action.id === 'academy' ? 'academy' : 'S01';
   }
-  addPond(forest, 3.0, 1.0, 0.3, 0.78);
-  for (let i = 0; i < 5; i++)
-    ball(forest, '#79c7c2', [3.2 + i * 0.25, 1.0, 0.6 + i * 0.23], [0.32, 0.04, 0.32]);
-  addWaterfall(forest, 4.25, 1.55, 0.88, -2.35, 0.65);
-  const lecture = createLecture();
-  lecture.position.set(-2.25, 0.96, -0.25);
-  lecture.rotation.y = 0.1;
-  forest.add(lecture);
-  const contentEnabled = Boolean(fixture);
-  if (contentEnabled) register(lecture, { type: 'lecture', id: 'S01' });
-  label(
-    lecture,
-    'lecture',
-    '▶ Lecture',
-    [0, 2.8, 0.4],
-    contentEnabled ? { type: 'lecture', id: 'S01' } : null,
-    'lecture',
+  const firstTerrain = forest.getObjectByName('coast-and-cliffs');
+  const first = {
+    root: forest,
+    terrain: firstTerrain,
+    house: forest.getObjectByName('lecture-cottage'),
+    preset: { ...PRESETS[0], ...layout.get('S01') },
+    top: 0.8,
+    animate: [],
+    animals: [shark],
+    unlocked: open('S01'),
+  };
+  records.set('S01', first);
+  const oldForest = forest.position.clone();
+  forest.position.set(
+    academy.position.x + first.preset.position[0],
+    0,
+    academy.position.z + first.preset.position[1],
   );
-  path(
-    forest,
-    [
-      [-2.2, 1.3],
-      [-1.8, 1.6],
-      [-1.2, 1.8],
-      [-0.5, 1.9],
-      [0.2, 2],
-      [0.8, 2.1],
-      [1.4, 2],
-    ],
-    1.01,
-    0.32,
-  );
-  scatterFlowers(forest, {
-    seed: 39,
-    count: 100,
-    radius: 4.5,
-    exclude: (x, z) => (x < -1.2 && z < 1.1) || (x > -1 && x < 1.7 && z < 2.2 && z > -0.8),
-  });
-  for (let i = 0; i < 10; i++) {
-    const a = i * 2.4;
-    ball(
-      forest,
-      i % 2 ? '#aaa891' : '#b7b29a',
-      [Math.cos(a) * 4.4, 0.91, Math.sin(a) * 3.8],
-      [0.34, 0.25, 0.28],
+  const forestShift = forest.position.clone().sub(oldForest);
+  scene.children
+    .filter(
+      (o) =>
+        o.isMesh &&
+        o.geometry?.type === 'RingGeometry' &&
+        o.position.distanceTo(new Vector3(oldForest.x, -2.52, oldForest.z)) < 0.1,
+    )
+    .forEach((o) => o.position.add(forestShift));
+  base.bridge.removeFromParent();
+  disposeScene(base.bridge);
+  shark.userData.animated = true;
+  const core = { root: academy, terrain: academy.getObjectByName('coast-and-cliffs') };
+  for (const definition of PRESETS.slice(1, config.totalUnits)) {
+    const preset = { ...definition, ...layout.get(definition.id) };
+    const record = { ...createThemeIsland(preset), preset, unlocked: open(preset.id), animals: [] };
+    record.root.position.set(
+      academy.position.x + preset.position[0],
+      0,
+      academy.position.z + preset.position[1],
     );
-  }
-  const npcs = [];
-  if (fixture && config.assignmentMode === 'quiz') {
-    for (const question of fixture.questions) {
-      const npc = createNpc(question);
-      npc.position.set(question.position[0], 0.97, question.position[1]);
-      forest.add(npc);
-      npcs.push(npc);
-      const action = { type: 'npc', id: question.id };
-      register(npc, action);
-      label(npc, question.id, question.id, [0, 2.0, 0], action, 'question');
-      label(npc, `${question.id}-badge`, question.id, [0, 0.68, 0.28], null, 'badge');
+    islands.add(record.root);
+    records.set(preset.id, record);
+    register(record.terrain, { type: 'island', id: preset.id, unitId: preset.id });
+    register(record.house, {
+      type: record.unlocked ? 'lecture' : 'island',
+      id: preset.id,
+      unitId: preset.id,
+    });
+    label(
+      record.root,
+      preset.id,
+      `${preset.id} · ${preset.title}`,
+      [0, record.top + 4.8, -1.6],
+      { type: 'island', id: preset.id, unitId: preset.id },
+      record.unlocked ? 'unit' : 'locked',
+      preset.id,
+    );
+    label(
+      record.house,
+      `${preset.id}-lecture`,
+      '▶ Lecture',
+      [0, 2.8, 0.4],
+      { type: record.unlocked ? 'lecture' : 'island', id: preset.id, unitId: preset.id },
+      'lecture',
+      preset.id,
+    );
+    if (fixture && record.unlocked && config.assignmentMode === 'quiz') {
+      const questions = fixture.questions;
+      for (let i = 0; i < questions.length; i++) {
+        const q = questions[i],
+          npc = createNpc(q);
+        npc.userData.detail = true;
+        const [x, z] = q.position;
+        npc.position.set(x, record.top + 0.17, z);
+        record.root.add(npc);
+        npcs.push(npc);
+        const action = { type: 'npc', id: q.id, unitId: preset.id };
+        register(npc, action);
+        label(npc, `${preset.id}-${q.id}`, q.id, [0, 2, 0], action, 'question', preset.id);
+        label(npc, `${preset.id}-${q.id}-badge`, q.id, [0, 0.68, 0.28], null, 'badge', preset.id);
+      }
     }
   }
-  label(
-    forest,
-    'S01',
-    'S01 · 森林入門島',
-    [0.9, 5.6, -1.6],
-    { type: 'island', id: 'S01' },
-    contentEnabled ? 'unit' : 'locked',
-  );
-  const shark = createShark();
-  forest.add(shark);
-  animated.push(shark);
-  animateShark(shark, 0);
-
-  // Keep the crossing in the gap, away from the academy, cottage and NPC clearing.
-  const { group: bridge } = createBridge(
-    new Vector3(-2.1, 1.02, -0.3),
-    new Vector3(2.9, 1.02, 1.25),
-  );
-  scene.add(bridge);
-
-  const sea = new Mesh(
-    new PlaneGeometry(200, 200),
-    new ShadowMaterial({ color: '#4e7665', opacity: 0.23 }),
-  );
-  sea.rotation.x = -Math.PI / 2;
-  sea.position.y = -2.55;
-  sea.receiveShadow = true;
-  scene.add(sea);
-  for (const island of [academy, forest]) {
-    for (let i = 0; i < 3; i++) {
-      const ripple = new Mesh(
-        new RingGeometry(5.7 + i * 0.65, 5.73 + i * 0.65, 80),
-        new MeshStandardMaterial({
-          color: '#e6f2df',
-          transparent: true,
-          opacity: 0.4 - i * 0.09,
-          depthWrite: false,
-        }),
-      );
-      ripple.rotation.x = -Math.PI / 2;
-      ripple.scale.y = 0.78;
-      ripple.position.set(island.position.x, -2.52 + i * 0.002, island.position.z);
-      scene.add(ripple);
-    }
+  for (const record of records.values()) {
+    record.dressing = addIslandDressing(record);
+    record.creatures = createIslandFauna(record);
+    record.animals = record.creatures.map((m) => m.group);
+    animals.push(...record.animals);
   }
-  const rng = random(77);
-  for (let i = 0; i < 45; i++) {
-    const x = (rng() - 0.5) * 60,
-      z = (rng() - 0.5) * 32;
-    const foam = ball(scene, '#e2eee0', [x, -2.52, z], [0.15 + rng() * 0.5, 0.012, 0.04], 6);
-    foam.castShadow = false;
+  npcs.forEach((npc) => (npc.userData.detail = true));
+  for (const npc of npcs) {
+    const item = labels.find((l) => l.kind === 'question' && l.anchor.parent === npc);
+    if (item) label(npc, `${item.id}-hat`, item.text, [0, 1.57, 0.32], null, 'badge', item.unitId);
   }
-  scene.add(new HemisphereLight('#fff6db', '#759b9b', 1.8));
-  const sun = new DirectionalLight('#fff0d1', 2.4);
-  sun.position.set(-12, 25, 14);
-  sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
-  sun.shadow.camera.left = -23;
-  sun.shadow.camera.right = 23;
-  sun.shadow.camera.top = 18;
-  sun.shadow.camera.bottom = -18;
-  sun.shadow.camera.far = 75;
-  sun.shadow.normalBias = 0.07;
-  sun.shadow.bias = -0.00015;
-  sun.shadow.radius = 3;
-  scene.add(sun);
+  // All planned links remain intact; the incoming gate alone denotes publication.
   scene.updateMatrixWorld(true);
-  // Include label anchors in framing so titles remain inside the canvas.
+  for (const [id, record] of records) {
+    let curve;
+    const parent = record.preset.parent === 'academy' ? core : records.get(record.preset.parent);
+    const start =
+      config.totalUnits === 1 && id === 'S01'
+        ? new Vector3(-2.1, 1.02, -0.3)
+        : findShore(parent.terrain, record.root.position);
+    const end =
+      config.totalUnits === 1 && id === 'S01'
+        ? new Vector3(2.9, 1.02, 1.25)
+        : findShore(record.terrain, parent.root.position);
+    const built = createBridge(start, end);
+    curve = built.curve;
+    bridges.push(built.group);
+    scene.add(built.group);
+    record.link = { from: record.preset.parent, to: id, curve, bridge: built.group };
+    if (!record.unlocked) {
+      const gate = createGate(curve);
+      scene.add(gate.root);
+      record.gate = gate.root;
+      const action = { type: 'island', id, unitId: id };
+      register(gate.root, action);
+      labels.push({
+        anchor: gate.anchor,
+        id: `${id}-gate`,
+        text: '🔒',
+        action,
+        kind: 'gate',
+        unitId: id,
+      });
+    }
+  }
+  // In a locked S01 even the cottage directs to the island's locked notice.
+  if (!open('S01')) {
+    register(first.house, { type: 'island', id: 'S01', unitId: 'S01' });
+    const lectureLabel = labels.find((l) => l.id === 'lecture');
+    lectureLabel.action = { type: 'island', id: 'S01', unitId: 'S01' };
+  }
+  for (const [id, record] of records) {
+    record.npcs = npcs.filter((npc) => {
+      for (let p = npc; p; p = p.parent) if (p === record.root) return true;
+      return false;
+    });
+    record.safety = createNpcSafety(record);
+    record.npcs.forEach((npc, i) => {
+      const peers = record.npcs.filter((other) => other !== npc);
+      const start = record.safety.findStart(npc.position.clone(), peers);
+      npc.position.copy(start);
+      const motion = createNpcMotion(npc, {
+        center: start,
+        radius: 1.05,
+        seed: Number(id.slice(1)) * 101 + i * 37,
+        isSafe: record.safety.isSafe,
+        heightAt: record.safety.heightAt,
+        peers: () => peers,
+      });
+      motions.set(`${id}/${npc.name.slice(4)}`, {
+        npc,
+        motion,
+        unitId: id,
+        questionId: npc.name.slice(4),
+        safety: record.safety,
+        center: start.clone(),
+        radius: 1.05,
+      });
+    });
+  }
+  // One inexpensive contact-shadow instance per island keeps overview depth without global shadow maps.
+  const contacts = new InstancedMesh(
+    new CircleGeometry(1, 32),
+    new MeshBasicMaterial({ color: '#6f9e8d', transparent: true, opacity: 0.1, depthWrite: false }),
+    config.totalUnits + 1,
+  );
+  contacts.name = 'island-contact-shadows';
+  const stamp = new Object3D();
+  [core, ...records.values()].forEach((record, i) => {
+    stamp.position.set(record.root.position.x + 0.25, -2.51, record.root.position.z + 0.25);
+    stamp.rotation.set(-Math.PI / 2, 0, 0);
+    const radius = record.preset?.radius ?? 5.8;
+    stamp.scale.set(radius * 1.03, radius * 0.85, 1);
+    stamp.updateMatrix();
+    contacts.setMatrixAt(i, stamp.matrix);
+  });
+  contacts.computeBoundingSphere();
+  scene.add(contacts);
+  scene.updateMatrixWorld(true);
   const bounds = new Box3().setFromObject(islands);
+  const framingPoints = [];
+  for (const root of [academy, ...[...records.values()].map((r) => r.root)]) {
+    const box = new Box3().setFromObject(root);
+    for (const x of [box.min.x, box.max.x])
+      for (const y of [box.min.y, box.max.y])
+        for (const z of [box.min.z, box.max.z]) framingPoints.push(new Vector3(x, y, z));
+  }
   labels
-    .filter((item) => ['academy', 'S01'].includes(item.id))
-    .forEach((item) => bounds.expandByPoint(item.anchor.getWorldPosition(new Vector3())));
-  return {
+    .filter((l) => l.id === 'academy' || records.has(l.id))
+    .forEach((l) => {
+      const p = l.anchor.getWorldPosition(new Vector3());
+      bounds.expandByPoint(p);
+      framingPoints.push(p);
+    });
+  bridges.forEach((bridge) => bounds.expandByObject(bridge));
+  // Background life never participates in island framing, curriculum or picking.
+  const visitors = createVisitors({ academy, records });
+  const seaLife = createSeaLife({ bounds });
+  scene.add(visitors.root, seaLife.root);
+  const sun = scene.children.find((o) => o.isDirectionalLight);
+  const lightOffset = sun.position.clone().sub(academy.position);
+  sun.target.position.copy(academy.position);
+  scene.add(sun.target);
+  let optimized = false,
+    lastView = null,
+    lastFar = -1;
+  const refreshPicks = () => {
+    pickables = [];
+    scene.traverse((o) => {
+      if (o.isMesh && o.userData.action) pickables.push(o);
+    });
+    return pickables;
+  };
+  refreshPicks();
+  const world = {
     scene,
     islands,
     academy,
     forest,
-    bridge,
-    npcs,
     shark,
-    pickables,
+    npcs,
+    animals,
+    bridges,
+    records,
     labels,
     bounds,
-    update(seconds) {
-      animateShark(shark, seconds);
+    bridge: bridges[0],
+    motions,
+    framingPoints,
+    visitors,
+    seaLife,
+    setNpcPaused(unitId, questionId, paused) {
+      const entry = motions.get(`${unitId}/${questionId}`);
+      if (!entry) return false;
+      entry.motion.setPaused(paused);
+      return true;
     },
+    manifest,
+    get pickables() {
+      return pickables;
+    },
+    isOpen: open,
     focusBounds(id) {
-      const group = id === 'academy' ? academy : forest;
-      const box = new Box3().setFromObject(group);
-      labels
-        .filter((item) => item.id === id)
-        .forEach((item) => box.expandByPoint(item.anchor.getWorldPosition(new Vector3())));
-      return box;
+      if (id === 'academy') return base.focusBounds(id);
+      const record = records.get(id);
+      if (!record) throw new Error('不存在的島嶼');
+      return new Box3()
+        .setFromObject(record.root)
+        .expandByPoint(labels.find((l) => l.id === id).anchor.getWorldPosition(new Vector3()));
+    },
+    optimize() {
+      if (optimized) return;
+      optimized = true;
+      for (const root of [
+        academy,
+        ...[...records.values()].map((r) => r.root),
+        ...bridges,
+        ...[...records.values()].map((r) => r.gate).filter(Boolean),
+      ])
+        batchStatic(root);
+      batchStatic(scene.getObjectByName('sea-foam'));
+      for (const animal of animals) batchStatic(animal);
+      // Moving windmill blades are baked within their own moving frame.
+      scene.traverse((o) => {
+        if (o.isGroup && o.userData.animated && !o.userData.decoration) batchStatic(o);
+      });
+      refreshPicks();
+    },
+    update(seconds, view = 'overview', pixelsPerUnit = 30, focusTarget = null) {
+      const farTick = Math.floor(seconds * 6),
+        near = new Set();
+      for (const [id, record] of records) {
+        const close = focusTarget
+          ? Math.hypot(
+              record.root.position.x - focusTarget.x,
+              record.root.position.z - focusTarget.z,
+            ) < 13
+          : true;
+        const detail =
+          id === view ||
+          (view === 'overview' && close && record.preset.radius * 2 * pixelsPerUnit >= 240);
+        if (detail) near.add(id);
+        if (!optimized || detail || farTick !== lastFar) {
+          record.creatures.forEach((motion) => motion.update(seconds));
+          for (const npc of record.npcs)
+            motions.get(`${id}/${npc.name.slice(4)}`).motion.update(seconds);
+          record.animate.forEach((fn) => fn(seconds));
+        }
+        record.root.traverse((o) => {
+          if (o.userData.detail) o.visible = detail;
+          if (o.isMesh) {
+            o.userData.shadowable ??= o.castShadow;
+            o.castShadow = o.userData.shadowable && (detail || id === view);
+          }
+        });
+      }
+      if (!optimized || view !== 'overview' || farTick !== lastFar) visitors.update(seconds);
+      seaLife.update(seconds);
+      lastFar = farTick;
+      sun.castShadow = view !== 'overview';
+      if (lastView !== view) {
+        const target =
+          view === 'overview' || view === 'academy'
+            ? academy.position
+            : records.get(view)?.root.position;
+        if (target) {
+          sun.target.position.copy(target);
+          sun.position.copy(target).add(lightOffset);
+          sun.target.updateMatrixWorld();
+        }
+        for (const record of records.values())
+          record.link.bridge.traverse((o) => {
+            if (o.isMesh) o.castShadow = view === record.preset.id || view === record.link.from;
+          });
+        academy.traverse((o) => {
+          if (o.isMesh) {
+            o.userData.shadowable ??= o.castShadow;
+            o.castShadow = o.userData.shadowable && view === 'academy';
+          }
+        });
+        for (const record of records.values())
+          if (record.gate)
+            record.gate.traverse((o) => {
+              if (o.isMesh) o.castShadow = view === record.preset.id;
+            });
+        lastView = view;
+      }
+      return near;
+    },
+    visiblePickables() {
+      return pickables.filter((o) => {
+        for (let p = o; p; p = p.parent) if (!p.visible) return false;
+        return true;
+      });
+    },
+    dispose() {
+      disposeScene(scene);
     },
   };
+  return world;
 }
