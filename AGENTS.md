@@ -1,7 +1,7 @@
 # Engineering Island Lab 開發規範
 
 - 開工先完整閱讀 `CODEX_START_HERE.md` 與 `docs/{PROJECT_SPEC,CONTENT_AND_RELEASE,PHASE_PLAN,STYLE_REFERENCES}.md`，查看四張參考圖；00 是規則柱體反例。參考圖只供研究，不可放入 public/dist。
-- Phase 0/1（含木橋）已由教師 Windows 11 驗收，PR #1 已合併。最新授權見 `docs/PHASE_2_REVISION_BRIEF.md`（初版見 `docs/PHASE_2_BRIEF.md`），本次只開發 Phase 2，分支 `feature/phase-2-full-archipelago`。Draft PR 後停止，不得合併、改 main、部署、Tag/Release 或進 Phase 3。
+- Phase 0/1（含木橋）已由教師 Windows 11 驗收，PR #1 已合併。最新授權見 `docs/PHASE_2_LIFE_BRIEF.md`（前版見 `docs/PHASE_2_REVISION_BRIEF.md`、初版見 `docs/PHASE_2_BRIEF.md`），本次只開發 Phase 2，分支 `feature/phase-2-full-archipelago`。Draft PR 後停止，不得合併、改 main、部署、Tag/Release 或進 Phase 3。
 - 維持 Node 24、Vite、Three.js、Vanilla JS/CSS、固定 lockfile、`base: './'`。資源相對 HTML 位置載入；只打包靜態 dist，不加入後端/登入/DB/追蹤。
 - 一套連續世界與斜上方 OrthographicCamera；自然不規則、有厚度岩坡地貌、明亮童話模型。不可用規則方柱/六角柱冒充島。無學生化身、WASD、碰撞、尋路。
 - 地貌/建物/動畫、相機、拾取、資料驗證、DOM UI 分模組；純模型及互動狀態可無 DOM/GPU 測試。島體使用程式原創幾何，不新增來源不明資產。
@@ -20,3 +20,5 @@
 - 最新教師修正見 docs/PHASE_2_REVISION_BRIEF.md：沿用本分支與 Draft PR #2，只修 Phase 2。八項重點為大字標籤、豐富靜態裝飾、NPC 自主漫遊／點擊暫停、單列課名工具列、左下唯一導覽、僅 dev query 測試選項、六主幹放射布局、每島三隻且代表物種不重複。
 
 - 本輪三位修訂 Subagents 已實際平行交付並停止；所有權及凍結介面見 docs/REVISION_INTERFACES.md。NPC 根與活動關節必須標記 animated，僅於局部框架合批；Modal 使用 world.setNpcPaused 接口。一般畫面不留測試面板，production 忽略全部 Demo 參數。
+
+- 最新一輪教師已確認 Windows 11 的標籤、題目 NPC 操作與 12/15 島硬體 GPU 流暢。本輪只增海面、四隻外海鯨魚與 3–8 位不可互動 visitors；背景小人可沿已開放島橋網巡遊（本輪明確授權），不建立學生角色或完整遊戲尋路。檔案所有權與介面見 docs/LIFE_INTERFACES.md；仍更新同一 Draft PR #2 後等教師再次驗收，不合併／部署／進 Phase 3。

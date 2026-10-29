@@ -228,6 +228,14 @@ export async function checkArchipelago(page, base, pass) {
         gl = document.querySelector('canvas').getContext('webgl2'),
         debug = gl.getExtension('WEBGL_debug_renderer_info');
       return {
+        mode: s.mode,
+        totalUnits: s.totalUnits,
+        openUnits: s.open.length,
+        questions: 4,
+        npcCount: s.npcCount,
+        visitors: s.visitors.length,
+        whales: s.sea.whales.length,
+        fauna: s.animals.length,
         fps: (30 * 1000) / (times.at(-1) - times[0]),
         drawCalls: s.drawCalls,
         triangles: s.triangles,

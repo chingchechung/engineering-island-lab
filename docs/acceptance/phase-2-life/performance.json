@@ -1,0 +1,181 @@
+{
+  "browser": "154.0.8037.57",
+  "samples": [
+    {
+      "name": "15-unit overview / 1366x768",
+      "mode": "quiz",
+      "totalUnits": 15,
+      "openUnits": 4,
+      "questions": 4,
+      "npcCount": 16,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 45,
+      "fps": 3.0875632950475485,
+      "drawCalls": 359,
+      "triangles": 347806,
+      "geometries": 310,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "15-unit S01 focus / 1366x768",
+      "mode": "quiz",
+      "totalUnits": 15,
+      "openUnits": 4,
+      "questions": 4,
+      "npcCount": 16,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 45,
+      "fps": 4.275696938600991,
+      "drawCalls": 125,
+      "triangles": 134510,
+      "geometries": 332,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit overview / 1366x768",
+      "mode": "quiz",
+      "totalUnits": 12,
+      "openUnits": 4,
+      "questions": 4,
+      "npcCount": 16,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 36,
+      "fps": 3.87947756368809,
+      "drawCalls": 293,
+      "triangles": 272982,
+      "geometries": 262,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit S01 focus / 1366x768",
+      "mode": "quiz",
+      "totalUnits": 12,
+      "openUnits": 4,
+      "questions": 4,
+      "npcCount": 16,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 36,
+      "fps": 4.2354336378139505,
+      "drawCalls": 124,
+      "triangles": 124886,
+      "geometries": 284,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit overview / 1920x1080",
+      "mode": "quiz",
+      "totalUnits": 12,
+      "openUnits": 4,
+      "questions": 4,
+      "npcCount": 16,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 36,
+      "fps": 2.9365125976390436,
+      "drawCalls": 293,
+      "triangles": 272982,
+      "geometries": 284,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "12-unit overview / Video-only / 1366x768",
+      "mode": "video-only",
+      "openUnits": 4,
+      "questions": 4,
+      "totalUnits": 12,
+      "npcCount": 0,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 36,
+      "fps": 3.838084028452996,
+      "drawCalls": 293,
+      "triangles": 272982,
+      "geometries": 262,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "15-unit overview / Video-only / 1366x768",
+      "mode": "video-only",
+      "openUnits": 4,
+      "questions": 4,
+      "totalUnits": 15,
+      "npcCount": 0,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 45,
+      "fps": 3.0770177543924424,
+      "drawCalls": 359,
+      "triangles": 347806,
+      "geometries": 310,
+      "textures": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    },
+    {
+      "name": "15-unit S01 focus / Video-only / 1366x768",
+      "mode": "video-only",
+      "openUnits": 4,
+      "questions": 4,
+      "totalUnits": 15,
+      "npcCount": 0,
+      "visitors": 4,
+      "whales": 4,
+      "fauna": 45,
+      "fps": 4.285836738192518,
+      "drawCalls": 85,
+      "triangles": 120430,
+      "geometries": 312,
+      "textures": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1
+    }
+  ]
+}

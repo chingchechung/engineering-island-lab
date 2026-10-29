@@ -75,6 +75,18 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 - [x] Main：審查三者實際結果後整合地表／水面／建築／視線安全及 Modal 暫停；修正高度快取階梯誤差，75 人均能在安全圈內移動。
 - [x] Main：保留原 41 項並新增 27 項單元測試，24 項瀏覽器檢查、build 與 Apache smoke；保存修正前後總覽、12／15／聚焦與窄畫面截圖及軟體 GPU 數據。
 - [x] Main：更新 README、PHASE_2_ACCEPTANCE、開發契約與同一 Draft PR #2 的交付內容。
-- [ ] 教師 Windows 11 Chrome／Edge 再次驗收美術、操作與實體 GPU 效能。仍不得合併、部署或進 Phase 3。
+- [x] 教師後續已確認此前版 Windows 11 島名、題目 NPC 漫遊／點擊停止，以及 12／15 島硬體 GPU 流暢。新增生命感仍另列待驗收，未授權合併或部署。
 
 本輪 SwiftShader 軟體 GPU 1.53–4.28 FPS；12 島總覽 298 calls／260,364 triangles，15 島總覽 364 calls／335,188 triangles。不能視為一般筆電流暢度通過。完整數據、截圖與測試限制見 docs/PHASE_2_ACCEPTANCE.md。前面的 Phase 1／初版 Phase 2 數據均為歷史紀錄。
+
+## Phase 2 最後生命感修訂（目前工作）
+
+教師已確認前版 Windows 11 標籤、NPC 漫遊／點擊停止、12／15 島硬體 GPU 流暢。此回覆更新前面的「待重驗」狀態；沒有提供數值 FPS。本輪從 25f2c62 繼續同一分支／Draft PR #2。
+
+- [x] Agent A /root/sea_life：實際平行交付 sea-life.js 與 7 項測試；柔和動態海面、四隻外海巡遊鯨魚、錯相噴水及尾波，最多 19 draws／8,866 triangles。
+- [x] Agent B /root/visitors：實際平行交付 visitors.js／visitor-navigation.js 與 11 項測試；地表分區與開放橋網、跨島返回、會車排隊、NPC 避讓，與題目 NPC 完全分離。
+- [x] Main：依 LIFE_INTERFACES 審查後整合；91/91 單元、build、Apache smoke、32/32 瀏覽器通過；原 75 題目 NPC／取景／每島三動物／鎖定／模式均保留，完成八情境效能與代表截圖。
+- [x] 更新同一 Draft PR #2 的交付文件與代表截圖；不另建 PR。
+- [ ] 教師對本輪新增生命感再次驗收；等待期間不得合併／部署／進 Phase 3。
+
+本輪軟體 GPU：SwiftShader／Chromium154／DPR1，2.94–4.29FPS；12／15 島總覽293／359calls、272,982／347,806triangles。四鯨魚背景最多19draws／8,866triangles；原45個海泡沫合成1批，抵銷新增呼叫。地表分區及六個不安全既有橋口不納入背景通行，詳見驗收報告；仍可在多座安全連通的開放島間巡遊返回。沒有新的實體GPU數值，新增項目待教師Windows再驗收。

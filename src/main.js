@@ -61,6 +61,7 @@ function showAbout(source) {
         : '島嶼是否開放依教師發布清單；未開放島仍可欣賞地貌與動物。',
       '探索者會緩慢漫遊，點擊後停下；關閉說明視窗後繼續走動。Lecture 與題目目前只有占位說明。',
       '三隻小動物會自主活動，不接受點擊、餵食或控制。',
+      '外海鯨魚和島上小旅人都是背景角色；小旅人只在已開放島與橋上巡遊，沒有題目標籤，也不能互動。',
     ],
     source,
   );
@@ -299,6 +300,7 @@ async function start() {
             z: p.z,
           };
         };
+        const sea = world.seaLife.snapshot();
         return {
           mode,
           demo,
@@ -312,6 +314,28 @@ async function start() {
           shark: world.shark.position.toArray(),
           dialog: dialog.open,
           time,
+          sea: {
+            ...sea,
+            whales: sea.whales.map((whale) => ({
+              ...whale,
+              screen: project(new Vector3(...whale.position).add(new Vector3(0, 0.6, 0))),
+            })),
+          },
+          visitors: world.visitors.snapshot().map((visitor) => ({
+            ...visitor,
+            screen: project(new Vector3(...visitor.position).add(new Vector3(0, 0.6, 0))),
+          })),
+          visitorRoutes: world.visitors.navigation.edges.map(({ from, to, enabled, reason }) => ({
+            from,
+            to,
+            enabled,
+            reason,
+          })),
+          pickableBackground: world.pickables.filter((object) => {
+            for (let p = object; p; p = p.parent)
+              if (p === world.seaLife.root || p === world.visitors.root) return true;
+            return false;
+          }).length,
           gates: [...world.records].filter(([, r]) => r.gate).map(([id]) => id),
           open: [...world.records].filter(([, r]) => r.unlocked).map(([id]) => id),
           pickableAnimals: world.pickables.filter((o) => {

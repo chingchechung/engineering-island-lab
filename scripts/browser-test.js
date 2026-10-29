@@ -4,6 +4,7 @@ import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { createServer, preview } from 'vite';
 import { checkArchipelago } from './archipelago-browser.js';
+import { checkBackgroundLife } from './life-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -156,6 +157,7 @@ try {
   assert.equal(await page.locator('select').count(), 1);
   pass('Apache production renders, ignores every Demo override and exposes only student controls');
   await checkArchipelago(page, base, pass);
+  await checkBackgroundLife(page, base, pass);
   assert.deepEqual(errors, []);
   console.log(`${checks} browser acceptance checks passed. Screenshots and metrics: test-results/`);
 } finally {

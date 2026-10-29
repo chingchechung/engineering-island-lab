@@ -231,10 +231,13 @@ export function createPhaseOneScene(config, fixture = null) {
     }
   }
   const rng = random(77);
+  const seaFoam = new Group();
+  seaFoam.name = 'sea-foam';
+  scene.add(seaFoam);
   for (let i = 0; i < 45; i++) {
     const x = (rng() - 0.5) * 60,
       z = (rng() - 0.5) * 32;
-    const foam = ball(scene, '#e2eee0', [x, -2.52, z], [0.15 + rng() * 0.5, 0.012, 0.04], 6);
+    const foam = ball(seaFoam, '#e2eee0', [x, -2.52, z], [0.15 + rng() * 0.5, 0.012, 0.04], 6);
     foam.castShadow = false;
   }
   scene.add(new HemisphereLight('#fff6db', '#759b9b', 1.8));

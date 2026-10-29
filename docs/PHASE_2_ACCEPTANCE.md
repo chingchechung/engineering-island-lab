@@ -1,125 +1,133 @@
-# Phase 2 — 教師驗收修正與再驗收
+# Phase 2 — 最後一輪場景生命感驗收
 
-日期：2026-10-29。沿用 `feature/phase-2-full-archipelago` 與 [Draft PR #2](https://github.com/chingchechung/engineering-island-lab/pull/2)，修正基準為 `978be95`；main 基準仍為已驗收的 `3e5c883`。Phase 0／1 含木橋已合併且經教師 Windows 11 驗收。**本輪修正完成自動化驗證，仍等待 Windows 11 的視覺、操作與硬體效能再驗收。**
+日期：2026-10-29（台北）。沿用 `feature/phase-2-full-archipelago` 與 [Draft PR #2](https://github.com/chingchechung/engineering-island-lab/pull/2)，本輪基準 `25f2c62`，main 仍為 `3e5c883`。
 
-教師原文：[Phase 2 指示](PHASE_2_BRIEF.md)、[本輪八項修正](PHASE_2_REVISION_BRIEF.md)。沒有修改正式網站、題庫、Manifest、套件或 lockfile，也沒有開始 Phase 3／4。
+教師已明確確認前版的 Windows 11 島名標籤、題目 NPC 漫遊／點擊停止，以及 12／15 島硬體 GPU 流暢。本輪新增海面／外海鯨魚／背景小旅人，完成下述自動化與視覺檢查後，**仍停止等待教師再次驗收新增項目**。沒有取得前版或本輪的 Windows 數值 FPS。
 
-## 八項修正結果
+範圍見 [本輪授權](PHASE_2_LIFE_BRIEF.md)。前版八項修正、15 主題與原測試紀錄保存於 [前版驗收報告](PHASE_2_REVISION_ACCEPTANCE.md)；正式 JSON、Manifest、題庫／教材均未改，未進 Phase 3。
 
-| 要求 | 最終行為及驗證 |
+## 完成內容
+
+### 海面與四隻外海鯨魚
+
+- 一個薄荷色 ShaderMaterial 平面，以時間 uniform 緩慢漂移波紋及亮面；在原透明海面陰影接收層下方，不影響島／橋陰影，沒有外部貼圖、流體、後製或粒子引擎。
+- 四隻大型、圓潤、原創 Low-Poly 鯨魚，各有不同色彩／比例／擺動相位，擺鰭、甩尾並沿整個群島外框巡遊。
+- 圓角外框路線距原群島 Box3 為 6.52 單位，包含最大動態包絡 4.62 與至少 1.9 的安全距離；測試取樣了活動關節的全部頂點，確保鯨魚不進島間水道或橋網。
+- 每隻輪流間歇噴水，四隻錯相；簡化為合計 28 個水柱／水滴實例與 12 個尾波實例。整套海面／鯨魚最多 19 draws、8,866 triangles，不投射陰影。
+- 海面與鯨魚完全不註冊 action、hover、事件或 Q 標。點鯨魚不開視窗、不切焦點，Modal 開啟時仍自主活動。
+
+### 已開放島嶼的背景小旅人
+
+- `visitors` 是獨立環境系統，沒有與題目 NPC 共用狀態、標籤或點擊。戴帽、背包及無編號衣服，總高約 1.1 單位，約為題目 NPC 的三分之二。
+- 正式／Demo 的開放結果決定數量：0 開放為 0 人；否則 `min(8, 3 + floor(openCount/3))`。開 1／4／12／15 島分別為 3／4／7／8 人，與 Quiz／Video-only 無關。
+- 只在已開放單元島生成及停留，中央學院作跨島中轉。依實際地表分區和開放橋口建立 BFS 路網；到達另一開放島後走動、停留，之後選下一站並定期返回原島。
+- 地表路點為 0.36 單位網格，使用原地形三角面高度與障礙取樣；不斜切建築／池塘轉角。每個移動小步再次檢查安全，橋上精確沿既有弧線中央行走，橋岸小高度差平滑銜接，不在海面抄近路。
+- 反向來客在岸上等候，橋內單向排隊，同向保持間距；遇題目 NPC 或其他小旅人等待／繞讓，只移動旅人，從不修改題目 NPC 的位置或 pause/resume。
+- 畫面上的小旅人無法被點擊、控制或暫停。下方島體仍可正常被點擊聚焦，背景角色不攔截原互動。
+
+### 可通行橋口的界線
+
+背景路網以**真實可安全進出的橋口與地表分區**為準。現有六個橋口被岩坡／水景／地物或岸端高度限制，因此不納入小旅人的跨島路線；橋模型保持完整，這些島仍可供旅人在安全地表漫遊。沒有為了背景通行重製已驗收地形。
+
+| 未納入背景通行的既有連線 | 原因 |
 |---|---|
-| 大字島名 | 桌面總覽編號 17px／中文 14px，聚焦 20px／16px；手機 15px／12px，聚焦 18px／14px。以實際文字矩形避讓，必要時加細引線，不縮成小字；12／15／390px 檢查無重疊或裁切。 |
-| 更豐富裝飾 | 15 主題增加多層岩肩、崖壁、凸岩、藤、靜態瀑布／浪花與各島植被／道具。新增 816 組特徵／實例，其中 540 個實例分 43 組 InstancedMesh，新增約 34,766 triangles。保留 NPC 漫遊與動物清空區、小屋正面及橋口。Quiz／Video-only 裝飾相同。 |
-| NPC 漫遊 | 每人半徑 1.05、速度約 0.22–0.28 單位／秒，走動、等待、轉身及肢體動畫。依地表高度、坡度、水面、建物、視線與同伴距離選安全路段；頭標跟隨，衣帽編號保留。模型或頭標點擊立即 `setNpcPaused`，關閉 Modal 恢復，無追趕跳位。 |
-| 單列頂部 | 唯一 h1 與頁籤從 `courseTitle` 載入；移除品牌列、第二課名及副標空白。另以「電路設計工作坊」設定攔截測試，確認不是寫死。1366×768 畫布由 453 增至 638px，增加 185px（約 40.8%）。 |
-| 唯一左下導覽 | 原生下拉選單由 `totalUnits` 產生總覽／學院／Sxx。選島平滑聚焦；模型、標籤與選單同步。鎖定島可欣賞，內容仍阻擋。舊探索卡與右上選單移除。 |
-| 移除 Demo 面板 | 一般畫面無模式／數量／開放控制。只有 Vite dev＋明確 `demo=1` 接受受控 query；production 忽略全部覆寫，仍以 JSON 設定與正式 Manifest 為準。 |
-| 放射布局 | `layout.js` 將主題與座標分離；中央學院連 S01–S06 六主幹，其餘為一層短支線，學院至單元最多兩跳。所有 1–15 前綴連通；另檢查實際弧橋分段不交叉、含橋寬的取樣不穿過其他島體，橋端用真實地表射線落岸。保留木橋弧線與 S01 原模型，僅移動群島座標。 |
-| 每島三動物 | 12 島 36 隻、15 島 45 隻；15 種代表物種互不重複，各個體體型／色彩／相位不同。S01 第一隻使用原物件、幾何及原跳鯊 pose；鎖定／Video-only 全部保留，不註冊任何互動。 |
+| 學院 → S03 | 學院岸面約 1.90、橋面約 1.07，高差過大 |
+| 學院 → S05 | S05 登岸處有既有地物阻擋 |
+| S01 → S07 | S01 出橋岸邊有既有地物阻擋 |
+| S03 → S09 | S03 出橋岸邊有既有地物阻擋 |
+| S05 → S11 | S11 岸面約 3.87、橋面約 2.24，高差過大 |
+| S06 → S12 | S12 岸端安全邊界／障礙限制 |
 
-完整主題與物種表見 [README](../README.md#島嶼與三隻代表動物)：鯊魚、熱帶魚、企鵝、水母、恐龍、羊、北極狐、鴨、蝴蝶、駱駝、鯨魚、紅鶴、熊貓、晶靈、海龜。
+其餘安全連線可跨島，例如 S01／S02／S06 經學院東側、S04／S10／S14 經西側；支線也可通往風車、竹林、珊瑚等連通目的地。學院內被水景分開的地表區域亦分別計算，不能穿水池假裝連通。鎖定父島絕不成為捷徑；孤立開放島只在島內走動。開發模式 `snapshot().visitorRoutes` 提供 enabled／reason 診斷。
 
-相機維持約 42° 的 OrthographicCamera，總覽改用每島實際投影角點及標牌取景，避免整個世界大 bbox 的空角浪費畫面；縮放上限 16。保留滾輪、拖曳、點島聚焦、返回、Modal 隔離與鍵盤操作。橋純視覺，不加入學生化身、角色通行、碰撞或尋路。
+## 平行開發與整合審查
 
-## 真的平行執行與檔案所有權
+先凍結 [LIFE_INTERFACES](LIFE_INTERFACES.md) 後實際使用 `spawn_agent` 平行兩組，均已交付並停止：
 
-初版 Phase 2 曾先凍結 [Island Factory](ISLAND_FACTORY.md)，透過四組 Subagents 交付 nature（S02–S04）、fantasy（S05–S08）、dream（S09–S12）、extended（S13–S15），主 Agent 統一整合。初版紀錄／截圖與數據保留在 `acceptance/phase-2/`。
-
-本輪再次先建立 [修正介面與所有權](REVISION_INTERFACES.md)，**實際透過 `spawn_agent` 啟動三位 Subagents**，不是僅列文字工作分配：
-
-| Agent | 唯一擁有的程式／測試 | 實際交付與主 Agent 審查 |
+| Agent | 唯一檔案範圍 | 實際結果 |
 |---|---|---|
-| A `/root/revision_dressing` | `src/world/dressing.js`、`test/dressing.test.js` | 15 島靜態主題裝飾與 placements；4 項測試，有限幾何、保留區、兩模式一致、合批與冪等。已審查整合後主題近景。 |
-| B `/root/revision_npc` | `src/world/npc-motion.js`、`test/npc-motion.test.js` | 純控制器的固定步進、局部關節、半徑／路段／同伴安全、pause/resume；10 項測試。主 Agent 接地表安全與 Modal，另驗全部 75 人。 |
-| C `/root/revision_fauna` | `src/world/fauna.js`、`test/fauna.test.js` | 45 個獨立個體、15 物種、原 S01 保留、錯相與可動關節；6 項測試含 360 次取樣視線、合批、資源釋放。已審查整合截圖。 |
+| A `/root/sea_life` | `src/world/sea-life.js`、`test/sea-life.test.js` | 海面、四鯨魚、尾波／噴水；7 項測試含整體動態幾何安全距離、確定性、錯相、合批及釋放；獨立 WebGL 預覽零錯誤。 |
+| B `/root/visitors` | `src/world/visitors.js`、`visitor-navigation.js`、`test/visitors.test.js` | 地表／橋網、生成／巡遊、會車／避讓與局部合批；11 項測試含跨多島及返回、220 秒會車／跟隨、1／12／15 真實地形、閉鎖父島與近／遠頻率。 |
+| Main | 既有共享核心、測試、截圖、文件與唯一 PR | 審查實際模組後接入，檢查背景拾取排除、原 NPC 與模式、攝影機取景、GPU 釋放及最終瀏覽器。 |
 
-三者均已實際交付並停止編輯，未改共享核心、package／lock、AGENTS／Plan、其他測試或 Git／PR。主 Agent 同步負責放射布局、橋、介面、標籤、場景整合及瀏覽器回歸；沒有讓 Subagents 自行建 PR。
+工廠介面為 `createSeaLife({bounds,seaY,count})` 與 `createVisitors({academy,records,seed})`，都回傳獨立 root、絕對時間 update 及唯讀 snapshot；背景根掛在 scene 而非 islands。相機 bounds／framingPoints 先完成再加入生命感系統，保留已驗收的總覽／聚焦構圖。
 
-介面：
+小人及鯨魚的根與活動關節保持 animated，只在各自局部框架合批；海面 shader 亦不烘焙進靜態世界。原本 45 個靜態海泡沫保持原位置／材質外觀，合成一批以減少 44 個呼叫。遠景旅人／題目 NPC／動物 6Hz，近景逐畫面；四鯨魚與單一海面時間 uniform 持續更新，保留頁籤暫停和資源釋放。
 
-- 島工廠保留 `{root,terrain,house,top,landmarks,animate,creatures}`，幾何為島內局部座標。
-- 裝飾 `addIslandDressing(record)` 回傳 `{group,count,placements}`，在場景合批前掛入 root。
-- 動物 `createIslandFauna(record)` 回傳恰好三個 `{group,kind,update(seconds)}`，只依絕對時間動畫，根標記 `animated`／`decoration`。
-- NPC `createNpcMotion(npc,{center,radius,seed,isSafe,heightAt,peers})` 回傳 `update(seconds)`、`setPaused(bool)`、`getState()`。場景暴露 `setNpcPaused(unitId,questionId,bool)`，可供未來正式 Quiz 沿用。
-- NPC 與活動關節標記 `animated`，靜態世界合批跳過；它們只在各自局部框架內合批。合批後 Raycasting／標籤／移動仍保留。
+## 測試結果
 
-主 Agent 的 `npc-safety.js` 在合批前凍結 CPU 射線地表與障礙參照，使用平滑高度快取與視線檢查。測試曾找出量化高度的階梯造成部分 NPC 無法走動，已改成雙線性高度取樣；最終 75 人都在安全圈內實際移動。這是視覺漫遊的局部安全判斷，沒有引入完整導航或物理系統。
-
-## 自動化驗證
-
-| 命令 | 本輪最終結果 |
+| 命令 | 最終結果 |
 |---|---|
-| `npm test` | 68/68 通過；保留原 41 項，新增 27 項。包括 1–15 拓樸、12／15／窄畫面取景、字標避讓、dev 參數隔離、裝飾／動物、固定步進與 75 人安全漫遊／間距／局部合批／暫停。 |
-| `npm run build` | 通過；37 modules，主 JS 680.73kB／gzip 186.19kB。既有 Three.js >500kB 提示仍存在。 |
-| `npm run test:smoke` | 通過；重建後模擬 Apache `/~wildwolf/engineering-island-lab/`，HTML／JS／CSS／favicon／JSON／空 Manifest。 |
-| `npm run test:browser` | 24/24 通過；原 12 項操作回歸＋12 項完整群島／修訂驗收。Linux Chromium 154、實際 WebGL 與 DOM。 |
+| `npm test` | **91/91 通過**，保留原 68 項並新增 23 項（海面 7、旅人 11、主整合 5）。 |
+| `npm run build` | 通過；40 modules，主 JS 702.40kB／gzip 194.20kB；既有 Three.js >500kB 提示仍存在。 |
+| `npm run test:smoke` | 通過；Apache 子目錄 HTML／JS／CSS／favicon／JSON／空 Manifest。 |
+| `npm run test:browser` | **32/32 通過**；保留原 24 項，新增 8 項背景生命感驗收，零應用 JS／Console error。 |
 
-瀏覽器包含移動中 NPC 模型的實際滑鼠射線點擊、頭標跟隨與點擊、Modal 期間不移動及關閉後恢復；單一課名／導覽、可讀字級／標籤不重疊、全部動物與兩模式裝飾一致、五題／鎖定／柵欄、12／15／窄視窗、production 全部測試參數無效、零應用 JS／Console error。保留原 Lecture 占位、拖曳閾值、縮放、焦點回復與 Apache 子目錄檢查。
+保留全部 75 題目 NPC 的可見／實際射線測試、漫遊／頭標／點擊即停及 Modal 關閉恢復、4／5 題、每島三動物、未開放柵欄、Video-only 零題目 NPC、12／15／窄視窗、縮放／平移／聚焦／返回、production query 隔離及子目錄載入。
 
-本環境的 HTTP 測試需開放 loopback 網路；首次無網路的 `npm test` 卡在原設定測試本機 server，已停止該次並以允許 loopback 的執行環境完成正式結果，沒有降低斷言。
+新增驗證包含海面與鯨魚隨時間變動、背景點擊無互動、旅人實際登橋、只有開放連線、空 Manifest 零旅人、15 島全開時 75 題目 NPC＋45 特色動物＋4 鯨魚＋8 旅人，以及 Video-only 保留背景系統。旅人跨島、返回、每一步地表安全、中央線與會車由長時間 CPU 測試驗證；瀏覽器另以真實 WebGL／滑鼠檢查。
 
-## 效能量測與限制
+## 效能：軟體 GPU
 
-共同幾何／材質、花草與批次小物使用 InstancedMesh；裝飾合批每島最多四個靜態材質 bucket。動態 NPC／動物根及關節不烘焙到世界。遠景更新 6Hz、近景逐畫面，保留 frustum culling、細節管理、聚焦陰影與 scene／instance／shadow 資源釋放。總覽以接觸陰影取代全群島 shadow map；未加重粒子、後製或大型外部模型。
+Linux headless Chromium 154.0.8037.57，DPR=1，ANGLE Vulkan **SwiftShader Device (Subzero) 軟體 GPU**。每情境暖機後量 30 個真實 requestAnimationFrame 間隔；calls／triangles 取 renderer.info。沒有同時跑其他 GPU 預覽。
 
-**以下全部是軟體 GPU，不能當作 Windows 硬體 GPU 成績。** Linux headless Chromium `154.0.8037.57`、DPR=1、ANGLE／Vulkan SwiftShader Device (Subzero)。每情境暖機後量測 30 個真實 requestAnimationFrame 間隔，draw calls／triangles 取 renderer.info；這是短樣本，受環境負載影響。
+相同設定：S01–S04 開放、每島四題、4 旅人、4 外海鯨魚；12／15 島分別 36／45 隻特色動物。Quiz 共 16 題目 NPC，Video-only 為 0。總覽隱藏題目 NPC 細節，因此兩模式的總覽 calls／triangles 相同。
 
-各效能情境均為 Quiz、S01–S04 模擬開放、四題（總 16 位 NPC），其餘島鎖定；12／15 島分別有 36／45 隻動物。
+| 模式 | 情境 | FPS | Draw calls | Triangles |
+|---|---|---:|---:|---:|
+| quiz | 15 島 總覽 / 1366x768 | 3.09 | 359 | 347,806 |
+| quiz | 15 島 S01 聚焦 / 1366x768 | 4.28 | 125 | 134,510 |
+| quiz | 12 島 總覽 / 1366x768 | 3.88 | 293 | 272,982 |
+| quiz | 12 島 S01 聚焦 / 1366x768 | 4.24 | 124 | 124,886 |
+| quiz | 12 島 總覽 / 1920x1080 | 2.94 | 293 | 272,982 |
+| video-only | 12 島 總覽 / 1366x768 | 3.84 | 293 | 272,982 |
+| video-only | 15 島 總覽 / 1366x768 | 3.08 | 359 | 347,806 |
+| video-only | 15 島 S01 聚焦 / 1366x768 | 4.29 | 85 | 120,430 |
 
-| 情境 | FPS | Draw calls | Triangles |
-|---|---:|---:|---:|
-| 12 島總覽 1366×768 | 3.70 | 298 | 260,364 |
-| 12 島 S01 聚焦 1366×768 | 4.28 | 124 | 118,136 |
-| 15 島總覽 1366×768 | 1.53 | 364 | 335,188 |
-| 15 島 S01 聚焦 1366×768 | 3.67 | 125 | 127,760 |
-| 12 島總覽 1920×1080 | 2.09 | 298 | 260,364 |
+本環境的軟體 GPU 仍不流暢，短樣本受負載與相機可見物影響，不能外推硬體 FPS。相同總覽的呼叫數由前版 12／15 島 298／364 降至本輪 293／359；新增背景模型增加 triangles，舊海泡沫合批抵銷了部分成本。沒有用軟體樣本的 FPS 差異宣稱硬體加速改進。
 
-本輪增加裝飾與三倍動物，且擴大畫布；軟體 GPU 仍不流暢。沒有取得 Windows Chrome／Edge 或實體 GPU 成績，**未宣稱已達一般筆電 30／60 FPS 或通過教師美術驗收**。先前版本數據只作歷史紀錄，不作相同負載的直接效能比較。
+原始八個樣本與 renderer／數量／視窗資訊：[performance.json](acceptance/phase-2-life/performance.json)。前版軟體資料保留於歷史報告。
 
-原始紀錄：[本輪 performance.json](acceptance/phase-2-revision/performance.json)、[初版 performance.json](acceptance/phase-2/performance.json)。Windows 可用 `CHROMIUM_PATH` 指定 Chrome／Edge 後執行 `npm run test:browser`，確認輸出 JSON 的 renderer 是實體 GPU；或在 dev Demo Console 執行 `window.__islandLab.snapshot()` 讀取 FPS／calls／triangles。production 不暴露 debug API。
+## 效能：實體 GPU 與教師確認
+
+教師已確認前版 Windows 11 Chrome／Edge 的 12／15 島在硬體 GPU 下流暢；這是教師實測的定性結果，未附數值 FPS／calls／triangles。本輪雲端僅取得上述 SwiftShader 資料，**沒有可報告的新增項目實體 GPU 數值**；海面／鯨魚／旅人加入後，仍需教師重驗。
+
+可在 Windows 啟用硬體加速，使用 `CHROMIUM_PATH` 指定 Chrome／Edge 執行 `npm run test:browser`，讀取 `test-results/life-performance.json` 並確認 renderer；或 dev Demo Console 的 `window.__islandLab.snapshot()` 讀 FPS／drawCalls／triangles。production 不提供 debug API。
 
 ## 代表性截圖
 
-以下是整合版本自動化產生的原始畫面，未人工修圖。
+以下為原始瀏覽器畫面，未人工修圖。整合套件產生全景、旅人與兩模式圖片；鯨魚元件近景另以同一工廠的獨立 WebGL 預覽呈現。
 
-### 12 島修正前後（同為 1366×768）
+### 12 島新增生命感前後
 
-修正前：水平分支、小字、重複導覽與大型 Demo 面板。
+![前版 12 島](acceptance/phase-2-life/overview-12-before.png)
 
-![修正前 12 島](acceptance/phase-2-revision/overview-12-before.png)
-
-修正後：六主幹放射網路、大字、單列課名及左下唯一導覽。
-
-![修正後 12 島](acceptance/phase-2-revision/overview-12.png)
+![本輪 12 島與外海鯨魚](acceptance/phase-2-life/overview-12.png)
 
 ### 15 島總覽
 
-![修正後 15 島](acceptance/phase-2-revision/overview-15.png)
+![15 島全開與背景生命感](acceptance/phase-2-life/overview-15.png)
 
-### S01 漫遊與點擊暫停
+### 鯨魚元件與噴水
 
-![NPC 漫遊及三隻跳鯊](acceptance/phase-2-revision/npc-walking.png)
+相同 sea-life 工廠的獨立 WebGL 元件近景；實際整合位置見上方兩張總覽。
 
-![點模型後立即暫停](acceptance/phase-2-revision/npc-paused.png)
+![鯨魚元件近景](acceptance/phase-2-life/whale-component.png)
 
-### 主題裝飾、三動物與開放狀態
+### 小旅人跨橋、題目 NPC 保留
 
-![火山與五位 NPC](acceptance/phase-2-revision/volcano.png)
+![小旅人過橋](acceptance/phase-2-life/bridge-visitors.png)
 
-![冰雪與北極狐](acceptance/phase-2-revision/snow.png)
+![小旅人與題目 NPC](acceptance/phase-2-life/visitors.png)
 
-![糖果與三隻羊](acceptance/phase-2-revision/candy.png)
+### Video-only
 
-![未開放橋口柵欄](acceptance/phase-2-revision/locked-gate.png)
+![沒有題目 NPC 的花園島仍有動物與旅人](acceptance/phase-2-life/video-only.png)
 
-![Video-only 珊瑚島與三隻海龜](acceptance/phase-2-revision/video-only.png)
-
-另提供 [1920×1080](acceptance/phase-2-revision/wide.png)、[390px 窄視窗](acceptance/phase-2-revision/narrow.png)、[竹林](acceptance/phase-2-revision/S13.png)、[晶礦](acceptance/phase-2-revision/S14.png)、[珊瑚](acceptance/phase-2-revision/S15.png)。
+另提供 [1920×1080](acceptance/phase-2-life/wide.png)、[390px 窄畫面](acceptance/phase-2-life/narrow.png)、[鎖定柵欄](acceptance/phase-2-life/locked-gate.png)、[題目 NPC 暫停](acceptance/phase-2-life/npc-paused.png)。
 
 ## Windows 再驗收與停止點
 
-依 [README 的 Windows 步驟與十二項清單](../README.md#windows-11-chromeedge-本機驗收)，在 Chrome／Edge 重看 12／15 島總覽、名稱、放射橋網與實際岸端，近看裝飾／三動物，分別點漫遊模型與頭標，確認暫停／恢復、導覽同步、Modal、兩模式、鎖定與實機流暢度。
+[README](../README.md#windows-11-chromeedge-本機驗收) 有更新分支、安裝、測試、啟動網址與十五項檢查。新增重點：總覽看柔和海流／外海巡遊與間歇噴水，放大小旅人辨識無 Q 標，停留 2–3 分鐘看安全路網上的跨島、停留及返回，再驗原題目 NPC 點擊／停止／恢復、兩模式、鎖定規則及硬體流暢度。
 
-正式 JSON／Manifest 仍維持原樣，未載入正式 Lecture／題庫、不判答、不開 Form。觸控保留基本單指平移及多指取消，尚無雙指縮放；正式 Lecture／Quiz 與完整教材發布工具仍待後續授權。
-
-本輪只更新原 Draft PR #2，完成後停止。**教師 Windows 再驗收仍未完成；不自行 Merge、Tag、Release、部署或進入 Phase 3。**
+本輪只更新原 Draft PR #2，不合併、Tag、Release、部署或進 Phase 3。正式 Lecture／Quiz 判答／解答／Form 尚未實作，觸控尚無雙指縮放。完成後停止等待教師再次驗收。

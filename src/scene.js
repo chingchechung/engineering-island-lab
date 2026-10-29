@@ -18,6 +18,8 @@ import { createIslandFauna } from './world/fauna.js';
 import { createNpcMotion } from './world/npc-motion.js';
 import { createNpcSafety } from './world/npc-safety.js';
 import { createRadialLayout } from './world/layout.js';
+import { createSeaLife } from './world/sea-life.js';
+import { createVisitors } from './world/visitors.js';
 import { validateCourseConfig, validateManifest } from './config.js';
 
 export function createIslandScene(input, fixture = null, options = {}) {
@@ -255,6 +257,10 @@ export function createIslandScene(input, fixture = null, options = {}) {
       framingPoints.push(p);
     });
   bridges.forEach((bridge) => bounds.expandByObject(bridge));
+  // Background life never participates in island framing, curriculum or picking.
+  const visitors = createVisitors({ academy, records });
+  const seaLife = createSeaLife({ bounds });
+  scene.add(visitors.root, seaLife.root);
   const sun = scene.children.find((o) => o.isDirectionalLight);
   const lightOffset = sun.position.clone().sub(academy.position);
   sun.target.position.copy(academy.position);
@@ -285,6 +291,8 @@ export function createIslandScene(input, fixture = null, options = {}) {
     bridge: bridges[0],
     motions,
     framingPoints,
+    visitors,
+    seaLife,
     setNpcPaused(unitId, questionId, paused) {
       const entry = motions.get(`${unitId}/${questionId}`);
       if (!entry) return false;
@@ -314,6 +322,7 @@ export function createIslandScene(input, fixture = null, options = {}) {
         ...[...records.values()].map((r) => r.gate).filter(Boolean),
       ])
         batchStatic(root);
+      batchStatic(scene.getObjectByName('sea-foam'));
       for (const animal of animals) batchStatic(animal);
       // Moving windmill blades are baked within their own moving frame.
       scene.traverse((o) => {
@@ -349,6 +358,8 @@ export function createIslandScene(input, fixture = null, options = {}) {
           }
         });
       }
+      if (!optimized || view !== 'overview' || farTick !== lastFar) visitors.update(seconds);
+      seaLife.update(seconds);
       lastFar = farTick;
       sun.castShadow = view !== 'overview';
       if (lastView !== view) {
