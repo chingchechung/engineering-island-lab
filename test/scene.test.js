@@ -8,7 +8,7 @@ import { CameraRig, clampZoom, wheelZoom, MIN_ZOOM, MAX_ZOOM } from '../src/came
 import { PointerGesture, DRAG_THRESHOLD } from '../src/interaction.js';
 import { demoFixture } from '../src/demo/fixture.js';
 
-const config = { courseTitle: '數位電子學', totalUnits: 12, assignmentMode: 'quiz' };
+const config = { courseTitle: '數位電子學', totalUnits: 1, assignmentMode: 'quiz' };
 test('one lit world contains two islands, four labelled NPCs and a lecture target', () => {
   const world = createIslandScene(config, demoFixture);
   assert.ok(world.scene.isScene);

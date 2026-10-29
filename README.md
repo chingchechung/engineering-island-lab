@@ -1,69 +1,83 @@
 # Engineering Island Lab
 
-以 Three.js 建造的 3D 工程課程群島。目前完成 **Phase 0 與 Phase 1 實作，等待教師視覺／操作驗收**：中央學院與 S01 森林島、連接兩島的弧形木橋、正交鏡頭、縮放／平移／聚焦、Lecture 小屋與 Q01–Q04 角色原型，以及自主跳動的鯊魚。
+色彩豐富的 3D 微型工程課程群島。**Phase 0／1（含木橋）已經教師 Windows 11 驗收，PR #1 已合併；目前為 Phase 2 完整群島，等待本輪驗收。**
 
-這是視覺原型，尚未完成正式教學功能。數位電子學設定仍為 12 單元，本階段只繪製 S01；其餘 11 座島，以及其他課程上限所需的 S13–S15 尚未製作。美術仍待教師驗收及精修。
+中央學院固定存在；`course-config.json` 的 `totalUnits` 決定 S01–S15 的實際數量，數位電子學預設 12。每島有獨特地貌、主題 Lecture 小屋、自主動物與完整木橋，未開放島的橋口有木柵欄及鎖牌。所有島仍保留色彩與動物，可放大欣賞；教材互動依教師 Manifest 判斷。
 
-## Windows 11 Chrome / Edge 本機驗收
+## Windows 11 Chrome／Edge 本機驗收
 
-安裝 Node.js **24.x**（npm **11+**）及 Git。Chrome／Edge 需支援 WebGL 2，建議開啟「可用時使用圖形加速」。在 PowerShell 執行：
+Node.js **24.x**、npm **11+**、Git，以及支援 WebGL 2 的 Chrome／Edge。在 PowerShell 執行：
 
 ```powershell
-git clone --branch feat/phase-0-1-island-prototype https://github.com/chingchechung/engineering-island-lab.git
+git clone --branch feature/phase-2-full-archipelago https://github.com/chingchechung/engineering-island-lab.git
 cd engineering-island-lab
-node --version
-npm --version
 npm ci
 npm test
 npm run build
 npm run demo
 ```
 
-已經 clone 的教師可先 `git fetch origin`、`git switch feat/phase-0-1-island-prototype`，再安裝及驗收。請保留自己的未提交修改。已在本功能分支且工作樹乾淨時，可執行 `git pull --ff-only origin feat/phase-0-1-island-prototype` 取得木橋更新。
+既有 clone 請先保留自己的修改，再 `git fetch origin`、`git switch feature/phase-2-full-archipelago`。已在此分支且工作樹乾淨時，以 `git pull --ff-only origin feature/phase-2-full-archipelago` 取得更新。
 
-`npm run demo` 啟動 Vite 並開啟明確的本機 Demo。若瀏覽器沒有自動打開，請開 [http://localhost:5173/?demo=1](http://localhost:5173/?demo=1)。Chrome、Edge 各執行一次以下清單；1366×768、100% 瀏覽器縮放為基本驗收尺寸。
+開啟 [本機 Demo](http://localhost:5173/?demo=1)。預設 12 島、模擬開放 S01–S04，其餘鎖定；右下可選 1／12／15 島、0／4／全部開放、4／5 位角色及 Quiz／Video only。不會修改正式 JSON。若 Vite 使用其他埠，依終端機顯示的網址開啟。停止：`Ctrl+C`。
 
-1. 總覽同時看見中央學院與 S01，主島標牌顯示「數位電子學」。島嶼有不規則海岸、草丘、斜岩壁及厚度，無規則方／六角柱島體。
-2. 總覽確認木橋清楚連接兩岸，放大檢查微拱木板、弧線與繩欄自然融入場景；橋不遮住兩島標牌、小屋或 NPC。橋只供欣賞，點擊不開視窗；拖曳／滾輪仍操作鏡頭。放大欣賞森林、彩色花草、小瀑布、小屋、學院塔樓。評估色彩、童話感和造型是否符合參考方向；**需教師實際判斷美術品質**。
-3. 滾輪平滑縮放，拖曳海面或地圖平移；拖出去又回原點鬆手也不應開啟 NPC 視窗。左鍵和右鍵皆可拖曳平移。
-4. 點 S01 地形、S01 標牌或「探索 S01」平滑聚焦，仍能繼續滾輪放大。按「返回總覽」應回到雙島構圖；也可聚焦主島。聚焦後鄰島可能超出畫面，符合連續世界近看行為。
-5. S01 聚焦後四名角色各有清晰 Q01–Q04 頭頂標牌及衣服識別。點角色模型或標牌開啟對應的 **Demo 說明**，不出現真題、答案或外部影片。
-6. 點 Lecture 小屋模型或標牌開啟占位說明。視窗內捲動／按鍵不會縮放或拖動地圖；關閉鍵及 Esc 可用，鍵盤焦點回原按鈕。此階段未實作正式影片清單。
-7. 鯊魚會自己在草地跳動。點牠、把游標放在牠上面皆不會有動物專屬 hover／操作／視窗；可能點中下方島嶼而聚焦，牠的行為不受影響。
-8. 右下切換 **Video only**：所有 NPC、Q 標牌及衣服識別完全消失，地貌、Lecture 小屋、鯊魚仍在。切回 Quiz 後四名 NPC 回復且可點擊。模式僅存本頁記憶體，重整依 JSON 還原。
-9. 縮窄瀏覽器再試聚焦與 Modal；資訊不應超出視窗。Canvas 取得焦點時 `+`／`-` 縮放、Home／Esc 返回總覽，Tab 可操作標牌與按鈕。
-10. F12 檢查 Console 無 JavaScript 錯誤。重新載入 [http://localhost:5173/](http://localhost:5173/)：正式清單為 0、S01 標示尚未開放、無 NPC，Lecture 不可開啟教材；本機 Demo 入口與正式清單分開。
+Chrome 與 Edge 各驗收一次，基本尺寸 1366×768、1920×1080、瀏覽器 100%：
 
-停止伺服器：終端機 `Ctrl+C`。**驗收後回覆美術／操作結果，本次不合併、不部署、不進 Phase 2。**
+1. 12 島總覽同時看到學院與 S01–S12；切 15 才出現竹林、晶礦、珊瑚島；切 1 仍是已驗收的學院＋S01。島名標籤清楚，必要時用右上「前往小島」導覽。
+2. 放大看各島獨特輪廓、自然厚岩壁、主題建築與細節；S01 森林、四名探索者及草地跳鯊保留。比較火山、糖果、冰雪、湖心、夢境等主題，確認符合童話微型模型的美術品質。
+3. 所有木橋都完整連接兩岸，橋面微彎／微拱。橋與動物不提供互動、餵食、控制、角色通行或碰撞功能。
+4. 預設 S05–S12 橋口有柵欄與鎖牌；點島、小屋或鎖牌只聚焦並顯示「Sxx 尚未開放」，不開啟課程內容。切換全部開放，柵欄／鎖牌消失。
+5. 滾輪平滑縮放、左鍵／右鍵拖曳平移；拖出去再回原點不會誤開內容。點島或標牌聚焦，繼續放大；「返回總覽」回完整群島。
+6. 已模擬開放島的 Lecture 小屋與 Q 標牌／模型可開**視覺占位說明**；4／5 位角色數量正確、標牌可讀，且不被建築或動物遮擋。此階段沒有正式題目或影片連結。
+7. Modal 的滾輪／鍵盤不操作地圖；關閉鍵／Esc 正常，鍵盤焦點回到原按鈕。Canvas 焦點下 `+`／`-` 縮放、Home／Esc 返回總覽，Tab 可操作導覽與標牌。
+8. Video only 完全沒有 NPC 模型、Q 標牌或 NPC 點擊目標；主題小屋、橋樑、柵欄、動物仍在。切回 Quiz 後互動正常。
+9. 看魚擺尾、企鵝走路、水母脈動、羊／恐龍跳動、熊貓搖尾、海龜划鰭及風車／海葵。游標與點擊不影響牠們的動作。
+10. 縮窄到手機寬度後可用「前往小島」聚焦，Modal 不超出視窗。F12 Console 無應用錯誤；一般筆電親自確認流暢度。
+11. 開啟 [預設入口](http://localhost:5173/)：正式清單仍是 0，各島皆有柵欄且不能開教材。`npm run preview` 的 production 即使帶 Demo query 也不能啟用模擬模式。
 
-## Demo 與正式資料的邊界
+[Phase 2 驗收報告](docs/PHASE_2_ACCEPTANCE.md) 包含代表性截圖、實測效能和限制。完成本輪後停止，等待教師驗收，**不合併、不部署、不進 Phase 3**。
 
-- `public/course-config.json` 控制 `courseTitle`、整數 `totalUnits: 1–15`、`assignmentMode: "quiz" | "video-only"`；預設「數位電子學」／12／quiz。Phase 1 不依總數生成其餘島嶼。
-- `public/assignments/manifest.json` 固定為 `{"schemaVersion":1,"units":[]}`，沒有正式開放任何課程。
-- 只有 **Vite 開發模式 + `?demo=1`** 會載入 `src/demo/fixture.js`。只有虛構角色名稱、配色與位置，不含影片、題目、答案、Form 或學生資訊。正式 `npm run build` 即使帶 `?demo=1` 也無法啟用 Demo。
-- Demo 的模式按鈕只作視覺驗收，不修改 JSON 或 Manifest。video-only 連 NPC 幾何、標籤及拾取目標都不建立，不 fetch 題庫。
-- 正式入口目前只提供雙島外觀與導航；教師課程發布、影片載入、開放狀態完整流程屬 Phase 3。不要把 Demo 的點擊提示當成正式教材。
+## 島嶼主題
 
-## 架構
+| 島 | 地貌與建築 | 自主動物 |
+|---|---|---|
+| S01 | 保留森林、草丘、瀑布與原 Lecture 小屋 | 草地跳鯊 |
+| S02 | 多層花圃、花樹、玫瑰拱架、溫室花箱 | 漂浮熱帶魚擺尾 |
+| S03 | 海蝕開孔岩拱、斜岩、潮池、燈塔小屋 | 企鵝散步與翅腳擺動 |
+| S04 | 內湖、拱木橋、柳樹、睡蓮、湖畔小屋 | 水母脈動及觸手 |
+| S05 | 侵蝕火山口、熔岩、黑岩、研究站儀表 | 小恐龍跳動 |
+| S06 | 糖霜丘、薄荷糖、軟糖、薑餅小屋 | 棉花糖羊伸縮跳與搖尾 |
+| S07 | 非對稱雪峰、冰晶／冰湖、雪松、冰屋垂冰 | 戴帽企鵝貼地走動 |
+| S08 | 草丘、風車、麥穗、乾草、木屋飾條 | 空中游魚擺尾 |
+| S09 | 浮石花園、月牙與星、柔光植物、觀星小屋 | 蝴蝶拍翼及水母 |
+| S10 | 分層沙丘、綠洲、棕櫚、仙人掌、通風土屋 | 戴護目鏡跳鯊 |
+| S11 | 雲環、雲階、浮島瀑布、太陽小屋 | 空中游魚 |
+| S12 | 多層廣場、彩旗、涼亭、氣球、緞帶小屋 | 恐龍交錯踏步跳舞 |
+| S13 | 竹林、岩肩、流水、竹屋燈籠 | 持竹小熊貓步態／搖尾 |
+| S14 | 深色內壁岩洞、四色晶簇、晶燈小屋 | 晶靈旋環與軌道碎晶 |
+| S15 | 分層珊瑚扇、礁肩、海葵、貝殼屋簷 | 海龜划鰭 |
+
+## 模組與資料邊界
 
 | 模組 | 職責 |
 |---|---|
-| `src/main.js` | Renderer、動畫循環、模式切換、尺寸／背景分頁處理 |
-| `src/config.js` | 課程／Manifest 基本驗證、相對 URL、明確 Demo 開關 |
-| `src/camera.js` | 固定斜上方約 42° OrthographicCamera、平滑 fit／focus／pan／zoom |
-| `src/interaction.js` | 最大移動距離 click/drag 閾值、pointer cancel、白名單射線拾取 |
-| `src/scene.js` | 同一世界內的主島／S01、光源、標籤 anchor 及拾取註冊 |
-| `src/world/terrain.js` | 可重現的多層不規則海岸、收縮漂移岩坡、原創頂點色幾何 |
-| `src/world/bridge.js` | 兩岸間微拱、彎曲的木板橋與繩欄，純裝飾且無互動／碰撞／導航 |
-| `src/world/props.js` | 學院、小屋、探索者、植被、花草、步道、瀑布 |
-| `src/world/animals.js` | 只接受時間的自主鯊魚動畫，完全不註冊互動 |
-| `src/ui.js` | 可鍵盤操作的 CSS2D 標牌、原生 dialog、關閉後焦點回復 |
-| `src/demo/fixture.js` | 與正式教材分離的安全視覺 fixture |
-| `test/`、`scripts/` | 無 GPU 單元測試、子目錄 smoke、真實瀏覽器驗收 |
+| `src/main.js`、`ui.js` | Renderer、導覽／Demo 控制、標籤避讓、Modal、動畫循環與本機量測 |
+| `src/config.js` | 原課程／Manifest v1 驗證、相對 URL、明確 Demo 開關 |
+| `src/camera.js`、`interaction.js` | 約 42° 正交鏡頭、全域 fit／單島聚焦、平滑縮放／平移、click/drag/cancel |
+| `src/scene.js` | 單一世界、Manifest 狀態、橋樑／柵欄、拾取、可見性及資源生命週期 |
+| `src/world/phase-one.js` | 保留已驗收的學院與 S01 原始建構 |
+| `src/world/presets.js`、`themes.js` | 固定 15 主題及分支座標、工廠分派；沒有 islands.json |
+| `src/world/islands/` | 四組互不衝突的主題工廠；[統一介面與所有權](docs/ISLAND_FACTORY.md) |
+| `src/world/terrain.js`、`props.js`、`bridge.js`、`creatures.js` | 原創地形／建築／花草／橋欄／動物元件 |
+| `src/world/optimize.js` | 靜態頂點色合批、動態節點排除、資源釋放 |
+| `src/demo/fixture.js` | 虛構視覺角色、同 Manifest v1 格式的本機模擬，無正式內容 |
+| `test/`、`scripts/` | 原 Phase 1 回歸、完整群島單元／瀏覽器／子目錄檢查、效能紀錄 |
 
-維持 Vanilla JS ES Modules／CSS，無前端框架、後端、DB、登入、學生化身、物理引擎或持久化個人紀錄。動畫遠離分頁時暫停渲染；回來繼續，不儲存進度。
+正式設定仍為 `public/course-config.json` 的 `courseTitle`、整數 `totalUnits:1–15`、`assignmentMode:quiz|video-only`。正式開放唯一依據仍是 `public/assignments/manifest.json`，目前維持 `{"schemaVersion":1,"units":[]}`。未開放內容不 fetch；不因缺題庫而偷切模式。
 
-## 測試與建置
+Demo 需同時具備 **Vite 開發模式與 `?demo=1`**。可用 `?demo=1&units=1&open=1` 重現雙島回歸情境，預設 `?demo=1` 為 12 島／模擬開放 4 座。production 的 query 不得開啟 Demo。正式已開放島目前也只提供占位說明，不載入影片或題庫。
+
+## 測試與效能
 
 ```powershell
 npm test
@@ -73,28 +87,24 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-- `npm test`：22 個 Node 內建測試，涵蓋 1/12/15 設定及非法值、相對根／子目錄、空 Manifest／安全路徑、錯誤 JSON、無 GPU 場景、自然地貌、video-only、裝飾動物不被拾取、正交取景、zoom 邊界、focus/reset、click/drag/cancel，以及橋端落岸、橋面弧度、裝飾拾取排除與標牌／小屋／NPC 視線不被橋遮擋。
-- `test:smoke`：建置後把 dist 掛在 `/~wildwolf/engineering-island-lab/`，驗證 HTML／JS／CSS／favicon／course-config／空 Manifest，無需 Apache。
-- `test:browser`：Playwright 真正執行 Chromium/WebGL。使用系統 `/usr/bin/chromium`（若有），或 Playwright 安裝的 Chromium；可用 `CHROMIUM_PATH` 指定執行檔。結果圖放 `test-results/`（不納入 Git）。先執行 `npm run build`，用於正式子目錄入口測試。
-- 三維幾何由原創程式產生。Node 測試與 Linux Chromium **不能取代 Windows Chrome／Edge 的教師驗收**。
-- Vite 會提示 Three.js 主 bundle 大於 500 kB；目前無大型模型、貼圖、CDN 或後製。此提示不影響建置，實際一般筆電 FPS 尚待 Windows 實機確認。
+依賴維持 Node 24／npm 11+、Vite 8.3.5、Three.js 0.186.1、Playwright 1.64.1，版本固定於 lockfile。`test:browser` 使用系統 Chromium（若有）或 Playwright Chromium，可用 `CHROMIUM_PATH` 指定。
 
-開發環境 Node 24.19.0、npm 11.9.0、Vite 8.3.5、Three.js 0.186.1；Playwright 1.64.1 為測試依賴，所有版本固定並有 lockfile。初始化基準為 5/5 單元測試及 build 通過；本次結果見 [Phase 1 驗收紀錄](docs/PHASE_1_ACCEPTANCE.md)。
+- `npm test` 共 41 項通過，保留既有 22 項行為，以 `totalUnits=1` 重現雙島；另測 1／12／15 數量與取景、15 主題、橋端落岸、無島體重疊、Manifest／柵欄、4／5 NPC、video-only、動物及合批。
+- Smoke 將 dist 掛到 `/~wildwolf/engineering-island-lab/`，檢查 HTML／JS／CSS／favicon／JSON／空 Manifest。
+- 瀏覽器測試 20 項通過，包含原操作回歸、完整群島、鎖定／模式與窄視窗；代表截圖及 FPS／draw calls／triangles／GPU 資訊寫到 `test-results/`（忽略於 Git）。教師報告保存整理後的結果。
+- 共享幾何／材質、花草 InstancedMesh、頂點色合批、相機 frustum culling、遠景 6Hz 動畫、近景完整動畫／細節及聚焦陰影。總覽以輕量接觸陰影保留立體感，避免所有島同時重畫陰影。模式切換釋放場景幾何、獨立材質、instance 與 shadow map。
+- Vite 的 Three.js 主 bundle 仍有 >500 kB 提示；沒有 CDN、巨大貼圖、外部模型或高成本後製。Linux 軟體 GPU 數據不能代替 Windows 實機效能。
 
-## Apache 靜態子目錄相容性
+## 靜態部署與後續階段
 
-`vite.config.js` 維持 `base: './'`，JSON 以 `new URL('./…', document.baseURI)` 載入，部署產物只有 `dist/`。不需要 SPA rewrite、Node 伺服器或額外環境變數。Apache 需提供正確 JavaScript/CSS/JSON/SVG MIME，並使用含結尾斜線的目錄網址。
+`base:'./'` 與 `new URL('./…',document.baseURI)` 保留，dist 可放 Apache 任意子目錄，無需 Node 服務或 SPA rewrite。只以本機 preview 測試，本輪不部署、Tag 或 Release。
 
-本次 **未上傳學校網站、未建立 Tag／Release、未更動正式教材**。`npm run preview` 只供本機查看已打包正式入口；正式包沒有互動 Demo，請用 `npm run demo` 驗收角色及小屋。
+Phase 3 才實作 Lecture 任意長影片清單、嚴格 YouTube 外連及完整資料驗證；Phase 4 才精確移植舊 Quiz v1/v2、答錯重試、解說及全部答對開 Form。v2 是「任一接受的單選答案」，不得誤改為多選。舊 GUI S13–S15 支援另列待辦，不修改其他 repo。
 
-## 後續每週教材更新流程（尚未實作發布工具）
+教師未來從 Notion 捲到底確認所有卡片後，另存完整 PDF，提供本週 Sxx 與指定順序給 AI，只擷取該週 Lecture 的 `title`、HTTPS YouTube `url`，保留順序、無語言分組、不猜連結、不混入題目／解答、不改題庫。經驗證及教師核對後，先更新內容，最後更新 Manifest；未經明確授權不發布。
 
-完整契約見 `docs/CONTENT_AND_RELEASE.md`。教師在 Notion 捲到底，確認動態卡片完整載入，再列印最新版完整 PDF。提供 PDF、本週 Sxx 與指定順序給 AI；只擷取該單元 Lecture 的 `title` 與 HTTPS YouTube `url` 到 `public/course-videos/Sxx.json`，保留文件順序、無語言分組、不猜連結、不混入題目／解答、不改題庫。
+> 請依 docs/CONTENT_AND_RELEASE.md 閱讀最新課程 PDF，這次僅準備 S04。擷取 S04 所有 Lecture 標題與 YouTube URL，依文件／教師指定順序更新 public/course-videos/S04.json。不修改題目答案。提出內容及 Manifest 的具體差異與驗證結果，由我批准才正式發布；不要部署或建立 Release。
 
-未來完成 schema／資料完整性驗證後，教師核對差異，先更新影片與 Quiz 所需題庫，**最後更新 Manifest**。沒有教師明確授權不改正式開放清單或部署。Quiz 舊 v1/v2 契約、四／五題、v2 任一接受的單選答案、全部答對才開 Form 均留待 Phase 4；目前未實作及未宣稱測試通過。舊 Python GUI 的 S13–S15 支援另列待辦。
+## 素材
 
-> 請依照 docs/CONTENT_AND_RELEASE.md，閱讀我提供的最新課程 PDF，這次僅準備 S04。擷取 S04 的所有 Lecture 影片標題及 YouTube URL，照文件順序（若我另給順序則依我的順序）更新 public/course-videos/S04.json。不修改任何題目答案。檢查影片及 Quiz 題庫（若 assignmentMode=quiz）後，提出 Manifest 開放到 S04 的具體差異與驗證結果；由我批准才執行正式發布，不要自行部署或發布 Release。
-
-## 素材來源與限制
-
-島體、建築、角色、動物及圖示為本專案程式繪製。Three.js／Vite 為 MIT，Playwright 為 Apache-2.0；使用作業系統字體，未再散布第三方字體或模型。四張教師參考圖只留在 `docs/style-references/` 供研究，不加入 public/dist，不假定其再散布授權。畫面截圖為本原型自產。
+模型、角色、動物、圖示均為程式原創；Three.js／Vite 為 MIT、Playwright 為 Apache-2.0，使用系統字體。教師參考圖僅供研究，留在 docs，不加入 public/dist。不加入學生、帳號、後端、資料庫、持久進度、Notion API、物理引擎或課程管理後台。

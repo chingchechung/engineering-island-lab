@@ -9,7 +9,15 @@ import {
 import { random } from './primitives.js';
 
 // Shared irregular coastline; rings taper and drift to form sloped, faceted cliffs.
-export function createTerrain({ radius = 5, depth = 3.1, seed = 1, top = 0.8, stretch = 1 } = {}) {
+export function createTerrain({
+  radius = 5,
+  depth = 3.1,
+  seed = 1,
+  top = 0.8,
+  stretch = 1,
+  lobes = 3,
+  palette = null,
+} = {}) {
   const group = new Group();
   group.name = 'organic-terrain';
   const rng = random(seed);
@@ -18,7 +26,7 @@ export function createTerrain({ radius = 5, depth = 3.1, seed = 1, top = 0.8, st
     const a = (i / count) * Math.PI * 2;
     return {
       a,
-      r: 1 + Math.sin(a * 3 + seed) * 0.105 + Math.sin(a * 7 + 1.3) * 0.065 + rng() * 0.025,
+      r: 1 + Math.sin(a * lobes + seed) * 0.105 + Math.sin(a * 7 + 1.3) * 0.065 + rng() * 0.025,
     };
   });
   const profiles = [
@@ -30,6 +38,10 @@ export function createTerrain({ radius = 5, depth = 3.1, seed = 1, top = 0.8, st
     { size: 0.53, y: top + 0.12, drift: 0, color: '#83b574' },
     { size: 0, y: top + 0.14, drift: 0, color: '#8fbd7b' },
   ];
+  if (palette)
+    profiles.forEach((profile, i) => {
+      profile.color = palette[i];
+    });
   const vertices = [],
     colors = [];
   function vertex(profile, i) {
@@ -68,5 +80,6 @@ export function createTerrain({ radius = 5, depth = 3.1, seed = 1, top = 0.8, st
   body.receiveShadow = true;
   group.add(body);
   group.userData.outline = outline;
+  body.userData.surface = { radius, top, stretch };
   return { group, body };
 }

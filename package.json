@@ -11,7 +11,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test test/scene.test.js test/config.test.js",
+    "test": "node --test test/*.test.js",
     "test:smoke": "npm run build && node scripts/smoke-test.js",
     "demo": "vite --open /?demo=1",
     "test:browser": "node scripts/browser-test.js"

@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#d5e9df" />
     <meta
       name="description"
-      content="Engineering Island Lab — 在微型奇幻群島裡探索工程知識。Phase 1 視覺原型。"
+      content="Engineering Island Lab — 在微型奇幻群島裡探索工程知識。Phase 2 視覺原型。"
     />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <title>Engineering Island Lab · 數位電子學</title>
@@ -27,7 +27,12 @@
         >
       </a>
       <div class="header-right">
-        <span class="phase-chip">PHASE 01 <span>·</span> 視覺原型</span
+        <label class="navigation-label"
+          >前往小島<select id="unit-navigation" aria-label="選擇島嶼">
+            <option value="overview">群島總覽</option>
+          </select></label
+        >
+        <span class="phase-chip">PHASE 02 <span>·</span> 視覺原型</span
         ><button id="about" class="icon-button" aria-label="關於這座群島">?</button>
       </div>
     </header>
@@ -73,7 +78,30 @@
         ><button id="zoom-in" aria-label="放大">+</button>
       </div>
       <div class="demo-controls" id="demo-controls" hidden>
-        <span>DEMO 模式</span>
+        <span>本機 DEMO · 無正式教材</span>
+        <div class="demo-selects">
+          <label
+            >單元數
+            <select id="demo-units" aria-label="Demo 單元數">
+              <option>1</option>
+              <option selected>12</option>
+              <option>15</option>
+            </select></label
+          ><label
+            >開放
+            <select id="demo-open" aria-label="Demo 開放數">
+              <option value="0">0</option>
+              <option value="4" selected>4</option>
+              <option value="15">全部</option>
+            </select></label
+          ><label
+            >角色
+            <select id="demo-questions" aria-label="Demo 題數">
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select></label
+          >
+        </div>
         <div class="segmented" role="group" aria-label="Demo 課程模式">
           <button id="mode-quiz" aria-pressed="true">Quiz</button
           ><button id="mode-video" aria-pressed="false">Video only</button>
@@ -95,7 +123,7 @@
         <h2 id="dialog-title"></h2>
         <div id="dialog-content"></div>
       </div>
-      <div class="dialog-footer">Engineering Island Lab <span>·</span> Phase 1 視覺原型</div>
+      <div class="dialog-footer">Engineering Island Lab <span>·</span> Phase 2 視覺原型</div>
     </dialog>
     <script type="module" src="./src/main.js"></script>
   </body>

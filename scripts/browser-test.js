@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { createServer, preview } from 'vite';
+import { checkArchipelago } from './archipelago-browser.js';
 
 // Run against a real WebGL renderer, using installed Chromium or Playwright's browser.
 const executablePath =
@@ -35,9 +36,9 @@ try {
   });
   page.on('request', (request) => requests.push(request.url()));
   const snapshot = () => page.evaluate(() => window.__islandLab.snapshot());
-  await page.goto(`${base}/?demo=1`);
+  await page.goto(`${base}/?demo=1&units=1&open=1`);
   await page.waitForFunction(() => window.__islandLab?.snapshot().demo);
-  await page.screenshot({ path: 'test-results/overview.png' });
+  await page.screenshot({ path: 'test-results/regression-overview.png' });
   assert.equal((await snapshot()).npcCount, 4);
   assert.equal((await snapshot()).pickableAnimals, 0);
   pass('Quiz Demo renders four NPCs; animal pick registry is empty');
@@ -50,7 +51,7 @@ try {
   await page.waitForTimeout(800);
   for (const id of ['Q01', 'Q02', 'Q03', 'Q04'])
     assert.ok(await page.locator(`[data-label="${id}"]`).isVisible());
-  await page.screenshot({ path: 'test-results/s01-focus.png' });
+  await page.screenshot({ path: 'test-results/regression-s01.png' });
   pass('3D label click focuses S01 with all four readable Q labels');
 
   await page.locator('[data-label="Q01"]').click();
@@ -120,7 +121,7 @@ try {
   await page.locator('[data-label="lecture"]').click();
   assert.match(await page.locator('#dialog-title').textContent(), /Lecture/);
   await page.keyboard.press('Escape');
-  await page.screenshot({ path: 'test-results/video-only.png' });
+  await page.screenshot({ path: 'test-results/regression-video-only.png' });
   pass('video-only removes all NPC geometry/labels while retaining Lecture and shark');
   await page.locator('#mode-quiz').click();
   assert.equal((await snapshot()).npcCount, 4);
@@ -132,7 +133,7 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('#overview').click();
   await page.waitForTimeout(500);
-  await page.screenshot({ path: 'test-results/narrow.png' });
+  await page.screenshot({ path: 'test-results/regression-narrow.png' });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.locator('#explore').click();
   await page.waitForTimeout(700);
@@ -147,7 +148,7 @@ try {
   assert.equal((await snapshot()).demo, false);
   assert.equal((await snapshot()).npcCount, 0);
   assert.equal(await page.locator('#demo-controls').isVisible(), false);
-  assert.ok(await page.locator('.label-locked').isVisible());
+  assert.ok(await page.locator('.label-locked').first().isVisible());
   assert.equal(
     requests.filter((url) => /assignments\/S\d+\.json|course-videos\//.test(url)).length,
     0,
@@ -161,14 +162,18 @@ try {
     preview: { host: '127.0.0.1', port: 0, open: false },
   });
   await page.goto(
-    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/?demo=1`,
+    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/?demo=1&units=15&open=15`,
   );
   await page.waitForSelector('#loading[hidden]', { state: 'attached' });
   assert.equal(await page.locator('[data-label^="Q"]').count(), 0);
   assert.equal(await page.locator('#demo-controls').isVisible(), false);
   assert.equal(await page.evaluate(() => typeof window.__islandLab), 'undefined');
   assert.ok(await page.locator('canvas').isVisible());
+  assert.equal(await page.locator('.label-locked').count(), 12);
+  assert.equal(await page.locator('[data-label="S15"]').count(), 0);
   pass('built site renders from Apache subdirectory; query cannot enable local Demo');
+  assert.deepEqual(errors, []);
+  await checkArchipelago(page, base, pass);
   assert.deepEqual(errors, []);
   console.log(`${checks} browser acceptance checks passed. Screenshots: test-results/`);
 } finally {

@@ -10,3 +10,14 @@ export const demoFixture = Object.freeze({
     { id: 'Q04', name: '莓果', color: '#a78dc1', position: [3.0, 1.5] },
   ]),
 });
+
+// Local preview uses the same Manifest v1 shape; it never writes public/.
+export function createDemoManifest(totalUnits, openCount = 4) {
+  return {
+    schemaVersion: 1,
+    units: Array.from({ length: Math.min(totalUnits, openCount) }, (_, i) => {
+      const unitId = `S${String(i + 1).padStart(2, '0')}`;
+      return { unitId, title: `${unitId} · 視覺 Demo`, file: `${unitId}.json` };
+    }),
+  };
+}

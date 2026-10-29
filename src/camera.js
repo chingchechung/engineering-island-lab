@@ -1,7 +1,7 @@
 import { OrthographicCamera, Vector3 } from 'three';
 
 export const MIN_ZOOM = 0.7,
-  MAX_ZOOM = 4;
+  MAX_ZOOM = 12;
 export function clampZoom(value) {
   return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, value));
 }
