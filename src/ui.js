@@ -1,3 +1,4 @@
+import { arrangeLabels } from './label-layout.js';
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 
 export function attachLabels(labels, onAction) {
@@ -58,61 +59,46 @@ export function createDialog() {
   };
 }
 
-// Small screen-space offsets keep overview names readable without moving any island.
+// Labels can grow to readable sizes; fine leader lines keep displaced titles attached.
 export function layoutIslandLabels(labels, viewport) {
   const items = labels.filter(
     (item) => item.id === 'academy' || ['unit', 'locked'].includes(item.kind),
   );
   items.forEach((item) => (item.element.style.translate = ''));
-  const rectangles = items.map((item) => ({ item, rect: item.element.getBoundingClientRect() }));
-  const occupied = [];
-  const candidates = [
-    [0, 0],
-    [0, -28],
-    [-32, 0],
-    [32, 0],
-    [0, -56],
-    [-64, 0],
-    [64, 0],
-    [0, 28],
-    [0, 56],
-  ];
-  for (const { item, rect } of rectangles) {
-    if (
-      !rect.width ||
-      rect.right < viewport.left ||
-      rect.left > viewport.right ||
-      rect.bottom < viewport.top ||
-      rect.top > viewport.bottom
-    )
-      continue;
-    for (const [x, y] of candidates) {
-      const candidate = {
-        left: rect.left + x,
-        top: rect.top + y,
-        right: rect.right + x,
-        bottom: rect.bottom + y,
-      };
-      if (
-        candidate.left < viewport.left + 3 ||
-        candidate.right > viewport.right - 3 ||
-        candidate.top < viewport.top + 3 ||
-        candidate.bottom > viewport.bottom - 3
-      )
-        continue;
-      if (
-        occupied.some(
-          (other) =>
-            candidate.left < other.right + 3 &&
-            candidate.right > other.left - 3 &&
-            candidate.top < other.bottom + 3 &&
-            candidate.bottom > other.top - 3,
-        )
-      )
-        continue;
-      item.element.style.translate = `${x}px ${y}px`;
-      occupied.push(candidate);
-      break;
-    }
+  const entries = items
+    .map((item) => ({ id: item.id, rect: item.element.getBoundingClientRect(), item }))
+    .filter(
+      ({ rect }) =>
+        rect.width > 0 &&
+        rect.right >= viewport.left &&
+        rect.left <= viewport.right &&
+        rect.bottom >= viewport.top &&
+        rect.top <= viewport.bottom,
+    );
+  const placed = arrangeLabels(entries, viewport);
+  let leaders = document.querySelector('#label-lines');
+  if (!leaders) {
+    leaders = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    leaders.id = 'label-lines';
+    leaders.setAttribute('aria-hidden', 'true');
+    document.querySelector('#world').append(leaders);
+  }
+  leaders.setAttribute('viewBox', `0 0 ${viewport.width} ${viewport.height}`);
+  leaders.style.display = '';
+  leaders.replaceChildren();
+  for (let i = 0; i < entries.length; i++) {
+    const { item, rect } = entries[i],
+      position = placed[i];
+    item.element.style.translate = `${position.dx}px ${position.dy}px`;
+    if (Math.hypot(position.dx, position.dy) < 12) continue;
+    const x = (rect.left + rect.right) / 2 - viewport.left,
+      y = (rect.top + rect.bottom) / 2 - viewport.top;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    line.setAttribute('d', `M ${x} ${y} L ${x + position.dx} ${y + position.dy}`);
+    line.setAttribute('stroke', '#688f7e');
+    line.setAttribute('stroke-width', '1.2');
+    line.setAttribute('opacity', '0.55');
+    line.setAttribute('fill', 'none');
+    leaders.append(line);
   }
 }

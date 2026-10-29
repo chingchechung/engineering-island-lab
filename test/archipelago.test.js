@@ -54,6 +54,10 @@ for (const totalUnits of [1, 12, 15]) {
 }
 test('all bridge ends rest on actual island terrain and island bodies never overlap', () => {
   const w = make(15);
+  const terrainsById = new Map([
+    ['academy', w.academy.getObjectByName('coast-and-cliffs')],
+    ...[...w.records].map(([id, record]) => [id, record.terrain]),
+  ]);
   for (const [id, r] of w.records) {
     const from = r.link.from === 'academy' ? w.academy : w.records.get(r.link.from).root;
     const terrains = [from.getObjectByName('coast-and-cliffs'), r.terrain];
@@ -64,7 +68,42 @@ test('all bridge ends rest on actual island terrain and island bodies never over
       assert.ok(hit, `${id} end ${i} lands on a bank`);
       assert.ok(end.y - hit.point.y >= 0 && end.y - hit.point.y < 0.35);
     }
+    // Check the actual curved deck corridor, including its width, against
+    // unrelated islands rather than only testing the straight layout graph.
+    for (let sample = 1; sample < 32; sample++) {
+      const t = sample / 32,
+        point = r.link.curve.getPointAt(t),
+        tangent = r.link.curve.getTangentAt(t),
+        across = new Vector3(-tangent.z, 0, tangent.x).normalize();
+      for (const offset of [-0.5, 0, 0.5]) {
+        const origin = point.clone().addScaledVector(across, offset);
+        origin.y = 30;
+        const ray = new Raycaster(origin, new Vector3(0, -1, 0));
+        for (const [otherId, terrain] of terrainsById) {
+          if (otherId === id || otherId === r.link.from) continue;
+          assert.equal(
+            ray.intersectObject(terrain, false).length,
+            0,
+            `${id} bridge deck must not pass through ${otherId}`,
+          );
+        }
+      }
+    }
   }
+  const curves = [...w.records.values()].map((r) => r.link.curve.getSpacedPoints(32));
+  const side = (a, b, p) => (b.x - a.x) * (p.z - a.z) - (b.z - a.z) * (p.x - a.x);
+  for (let i = 0; i < curves.length; i++)
+    for (let j = i + 1; j < curves.length; j++)
+      for (let a = 1; a < curves[i].length; a++)
+        for (let b = 1; b < curves[j].length; b++) {
+          const [p, q] = [curves[i][a - 1], curves[i][a]],
+            [r, s] = [curves[j][b - 1], curves[j][b]];
+          assert.equal(
+            side(p, q, r) * side(p, q, s) < 0 && side(r, s, p) * side(r, s, q) < 0,
+            false,
+            'curved bridges must not cross',
+          );
+        }
   const roots = [w.academy, ...[...w.records.values()].map((r) => r.root)];
   for (let i = 0; i < roots.length; i++)
     for (let j = i + 1; j < roots.length; j++)
@@ -116,7 +155,7 @@ test('video-only creates no NPC geometry, labels or targets on any island', () =
   assert.equal(w.npcs.length, 0);
   assert.ok(!w.labels.some((l) => ['question', 'badge'].includes(l.kind)));
   assert.ok(!w.pickables.some((o) => o.userData.action.type === 'npc'));
-  assert.equal(w.animals.length, 16);
+  assert.equal(w.animals.length, 45);
   w.dispose();
 });
 test('five visual NPCs fit every opened theme without exposing actual assignments', () => {

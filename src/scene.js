@@ -13,6 +13,11 @@ import { createThemeIsland } from './world/themes.js';
 import { createNpc } from './world/props.js';
 import { createBridge, createGate, findShore } from './world/bridge.js';
 import { batchStatic, disposeScene } from './world/optimize.js';
+import { addIslandDressing } from './world/dressing.js';
+import { createIslandFauna } from './world/fauna.js';
+import { createNpcMotion } from './world/npc-motion.js';
+import { createNpcSafety } from './world/npc-safety.js';
+import { createRadialLayout } from './world/layout.js';
 import { validateCourseConfig, validateManifest } from './config.js';
 
 export function createIslandScene(input, fixture = null, options = {}) {
@@ -24,14 +29,16 @@ export function createIslandScene(input, fixture = null, options = {}) {
     },
     config.totalUnits,
   );
+  const layout = createRadialLayout(config.totalUnits);
+  const motions = new Map();
   const open = (id) => isUnitOpen(manifest, id);
   const base = createPhaseOneScene(config, open('S01') ? fixture : null);
   const { scene, islands, academy, forest, shark } = base;
   const records = new Map();
   const labels = base.labels,
     npcs = base.npcs,
-    animals = [shark],
-    bridges = [base.bridge];
+    animals = [],
+    bridges = [];
   let pickables = base.pickables;
   const register = (object, action) =>
     object.traverse((child) => {
@@ -56,16 +63,34 @@ export function createIslandScene(input, fixture = null, options = {}) {
     root: forest,
     terrain: firstTerrain,
     house: forest.getObjectByName('lecture-cottage'),
-    preset: PRESETS[0],
+    preset: { ...PRESETS[0], ...layout.get('S01') },
     top: 0.8,
     animate: [],
     animals: [shark],
     unlocked: open('S01'),
   };
   records.set('S01', first);
+  const oldForest = forest.position.clone();
+  forest.position.set(
+    academy.position.x + first.preset.position[0],
+    0,
+    academy.position.z + first.preset.position[1],
+  );
+  const forestShift = forest.position.clone().sub(oldForest);
+  scene.children
+    .filter(
+      (o) =>
+        o.isMesh &&
+        o.geometry?.type === 'RingGeometry' &&
+        o.position.distanceTo(new Vector3(oldForest.x, -2.52, oldForest.z)) < 0.1,
+    )
+    .forEach((o) => o.position.add(forestShift));
+  base.bridge.removeFromParent();
+  disposeScene(base.bridge);
   shark.userData.animated = true;
   const core = { root: academy, terrain: academy.getObjectByName('coast-and-cliffs') };
-  for (const preset of PRESETS.slice(1, config.totalUnits)) {
+  for (const definition of PRESETS.slice(1, config.totalUnits)) {
+    const preset = { ...definition, ...layout.get(definition.id) };
     const record = { ...createThemeIsland(preset), preset, unlocked: open(preset.id), animals: [] };
     record.root.position.set(
       academy.position.x + preset.position[0],
@@ -114,34 +139,36 @@ export function createIslandScene(input, fixture = null, options = {}) {
         label(npc, `${preset.id}-${q.id}-badge`, q.id, [0, 0.68, 0.28], null, 'badge', preset.id);
       }
     }
-    for (const motion of record.creatures) {
-      record.animals.push(motion.group);
-      animals.push(motion.group);
-    }
+  }
+  for (const record of records.values()) {
+    record.dressing = addIslandDressing(record);
+    record.creatures = createIslandFauna(record);
+    record.animals = record.creatures.map((m) => m.group);
+    animals.push(...record.animals);
   }
   npcs.forEach((npc) => (npc.userData.detail = true));
+  for (const npc of npcs) {
+    const item = labels.find((l) => l.kind === 'question' && l.anchor.parent === npc);
+    if (item) label(npc, `${item.id}-hat`, item.text, [0, 1.57, 0.32], null, 'badge', item.unitId);
+  }
   // All planned links remain intact; the incoming gate alone denotes publication.
   scene.updateMatrixWorld(true);
   for (const [id, record] of records) {
     let curve;
-    if (id === 'S01') {
-      // Reuse the already accepted bridge and its exact end banks.
-      const start = new Vector3(-2.1, 1.02, -0.3),
-        end = new Vector3(2.9, 1.02, 1.25);
-      const temporary = createBridge(start, end);
-      curve = temporary.curve;
-      disposeScene(temporary.group);
-    } else {
-      const parent = record.preset.parent === 'academy' ? core : records.get(record.preset.parent);
-      const start = findShore(parent.terrain, record.root.position),
-        end = findShore(record.terrain, parent.root.position);
-      const built = createBridge(start, end);
-      curve = built.curve;
-      bridges.push(built.group);
-      scene.add(built.group);
-    }
-    record.link = { from: record.preset.parent, to: id, curve, bridge: bridges.at(-1) };
-    if (id === 'S01') record.link.bridge = base.bridge;
+    const parent = record.preset.parent === 'academy' ? core : records.get(record.preset.parent);
+    const start =
+      config.totalUnits === 1 && id === 'S01'
+        ? new Vector3(-2.1, 1.02, -0.3)
+        : findShore(parent.terrain, record.root.position);
+    const end =
+      config.totalUnits === 1 && id === 'S01'
+        ? new Vector3(2.9, 1.02, 1.25)
+        : findShore(record.terrain, parent.root.position);
+    const built = createBridge(start, end);
+    curve = built.curve;
+    bridges.push(built.group);
+    scene.add(built.group);
+    record.link = { from: record.preset.parent, to: id, curve, bridge: built.group };
     if (!record.unlocked) {
       const gate = createGate(curve);
       scene.add(gate.root);
@@ -164,6 +191,35 @@ export function createIslandScene(input, fixture = null, options = {}) {
     const lectureLabel = labels.find((l) => l.id === 'lecture');
     lectureLabel.action = { type: 'island', id: 'S01', unitId: 'S01' };
   }
+  for (const [id, record] of records) {
+    record.npcs = npcs.filter((npc) => {
+      for (let p = npc; p; p = p.parent) if (p === record.root) return true;
+      return false;
+    });
+    record.safety = createNpcSafety(record);
+    record.npcs.forEach((npc, i) => {
+      const peers = record.npcs.filter((other) => other !== npc);
+      const start = record.safety.findStart(npc.position.clone(), peers);
+      npc.position.copy(start);
+      const motion = createNpcMotion(npc, {
+        center: start,
+        radius: 1.05,
+        seed: Number(id.slice(1)) * 101 + i * 37,
+        isSafe: record.safety.isSafe,
+        heightAt: record.safety.heightAt,
+        peers: () => peers,
+      });
+      motions.set(`${id}/${npc.name.slice(4)}`, {
+        npc,
+        motion,
+        unitId: id,
+        questionId: npc.name.slice(4),
+        safety: record.safety,
+        center: start.clone(),
+        radius: 1.05,
+      });
+    });
+  }
   // One inexpensive contact-shadow instance per island keeps overview depth without global shadow maps.
   const contacts = new InstancedMesh(
     new CircleGeometry(1, 32),
@@ -184,9 +240,20 @@ export function createIslandScene(input, fixture = null, options = {}) {
   scene.add(contacts);
   scene.updateMatrixWorld(true);
   const bounds = new Box3().setFromObject(islands);
+  const framingPoints = [];
+  for (const root of [academy, ...[...records.values()].map((r) => r.root)]) {
+    const box = new Box3().setFromObject(root);
+    for (const x of [box.min.x, box.max.x])
+      for (const y of [box.min.y, box.max.y])
+        for (const z of [box.min.z, box.max.z]) framingPoints.push(new Vector3(x, y, z));
+  }
   labels
     .filter((l) => l.id === 'academy' || records.has(l.id))
-    .forEach((l) => bounds.expandByPoint(l.anchor.getWorldPosition(new Vector3())));
+    .forEach((l) => {
+      const p = l.anchor.getWorldPosition(new Vector3());
+      bounds.expandByPoint(p);
+      framingPoints.push(p);
+    });
   bridges.forEach((bridge) => bounds.expandByObject(bridge));
   const sun = scene.children.find((o) => o.isDirectionalLight);
   const lightOffset = sun.position.clone().sub(academy.position);
@@ -215,7 +282,15 @@ export function createIslandScene(input, fixture = null, options = {}) {
     records,
     labels,
     bounds,
-    bridge: base.bridge,
+    bridge: bridges[0],
+    motions,
+    framingPoints,
+    setNpcPaused(unitId, questionId, paused) {
+      const entry = motions.get(`${unitId}/${questionId}`);
+      if (!entry) return false;
+      entry.motion.setPaused(paused);
+      return true;
+    },
     manifest,
     get pickables() {
       return pickables;
@@ -261,8 +336,9 @@ export function createIslandScene(input, fixture = null, options = {}) {
           (view === 'overview' && close && record.preset.radius * 2 * pixelsPerUnit >= 240);
         if (detail) near.add(id);
         if (!optimized || detail || farTick !== lastFar) {
-          if (id === 'S01') base.update(seconds);
-          else record.creatures.forEach((motion) => motion.update(seconds));
+          record.creatures.forEach((motion) => motion.update(seconds));
+          for (const npc of record.npcs)
+            motions.get(`${id}/${npc.name.slice(4)}`).motion.update(seconds);
           record.animate.forEach((fn) => fn(seconds));
         }
         record.root.traverse((o) => {

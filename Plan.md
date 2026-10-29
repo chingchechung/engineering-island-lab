@@ -63,3 +63,18 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 實作細節與量測限制見 docs/PHASE_2_ACCEPTANCE.md。Windows 本輪美術及一般筆電效能仍待教師驗收；Phase 3／4 不在本次範圍。
 
 最終驗證：41/41 單元測試依要求連續執行三次皆通過；build、Apache 子目錄 smoke、20/20 瀏覽器驗收通過。75 NPC 的可見／拾取測試涵蓋所有 15 島。SwiftShader 實測約 4.31–6.00 FPS，15 島總覽 203 calls／236,364 triangles；本輪 Windows 硬體加速與一般筆電流暢度尚待教師確認。
+
+## Phase 2 教師驗收修訂（最新交付）
+
+沿用 feature/phase-2-full-archipelago 與 Draft PR #2，修訂基準 978be95。最新教師原文存 docs/PHASE_2_REVISION_BRIEF.md；凍結介面與檔案所有權見 docs/REVISION_INTERFACES.md。
+
+- [x] Main：單列動態課名、左下唯一導覽、去除 Demo 面板、dev-only 參數、大字標籤與避讓、六主幹一層支線放射布局、實際島體投影 fit 與橋端。
+- [x] Agent A /root/revision_dressing：實際平行交付 dressing.js 與 4 項測試，15 主題岩崖／水景／植被／道具，保留漫遊、動物及小屋區。
+- [x] Agent B /root/revision_npc：實際平行交付 npc-motion.js 與 10 項測試；安全慢速漫遊、局部關節、pause/resume，禁止世界座標烘焙。
+- [x] Agent C /root/revision_fauna：實際平行交付 fauna.js 與 6 項測試；每島三隻、15 特色物種、錯相動畫，保留原 S01 第一隻。
+- [x] Main：審查三者實際結果後整合地表／水面／建築／視線安全及 Modal 暫停；修正高度快取階梯誤差，75 人均能在安全圈內移動。
+- [x] Main：保留原 41 項並新增 27 項單元測試，24 項瀏覽器檢查、build 與 Apache smoke；保存修正前後總覽、12／15／聚焦與窄畫面截圖及軟體 GPU 數據。
+- [x] Main：更新 README、PHASE_2_ACCEPTANCE、開發契約與同一 Draft PR #2 的交付內容。
+- [ ] 教師 Windows 11 Chrome／Edge 再次驗收美術、操作與實體 GPU 效能。仍不得合併、部署或進 Phase 3。
+
+本輪 SwiftShader 軟體 GPU 1.53–4.28 FPS；12 島總覽 298 calls／260,364 triangles，15 島總覽 364 calls／335,188 triangles。不能視為一般筆電流暢度通過。完整數據、截圖與測試限制見 docs/PHASE_2_ACCEPTANCE.md。前面的 Phase 1／初版 Phase 2 數據均為歷史紀錄。

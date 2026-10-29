@@ -1,7 +1,7 @@
 import { OrthographicCamera, Vector3 } from 'three';
 
 export const MIN_ZOOM = 0.7,
-  MAX_ZOOM = 12;
+  MAX_ZOOM = 16;
 export function clampZoom(value) {
   return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, value));
 }
@@ -10,7 +10,7 @@ export function wheelZoom(current, delta) {
 }
 
 export class CameraRig {
-  constructor(bounds, aspect) {
+  constructor(bounds, aspect, framingPoints = []) {
     this.camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 180);
     this.offset = new Vector3(8, 31, 34); // 41.6° elevation, fixed throughout navigation.
     this.target = bounds.getCenter(new Vector3());
@@ -22,27 +22,45 @@ export class CameraRig {
     this.camera.position.copy(this.target).add(this.offset);
     this.camera.lookAt(this.target);
     this.camera.updateMatrixWorld();
+    this.overviewPoints = framingPoints.map((point) => point.clone());
+    this.overviewCenter = this.target.clone();
+    if (this.overviewPoints.length) {
+      const right = new Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0),
+        up = new Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
+      const xs = this.overviewPoints.map((p) => p.clone().sub(this.target).dot(right));
+      const ys = this.overviewPoints.map((p) => p.clone().sub(this.target).dot(up));
+      this.overviewCenter
+        .addScaledVector(right, (Math.min(...xs) + Math.max(...xs)) / 2)
+        .addScaledVector(up, (Math.min(...ys) + Math.max(...ys)) / 2);
+    }
     this.resize(aspect);
     this.reset(true);
   }
-  fitHeight(bounds) {
+  fitHeight(bounds, points = null) {
     const center = bounds.getCenter(new Vector3());
     const right = new Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0);
     const up = new Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
     let halfW = 0,
       halfH = 0;
-    for (const x of [bounds.min.x, bounds.max.x])
-      for (const y of [bounds.min.y, bounds.max.y])
-        for (const z of [bounds.min.z, bounds.max.z]) {
-          const corner = new Vector3(x, y, z).sub(center);
-          halfW = Math.max(halfW, Math.abs(corner.dot(right)));
-          halfH = Math.max(halfH, Math.abs(corner.dot(up)));
-        }
+    if (points?.length) {
+      for (const point of points) {
+        const relative = point.clone().sub(this.overviewCenter);
+        halfW = Math.max(halfW, Math.abs(relative.dot(right)));
+        halfH = Math.max(halfH, Math.abs(relative.dot(up)));
+      }
+    } else
+      for (const x of [bounds.min.x, bounds.max.x])
+        for (const y of [bounds.min.y, bounds.max.y])
+          for (const z of [bounds.min.z, bounds.max.z]) {
+            const corner = new Vector3(x, y, z).sub(center);
+            halfW = Math.max(halfW, Math.abs(corner.dot(right)));
+            halfH = Math.max(halfH, Math.abs(corner.dot(up)));
+          }
     return Math.max(halfH * 2, (halfW * 2) / this.aspect) * 1.2;
   }
   resize(aspect) {
     this.aspect = Math.max(0.1, aspect);
-    this.height = this.fitHeight(this.bounds);
+    this.height = this.fitHeight(this.bounds, this.overviewPoints);
     this.camera.left = (-this.height * this.aspect) / 2;
     this.camera.right = (this.height * this.aspect) / 2;
     this.camera.top = this.height / 2;
@@ -60,7 +78,7 @@ export class CameraRig {
   reset(immediate = false) {
     this.view = 'overview';
     this.focusBox = null;
-    this.goal.copy(this.bounds.getCenter(new Vector3()));
+    this.goal.copy(this.overviewCenter);
     this.zoomGoal = 1;
     if (immediate) {
       this.target.copy(this.goal);

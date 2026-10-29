@@ -1,12 +1,12 @@
 # Engineering Island Lab 開發規範
 
 - 開工先完整閱讀 `CODEX_START_HERE.md` 與 `docs/{PROJECT_SPEC,CONTENT_AND_RELEASE,PHASE_PLAN,STYLE_REFERENCES}.md`，查看四張參考圖；00 是規則柱體反例。參考圖只供研究，不可放入 public/dist。
-- Phase 0/1（含木橋）已由教師 Windows 11 驗收，PR #1 已合併。最新授權見 `docs/PHASE_2_BRIEF.md`，本次只開發 Phase 2，分支 `feature/phase-2-full-archipelago`。Draft PR 後停止，不得合併、改 main、部署、Tag/Release 或進 Phase 3。
+- Phase 0/1（含木橋）已由教師 Windows 11 驗收，PR #1 已合併。最新授權見 `docs/PHASE_2_REVISION_BRIEF.md`（初版見 `docs/PHASE_2_BRIEF.md`），本次只開發 Phase 2，分支 `feature/phase-2-full-archipelago`。Draft PR 後停止，不得合併、改 main、部署、Tag/Release 或進 Phase 3。
 - 維持 Node 24、Vite、Three.js、Vanilla JS/CSS、固定 lockfile、`base: './'`。資源相對 HTML 位置載入；只打包靜態 dist，不加入後端/登入/DB/追蹤。
 - 一套連續世界與斜上方 OrthographicCamera；自然不規則、有厚度岩坡地貌、明亮童話模型。不可用規則方柱/六角柱冒充島。無學生化身、WASD、碰撞、尋路。
 - 地貌/建物/動畫、相機、拾取、資料驗證、DOM UI 分模組；純模型及互動狀態可無 DOM/GPU 測試。島體使用程式原創幾何，不新增來源不明資產。
 - 動物純自主裝飾，不註冊拾取/hover/事件，不可讓游標、點擊或焦點改變動物動畫。
-- 正式 `public/assignments/manifest.json` 維持 `{ "schemaVersion": 1, "units": [] }`。Phase 1 Demo fixture 在 src/demo，僅透過明確 Demo 入口啟用；不可放真題、影片/Form 網址或虛構教材。
+- 正式 `public/assignments/manifest.json` 維持 `{ "schemaVersion": 1, "units": [] }`。Phase 1 Demo fixture 在 src/demo，僅透過 Vite dev 加上明確 `?demo=1` 啟用；不可放真題、影片/Form 網址或虛構教材。
 - courseTitle 非空、totalUnits 整數 1–15、assignmentMode 明確 quiz/video-only；模式不由題庫缺檔推測。video-only 不建立 NPC/Q 標籤/題目 UI，也不 fetch 題庫。
 - click/drag 使用最大位移閾值；pointer cancel/多指操作不可觸發點擊。Modal 開啟鎖定場景，Esc/關閉後回復焦點。
 - 必跑 `npm test`、`npm run build`、`npm run test:smoke`。瀏覽器另驗正交構圖、標籤、縮放/平移/聚焦/返回、Modal 隔離、無互動鯊魚及 video-only。Node 測試不能代表美術通過。
@@ -16,3 +16,7 @@
 - 共用幾何/材質、花草 InstancedMesh、靜態合批、遠景細節/動畫降頻及聚焦陰影；模式重建需釋放 GPU 資源。必須量測效能，不能用 build 成功代替一般筆電實測。
 
 - 本輪已依教師明確授權實際平行啟動 A/B/C/D 四組，模組所有權及統一契約見 docs/ISLAND_FACTORY.md。核心、測試、設定、Git/PR 由主 Agent 統一管理。所有 Subagent 已交付後才進行最終整合驗收，最後只有一個 Phase 2 Draft PR。
+
+- 最新教師修正見 docs/PHASE_2_REVISION_BRIEF.md：沿用本分支與 Draft PR #2，只修 Phase 2。八項重點為大字標籤、豐富靜態裝飾、NPC 自主漫遊／點擊暫停、單列課名工具列、左下唯一導覽、僅 dev query 測試選項、六主幹放射布局、每島三隻且代表物種不重複。
+
+- 本輪三位修訂 Subagents 已實際平行交付並停止；所有權及凍結介面見 docs/REVISION_INTERFACES.md。NPC 根與活動關節必須標記 animated，僅於局部框架合批；Modal 使用 world.setNpcPaused 接口。一般畫面不留測試面板，production 忽略全部 Demo 參數。
