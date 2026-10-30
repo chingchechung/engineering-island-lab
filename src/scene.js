@@ -53,6 +53,7 @@ export function createIslandScene(input, fixture = null, options = {}) {
     labels.push({ anchor, id, text, action, kind, unitId });
   };
   for (const item of labels) {
+    if (item.id === 'S01') item.kind = open('S01') ? 'unit' : 'locked';
     if (item.id !== 'academy') item.unitId = 'S01';
     if (item.action) item.action.unitId = item.id === 'academy' ? 'academy' : 'S01';
   }
@@ -187,8 +188,13 @@ export function createIslandScene(input, fixture = null, options = {}) {
       });
     }
   }
-  // In a locked S01 even the cottage directs to the island's locked notice.
-  if (!open('S01')) {
+  // Publication controls S01 Lecture access independently of the NPC Demo fixture.
+  if (open('S01')) {
+    // Publication, rather than the optional NPC fixture, enables real Lecture access.
+    const action = { type: 'lecture', id: 'S01', unitId: 'S01' };
+    register(first.house, action);
+    labels.find((l) => l.id === 'lecture').action = action;
+  } else {
     register(first.house, { type: 'island', id: 'S01', unitId: 'S01' });
     const lectureLabel = labels.find((l) => l.id === 'lecture');
     lectureLabel.action = { type: 'island', id: 'S01', unitId: 'S01' };

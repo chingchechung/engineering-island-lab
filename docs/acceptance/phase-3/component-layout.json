@@ -1,0 +1,551 @@
+{
+  "metrics": [
+    {
+      "width": 1366,
+      "height": 768,
+      "unitId": "S01",
+      "count": 1,
+      "dialog": {
+        "x": 373,
+        "y": 73.078125,
+        "width": 620,
+        "height": 621.828125,
+        "bottom": 694.90625,
+        "right": 993
+      },
+      "close": {
+        "x": 920,
+        "y": 98.078125,
+        "width": 44,
+        "height": 44,
+        "bottom": 142.078125,
+        "right": 964
+      },
+      "title": {
+        "x": 402,
+        "y": 158.078125,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 207.46875,
+        "right": 946
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 402,
+        "y": 395.96875,
+        "width": 544,
+        "height": 224.140625,
+        "bottom": 620.109375,
+        "right": 946
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 482,
+      "clientHeight": 482
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "unitId": "S02",
+      "count": 4,
+      "dialog": {
+        "x": 373,
+        "y": 16,
+        "width": 620,
+        "height": 736,
+        "bottom": 752,
+        "right": 993
+      },
+      "close": {
+        "x": 920,
+        "y": 41,
+        "width": 44,
+        "height": 44,
+        "bottom": 85,
+        "right": 964
+      },
+      "title": {
+        "x": 402,
+        "y": 101,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 150.390625,
+        "right": 946
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 402,
+        "y": 338.890625,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 423.578125,
+        "right": 946
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 766,
+      "clientHeight": 596
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "unitId": "S03",
+      "count": 10,
+      "dialog": {
+        "x": 373,
+        "y": 16,
+        "width": 620,
+        "height": 736,
+        "bottom": 752,
+        "right": 993
+      },
+      "close": {
+        "x": 920,
+        "y": 41,
+        "width": 44,
+        "height": 44,
+        "bottom": 85,
+        "right": 964
+      },
+      "title": {
+        "x": 402,
+        "y": 101,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 150.390625,
+        "right": 946
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 402,
+        "y": 338.890625,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 423.578125,
+        "right": 946
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 1334,
+      "clientHeight": 596
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "unitId": "S04",
+      "count": 40,
+      "dialog": {
+        "x": 373,
+        "y": 16,
+        "width": 620,
+        "height": 736,
+        "bottom": 752,
+        "right": 993
+      },
+      "close": {
+        "x": 920,
+        "y": 41,
+        "width": 44,
+        "height": 44,
+        "bottom": 85,
+        "right": 964
+      },
+      "title": {
+        "x": 402,
+        "y": 101,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 150.390625,
+        "right": 946
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 402,
+        "y": 338.890625,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 423.578125,
+        "right": 946
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 4175,
+      "clientHeight": 596
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "unitId": "S01",
+      "count": 1,
+      "dialog": {
+        "x": 650,
+        "y": 229.078125,
+        "width": 620,
+        "height": 621.828125,
+        "bottom": 850.90625,
+        "right": 1270
+      },
+      "close": {
+        "x": 1197,
+        "y": 254.078125,
+        "width": 44,
+        "height": 44,
+        "bottom": 298.078125,
+        "right": 1241
+      },
+      "title": {
+        "x": 679,
+        "y": 314.078125,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 363.46875,
+        "right": 1223
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 679,
+        "y": 551.96875,
+        "width": 544,
+        "height": 224.140625,
+        "bottom": 776.109375,
+        "right": 1223
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 482,
+      "clientHeight": 482
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "unitId": "S02",
+      "count": 4,
+      "dialog": {
+        "x": 650,
+        "y": 87.046875,
+        "width": 620,
+        "height": 905.890625,
+        "bottom": 992.9375,
+        "right": 1270
+      },
+      "close": {
+        "x": 1197,
+        "y": 112.046875,
+        "width": 44,
+        "height": 44,
+        "bottom": 156.046875,
+        "right": 1241
+      },
+      "title": {
+        "x": 679,
+        "y": 172.046875,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 221.4375,
+        "right": 1223
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 679,
+        "y": 409.9375,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 494.625,
+        "right": 1223
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 766,
+      "clientHeight": 766
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "unitId": "S03",
+      "count": 10,
+      "dialog": {
+        "x": 650,
+        "y": 16,
+        "width": 620,
+        "height": 1048,
+        "bottom": 1064,
+        "right": 1270
+      },
+      "close": {
+        "x": 1197,
+        "y": 41,
+        "width": 44,
+        "height": 44,
+        "bottom": 85,
+        "right": 1241
+      },
+      "title": {
+        "x": 679,
+        "y": 101,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 150.390625,
+        "right": 1223
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 679,
+        "y": 338.890625,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 423.578125,
+        "right": 1223
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 1334,
+      "clientHeight": 908
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "unitId": "S04",
+      "count": 40,
+      "dialog": {
+        "x": 650,
+        "y": 16,
+        "width": 620,
+        "height": 1048,
+        "bottom": 1064,
+        "right": 1270
+      },
+      "close": {
+        "x": 1197,
+        "y": 41,
+        "width": 44,
+        "height": 44,
+        "bottom": 85,
+        "right": 1241
+      },
+      "title": {
+        "x": 679,
+        "y": 101,
+        "width": 544,
+        "height": 49.390625,
+        "bottom": 150.390625,
+        "right": 1223
+      },
+      "font": 18,
+      "actionFont": 16,
+      "row": {
+        "x": 679,
+        "y": 338.890625,
+        "width": 544,
+        "height": 84.6875,
+        "bottom": 423.578125,
+        "right": 1223
+      },
+      "overflow": false,
+      "scrollWidth": 552,
+      "clientWidth": 552,
+      "scrollHeight": 4175,
+      "clientHeight": 908
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "unitId": "S01",
+      "count": 1,
+      "dialog": {
+        "x": 12,
+        "y": 85.015625,
+        "width": 366,
+        "height": 673.953125,
+        "bottom": 758.96875,
+        "right": 378
+      },
+      "close": {
+        "x": 313,
+        "y": 106.015625,
+        "width": 44,
+        "height": 44,
+        "bottom": 150.015625,
+        "right": 357
+      },
+      "title": {
+        "x": 33,
+        "y": 162.015625,
+        "width": 306,
+        "height": 44.1875,
+        "bottom": 206.203125,
+        "right": 339
+      },
+      "font": 16,
+      "actionFont": 16,
+      "row": {
+        "x": 33,
+        "y": 408.203125,
+        "width": 306,
+        "height": 279.96875,
+        "bottom": 688.171875,
+        "right": 339
+      },
+      "overflow": false,
+      "scrollWidth": 314,
+      "clientWidth": 314,
+      "scrollHeight": 546,
+      "clientHeight": 546
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "unitId": "S02",
+      "count": 4,
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "bottom": 832,
+        "right": 378
+      },
+      "close": {
+        "x": 313,
+        "y": 33,
+        "width": 44,
+        "height": 44,
+        "bottom": 77,
+        "right": 357
+      },
+      "title": {
+        "x": 33,
+        "y": 89,
+        "width": 306,
+        "height": 44.1875,
+        "bottom": 133.1875,
+        "right": 339
+      },
+      "font": 16,
+      "actionFont": 16,
+      "row": {
+        "x": 33,
+        "y": 335.1875,
+        "width": 306,
+        "height": 81.59375,
+        "bottom": 416.78125,
+        "right": 339
+      },
+      "overflow": false,
+      "scrollWidth": 314,
+      "clientWidth": 314,
+      "scrollHeight": 821,
+      "clientHeight": 692
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "unitId": "S03",
+      "count": 10,
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "bottom": 832,
+        "right": 378
+      },
+      "close": {
+        "x": 313,
+        "y": 33,
+        "width": 44,
+        "height": 44,
+        "bottom": 77,
+        "right": 357
+      },
+      "title": {
+        "x": 33,
+        "y": 89,
+        "width": 306,
+        "height": 44.1875,
+        "bottom": 133.1875,
+        "right": 339
+      },
+      "font": 16,
+      "actionFont": 16,
+      "row": {
+        "x": 33,
+        "y": 363.1875,
+        "width": 306,
+        "height": 81.59375,
+        "bottom": 444.78125,
+        "right": 339
+      },
+      "overflow": false,
+      "scrollWidth": 314,
+      "clientWidth": 314,
+      "scrollHeight": 1399,
+      "clientHeight": 692
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "unitId": "S04",
+      "count": 40,
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "bottom": 832,
+        "right": 378
+      },
+      "close": {
+        "x": 313,
+        "y": 33,
+        "width": 44,
+        "height": 44,
+        "bottom": 77,
+        "right": 357
+      },
+      "title": {
+        "x": 33,
+        "y": 89,
+        "width": 306,
+        "height": 44.1875,
+        "bottom": 133.1875,
+        "right": 339
+      },
+      "font": 16,
+      "actionFont": 16,
+      "row": {
+        "x": 33,
+        "y": 363.1875,
+        "width": 306,
+        "height": 81.59375,
+        "bottom": 444.78125,
+        "right": 339
+      },
+      "overflow": false,
+      "scrollWidth": 314,
+      "clientWidth": 314,
+      "scrollHeight": 4146,
+      "clientHeight": 692
+    }
+  ],
+  "stress": {
+    "bottom": 308,
+    "y": 12,
+    "closeBottom": 77,
+    "scrollTop": 2447,
+    "overflow": false
+  }
+}

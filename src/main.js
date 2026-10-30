@@ -7,7 +7,10 @@ import { attachInteraction } from './interaction.js';
 import { attachLabels, createDialog, layoutIslandLabels } from './ui.js';
 import { getPreset } from './world/presets.js';
 import { createDayNight } from './world/day-night.js';
+import { createLectureLoader } from './lecture-data.js';
+import { createLectureController } from './lecture-ui.js';
 import './style.css';
+import './lecture.css';
 
 const $ = (selector) => document.querySelector(selector),
   dialog = createDialog();
@@ -26,6 +29,7 @@ let renderer,
   demo,
   interaction,
   activeNpc = null;
+let lectureController;
 let animationFrame,
   lastTime = 0,
   time = 0,
@@ -54,6 +58,8 @@ function focusUnit(id) {
   $('#unit-navigation').value = id;
 }
 function showAbout(source) {
+  if (dialog.open) return;
+  resumeNpc();
   dialog.show(
     '群島操作說明',
     [
@@ -63,7 +69,7 @@ function showAbout(source) {
       demo
         ? '目前是本機視覺 Demo，開放狀態與角色數只供測試，不會發布正式課程。'
         : '島嶼是否開放依教師發布清單；未開放島仍可欣賞地貌與動物。',
-      '探索者會緩慢漫遊，點擊後停下；關閉說明視窗後繼續走動。Lecture 與題目目前只有占位說明。',
+      '探索者會緩慢漫遊，點擊後停下；關閉說明視窗後繼續走動。已開放小屋提供影片清單，影片依教師順序另開 YouTube；題目目前仍為 Demo 說明。',
       '三隻小動物會自主活動，不接受點擊、餵食或控制。',
       '外海鯨魚和島上小旅人都是背景角色；小旅人只在已開放島與橋上巡遊，沒有題目標籤，也不能互動。',
     ],
@@ -72,6 +78,7 @@ function showAbout(source) {
 }
 function onAction(action, source = renderer.domElement) {
   if (dialog.open) return;
+  resumeNpc();
   const unitId = action.unitId ?? (action.type === 'npc' ? 'S01' : action.id);
   if (unitId !== 'academy' && !world.records.has(unitId)) return;
   if (action.type === 'island') {
@@ -84,16 +91,7 @@ function onAction(action, source = renderer.domElement) {
   }
   if (action.type === 'lecture') {
     if (rig.view !== unitId) focusUnit(unitId);
-    dialog.show(
-      `${unitId} · ${getPreset(unitId).title} Lecture`,
-      [
-        'Lecture · 外觀與點擊預覽',
-        '你找到這座島的小教室了。這裡目前只驗收場景、點擊與視窗操作。',
-        '正式影片清單留待後續階段；此視窗沒有 YouTube 連結，也不會開啟外部網站。',
-      ],
-      source,
-      `${unitId} · Lecture`,
-    );
+    void lectureController.open(unitId, source);
   }
   if (action.type === 'npc' && demo && mode === 'quiz') {
     const question = fixture.questions.find((q) => q.id === action.id);
@@ -113,11 +111,14 @@ function onAction(action, source = renderer.domElement) {
     );
   }
 }
-$('#detail-dialog').addEventListener('close', () => {
+function resumeNpc() {
   if (activeNpc) {
     world.setNpcPaused(activeNpc.unitId, activeNpc.questionId, false);
     activeNpc = null;
   }
+}
+$('#detail-dialog').addEventListener('close', () => {
+  if (!dialog.open) resumeNpc();
 });
 function updateHover(action) {
   if (!renderer || !world) return;
@@ -144,7 +145,7 @@ function updateHover(action) {
           : !world.isOpen(id)
             ? `${id} 尚未開放`
             : action.type === 'lecture'
-              ? `${id} Lecture · 點擊預覽`
+              ? `${id} Lecture · 開啟影片清單`
               : `${id} · ${getPreset(id).title}`;
   }
 }
@@ -156,14 +157,26 @@ async function start() {
   demo = preview.demo;
   mode = config.assignmentMode;
   let manifest = officialManifest;
-  if (demo) {
+  let readDemo = null;
+  if (import.meta.env.DEV && demo) {
     const module = await import('./demo/fixture.js');
     const questions = [...module.demoFixture.questions];
     if (preview.questionCount === 5)
       questions.push({ id: 'Q05', name: '小嶼', color: '#739bb8', position: [3.6, 0.1] });
     fixture = { ...module.demoFixture, questions };
     manifest = module.createDemoManifest(config.totalUnits, preview.openCount);
+    readDemo = (await import('./demo/lecture-fixture.js')).readDemoLecture;
   }
+  lectureController = createLectureController({
+    dialog,
+    loader: createLectureLoader({
+      baseUrl: document.baseURI,
+      totalUnits: config.totalUnits,
+      manifest,
+      readDemo,
+    }),
+    demo,
+  });
   $('#course-title').textContent = config.courseTitle;
   $('#course-title').title = config.courseTitle;
   document.title = `Engineering Island Lab · ${config.courseTitle}`;
@@ -346,6 +359,7 @@ async function start() {
           azimuthGoal: rig.azimuthGoal,
           elevationGoal: rig.elevationGoal,
           lighting: lighting.snapshot(),
+          lecture: lectureController.snapshot(),
           framingExtent: world.framingPoints.reduce((max, point) => {
             const p = point.clone().project(rig.camera);
             return Math.max(max, Math.abs(p.x), Math.abs(p.y));

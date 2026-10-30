@@ -14,7 +14,8 @@
     "test": "node --test test/*.test.js",
     "test:smoke": "npm run build && node scripts/smoke-test.js",
     "demo": "vite --open /?demo=1",
-    "test:browser": "node scripts/browser-test.js"
+    "test:browser": "node scripts/browser-test.js",
+    "validate:content": "node scripts/validate-content.js"
   },
   "dependencies": {
     "three": "0.186.1"

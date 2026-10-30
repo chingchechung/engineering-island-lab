@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, cp, mkdtemp, mkdir, writeFile, rm, access } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { preview } from 'vite';
-import { loadCourseConfig } from '../src/config.js';
+import { loadCourseConfig, loadManifest } from '../src/config.js';
+import { createLectureLoader } from '../src/lecture-data.js';
 
 // Mount the unchanged dist/ under an Apache-style user directory.
 const mountPath = '/~wildwolf/engineering-island-lab/';
@@ -49,4 +52,54 @@ try {
   await new Promise((resolve, reject) =>
     server.httpServer.close((error) => (error ? reject(error) : resolve())),
   );
+}
+
+// A disposable copy verifies real static JSON serving without changing public/
+// or the formal dist Manifest. No real material is copied into the test fixture.
+const staging = await mkdtemp(join(tmpdir(), 'island-lecture-smoke-'));
+let contentServer;
+try {
+  await cp(new URL('../dist/', import.meta.url), staging, { recursive: true });
+  await mkdir(join(staging, 'course-videos'), { recursive: true });
+  await writeFile(
+    join(staging, 'course-config.json'),
+    JSON.stringify({
+      courseTitle: 'Lecture smoke fixture',
+      totalUnits: 1,
+      assignmentMode: 'video-only',
+    }),
+  );
+  await writeFile(
+    join(staging, 'assignments/manifest.json'),
+    JSON.stringify({
+      schemaVersion: 1,
+      units: [{ unitId: 'S01', title: 'Fixture', file: 'S01.json' }],
+    }),
+  );
+  const lecture = {
+    unitId: 'S01',
+    title: 'Fixture only',
+    videos: [
+      { title: '第二部在前', url: 'https://youtu.be/abcdefghijk?t=42' },
+      { title: '第一部在後', url: 'https://www.youtube.com/watch?v=zyxwvutsrqp' },
+    ],
+  };
+  await writeFile(join(staging, 'course-videos/S01.json'), JSON.stringify(lecture));
+  contentServer = await preview({
+    base: mountPath,
+    build: { outDir: staging },
+    preview: { host: '127.0.0.1', port: 0, open: false },
+  });
+  const baseUrl = new URL(mountPath, `http://127.0.0.1:${contentServer.httpServer.address().port}`);
+  const course = await loadCourseConfig(baseUrl),
+    manifest = await loadManifest(baseUrl, course.totalUnits);
+  const loader = createLectureLoader({ baseUrl, totalUnits: course.totalUnits, manifest });
+  assert.deepEqual(await loader.load('S01'), lecture);
+  await assert.rejects(access(join(staging, 'assignments/S01.json')), { code: 'ENOENT' });
+  console.log(
+    'Lecture smoke passed: temporary video-only fixture loads course-videos/S01.json in original order under the Apache subdirectory; formal files unchanged.',
+  );
+} finally {
+  if (contentServer) await new Promise((resolve) => contentServer.httpServer.close(resolve));
+  await rm(staging, { recursive: true, force: true });
 }

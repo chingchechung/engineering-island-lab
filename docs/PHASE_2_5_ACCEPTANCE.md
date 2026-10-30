@@ -1,5 +1,7 @@
 # Phase 2.5 — 日夜點燈與正交相機環繞驗收
 
+> 2026-10-30狀態更新：教師已確認Phase2.5 Windows實機驗收，PR #3已合併main 91f33c2。下方保留當時交付紀錄；最新Lecture功能見PHASE_3_ACCEPTANCE.md。
+
 日期：2026-10-30（台北）。基準 main `d136c9c`，PR #2 已合併，教師明確確認 Phase 2 Windows 11 Chrome／Edge 驗收。新分支 `feature/phase-2-5-day-night-camera-orbit`；本輪交付唯一新 Draft PR，停止等待教師驗收，不合併、部署、Tag／Release 或進 Phase 3。
 
 完整授權：[PHASE_2_5_BRIEF](PHASE_2_5_BRIEF.md)。參考教師提供的日夜畫面中冷海／暖窗／橋燈對比，只用程式原創幾何與材質，沒有複製網站模型或程式。

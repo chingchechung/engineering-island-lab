@@ -1,6 +1,20 @@
 # Engineering Island Lab 開發與驗收計畫
 
-## Phase 2.5（目前工作，2026-10-30）
+## Phase 3（目前工作，2026-10-30）
+
+教師已驗收Phase2.5，PR #3合併main 91f33c2，工作樹乾淨；本輪新分支feature/phase-3-lecture-publishing。完整授權PHASE_3_BRIEF，平行介面PHASE_3_INTERFACES。舊Phase的「未授權」限當時歷史。
+
+- [x] 讀完整指示／既有規格與程式、確認PR #3合併與最新main、建立分支。
+- [x] 基準112/112單元與build通過。
+- [x] 實際平行A資料／Loader／CLI20項、B UI14項及Native三尺寸component已交付停止；Main共用Dialog、S01正式metadata接線與2項整合，148/148單元通過。
+- [x] Demo／prod隔離、開放門檻、mode／race／popup／cache／錯誤／Apache通過；65/65瀏覽器，保留原56項。
+- [x] README完整教師Prompt、TEACHER_PUBLISHING、CONTENT_AND_RELEASE補操作及PHASE_3_ACCEPTANCE完成；代表截圖已由整合瀏覽器產生，最終回歸後保存。
+- [x] 五個指定命令全部通過；148/148單元、65/65瀏覽器、14張原始截圖與唯一Draft PR #4交付資料就緒。
+- [ ] 教師Windows實機驗收；Draft PR交付後停止，不合併／部署／進Phase4。
+
+不修改正式Manifest／教材格式，不開發Phase4、不合併／部署／Tag／Release。
+
+## Phase 2.5（歷史交付，已驗收且PR #3合併）
 
 教師已完成 Phase 2 Windows 驗收，PR #2 已合併；新分支從 main d136c9c 建立。完整指示 PHASE_2_5_BRIEF.md，凍結介面 PHASE_2_5_INTERFACES.md。基準91/91與build通過。
 
@@ -10,7 +24,7 @@
 - [x] 審查整合、112/112單元、build、Apache smoke、56/56瀏覽器與13張真實截圖；補窄視窗海面覆蓋與相機深度回歸。
 - [x] 完成main六個基準與Phase2.5十四個Day／Night情境：SwiftShader約2.94–5.28FPS，白天總覽成本不變、夜間加6批；無本輪實體GPU數字。
 - [x] README／驗收文件、13張原始截圖、原始量測與唯一新Draft PR #3交付資料完成。
-- [ ] 教師Windows實機驗收；Draft PR交付後停止，不合併／部署／進Phase3。
+- [x] 教師已在Phase3指示確認Windows實機驗收，PR #3合併main。
 
 本輪不修改布局／地貌、教材JSON、Manifest，不進 Phase3、不合併／部署／Tag／Release。
 
@@ -37,8 +51,8 @@ scene anchors → CSS2D accessible labels
 - [x] Phase 0：基準、完整閱讀、獨立分支與模組/驗收規範。
 - [x] Phase 1：中央學院與 S01 自然地貌、森林/瀑布、小屋與四名 NPC、自主鯊魚、正交相機/互動、明確 Demo 與 video-only、測試、README、Draft PR。
 - [x] 教師 Windows 11 Chrome/Edge 已驗收 Phase 0/1 與木橋，PR #1 已合併（教師本輪指示）。
-- [ ] Phase 2（實作完成，待教師驗收）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
-- [ ] Phase 3（未授權）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
+- [x] Phase 2（已通過教師驗收，PR #2合併）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
+- [ ] Phase 3（目前已授權，工作清單見本文件頂部）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
 - [ ] Phase 4（未授權）：舊題庫 v1/v2 相容、四/五題、解答及 Form；舊 GUI S13–S15 為獨立待辦。
 - [ ] Phase 5（未授權）：Windows/Apache 完整回歸、素材授權、正式發布準備。
 

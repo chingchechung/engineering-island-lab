@@ -73,30 +73,56 @@ export function attachLabels(labels, onAction) {
 
 export function createDialog() {
   const dialog = document.querySelector('#detail-dialog');
-  let previousFocus;
+  let previousFocus,
+    revision = 0;
   document.querySelector('#close-dialog').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
+    // A queued native close event can arrive after a newer dialog was opened.
+    if (dialog.open) return;
+    revision++;
     if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
   });
   // Native modal dialogs trap focus and make the map inert. Keep scroll inside.
   dialog.addEventListener('wheel', (event) => event.stopPropagation(), { passive: true });
+  const showContent = (
+    title,
+    node,
+    source = document.activeElement,
+    kicker = 'ISLAND FIELD NOTES',
+    { kind = '' } = {},
+  ) => {
+    revision++;
+    previousFocus = source;
+    dialog.classList.toggle('lecture-dialog', kind === 'lecture');
+    document.querySelector('#dialog-title').textContent = title;
+    document.querySelector('#dialog-kicker').textContent = kicker;
+    document.querySelector('#dialog-content').replaceChildren(node);
+    document.querySelector('.dialog-scroll').scrollTop = 0;
+    if (!dialog.open) dialog.showModal();
+    document.querySelector('#close-dialog').focus();
+    return revision;
+  };
   return {
     get open() {
       return dialog.open;
     },
+    get revision() {
+      return revision;
+    },
+    showContent,
+    replaceContent(node, expectedRevision) {
+      if (!dialog.open || revision !== expectedRevision) return false;
+      document.querySelector('#dialog-content').replaceChildren(node);
+      return true;
+    },
     show(title, paragraphs, source = document.activeElement, kicker = 'ISLAND FIELD NOTES') {
-      previousFocus = source;
-      document.querySelector('#dialog-title').textContent = title;
-      document.querySelector('#dialog-kicker').textContent = kicker;
-      const content = document.querySelector('#dialog-content');
-      content.replaceChildren();
+      const content = document.createDocumentFragment();
       for (const text of paragraphs) {
         const p = document.createElement('p');
         p.textContent = text;
         content.append(p);
       }
-      if (!dialog.open) dialog.showModal();
-      document.querySelector('#close-dialog').focus();
+      return showContent(title, content, source, kicker);
     },
   };
 }
