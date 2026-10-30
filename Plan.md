@@ -9,7 +9,7 @@
 - [x] 檢查所有交付，整合check:release／package:rc、選用隔離Apache及RC browser，不重做功能。
 - [x] npm ci、238/238 Node／82/82 browser、parity、release／package／真正Apache／RC及ZIP獨立驗證；軟體GPU六情境與16張截圖保存。
 - [x] ZIP／inventory／SHA／scan、教師操作／回復／跨課程SOP、授權／安全及Phase5驗收與代表截圖。
-- [ ] 唯一Draft PR #6後停止等教師RC驗收，不合併／Tag／Release／改可見性／部署學校。
+- [x] 已建立唯一[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)；停止等教師RC／Windows驗收，不合併／Tag／Release／改可見性／部署學校。
 
 ## Phase4 Windows EOL修正（歷史，已驗收且PR #5合併）
 

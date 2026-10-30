@@ -2,7 +2,7 @@
 
 童話微型模型風格的 Three.js 課程群島。教師已在 Windows 11 Chrome／Edge 驗收 Phase0–4（含 Windows EOL），PR #1–#5 合併至 main `046efcab`。本輪 **Phase5** 只做 Release Candidate、靜態部署驗證與教師操作文件；保留已驗收15主題島、日夜、相機、Lecture、v1/v2四／五題Quiz及背景生命。
 
-正式設定維持「數位電子學／12／quiz」，`public/assignments/manifest.json` 仍是 `{"schemaVersion":1,"units":[]}`，正式入口全部鎖定，沒有發布任何教材。本輪只交付 RC 與唯一 **Draft PR #6** 後等待教師驗收；不合併／Tag／GitHub Release／改Repo可見性／部署學校／開放課程／進下一功能階段。
+正式設定維持「數位電子學／12／quiz」，`public/assignments/manifest.json` 仍是 `{"schemaVersion":1,"units":[]}`，正式入口全部鎖定，沒有發布任何教材。本輪只交付 RC 與唯一 **[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)** 後等待教師驗收；不合併／Tag／GitHub Release／改Repo可見性／部署學校／開放課程／進下一功能階段。
 
 ## 本機開發
 

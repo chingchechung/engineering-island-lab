@@ -2,6 +2,8 @@
 
 > **最新授權 Phase5（2026-10-30）**：教師已驗收Phase0–4（含Windows EOL），PR #1–#5已合併main 046efcab。本輪依docs/PHASE_5_BRIEF.md在feature/phase-5-release-readiness做RC封裝、Apache／快取／MIME／404驗證、build掃描、教師SOP、授權與安全證據；三位Subagents所有權及介面先定於docs/PHASE_5_INTERFACES.md。以下Phase停止條件均為歷史，不限制本輪明確授權。正式course-config／空Manifest、14份pinned內容與hash、.gitattributes及已驗收功能不改，無理由不動src或依賴。只交唯一Draft PR #6與RC ZIP後停止，不Merge／Tag／GitHub Release／公開Repo／學校部署／發布真實教材／下一功能階段。
 
+> Phase5交付已完成：唯一[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)，238/238 Node、82/82 browser、RC ZIP與本機真正Apache驗證／16張截圖已保存。停止等待教師RC／Windows及實體GPU驗收；不得自行合併、Tag／Release、公開化、部署學校或下一功能階段。
+
 > Phase4 Windows EOL修正（歷史，已驗收合併）：同一分支／Draft PR #5。`test/fixtures/legacy/reference/** -text`必須保留全部14份原始bytes及既有SHA；`src/legacy-assignment/*.js text eol=lf`。不得為跨平台測試改原始內容、hash預期或驗證／判答演算法；既有CRLF重取先備份，步驟見docs/WINDOWS_EOL_CHECKOUT.md。不改Git全域設定、不合併／部署／進Phase5。
 
 > **Phase4歷史授權（2026-10-30，已驗收合併）**：教師確認Phase0–3 Windows驗收，PR #1–#4已合併main dd3f96f4。依 docs/PHASE_4_BRIEF.md 在 feature/phase-4-quiz-integration 開發舊題庫v1/v2、NPC Quiz與Form；本輪授權取代下方歷史停止條件。先凍結 docs/PHASE_4_INTERFACES.md，再實際平行三位Subagents。共享核心／Git由Main管理；正式Manifest空白、正式教材不改，Quiz只在quiz模式載入，Demo只限DEV。唯一Draft PR #5後停止，不合併／部署／Tag／Release／Phase5。
