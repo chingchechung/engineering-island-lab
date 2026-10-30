@@ -6,6 +6,8 @@
 
 ## Windows 11 Chrome／Edge 本機驗收
 
+若先前以 `core.autocrlf=true` 取得 CRLF 參考檔，更新分支後先依 [Windows 重新 checkout 步驟](docs/WINDOWS_EOL_CHECKOUT.md) 備份修改並重取指定檔案。新 clone 自動遵守 `.gitattributes`，保留全部14個 pinned SHA256；不需修改 Git 全域設定。
+
 需要 Node24、npm11+、Git、支援 WebGL2 且開啟硬體加速的瀏覽器。PowerShell：
 
 ```powershell
@@ -132,7 +134,7 @@ node scripts/legacy-parity.mjs
 
 一般網站不需Python；Windows wrapper預設python，可用 `$env:PYTHON` 指定。Playwright可用 `$env:CHROMIUM_PATH` 指定Chrome／Edge；測試外連全部攔截，不向Google提交。固定Node24、Vite8.3.5、Three0.186.1、Playwright1.64.1及lockfile，沒有新增依賴。
 
-本輪單元 **211/211**、完整瀏覽器 **76/76組**、build、三段Apache smoke、內容驗證及Legacy parity全部通過。20張真實截圖、三尺寸量測、軟體GPU FPS／Draw Calls／Triangles及命令原始結果見[Phase4驗收](docs/PHASE_4_ACCEPTANCE.md)。雲端沒有實體GPU數據，Windows本輪須教師確認。既有Three.js主包>500kB提示保留；Quiz另拆動態chunk，Video-only不下載。
+本輪單元 **212/212**、完整瀏覽器 **76/76組**、build、三段Apache smoke、內容驗證及Legacy parity全部通過。20張真實截圖、三尺寸量測、軟體GPU FPS／Draw Calls／Triangles及命令原始結果見[Phase4驗收](docs/PHASE_4_ACCEPTANCE.md)。雲端沒有實體GPU數據，Windows本輪須教師確認。既有Three.js主包>500kB提示保留；Quiz另拆動態chunk，Video-only不下載。
 
 ## 素材與停止點
 

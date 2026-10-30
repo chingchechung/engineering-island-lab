@@ -1,5 +1,7 @@
 # Phase 4 — NPC Quiz 與 Google Forms 驗收
 
+> 最新修正：Windows `core.autocrlf=true` checkout 的參考檔 bytes，詳見本文件末尾「Windows EOL 修正驗證」及 [安全重新 checkout 指令](WINDOWS_EOL_CHECKOUT.md)。原Phase4功能／截圖與效能紀錄保留，下方211項是初版基準。
+
 2026-10-30（台北）。教師已確認Phase0–3在Windows11 Chrome／Edge驗收，GitHub確認PR #4合併於main `dd3f96f4c301f0f4ecfbe1a4ffc7e360ecacd159`。本輪在 `feature/phase-4-quiz-integration` 開發，只交付唯一Draft PR #5；不合併、部署、Tag／Release或進Phase5。
 
 原始授權：[PHASE_4_BRIEF](PHASE_4_BRIEF.md)。正式course-config及Manifest完全不改，`units:[]`，沒有真實題目、答案或教材發布。
@@ -109,3 +111,15 @@ Smoke先驗原dist／正式空Manifest與相對assets，再用/tmp的dist副本�
 頁面啟動讀取一次Manifest與開放題庫，更新教材後需重載；重載會清除當頁作答。沒有頁面內熱換題庫／成績同步，載入錯誤不造題也不擅自改模式。URL驗格式不驗供應商內容／可用性；不偵測影片是否觀看或Form是否提交。公開JSON包含答案，是練習平台而非安全考試；Manifest不能保密，私稿不得放公開路徑。
 
 完成後停在唯一Draft PR #5，等待教師Windows實機驗收。
+
+## Windows EOL 修正驗證
+
+教師在Windows11指出：先前未定義`.gitattributes`，`core.autocrlf=true`會將原始LF參考檔取成CRLF，導致既有逐byte SHA256檢查失敗。`assignment-rules.js`的CRLF為`792d7191229f198305c259c526e29d3ae3be744e29e0db0054651be295ae05b2`，原始LF／預期為`ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924`。
+
+本輪只新增兩條repository換行屬性：原始reference目錄`-text`，移植legacy JS `text eol=lf`。14份原始內容、既有SHA清單、URL規則、驗證及答案判斷皆不修改，也不在斷言前轉換換行。
+
+新增`test/legacy-checkout.test.js`：在臨時repository實際以`core.autocrlf=true` clone，重現教師的CRLF hash，再確認新clone及舊checkout更新／重取的14/14 SHA完全符合原清單，兩份移植JS保持LF、普通control.txt仍CRLF、全域設定不變。既有checkout流程同時驗證tracked／untracked個人修改可從stash取回。雲端執行環境為Linux Git，這是Windows換行設定的真實Git轉換驗證，不宣稱已在雲端執行Windows原生測試。
+
+本輪完整命令全部通過：`npm test` **212/212**（原211＋1個Git checkout回歸）、`npm run build`、`npm run test:smoke`三段、`npm run test:browser` **76/76組**、`npm run validate:content`及`node scripts/legacy-parity.mjs`。新增測試只在臨時repository指定attributes／hooks，未變更全域設定；最終完整npm test再次212/212。原有364 validation／76 answer、17擴展／381 Schema parity不變。逐檔14份hash、兩種checkout結果、平台與所有命令時間見[EOL verification.json](acceptance/phase-4/eol/verification.json)，原始[單元輸出](acceptance/phase-4/eol/unit-confirmation.txt)與[瀏覽器輸出](acceptance/phase-4/eol/4.txt)保留。
+
+Windows更新分支後可能仍保留舊CRLF磁碟檔，安全指令見[WINDOWS_EOL_CHECKOUT](WINDOWS_EOL_CHECKOUT.md)：先stash備份，ff-only更新，移除並從HEAD還原指定tracked檔的index／worktree，保留stash，不調整Git全域設定。只更新同一Draft PR #5，停止等待教師重驗，不合併或進Phase5。

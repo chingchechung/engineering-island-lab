@@ -1,5 +1,7 @@
 # Quiz v1/v2 相容性與來源
 
+Windows換行修正：根目錄`.gitattributes`對原始reference使用`-text`，移植JS使用`text eol=lf`，保留Git blob及既有hash。`core.autocrlf=true`的新clone與既有CRLF重取均以新增Git回歸驗14/14；不正規化hash輸入或修改原演算法。安全更新與備份命令見[WINDOWS_EOL_CHECKOUT](WINDOWS_EOL_CHECKOUT.md)。
+
 Phase4 以已驗證的舊題庫為資料契約，僅把單元範圍擴展到 S15。沒有重新設計題目格式或把 v2 改成複選題。
 
 ## 固定來源與重用授權

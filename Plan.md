@@ -1,5 +1,14 @@
 # Engineering Island Lab 開發與驗收計畫
 
+## Phase4 Windows EOL修正（同一分支／Draft PR #5）
+
+- [x] 教師提供的CRLF hash已用Git core.autocrlf=true實際clone重現。
+- [x] 新增最小.gitattributes範圍，原始14份內容／hash及移植驗證／判答不變。
+- [x] 新clone、既有CRLF安全重取、14/14 hash、兩份移植JS LF、一般文字仍CRLF及stash備份回歸通過。
+- [x] Windows PowerShell備份、ff-only更新、指定檔案重取指令已文件化，不改全域設定。
+- [x] 212/212單元、76/76瀏覽器、build、三段smoke、內容及Legacy parity全部通過；EOL逐檔hash／命令紀錄與同一Draft PR #5交付資料完成。
+- [ ] 教師Windows原生重驗；同一Draft PR #5更新後停止，不合併／部署／進Phase5。
+
 ## Phase 4（目前授權，2026-10-30）
 
 - [x] 完整讀取教師Phase4指示、PR #4已合併dd3f96f4；建立指定分支。
