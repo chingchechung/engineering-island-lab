@@ -1,0 +1,94 @@
+/* Lecture uses the same dialog dimensions, typography and close control as NPCs. */
+.lecture-dialog #dialog-title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #faf8ee;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dfe3d0;
+}
+.lecture-dialog .lecture-content {
+  min-width: 0;
+  color: #344f45;
+}
+.lecture-dialog .lecture-description,
+.lecture-dialog .lecture-video-title {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.lecture-dialog .lecture-demo-note {
+  padding: 10px 12px;
+  border-left: 3px solid #c59a51;
+  border-radius: 5px;
+  background: #f4ecd9;
+}
+.lecture-dialog .lecture-error-detail {
+  padding: 12px 14px;
+  border-left: 3px solid #b66e55;
+  border-radius: 5px;
+  background: #f5e9df;
+  overflow-wrap: anywhere;
+}
+.lecture-dialog .lecture-video-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lecture-dialog .lecture-video-row + .lecture-video-row {
+  margin-top: 10px;
+}
+.lecture-dialog .lecture-video-link {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr) 1.1rem;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 14px;
+  border: 1px solid #b7c6ae;
+  border-radius: 12px;
+  background: #fffdf5;
+  color: #344f45;
+  font-size: var(--modal-body-size);
+  line-height: 1.55;
+  text-decoration: none;
+}
+.lecture-dialog .lecture-video-link:hover {
+  background: #edf3e2;
+  border-color: #799779;
+}
+.lecture-dialog .lecture-video-link:focus-visible {
+  outline: 3px solid #b9803d;
+  outline-offset: -3px;
+}
+.lecture-dialog .lecture-video-number {
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: #496b58;
+}
+.lecture-dialog .lecture-video-copy {
+  min-width: 0;
+}
+.lecture-dialog .lecture-video-title,
+.lecture-dialog .lecture-video-action {
+  display: block;
+}
+.lecture-dialog .lecture-video-title {
+  font-weight: 600;
+}
+.lecture-dialog .lecture-video-action {
+  margin-top: 6px;
+  font-size: max(16px, 0.88em);
+  color: #3c6653;
+}
+.lecture-dialog .lecture-play-icon {
+  color: #3d7059;
+  font-size: 0.9em;
+}
+@media (max-width: 550px) {
+  .lecture-dialog .lecture-video-link {
+    grid-template-columns: 1.8rem minmax(0, 1fr) 0.9rem;
+    gap: 8px;
+    padding: 12px;
+  }
+}

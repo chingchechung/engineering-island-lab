@@ -35,11 +35,13 @@
 - 保留NPC／Modal、模式、鎖定與所有自主生命；標牌避讓及多指取消不誤點，不改布局／地貌／正式JSON。
 - **驗收與停止**：完整測試、日夜與旋轉截圖、同條件效能及Windows步驟，只建立唯一Draft PR #3後等教師，不進Phase3／合併／部署／Tag／Release。詳見PHASE_2_5_BRIEF及PHASE_2_5_ACCEPTANCE。
 
-## Phase 3 — Lecture 清單及教材發布
+## Phase 3 — Lecture 清單及教材發布（目前授權）
 
 - 實作 `course-config.json`、`course-videos/Sxx.json` 載入與驗證、Quiz/Video-only 模式切換、Manifest 釋出清單、已開放/鎖定島狀態。
 - Lecture 小屋點擊開可滾動 Modal；任意數量影片，單一清單且順序不變，全部另開 YouTube，Modal 不自動關閉，Esc/close 可用。
 - README 編寫「Notion PDF → AI 抽取每週影片 JSON → 驗證 → 教師審核 → 上傳影片 JSON → 最後更新 Manifest」流程與 Prompt。
+- 唯讀Content Validator支援候選單元／已開放清單；video-only無題庫要求，Quiz完整性Phase4前明示未支援，不提前發布作業。正式Manifest仍空，Demo只限DEV。
+- **交付**：從main 91f33c2開新分支，唯一Draft PR #4後停止，教師驗收前不合併／部署／Tag／Release／進Phase4。
 - **驗收**：Sxx 可有 1/4/10 部影片、無英文影片、不同順序；不排序、不額外開 3D 場景；鎖定單元無互動。video-only 沒有 NPC/Quiz。
 
 ## Phase 4 — 舊題庫 v1/v2 的 NPC Quiz 整合

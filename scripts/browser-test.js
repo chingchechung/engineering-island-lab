@@ -7,6 +7,7 @@ import { checkArchipelago } from './archipelago-browser.js';
 import { checkBackgroundLife } from './life-browser.js';
 import { checkModalReadability } from './modal-browser.js';
 import { checkPhase25 } from './phase25-browser.js';
+import { checkLectures } from './lecture-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -78,10 +79,12 @@ try {
   assert.equal(await page.evaluate(() => document.activeElement.dataset.label), 'Q01');
   pass('NPC Modal isolation, pause, autonomous animals and Escape focus restoration');
   await page.locator('[data-label="lecture"]').click();
+  await page.waitForSelector('.lecture-video-link');
   assert.match(await page.locator('#dialog-title').textContent(), /Lecture/);
-  assert.equal(await page.locator('#detail-dialog a,#detail-dialog iframe').count(), 0);
+  assert.equal(await page.locator('#detail-dialog a').count(), 1);
+  assert.equal(await page.locator('#detail-dialog iframe').count(), 0);
   await page.locator('#close-dialog').click();
-  pass('Lecture placeholder has no external course link or embedded player');
+  pass('Lecture Demo has one explicit test link and no embedded player');
   const canvas = await page.locator('canvas').boundingBox(),
     before = await state();
   await page.mouse.move(canvas.x + canvas.width * 0.78, canvas.y + canvas.height * 0.58);
@@ -158,6 +161,12 @@ try {
   assert.ok(await page.locator('canvas').isVisible());
   assert.equal(await page.locator('select').count(), 1);
   pass('Apache production renders, ignores every Demo override and exposes only student controls');
+  await checkLectures(
+    page,
+    base,
+    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/`,
+    pass,
+  );
   await checkModalReadability(page, base, pass);
   await checkArchipelago(page, base, pass);
   await checkBackgroundLife(page, base, pass);

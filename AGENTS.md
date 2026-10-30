@@ -1,6 +1,9 @@
 # Engineering Island Lab 開發規範
 
-> 最新授權：Phase 2 已由教師 Windows 驗收，PR #2 已合併 main d136c9c。本輪依 `docs/PHASE_2_5_BRIEF.md` 開發 Phase 2.5，分支 `feature/phase-2-5-day-night-camera-orbit`，建立唯一新 Draft PR #3 後停止；不合併／部署／Tag／Release／進 Phase 3。此前同一 PR #2／禁止修改相機只屬歷史範圍。
+> **最新授權 Phase3（2026-10-30）**：教師已確認Phase0–2.5 Windows驗收，PR #1–#3已合併。從main 91f33c2建立`feature/phase-3-lecture-publishing`，依`docs/PHASE_3_BRIEF.md`開發Lecture Loader／Validator／共用清單與教師發布工具。實際兩位Subagents的凍結介面與所有權見`docs/PHASE_3_INTERFACES.md`。先前Phase限制是歷史紀錄，不限制本輪已授權Lecture／工具／package腳本修改。
+> 正式JSON格式及空Manifest不改，Demo只限Vite DEV且demo=1。影片只用安全外連、不嵌入／不排序／不追蹤；發布工具唯讀且標示Quiz完整性Phase4尚未支援。不得讀取／發布真實教材、開發Quiz判答、重做3D／相機或進Phase4。唯一Draft PR #4後停止，不合併／部署／Tag／Release。
+
+> Phase2.5歷史授權（已驗收、PR #3已合併）：Phase 2 已由教師 Windows 驗收，PR #2 已合併 main d136c9c。本輪依 `docs/PHASE_2_5_BRIEF.md` 開發 Phase 2.5，分支 `feature/phase-2-5-day-night-camera-orbit`，建立唯一新 Draft PR #3 後停止；不合併／部署／Tag／Release／進 Phase 3。此前同一 PR #2／禁止修改相機只屬歷史範圍。
 > 本輪實際平行兩位 Subagents，介面與檔案所有權見 `docs/PHASE_2_5_INTERFACES.md`。只旋轉正交相機，不旋轉世界；夜晚確實有窗光與橋燈，使用少量光源／合批，保留共享材質及釋放。正式 JSON／布局不變。
 
 - 開工先完整閱讀 `CODEX_START_HERE.md` 與 `docs/{PROJECT_SPEC,CONTENT_AND_RELEASE,PHASE_PLAN,STYLE_REFERENCES}.md`，查看四張參考圖；00 是規則柱體反例。參考圖只供研究，不可放入 public/dist。
