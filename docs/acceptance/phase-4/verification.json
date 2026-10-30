@@ -1,0 +1,49 @@
+{
+  "commands": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "durationSeconds": 28.806,
+      "log": "commands/1.txt"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 0.801,
+      "log": "commands/2.txt"
+    },
+    {
+      "command": "npm run test:smoke",
+      "exitCode": 0,
+      "durationSeconds": 4.407,
+      "log": "commands/3.txt"
+    },
+    {
+      "command": "npm run test:browser",
+      "exitCode": 0,
+      "durationSeconds": 1458.483,
+      "log": "commands/4.txt"
+    },
+    {
+      "command": "npm run validate:content",
+      "exitCode": 0,
+      "durationSeconds": 0.31,
+      "log": "commands/5.txt"
+    },
+    {
+      "command": "node scripts/legacy-parity.mjs",
+      "exitCode": 0,
+      "durationSeconds": 0.869,
+      "log": "commands/6.txt"
+    }
+  ],
+  "unitTests": 211,
+  "browserGroups": 76,
+  "unitConfirmation": "commands/unit-confirmation.txt",
+  "hardwareGPU": null,
+  "hardwareProbe": {
+    "driDeviceDirectory": false,
+    "nvidiaDevice": false,
+    "nvidiaSmiAvailable": false
+  }
+}

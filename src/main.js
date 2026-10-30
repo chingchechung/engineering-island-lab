@@ -23,13 +23,84 @@ let renderer,
   lighting,
   rig,
   config,
-  fixture,
   labels = [],
   mode,
   demo,
   interaction,
   activeNpc = null;
 let lectureController;
+let quizController = null,
+  quizSessions = null;
+const quizFailures = new Map();
+
+function updateQuizStatus() {
+  const host = $('#quiz-status');
+  host.replaceChildren();
+  host.hidden = mode !== 'quiz';
+  if (mode !== 'quiz' || !quizSessions || !rig) return;
+  const selected = rig.view;
+  const session = quizSessions.get(selected);
+  const failedId = quizFailures.has(selected)
+    ? selected
+    : selected === 'overview'
+      ? quizFailures.keys().next().value
+      : null;
+  if (failedId) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'quiz-load-error';
+    button.textContent = `${failedId} 作業內容載入失敗`;
+    button.addEventListener('click', () => {
+      if (dialog.open) return;
+      resumeNpc();
+      dialog.show(
+        `${failedId} · 作業內容載入失敗`,
+        [
+          quizFailures.get(failedId),
+          '此單元沒有產生題目 NPC，課程模式仍為 Quiz。Lecture 影片功能可正常使用；請通知教師檢查題庫。',
+        ],
+        button,
+      );
+    });
+    host.append(button);
+  }
+  const completed = session?.complete
+    ? session
+    : ['overview', 'academy'].includes(selected)
+      ? quizSessions
+          .snapshot()
+          .filter((item) => item.complete)
+          .map((item) => quizSessions.get(item.unitId))[0]
+      : null;
+  if (completed) {
+    const link = document.createElement('a');
+    link.className = 'quiz-completion-link';
+    link.textContent = `✓ ${completed.unitId} · Open Google Form`;
+    link.href = completed.unit.googleFormUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    host.append(link);
+  } else if (session) {
+    const text = document.createElement('span');
+    text.textContent = `${selected} · ${session.count}／${session.total} 題完成`;
+    host.append(text);
+  }
+  host.hidden = !host.childElementCount;
+}
+
+function updateQuizProgress(unitId) {
+  const session = quizSessions.get(unitId);
+  for (const item of labels) {
+    if (item.unitId !== unitId || !['question', 'badge'].includes(item.kind)) continue;
+    const id = item.id.match(/Q0[1-5]/)?.[0];
+    const passed = session.hasPassed(id);
+    item.element.classList.toggle('is-complete', passed);
+    item.element.textContent = `${id}${passed ? ' ✓' : ''}`;
+    if (item.action)
+      item.element.setAttribute('aria-label', `${unitId} · ${id}${passed ? ' 已完成' : ''}`);
+  }
+  updateQuizStatus();
+}
 let animationFrame,
   lastTime = 0,
   time = 0,
@@ -56,6 +127,7 @@ function focusUnit(id) {
     );
   }
   $('#unit-navigation').value = id;
+  updateQuizStatus();
 }
 function showAbout(source) {
   if (dialog.open) return;
@@ -69,7 +141,7 @@ function showAbout(source) {
       demo
         ? '目前是本機視覺 Demo，開放狀態與角色數只供測試，不會發布正式課程。'
         : '島嶼是否開放依教師發布清單；未開放島仍可欣賞地貌與動物。',
-      '探索者會緩慢漫遊，點擊後停下；關閉說明視窗後繼續走動。已開放小屋提供影片清單，影片依教師順序另開 YouTube；題目目前仍為 Demo 說明。',
+      '探索者會緩慢漫遊，點擊後停下；關閉內容視窗後繼續走動。小屋提供 Lecture 影片清單；Quiz 題目採單選，答錯可重試、答對解鎖解說，全單元完成後才開放 Google Form。暫時進度僅保留在目前頁面，重載後清除。',
       '三隻小動物會自主活動，不接受點擊、餵食或控制。',
       '外海鯨魚和島上小旅人都是背景角色；小旅人只在已開放島與橋上巡遊，沒有題目標籤，也不能互動。',
     ],
@@ -93,22 +165,13 @@ function onAction(action, source = renderer.domElement) {
     if (rig.view !== unitId) focusUnit(unitId);
     void lectureController.open(unitId, source);
   }
-  if (action.type === 'npc' && demo && mode === 'quiz') {
-    const question = fixture.questions.find((q) => q.id === action.id);
+  if (action.type === 'npc' && mode === 'quiz') {
+    const question = quizSessions?.get(unitId)?.question(action.id);
     if (!question) return;
     world.setNpcPaused(unitId, action.id, true);
     activeNpc = { unitId, questionId: action.id };
     if (rig.view !== unitId) focusUnit(unitId);
-    dialog.show(
-      `${question.id} · 探索者${question.name}`,
-      [
-        `你好，我是${question.name}！這裡是 ${unitId}，我是 ${question.id} 的角色原型。`,
-        '我先停下來和你說話。關閉這個視窗後，我會繼續在島上慢慢散步。',
-        '目前沒有真實題目、答案、題目影片或 Google Form。',
-      ],
-      source,
-      `${unitId} · NPC Demo`,
-    );
+    if (!quizController.open(unitId, action.id, source)) resumeNpc();
   }
 }
 function resumeNpc() {
@@ -158,14 +221,45 @@ async function start() {
   mode = config.assignmentMode;
   let manifest = officialManifest;
   let readDemo = null;
+  let readDemoQuiz = null;
   if (import.meta.env.DEV && demo) {
     const module = await import('./demo/fixture.js');
-    const questions = [...module.demoFixture.questions];
-    if (preview.questionCount === 5)
-      questions.push({ id: 'Q05', name: '小嶼', color: '#739bb8', position: [3.6, 0.1] });
-    fixture = { ...module.demoFixture, questions };
     manifest = module.createDemoManifest(config.totalUnits, preview.openCount);
     readDemo = (await import('./demo/lecture-fixture.js')).readDemoLecture;
+    if (mode === 'quiz') {
+      const rawCount = new URLSearchParams(location.search).get('questions');
+      readDemoQuiz = (await import('./demo/quiz-fixture.js')).createDemoQuizReader({
+        questionCount: ['4', '5'].includes(rawCount) ? preview.questionCount : null,
+      });
+    }
+  }
+  const assignments = new Map();
+  if (mode === 'quiz') {
+    const quiz = await import('./quiz-runtime.js');
+    quizSessions = quiz.createQuizSessions();
+    const loader = quiz.createQuizLoader({
+      baseUrl: document.baseURI,
+      totalUnits: config.totalUnits,
+      manifest,
+      readDemo: readDemoQuiz,
+    });
+    await Promise.allSettled(
+      manifest.units.map(async ({ unitId }) => {
+        try {
+          const unit = await loader.load(unitId);
+          quizSessions.activate(unit);
+          assignments.set(unitId, unit);
+        } catch (error) {
+          quizFailures.set(unitId, error.message);
+        }
+      }),
+    );
+    quizController = quiz.createQuizController({
+      dialog,
+      sessions: quizSessions,
+      onProgress: updateQuizProgress,
+      demo,
+    });
   }
   lectureController = createLectureController({
     dialog,
@@ -197,11 +291,12 @@ async function start() {
   host.append(renderer.domElement);
   labelRenderer = new CSS2DRenderer();
   labelHost.append(labelRenderer.domElement);
-  world = createIslandScene(config, demo ? fixture : null, { manifest });
+  world = createIslandScene(config, null, { manifest, assignments });
   world.optimize();
   lighting = createDayNight(world);
   labels = attachLabels(world.labels, onAction);
   rig = new CameraRig(world.bounds, host.clientWidth / host.clientHeight, world.framingPoints);
+  updateQuizStatus();
   const nav = $('#unit-navigation');
   nav.replaceChildren();
   for (const [value, text] of [
@@ -360,6 +455,9 @@ async function start() {
           elevationGoal: rig.elevationGoal,
           lighting: lighting.snapshot(),
           lecture: lectureController.snapshot(),
+          quiz: quizController?.snapshot() ?? null,
+          quizSessions: quizSessions?.snapshot() ?? [],
+          quizFailures: [...quizFailures].map(([unitId, message]) => ({ unitId, message })),
           framingExtent: world.framingPoints.reduce((max, point) => {
             const p = point.clone().project(rig.camera);
             return Math.max(max, Math.abs(p.x), Math.abs(p.y));

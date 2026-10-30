@@ -1,5 +1,7 @@
 # Engineering Island Lab 開發規範
 
+> **最新授權 Phase4（2026-10-30）**：教師確認Phase0–3 Windows驗收，PR #1–#4已合併main dd3f96f4。依 docs/PHASE_4_BRIEF.md 在 feature/phase-4-quiz-integration 開發舊題庫v1/v2、NPC Quiz與Form；本輪授權取代下方歷史停止條件。先凍結 docs/PHASE_4_INTERFACES.md，再實際平行三位Subagents。共享核心／Git由Main管理；正式Manifest空白、正式教材不改，Quiz只在quiz模式載入，Demo只限DEV。唯一Draft PR #5後停止，不合併／部署／Tag／Release／Phase5。
+
 > **最新授權 Phase3（2026-10-30）**：教師已確認Phase0–2.5 Windows驗收，PR #1–#3已合併。從main 91f33c2建立`feature/phase-3-lecture-publishing`，依`docs/PHASE_3_BRIEF.md`開發Lecture Loader／Validator／共用清單與教師發布工具。實際兩位Subagents的凍結介面與所有權見`docs/PHASE_3_INTERFACES.md`。先前Phase限制是歷史紀錄，不限制本輪已授權Lecture／工具／package腳本修改。
 > 正式JSON格式及空Manifest不改，Demo只限Vite DEV且demo=1。影片只用安全外連、不嵌入／不排序／不追蹤；發布工具唯讀且標示Quiz完整性Phase4尚未支援。不得讀取／發布真實教材、開發Quiz判答、重做3D／相機或進Phase4。唯一Draft PR #4後停止，不合併／部署／Tag／Release。
 

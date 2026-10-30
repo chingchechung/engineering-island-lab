@@ -16,13 +16,23 @@ export function validateCourseConfig(value) {
 }
 
 export function validateManifest(value, totalUnits) {
-  if (!value || value.schemaVersion !== 1 || !Array.isArray(value.units))
+  const object = (item) => item !== null && typeof item === 'object' && !Array.isArray(item);
+  const keys = (item, allowed) => Object.keys(item).every((key) => allowed.includes(key));
+  if (
+    !object(value) ||
+    !keys(value, ['schemaVersion', 'units']) ||
+    value.schemaVersion !== 1 ||
+    !Array.isArray(value.units) ||
+    value.units.length > 15
+  )
     throw new Error('發布清單格式無效');
   const seen = new Set();
   for (const unit of value.units) {
     if (
-      !unit ||
-      !/^S(0[1-9]|1[0-5])$/.test(unit.unitId) ||
+      !object(unit) ||
+      !keys(unit, ['unitId', 'title', 'file']) ||
+      typeof unit.unitId !== 'string' ||
+      !/^S(0[1-9]|1[0-5])(?![\s\S])/.test(unit.unitId) ||
       Number(unit.unitId.slice(1)) > totalUnits ||
       seen.has(unit.unitId) ||
       unit.file !== `${unit.unitId}.json` ||

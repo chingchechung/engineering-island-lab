@@ -1,0 +1,53 @@
+[
+  {
+    "width": 1366,
+    "height": 768,
+    "x": 373,
+    "y": 16,
+    "right": 993,
+    "bottom": 752,
+    "bodySize": 18,
+    "titleSize": 28,
+    "optionSize": 18,
+    "close": [
+      44,
+      44
+    ],
+    "internalScroll": true,
+    "overflow": false
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "x": 650,
+    "y": 16,
+    "right": 1270,
+    "bottom": 1064,
+    "bodySize": 18,
+    "titleSize": 28,
+    "optionSize": 18,
+    "close": [
+      44,
+      44
+    ],
+    "internalScroll": true,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "x": 12,
+    "y": 12,
+    "right": 378,
+    "bottom": 832,
+    "bodySize": 16,
+    "titleSize": 24,
+    "optionSize": 16,
+    "close": [
+      44,
+      44
+    ],
+    "internalScroll": true,
+    "overflow": false
+  }
+]

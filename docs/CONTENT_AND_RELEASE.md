@@ -1,6 +1,6 @@
 # Engineering Island Lab — 課程資料契約與發布流程 v0.1
 
-> Phase3操作補充（不更動下方已定案契約）：完整教師Prompt、Notion PDF檢查與最後發布Manifest的流程見[TEACHER_PUBLISHING](TEACHER_PUBLISHING.md)。`npm run validate:content -- --unit S04`只驗候選Lecture，預設命令驗全部已開放Lecture；video-only不要求題庫，Quiz發布完整性在Phase4之前明示尚未支援並阻擋正式非空Quiz發布。本次正式Manifest仍為空。
+> Phase4 操作：完整教師 Prompt 與先內容、最後 Manifest 的順序見 [TEACHER_PUBLISHING](TEACHER_PUBLISHING.md)，來源與精確 v1/v2 語意見 [ASSIGNMENT_COMPATIBILITY](ASSIGNMENT_COMPATIBILITY.md)。`--unit S04` 保留只驗候選 Lecture；加 `--with-quiz` 同驗候選題庫。預設完整驗證所有已開放 Lecture 及 quiz 題庫／title／URL；video-only不讀題庫。正式 Manifest 仍為空，沒有發布教材。
 
 ## 1. 目錄規劃（Vite）
 

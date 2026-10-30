@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { formatReport, parseArguments, validateContent } from '../scripts/validate-content.js';
+import { createDemoQuizReader } from '../src/demo/quiz-fixture.js';
 
 const script = fileURLToPath(new URL('../scripts/validate-content.js', import.meta.url));
 const item = (unitId) => ({ unitId, title: `Unit ${unitId}`, file: `${unitId}.json` });
@@ -35,12 +36,12 @@ async function fixture(t, { mode = 'video-only', count = 12, open = [] } = {}) {
 const cli = (root, ...args) =>
   spawnSync(process.execPath, [script, '--root', root, ...args], { encoding: 'utf8' });
 
-test('empty official Quiz manifest passes structural validation while explicitly marking Phase4 unsupported', async (t) => {
+test('empty official Quiz manifest passes but never claims published assignments are ready', async (t) => {
   const { root } = await fixture(t, { mode: 'quiz' });
   const result = cli(root);
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /Quiz 完整性：尚未支援/);
   assert.match(result.stdout, /沒有開放單元/);
+  assert.doesNotMatch(result.stdout, /正式發布內容完整/);
   assert.doesNotMatch(result.stdout, /作業已準備完成。\n結果/);
 });
 
@@ -63,7 +64,7 @@ test('video-only publication validates all open lectures in source order without
   assert.ok(result.stdout.indexOf('影片 4') < result.stdout.indexOf('影片 1'));
 });
 
-test('published Quiz remains blocked even when its Lecture and a purported quiz file exist', async (t) => {
+test('published Quiz remains blocked when its Lecture exists but the quiz file is invalid', async (t) => {
   const { root, put } = await fixture(t, { mode: 'quiz', open: ['S01'] });
   await put('course-videos/S01.json', lesson());
   await put('assignments/S01.json', { questions: [], fake: 'not verified' });
@@ -73,8 +74,8 @@ test('published Quiz remains blocked even when its Lecture and a purported quiz 
   assert.equal(report.lectures.length, 1);
   const result = cli(root);
   assert.equal(result.status, 1);
-  assert.match(result.stdout, /Phase 4/);
-  assert.match(result.stdout, /正式 Quiz 發布檢查未通過/);
+  assert.match(result.stdout, /S01.json failed validation/);
+  assert.match(result.stdout, /資料檢查未通過/);
 });
 
 test('a locked candidate may validate its Lecture but cannot change the manifest or claim publishing readiness', async (t) => {
@@ -121,7 +122,7 @@ test('candidate validation uses exact S01–S15 and the configured range, not ar
     assignmentMode: 'video-only',
   });
   assert.equal(cli(root, '--unit', 'S15').status, 1);
-  for (const id of ['../S01', 'S01.json', 'S16', 'S1', 's01']) {
+  for (const id of ['../S01', 'S01.json', 'S16', 'S1', 's01', 'S01\n']) {
     const result = cli(root, '--unit', id);
     assert.equal(result.status, 2);
     assert.match(result.stderr, /S01–S15/);
@@ -165,6 +166,7 @@ test('argument errors fail and help exits without reading content', () => {
     ['--root'],
     ['--unit', 'S01', '--unit', 'S02'],
     ['--root', 'x', '--root', 'y'],
+    ['--with-quiz', '--with-quiz'],
   ])
     assert.throws(() => parseArguments(args));
   const result = spawnSync(process.execPath, [script, '--help', '--root', '/does-not-exist'], {
@@ -184,4 +186,64 @@ test('argument errors fail and help exits without reading content', () => {
     }),
     /明確錯誤/,
   );
+});
+
+test('complete published Quiz validates v1/v2 and mixed four/five counts with normalized matching titles', async (t) => {
+  const { root, put } = await fixture(t, { mode: 'quiz', open: ['S01', 'S02'] });
+  const read = createDemoQuizReader();
+  for (const id of ['S01', 'S02']) {
+    const unit = await read(id);
+    unit.title = `  Unit ${id}  `;
+    await put(`assignments/${id}.json`, unit);
+    await put(`course-videos/${id}.json`, lesson(id));
+  }
+  const report = await validateContent({ root });
+  assert.equal(report.ok, true);
+  assert.equal(report.releaseReady, true);
+  assert.equal(report.quizCompleteness, 'checked');
+  assert.match(formatReport(report), /Quiz 已開放內容有效/);
+  assert.deepEqual(
+    report.assignments.map((unit) => [unit.schemaVersion, unit.questions.length]),
+    [
+      [1, 4],
+      [2, 5],
+    ],
+  );
+  assert.match(cli(root).stdout, /正式發布內容完整/);
+  const wrong = await read('S02');
+  await put('assignments/S02.json', wrong);
+  const mismatch = await validateContent({ root });
+  assert.equal(mismatch.ok, false);
+  assert.match(mismatch.errors.join(' '), /Manifest title/);
+});
+
+test('with-quiz candidate checks are explicit, read-only and never publish or require nonexistent Q05', async (t) => {
+  const { root, put } = await fixture(t, { mode: 'quiz', count: 15 });
+  await put('course-videos/S15.json', lesson('S15'));
+  assert.equal(cli(root, '--unit', 'S15').status, 0);
+  assert.equal(cli(root, '--unit', 'S15', '--with-quiz').status, 1);
+  const unit = await createDemoQuizReader()('S15');
+  await put('assignments/S15.json', unit);
+  const before = await readFile(join(root, 'assignments/manifest.json'), 'utf8');
+  const result = await validateContent({ root, unitId: 'S15', withQuiz: true });
+  assert.equal(result.ok, true);
+  assert.equal(result.releaseReady, false);
+  assert.equal(result.assignments[0].questions.length, 4);
+  assert.match(formatReport(result), /範圍：單一候選 Lecture 與 Quiz/);
+  assert.match(formatReport(result), /Quiz 候選有效/);
+  assert.equal(cli(root, '--unit', 'S15', '--with-quiz').status, 0);
+  assert.equal(await readFile(join(root, 'assignments/manifest.json'), 'utf8'), before);
+  unit.questions[0].explanationVideoUrl = '';
+  await put('assignments/S15.json', unit);
+  assert.equal(cli(root, '--unit', 'S15', '--with-quiz').status, 1);
+});
+
+test('video-only with-quiz flag still does not read assignment data', async (t) => {
+  const { root, put } = await fixture(t, { open: ['S01'] });
+  await put('course-videos/S01.json', lesson());
+  await put('assignments/S01.json', 'INVALID, DO NOT READ');
+  const result = await validateContent({ root, withQuiz: true });
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.assignments, []);
+  assert.equal(result.quizCompleteness, 'not-required');
 });
