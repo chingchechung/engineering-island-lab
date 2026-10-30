@@ -1,0 +1,95 @@
+
+> engineering-island-lab@0.0.0 test:browser
+> node scripts/browser-test.js
+
+4:07:55 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+PASS 1 Quiz fixture, independent animals and empty animal pick registry
+PASS 2 island label smoothly focuses S01 with readable Q labels
+PASS 3 NPC Modal isolation, pause, autonomous animals and Escape focus restoration
+PASS 4 Lecture Demo has one explicit test link and no embedded player
+PASS 5 drag pans without opening content
+PASS 6 wheel zoom and return to overview
+PASS 7 video-only removes every NPC and retains Lecture and three animals
+PASS 8 returning to Quiz restores current geometry and click targets
+PASS 9 narrow viewport navigation and bounded Modal
+PASS 10 default empty Manifest locks all curriculum and fetches no material
+PASS 11 no application JavaScript or Console errors
+PASS 12 Apache production renders, ignores every Demo override and exposes only student controls
+PASS 13 Lecture 1/4/10 videos, Chinese-only and mixed titles retain JSON order without embedding or grouping
+PASS 14 Lecture title stays fixed, Modal isolates camera, safe YouTube popup retains opener isolation and original scroll
+PASS 15 Night and Video-only share Lecture lists, without altering scene life or generating question NPCs
+PASS 16 1920px and 390px Lecture lists remain readable, scroll internally and preserve 44px targets
+PASS 17 unpublished islands remain locked; missing Lecture data shows a clear error without fallback links
+PASS 18 runtime empty lists and malformed JSON/unsafe URLs produce distinct safe states with no actionable invalid link
+PASS 19 delayed old responses cannot overwrite another unit; successful cache avoids refetch and locked units never request data
+PASS 20 30 videos and long unbroken titles wrap without sorting, truncating the list or overflowing the page
+PASS 21 Apache production loads fixed relative S15 Lecture URL from the official Manifest, ignoring every Demo override
+PASS 22 validated per-island assignments create mixed four/five NPCs with no nonexistent Q05
+PASS 23 v1 question video, wrong retry, correct explanation, safe popups and green marker preserve pause/resume
+PASS 24 3/4 stays locked, 4/4 unlocks exact Form inside Modal and compact navigation; wrong review retains passes
+PASS 25 v2 A or C individually passes a single radio choice; three-choice/four-question and five-question Forms remain independent
+PASS 26 camera/night retain independent progress; readable three-size Modals fit internally; reload clears all page-only progress
+PASS 27 Video-only loads neither Quiz modules nor assignments/UI, preserving Lecture, 45 animals and all background life
+PASS 28 official allowlist loads only published files, validates S13–S15 and maps each real question to its own NPC
+PASS 29 HTTP/JSON/contract failures show explicit Quiz errors without fake NPCs or contaminating valid islands
+PASS 30 late assignment responses from an abandoned document cannot leak Quiz state into a newer Video-only world
+PASS 31 Apache production uses exact nested assignment path and official v1 S15 data, ignoring every Demo/mode/count override
+PASS 32 mixed-count 12/15 overview, focus, Night and Video-only performance recorded; real empty Manifest remains locked
+PASS 33 1366x768 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 34 1366x768 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 35 1366x768 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 36 1920x1080 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 37 1920x1080 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 38 1920x1080 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 39 390x844 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 40 390x844 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 41 390x844 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 42 all five question Modals pause and resume; animals, whales and visitors keep moving while camera input stays isolated
+PASS 43 1366x768 long content wraps and scrolls internally with keyboard/wheel, without page or camera movement
+PASS 44 390x320 long content wraps and scrolls internally with keyboard/wheel, without page or camera movement
+PASS 45 12-unit overview, label collisions, exact unit range and isolated Demo opening
+PASS 46 single compact course header, one lower-left navigation, readable fonts and larger 3D viewport
+PASS 47 complete bridge, cute gate and locked-content blocking
+PASS 48 three independent autonomous animals per island, no animal interactions
+PASS 49 opening clears gates; five NPCs and themed Lecture targets remain usable
+PASS 50 15-unit radial world and extended islands, 45 animals and 15 distinct species
+PASS 51 video-only retains all 45 fauna and identical rich static dressing, with no NPCs
+PASS 52 moving NPC model raycast stops immediately, Modal freezes it, closing resumes bounded roaming
+PASS 53 head label follows the roaming root and clicking it uses the same pause mechanism
+METRIC {"name":"15-unit overview / 1366x768","mode":"quiz","totalUnits":15,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":45,"fps":3.191625175539385,"drawCalls":359,"triangles":347806,"geometries":310,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"15-unit S01 focus / 1366x768","mode":"quiz","totalUnits":15,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":45,"fps":4.4446419840881815,"drawCalls":125,"triangles":134510,"geometries":332,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit overview / 1366x768","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":3.9131795888552645,"drawCalls":293,"triangles":272982,"geometries":262,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit S01 focus / 1366x768","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":4.477812439362956,"drawCalls":124,"triangles":124886,"geometries":284,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit overview / 1920x1080","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":3.114326942042375,"drawCalls":293,"triangles":272982,"geometries":284,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1920,1080],"dpr":1}
+PASS 54 12/15 overview and focused FPS, draw calls, triangles and GPU identity measured
+PASS 55 narrow 15-unit labels stay readable and navigation/Modal remain usable
+PASS 56 course title is read from JSON, with no second large page heading
+PASS 57 flowing sea and four autonomous offshore whales coexist with original fauna, gates and NPCs
+PASS 58 background whale click has no interaction or camera action
+PASS 59 small unnumbered visitors visibly travel on bridges only between allowed nodes
+PASS 60 background systems do not interrupt question-NPC Modal pause and resume
+PASS 61 all-open fifteen-island Quiz supports 75 question NPCs, 45 fauna, four whales and eight visitors
+PASS 62 Video-only retains visitors, whales and all island fauna with zero question NPCs
+LIFE_METRIC {"name":"12-unit overview / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":12,"npcCount":0,"visitors":4,"whales":4,"fauna":36,"fps":3.8878233373075526,"drawCalls":293,"triangles":272982,"geometries":262,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+LIFE_METRIC {"name":"15-unit overview / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":15,"npcCount":0,"visitors":4,"whales":4,"fauna":45,"fps":3.2908448695728483,"drawCalls":359,"triangles":347806,"geometries":310,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+LIFE_METRIC {"name":"15-unit S01 focus / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":15,"npcCount":0,"visitors":4,"whales":4,"fauna":45,"fps":4.592000734720118,"drawCalls":85,"triangles":120430,"geometries":312,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+PASS 63 12/15 overview, single-island focus and both course modes have measured software/hardware renderer identity
+PASS 64 official empty Manifest produces no visitors and keeps every locked gate
+PASS 65 Day/Night transitions continuously with identical camera and unchanged publication/background motion
+PASS 66 compact Day/Night toggle supports accessible names, keyboard and complete Day restoration
+PASS 67 left drag rotates 90/180/270/360 degrees, all 12 island framing points remain visible
+PASS 68 continuous multiple revolutions, 25–70 degree elevation limits and standard-angle overview reset
+PASS 69 180-degree view preserves exact Q01–Q05 identity, pause/resume and Lecture; Modal freezes all camera inputs while life continues
+PASS 70 right drag and Shift+left drag pan without rotation, wheel remains continuous
+PASS 71 drag from a CSS2D label and back neither opens content nor leaks into camera; keyboard activation still works
+PASS 72 15-island Night world retains 45 fauna, four whales, 75 NPCs and fits every quadrant
+PASS 73 Video-only Night retains lighting and background life, no question NPCs, locked gates unchanged
+PASS 74 reload defaults to Day, single-unit focus/orbit/reset also fits
+PASS 75 390px layout retains accessible lighting control, navigation and large readable Modal
+PASS 76 real browser single-finger pan is retained and multi-touch over an NPC cannot activate it
+76 browser acceptance checks passed. Screenshots and metrics: test-results/
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

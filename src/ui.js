@@ -97,9 +97,10 @@ export function createDialog() {
     document.querySelector('#dialog-title').textContent = title;
     document.querySelector('#dialog-kicker').textContent = kicker;
     document.querySelector('#dialog-content').replaceChildren(node);
-    document.querySelector('.dialog-scroll').scrollTop = 0;
     if (!dialog.open) dialog.showModal();
     document.querySelector('#close-dialog').focus();
+    // Hidden scroll containers ignore scrollTop writes; reset after opening.
+    document.querySelector('.dialog-scroll').scrollTop = 0;
     return revision;
   };
   return {

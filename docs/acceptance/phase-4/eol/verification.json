@@ -1,0 +1,140 @@
+{
+  "platform": "linux",
+  "gitVersion": "git version 2.52.0",
+  "checkoutConfig": {
+    "core.autocrlf": true
+  },
+  "baseCommit": "da3c439d62a45c952ad09e759002f8bab0e17d76",
+  "reproducedInstructorCRLF": "792d7191229f198305c259c526e29d3ae3be744e29e0db0054651be295ae05b2",
+  "referenceFiles": [
+    {
+      "path": "test/fixtures/legacy/reference/js/assignment-rules.js",
+      "sha256": "ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/js/assignment-validator.js",
+      "sha256": "4cfe95d6d8d15ffe1b50c9c742635bac4f2360802f54c059723826fd56dc9d07",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tools/assignment_data.py",
+      "sha256": "4db0995f130a9a348727585b5875de4707127e3cec3373daf9c7faf1f112f6c5",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/contract_cases.py",
+      "sha256": "7d37b5e631b343a5140ef47276727d706986b52c40568fb70528ea45de1690bd",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/contract_cases_v2.py",
+      "sha256": "5432d55079401abbe5a294135b9b0fba752f058233f6939023d33c115c435391",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/S01.json",
+      "sha256": "4ade964b84c7b810b4f20e63676971ec74074d7035c5aa9a79fdba10fc2ddbf3",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/S02.json",
+      "sha256": "d68784eb77c6270eb71a5df08ed16d17f74c03e95962c454259763c2ebe77f0a",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/manifest.json",
+      "sha256": "47b24d9705683d9d3e7f7cf844bcf1ba07d15faf222b97e2e8027ef35b61b4c9",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/S01.json",
+      "sha256": "d3e7146591cca97ab5d34f56b2c0a3e4ceb2006348ae1d07fb0ab3cc9a3a9dbe",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/S02.json",
+      "sha256": "cbc3bd2336e2e5444f351fe5476a44423d1c8819cb3daf9d2653b6df30c3d70a",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/manifest.json",
+      "sha256": "442f998fb382eb76ad01243b5d0bbfb6a85f182b1c4e0c7b6548fbac08fac6d4",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/assignment-v1.schema.json",
+      "sha256": "7d7d1a4543267906f6e2ae35d40840b53b32e0760164721575daa67c98d89146",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/assignment-v2.schema.json",
+      "sha256": "29d60748aca1f780dcc08f2c70f05703d2bc21da13d216d97e44ede074234826",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/manifest-v1.schema.json",
+      "sha256": "4c82728bcb6158c99032eec9345089e2d97f6d90be915c0c84afe8060ec83f6b",
+      "freshCheckoutVerified": true,
+      "refreshedCheckoutVerified": true
+    }
+  ],
+  "portedJavaScriptLF": 2,
+  "ordinaryTextRemainsCRLF": true,
+  "trackedAndUntrackedStashBackupVerified": true,
+  "unitTests": 212,
+  "browserGroups": 76,
+  "commands": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "durationSeconds": 33.223,
+      "log": "1.txt"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 0.736,
+      "log": "2.txt"
+    },
+    {
+      "command": "npm run test:smoke",
+      "exitCode": 0,
+      "durationSeconds": 1.487,
+      "log": "3.txt"
+    },
+    {
+      "command": "npm run test:browser",
+      "exitCode": 0,
+      "durationSeconds": 1433.056,
+      "log": "4.txt"
+    },
+    {
+      "command": "npm run validate:content",
+      "exitCode": 0,
+      "durationSeconds": 0.308,
+      "log": "5.txt"
+    },
+    {
+      "command": "node scripts/legacy-parity.mjs",
+      "exitCode": 0,
+      "durationSeconds": 0.823,
+      "log": "6.txt"
+    }
+  ],
+  "finalUnitLog": "unit-confirmation.txt",
+  "nativeWindowsRun": false
+}

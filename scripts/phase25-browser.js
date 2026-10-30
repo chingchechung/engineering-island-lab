@@ -181,7 +181,7 @@ export async function checkPhase25(page, base, pass) {
   await page.mouse.click(modelCandidate.bodyScreen.x, modelCandidate.bodyScreen.y);
   assert.match(
     await page.locator('#dialog-title').textContent(),
-    new RegExp(`^${modelCandidate.id} ·`),
+    new RegExp(`^S01 · ${modelCandidate.id} ·`),
   );
   await close();
   const lectureModel = (await state()).lectureScreens.find((l) => l.id === 'S01').screen;
@@ -196,7 +196,7 @@ export async function checkPhase25(page, base, pass) {
   for (const id of ['Q01', 'Q02', 'Q03', 'Q04', 'Q05']) {
     const label = page.locator(`[data-label="${id}"]`);
     await label.click();
-    assert.match(await page.locator('#dialog-title').textContent(), new RegExp(`^${id} ·`));
+    assert.match(await page.locator('#dialog-title').textContent(), new RegExp(`^S01 · ${id} ·`));
     const s = await state();
     assert.equal(s.npcs.find((n) => n.unitId === 'S01' && n.id === id).paused, true);
     assert.equal(s.npcs.filter((n) => n.paused).length, 1);
@@ -267,7 +267,7 @@ export async function checkPhase25(page, base, pass) {
   assert.equal((await state()).azimuthGoal, beforeLabel.azimuthGoal);
   await page.locator('[data-label="Q01"]').focus();
   await page.keyboard.press('Enter');
-  assert.match(await page.locator('#dialog-title').textContent(), /^Q01/);
+  assert.match(await page.locator('#dialog-title').textContent(), /^S01 · Q01/);
   await page.keyboard.press('Escape');
   pass(
     'drag from a CSS2D label and back neither opens content nor leaks into camera; keyboard activation still works',
@@ -400,7 +400,7 @@ export async function checkPhase25(page, base, pass) {
     'a second finger on the canvas cancels the label gesture',
   );
   await page.locator('[data-label="Q03"]').click();
-  assert.match(await page.locator('#dialog-title').textContent(), /^Q03/);
+  assert.match(await page.locator('#dialog-title').textContent(), /^S01 · Q03/);
   await close();
   await touch.detach();
   pass('real browser single-finger pan is retained and multi-touch over an NPC cannot activate it');

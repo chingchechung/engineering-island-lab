@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import { preview } from 'vite';
 import { loadCourseConfig, loadManifest } from '../src/config.js';
 import { createLectureLoader } from '../src/lecture-data.js';
+import { createQuizLoader } from '../src/quiz-data.js';
+import { createDemoQuizReader } from '../src/demo/quiz-fixture.js';
 
 // Mount the unchanged dist/ under an Apache-style user directory.
 const mountPath = '/~wildwolf/engineering-island-lab/';
@@ -98,6 +100,26 @@ try {
   await assert.rejects(access(join(staging, 'assignments/S01.json')), { code: 'ENOENT' });
   console.log(
     'Lecture smoke passed: temporary video-only fixture loads course-videos/S01.json in original order under the Apache subdirectory; formal files unchanged.',
+  );
+  // Reuse the disposable HTTP directory for v1/v2 and S15 quiz file paths.
+  const units = await Promise.all(['S01', 'S02', 'S15'].map(createDemoQuizReader()));
+  const quizManifest = {
+    schemaVersion: 1,
+    units: units.map((unit) => ({
+      unitId: unit.unitId,
+      title: unit.title,
+      file: `${unit.unitId}.json`,
+    })),
+  };
+  for (const unit of units)
+    await writeFile(join(staging, `assignments/${unit.unitId}.json`), JSON.stringify(unit));
+  await writeFile(join(staging, 'assignments/manifest.json'), JSON.stringify(quizManifest));
+  const published = await loadManifest(baseUrl, 15);
+  const quiz = createQuizLoader({ baseUrl, totalUnits: 15, manifest: published });
+  assert.deepEqual(await Promise.all(['S01', 'S02', 'S15'].map((id) => quiz.load(id))), units);
+  await assert.rejects(quiz.load('S03'), { code: 'LOCKED' });
+  console.log(
+    'Quiz smoke passed: real static HTTP v1/v2 four/five and S15 fixed relative JSON paths, with unpublished S03 blocked before fetch; formal files unchanged.',
   );
 } finally {
   if (contentServer) await new Promise((resolve) => contentServer.httpServer.close(resolve));

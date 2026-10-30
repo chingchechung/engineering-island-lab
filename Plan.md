@@ -1,6 +1,28 @@
 # Engineering Island Lab 開發與驗收計畫
 
-## Phase 3（目前工作，2026-10-30）
+## Phase4 Windows EOL修正（同一分支／Draft PR #5）
+
+- [x] 教師提供的CRLF hash已用Git core.autocrlf=true實際clone重現。
+- [x] 新增最小.gitattributes範圍，原始14份內容／hash及移植驗證／判答不變。
+- [x] 新clone、既有CRLF安全重取、14/14 hash、兩份移植JS LF、一般文字仍CRLF及stash備份回歸通過。
+- [x] Windows PowerShell備份、ff-only更新、指定檔案重取指令已文件化，不改全域設定。
+- [x] 212/212單元、76/76瀏覽器、build、三段smoke、內容及Legacy parity全部通過；EOL逐檔hash／命令紀錄與同一Draft PR #5交付資料完成。
+- [ ] 教師Windows原生重驗；同一Draft PR #5更新後停止，不合併／部署／進Phase5。
+
+## Phase 4（目前授權，2026-10-30）
+
+- [x] 完整讀取教師Phase4指示、PR #4已合併dd3f96f4；建立指定分支。
+- [x] 固定City v1.0.0／Maze commit來源，閱讀驗證器／Schema／Loader／Session／UI與發布文件，凍結PHASE_4_INTERFACES及三位所有權。
+- [x] A 14項契約+364/76 parity、B 21項Loader/Session、C 22項UI及Native三尺寸，三者實際平行交付停止；Main審查後整合，211/211預檢通過。
+- [x] Main混合4/5題NPC、完成標示及精簡Form入口、video-only動態模組隔離、Content Validator；新增6項驗證。
+- [x] native Dialog關閉重開保留534px舊捲動已重現並修正：顯示後重設新內容至頂部，三尺寸原生helper驗0px、外連返回仍保留位置。
+- [x] 全部指定命令通過：211/211單元、76/76瀏覽器、三段Apache smoke、內容及Legacy parity；20張實際截圖、三尺寸／五情境效能與原始輸出已保存。
+- [x] README／發布／相容／驗收文件及唯一Draft PR #5交付資料完成；不進Phase5。
+- [ ] 教師本輪Windows Chrome／Edge實機驗收；Draft PR交付後停止，不合併／部署／Tag／Release。
+
+正式public JSON保持原狀，不讀取／產生真實教材、不修改舊GUI或來源Repository。
+
+## Phase 3（歷史交付，教師已驗收且PR #4合併）
 
 教師已驗收Phase2.5，PR #3合併main 91f33c2，工作樹乾淨；本輪新分支feature/phase-3-lecture-publishing。完整授權PHASE_3_BRIEF，平行介面PHASE_3_INTERFACES。舊Phase的「未授權」限當時歷史。
 
@@ -10,7 +32,7 @@
 - [x] Demo／prod隔離、開放門檻、mode／race／popup／cache／錯誤／Apache通過；65/65瀏覽器，保留原56項。
 - [x] README完整教師Prompt、TEACHER_PUBLISHING、CONTENT_AND_RELEASE補操作及PHASE_3_ACCEPTANCE完成；代表截圖已由整合瀏覽器產生，最終回歸後保存。
 - [x] 五個指定命令全部通過；148/148單元、65/65瀏覽器、14張原始截圖與唯一Draft PR #4交付資料就緒。
-- [ ] 教師Windows實機驗收；Draft PR交付後停止，不合併／部署／進Phase4。
+- [x] 教師已確認Windows實機驗收，PR #4合併dd3f96f4；新授權Phase4另列頂部。
 
 不修改正式Manifest／教材格式，不開發Phase4、不合併／部署／Tag／Release。
 
@@ -52,8 +74,8 @@ scene anchors → CSS2D accessible labels
 - [x] Phase 1：中央學院與 S01 自然地貌、森林/瀑布、小屋與四名 NPC、自主鯊魚、正交相機/互動、明確 Demo 與 video-only、測試、README、Draft PR。
 - [x] 教師 Windows 11 Chrome/Edge 已驗收 Phase 0/1 與木橋，PR #1 已合併（教師本輪指示）。
 - [x] Phase 2（已通過教師驗收，PR #2合併）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
-- [ ] Phase 3（目前已授權，工作清單見本文件頂部）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
-- [ ] Phase 4（未授權）：舊題庫 v1/v2 相容、四/五題、解答及 Form；舊 GUI S13–S15 為獨立待辦。
+- [x] Phase 3（教師已驗收且PR #4合併）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
+- [x] Phase 4（本輪已完成開發，教師驗收待辦見頂部）：舊題庫 v1/v2 相容、四/五題、解答及 Form；舊 GUI S13–S15 為獨立待辦。
 - [ ] Phase 5（未授權）：Windows/Apache 完整回歸、素材授權、正式發布準備。
 
 ## Phase 1 驗證門檻

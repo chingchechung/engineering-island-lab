@@ -1,0 +1,5 @@
+# Immutable original reference files: retain exact Git blob bytes
+test/fixtures/legacy/reference/** -text
+
+# Ported legacy JavaScript: enforce LF line endings
+src/legacy-assignment/*.js text eol=lf

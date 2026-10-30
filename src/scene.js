@@ -21,6 +21,7 @@ import { createRadialLayout } from './world/layout.js';
 import { createSeaLife } from './world/sea-life.js';
 import { createVisitors } from './world/visitors.js';
 import { validateCourseConfig, validateManifest } from './config.js';
+import { questionAppearances } from './world/npc-presets.js';
 
 export function createIslandScene(input, fixture = null, options = {}) {
   const config = validateCourseConfig(input);
@@ -34,7 +35,19 @@ export function createIslandScene(input, fixture = null, options = {}) {
   const layout = createRadialLayout(config.totalUnits);
   const motions = new Map();
   const open = (id) => isUnitOpen(manifest, id);
-  const base = createPhaseOneScene(config, open('S01') ? fixture : null);
+  // Runtime passes only validated assignments. The old fixture argument remains
+  // available for the original geometry tests, never as a fallback for load errors.
+  const questionsFor = (id) =>
+    options.assignments
+      ? options.assignments.has(id)
+        ? questionAppearances(options.assignments.get(id))
+        : []
+      : (fixture?.questions ?? []);
+  const firstQuestions = questionsFor('S01');
+  const base = createPhaseOneScene(
+    config,
+    open('S01') && firstQuestions.length ? { questions: firstQuestions } : null,
+  );
   const { scene, islands, academy, forest, shark } = base;
   const records = new Map();
   const labels = base.labels,
@@ -126,8 +139,8 @@ export function createIslandScene(input, fixture = null, options = {}) {
       'lecture',
       preset.id,
     );
-    if (fixture && record.unlocked && config.assignmentMode === 'quiz') {
-      const questions = fixture.questions;
+    if (record.unlocked && config.assignmentMode === 'quiz') {
+      const questions = questionsFor(preset.id);
       for (let i = 0; i < questions.length; i++) {
         const q = questions[i],
           npc = createNpc(q);

@@ -8,6 +8,7 @@ import { checkBackgroundLife } from './life-browser.js';
 import { checkModalReadability } from './modal-browser.js';
 import { checkPhase25 } from './phase25-browser.js';
 import { checkLectures } from './lecture-browser.js';
+import { checkQuiz } from './quiz-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -162,6 +163,12 @@ try {
   assert.equal(await page.locator('select').count(), 1);
   pass('Apache production renders, ignores every Demo override and exposes only student controls');
   await checkLectures(
+    page,
+    base,
+    `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/`,
+    pass,
+  );
+  await checkQuiz(
     page,
     base,
     `http://127.0.0.1:${production.httpServer.address().port}/~wildwolf/engineering-island-lab/`,

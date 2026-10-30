@@ -1,5 +1,7 @@
 # Phase 3 — Lecture與每週教材發布驗收
 
+> 歷史交付已完成教師 Windows 11 Chrome／Edge 驗收；PR #4 已合併至 main dd3f96f4（教師 Phase4 指示及 GitHub 狀態確認）。以下為當時測試記錄，Phase4 新結果另見 PHASE_4_ACCEPTANCE。
+
 日期：2026-10-30（台北）。教師已確認Phase0–2.5 Windows 11 Chrome／Edge驗收，PR #1–#3合併；本輪從main `91f33c2`建立`feature/phase-3-lecture-publishing`，只交付唯一Draft PR #4後停止，不進Phase4、不合併／部署／Tag／Release。
 
 授權原文：[PHASE_3_BRIEF](PHASE_3_BRIEF.md)。資料格式沿用[CONTENT_AND_RELEASE](CONTENT_AND_RELEASE.md)，沒有新增必填欄位、語言分類、islands.json或第二套發布清單。正式public JSON與空Manifest完全不變，沒有讀取或發布真實課程影片。

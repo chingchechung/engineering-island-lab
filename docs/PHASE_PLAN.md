@@ -35,7 +35,7 @@
 - 保留NPC／Modal、模式、鎖定與所有自主生命；標牌避讓及多指取消不誤點，不改布局／地貌／正式JSON。
 - **驗收與停止**：完整測試、日夜與旋轉截圖、同條件效能及Windows步驟，只建立唯一Draft PR #3後等教師，不進Phase3／合併／部署／Tag／Release。詳見PHASE_2_5_BRIEF及PHASE_2_5_ACCEPTANCE。
 
-## Phase 3 — Lecture 清單及教材發布（目前授權）
+## Phase 3 — Lecture 清單及教材發布（已驗收且PR #4合併）
 
 - 實作 `course-config.json`、`course-videos/Sxx.json` 載入與驗證、Quiz/Video-only 模式切換、Manifest 釋出清單、已開放/鎖定島狀態。
 - Lecture 小屋點擊開可滾動 Modal；任意數量影片，單一清單且順序不變，全部另開 YouTube，Modal 不自動關閉，Esc/close 可用。
@@ -44,12 +44,14 @@
 - **交付**：從main 91f33c2開新分支，唯一Draft PR #4後停止，教師驗收前不合併／部署／Tag／Release／進Phase4。
 - **驗收**：Sxx 可有 1/4/10 部影片、無英文影片、不同順序；不排序、不額外開 3D 場景；鎖定單元無互動。video-only 沒有 NPC/Quiz。
 
-## Phase 4 — 舊題庫 v1/v2 的 NPC Quiz 整合
+## Phase 4 — 舊題庫 v1/v2 的 NPC Quiz 整合（目前授權）
 
 - 參照已驗證的 Maze/City Lab JSON 規則與測試，透過明確單獨的 JS 模組實作/移植（不重寫成另套不相容規則）。
 - Q01–Q04/可選 Q05 NPC，點選後題目影片、選項、錯答重試、答對後解答影片及 Google Forms 門檻。
 - 單元上限擴充至 15，但應將既有 Python 出題 GUI 的 S13–S15 支援記錄為獨立待辦，不碰另一個 repo，除非教師授權。
 - **驗收**：schema v1 / v2、4/5 題、v2 任一接受答案判對、完整 Form 解鎖；video-only 連 Quiz 程式 UI 都不出現，未載入題庫絕不偷切模式。
+
+- 本輪依 PHASE_4_BRIEF／PHASE_4_INTERFACES 實際三位Subagents，混合4/5題、各島記憶體進度、Quiz runtime隔離、唯讀完整內容驗證。唯一Draft PR #5後停止，不進Phase5。
 
 ## Phase 5 — 完整回歸、封裝及正式發布準備
 

@@ -1,0 +1,10 @@
+{
+  "validationCases": 364,
+  "answerSelections": 76,
+  "changedErrors": 11,
+  "changedValidity": 0,
+  "extendedCases": 17,
+  "schemaCases": 381,
+  "pythonParity": "passed",
+  "schemaParity": "passed"
+}
