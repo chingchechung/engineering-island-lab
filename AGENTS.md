@@ -1,5 +1,8 @@
 # Engineering Island Lab 開發規範
 
+> 最新授權：Phase 2 已由教師 Windows 驗收，PR #2 已合併 main d136c9c。本輪依 `docs/PHASE_2_5_BRIEF.md` 開發 Phase 2.5，分支 `feature/phase-2-5-day-night-camera-orbit`，建立唯一新 Draft PR #3 後停止；不合併／部署／Tag／Release／進 Phase 3。此前同一 PR #2／禁止修改相機只屬歷史範圍。
+> 本輪實際平行兩位 Subagents，介面與檔案所有權見 `docs/PHASE_2_5_INTERFACES.md`。只旋轉正交相機，不旋轉世界；夜晚確實有窗光與橋燈，使用少量光源／合批，保留共享材質及釋放。正式 JSON／布局不變。
+
 - 開工先完整閱讀 `CODEX_START_HERE.md` 與 `docs/{PROJECT_SPEC,CONTENT_AND_RELEASE,PHASE_PLAN,STYLE_REFERENCES}.md`，查看四張參考圖；00 是規則柱體反例。參考圖只供研究，不可放入 public/dist。
 - Phase 0/1（含木橋）已由教師 Windows 11 驗收，PR #1 已合併。最新授權見 `docs/PHASE_2_LIFE_BRIEF.md`（前版見 `docs/PHASE_2_REVISION_BRIEF.md`、初版見 `docs/PHASE_2_BRIEF.md`），本次只開發 Phase 2，分支 `feature/phase-2-full-archipelago`。Draft PR 後停止，不得合併、改 main、部署、Tag/Release 或進 Phase 3。
 - 維持 Node 24、Vite、Three.js、Vanilla JS/CSS、固定 lockfile、`base: './'`。資源相對 HTML 位置載入；只打包靜態 dist，不加入後端/登入/DB/追蹤。

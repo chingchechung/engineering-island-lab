@@ -6,6 +6,7 @@ import { createServer, preview } from 'vite';
 import { checkArchipelago } from './archipelago-browser.js';
 import { checkBackgroundLife } from './life-browser.js';
 import { checkModalReadability } from './modal-browser.js';
+import { checkPhase25 } from './phase25-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -84,11 +85,11 @@ try {
   const canvas = await page.locator('canvas').boundingBox(),
     before = await state();
   await page.mouse.move(canvas.x + canvas.width * 0.78, canvas.y + canvas.height * 0.58);
-  await page.mouse.down();
+  await page.mouse.down({ button: 'right' });
   await page.mouse.move(canvas.x + canvas.width * 0.78 + 80, canvas.y + canvas.height * 0.58 + 30, {
     steps: 8,
   });
-  await page.mouse.up();
+  await page.mouse.up({ button: 'right' });
   await page.waitForTimeout(600);
   const dragged = await state();
   assert.notDeepEqual(dragged.target, before.target);
@@ -160,6 +161,7 @@ try {
   await checkModalReadability(page, base, pass);
   await checkArchipelago(page, base, pass);
   await checkBackgroundLife(page, base, pass);
+  await checkPhase25(page, base, pass);
   assert.deepEqual(errors, []);
   console.log(`${checks} browser acceptance checks passed. Screenshots and metrics: test-results/`);
 } finally {

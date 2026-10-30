@@ -1,5 +1,7 @@
 # Phase 2 — 場景整合與教師驗收
 
+> 2026-10-30 狀態更新：教師已確認完整 Phase 2 Windows 驗收，PR #2 已合併 main d136c9c。下方為當時交付紀錄；最新新增日夜／環繞功能見 [Phase2.5驗收](PHASE_2_5_ACCEPTANCE.md)。
+
 > 最新 Modal 修訂（基準1854e26）：共用視窗改為桌面28／18px、最大620px，窄畫面內文16px與44px關閉鈕。新版三尺寸截圖、兩次91/91單元及44/44瀏覽器結果見 [Modal驗收報告](PHASE_2_MODAL_ACCEPTANCE.md)。以下保留生命感修訂的場景與效能紀錄。
 
 日期：2026-10-29（台北）。沿用 `feature/phase-2-full-archipelago` 與 [Draft PR #2](https://github.com/chingchechung/engineering-island-lab/pull/2)，本輪基準 `25f2c62`，main 仍為 `3e5c883`。

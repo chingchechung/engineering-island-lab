@@ -1,5 +1,7 @@
 # Phase 2 — 共用 Modal 字體與版面驗收
 
+> 2026-10-30：教師已完成 Phase 2 實機驗收，PR #2 已合併。本文件保留當時修訂紀錄；後續日夜／環繞開發另見 [Phase2.5](PHASE_2_5_ACCEPTANCE.md)，共用大字閱讀版面延用。
+
 日期：2026-10-29（台北）。沿用 `feature/phase-2-full-archipelago` 及 [Draft PR #2](https://github.com/chingchechung/engineering-island-lab/pull/2)，本輪基準 `1854e26`。只改善 Lecture、Q01–Q05 與操作說明共用的原生 dialog，不修改 3D 場景、相機、群島布局、課程 JSON、Manifest 或 NPC 暫停／恢復程式。仍等待教師 Windows 11 重新確認閱讀品質，不進 Phase 3。
 
 ## 字體、對比與尺寸

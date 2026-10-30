@@ -27,6 +27,14 @@
 - 依距離/焦點控制遠景 vs 聚焦細節和動畫負擔；海面、花草、風車等動態精修。視覺上不是同一個島換顏色。
 - **驗收**：12 島與 15 島都能縮小看全圖；放大島嶼可辨識不同地貌，未開放島不可讀取課程內容；Windows 瀏覽器效能可接受。
 
+## Phase 2.5 — 日夜點燈與相機環繞（教師追加授權）
+
+- Phase2已經Windows驗收、PR #2合併後，從main建立feature/phase-2-5-day-night-camera-orbit。
+- Day精確保留，Night冷色環境搭配學院／全部小屋窗光、六主橋燈及15主題發光。1.25秒切換，有限實例化批次，僅一個聚焦無陰影局部光，無Bloom。
+- 單一正交相機水平連轉、仰角25–70度；左拖旋轉、右拖／Shift左拖平移；逐角度fit、窄畫面深度及海面覆蓋、聚焦保方向、返回標準總覽。
+- 保留NPC／Modal、模式、鎖定與所有自主生命；標牌避讓及多指取消不誤點，不改布局／地貌／正式JSON。
+- **驗收與停止**：完整測試、日夜與旋轉截圖、同條件效能及Windows步驟，只建立唯一Draft PR #3後等教師，不進Phase3／合併／部署／Tag／Release。詳見PHASE_2_5_BRIEF及PHASE_2_5_ACCEPTANCE。
+
 ## Phase 3 — Lecture 清單及教材發布
 
 - 實作 `course-config.json`、`course-videos/Sxx.json` 載入與驗證、Quiz/Video-only 模式切換、Manifest 釋出清單、已開放/鎖定島狀態。

@@ -32,10 +32,13 @@ export function attachInteraction(options) {
   const { canvas, getPickables, blocked, onAction, onHover } = options;
   const ray = new Raycaster(),
     pointer = new Vector2(),
-    plane = new Plane(new Vector3(0, 1, 0), 0);
+    plane = new Plane(new Vector3(0, 1, 0), 0),
+    pointers = new Set();
   const gesture = new PointerGesture();
   let active = null,
-    last = null;
+    last = null,
+    operation = null,
+    primaryButton = false;
   const setRay = (x, y) => {
     const rect = canvas.getBoundingClientRect();
     pointer.set(((x - rect.left) / rect.width) * 2 - 1, (-(y - rect.top) / rect.height) * 2 + 1);
@@ -49,57 +52,79 @@ export function attachInteraction(options) {
     setRay(x, y);
     return ray.intersectObjects(getPickables(), false)[0]?.object.userData.action ?? null;
   };
+  const clear = () => {
+    const pointerId = active;
+    active = null;
+    last = null;
+    operation = null;
+    canvas.classList.remove('dragging');
+    if (pointerId !== null && canvas.hasPointerCapture(pointerId))
+      canvas.releasePointerCapture(pointerId);
+  };
+  const cancel = () => {
+    // Capture is released below, so an eventual pointerup may land outside the
+    // canvas. Do not retain stale IDs; isPrimary rejects remaining touch fingers.
+    pointers.clear();
+    gesture.cancel();
+    clear();
+    onHover(null);
+  };
   canvas.addEventListener('pointerdown', (event) => {
-    if (active !== null) {
-      gesture.cancel();
-      last = null;
+    if (![0, 2].includes(event.button)) return;
+    pointers.add(event.pointerId);
+    if (blocked() || active !== null || pointers.size > 1 || event.isPrimary === false) {
+      cancel();
       return;
     }
-    if (blocked() || ![0, 2].includes(event.button)) return;
     active = event.pointerId;
+    primaryButton = event.button === 0;
+    operation =
+      event.button === 2 || event.shiftKey || event.pointerType === 'touch' ? 'pan' : 'orbit';
     gesture.begin(event.clientX, event.clientY);
     last = { x: event.clientX, y: event.clientY };
     canvas.setPointerCapture(event.pointerId);
-    if (event.button === 2) gesture.maxDistance = DRAG_THRESHOLD;
   });
   canvas.addEventListener('pointermove', (event) => {
     if (blocked()) {
-      gesture.cancel();
+      cancel();
       return;
     }
     if (active === event.pointerId && last && gesture.origin) {
       gesture.move(event.clientX, event.clientY);
       if (gesture.dragging) {
-        const before = groundPoint(last.x, last.y),
-          after = groundPoint(event.clientX, event.clientY);
-        if (before && after) options.rig.pan(before.sub(after));
+        if (operation === 'orbit')
+          options.rig.orbit(event.clientX - last.x, event.clientY - last.y);
+        else {
+          const before = groundPoint(last.x, last.y),
+            after = groundPoint(event.clientX, event.clientY);
+          if (before && after) options.rig.pan(before.sub(after));
+        }
         canvas.classList.add('dragging');
         onHover(null);
       }
       last = { x: event.clientX, y: event.clientY };
-    } else if (active === null) onHover(pick(event.clientX, event.clientY));
+    } else if (active === null && pointers.size === 0) onHover(pick(event.clientX, event.clientY));
   });
   canvas.addEventListener('pointerup', (event) => {
+    pointers.delete(event.pointerId);
     if (event.pointerId !== active) return;
-    const click = gesture.end(event.clientX, event.clientY);
-    active = null;
-    last = null;
-    canvas.classList.remove('dragging');
-    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+    const click = gesture.end(event.clientX, event.clientY) && primaryButton;
+    clear();
     if (click && !blocked()) {
       const action = pick(event.clientX, event.clientY);
       if (action) onAction(action);
     }
   });
-  const cancel = () => {
-    gesture.cancel();
-    active = null;
-    last = null;
-    canvas.classList.remove('dragging');
-    onHover(null);
-  };
-  canvas.addEventListener('pointercancel', cancel);
-  canvas.addEventListener('lostpointercapture', cancel);
+  canvas.addEventListener('pointercancel', (event) => {
+    pointers.delete(event.pointerId);
+    if (event.pointerId === active) cancel();
+  });
+  canvas.addEventListener('lostpointercapture', (event) => {
+    if (event.pointerId === active) {
+      pointers.delete(event.pointerId);
+      cancel();
+    }
+  });
   canvas.addEventListener('pointerleave', () => {
     if (active === null) onHover(null);
   });
@@ -116,5 +141,5 @@ export function attachInteraction(options) {
     },
     { passive: false },
   );
-  return { pick };
+  return { pick, cancel };
 }

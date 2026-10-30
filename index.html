@@ -12,6 +12,15 @@
     <header class="site-header">
       <h1 id="course-title">載入課程…</h1>
       <span id="course-summary" class="course-summary"></span>
+      <button
+        id="day-night"
+        class="icon-button"
+        aria-label="切換至夜晚模式"
+        aria-pressed="false"
+        title="切換至夜晚模式"
+      >
+        <span aria-hidden="true">☀</span>
+      </button>
       <button id="about" class="icon-button" aria-label="操作說明">?</button>
     </header>
     <main>
@@ -47,7 +56,7 @@
     </main>
     <footer class="site-footer">
       <span id="view-status" aria-live="polite">群島總覽</span
-      ><span class="footer-help">滾輪縮放 · 拖曳平移 · 點擊探索</span>
+      ><span class="footer-help">左拖旋轉 · 右拖平移 · 滾輪縮放</span>
     </footer>
     <dialog id="detail-dialog" aria-labelledby="dialog-title">
       <div class="dialog-heading">
@@ -58,7 +67,7 @@
         <h2 id="dialog-title"></h2>
         <div id="dialog-content"></div>
       </div>
-      <div class="dialog-footer">Engineering Island Lab · Phase 2 視覺原型</div>
+      <div class="dialog-footer">Engineering Island Lab · Phase 2.5 視覺原型</div>
     </dialog>
     <script type="module" src="./src/main.js"></script>
   </body>

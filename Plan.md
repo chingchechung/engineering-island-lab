@@ -1,5 +1,19 @@
 # Engineering Island Lab 開發與驗收計畫
 
+## Phase 2.5（目前工作，2026-10-30）
+
+教師已完成 Phase 2 Windows 驗收，PR #2 已合併；新分支從 main d136c9c 建立。完整指示 PHASE_2_5_BRIEF.md，凍結介面 PHASE_2_5_INTERFACES.md。基準91/91與build通過。
+
+- [x] 閱讀規範、程式與參考；確認合併及乾淨基準、建立獨立分支。
+- [x] 實際平行 Agent A 光照／燈飾／海色8項測試、Agent B CameraRig／手勢12項測試，已交付停止；Main審查多指取消復原。
+- [x] Main 右上日夜UI、Modal隔離、共享核心接線與標牌拖曳隔離；112/112單元、build及Apache smoke通過。
+- [x] 審查整合、112/112單元、build、Apache smoke、56/56瀏覽器與13張真實截圖；補窄視窗海面覆蓋與相機深度回歸。
+- [x] 完成main六個基準與Phase2.5十四個Day／Night情境：SwiftShader約2.94–5.28FPS，白天總覽成本不變、夜間加6批；無本輪實體GPU數字。
+- [x] README／驗收文件、13張原始截圖、原始量測與唯一新Draft PR #3交付資料完成。
+- [ ] 教師Windows實機驗收；Draft PR交付後停止，不合併／部署／進Phase3。
+
+本輪不修改布局／地貌、教材JSON、Manifest，不進 Phase3、不合併／部署／Tag／Release。
+
 ## 已讀規格與基準（2026-10-29）
 
 已完整閱讀啟動文件及四份 docs，查看 00–03 全部圖片：自然海岸與岩坡、多層瀑布、少量童話學院塔樓；排除規則柱體。參考圖不作網站素材。
@@ -87,7 +101,7 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 - [x] Agent B /root/visitors：實際平行交付 visitors.js／visitor-navigation.js 與 11 項測試；地表分區與開放橋網、跨島返回、會車排隊、NPC 避讓，與題目 NPC 完全分離。
 - [x] Main：依 LIFE_INTERFACES 審查後整合；91/91 單元、build、Apache smoke、32/32 瀏覽器通過；原 75 題目 NPC／取景／每島三動物／鎖定／模式均保留，完成八情境效能與代表截圖。
 - [x] 更新同一 Draft PR #2 的交付文件與代表截圖；不另建 PR。
-- [ ] 教師對本輪新增生命感再次驗收；等待期間不得合併／部署／進 Phase 3。
+- [x] 教師已於Phase2.5指示確認完整Phase2驗收，PR #2已合併；無部署授權。
 
 本輪軟體 GPU：SwiftShader／Chromium154／DPR1，2.94–4.29FPS；12／15 島總覽293／359calls、272,982／347,806triangles。四鯨魚背景最多19draws／8,866triangles；原45個海泡沫合成1批，抵銷新增呼叫。地表分區及六個不安全既有橋口不納入背景通行，詳見驗收報告；仍可在多座安全連通的開放島間巡遊返回。沒有新的實體GPU數值，新增項目待教師Windows再驗收。
 
@@ -99,6 +113,6 @@ Phase 1 完成後只交 Draft PR，不部署、不合併、不進 Phase 2。教�
 - [x] 手機內文16px、響應寬度、44px關閉鈕；可聚焦內容區支援鍵盤捲動，避免整頁溢出。
 - [x] 三尺寸的Lecture／Q05／操作說明截圖，Q01–Q05暫停／恢復，背景動畫、相機隔離與長內容回歸。
 - [x] npm test → build → npm run test，smoke與完整瀏覽器回歸；更新文件及同一Draft PR #2。
-- [ ] 教師再次驗收；不合併、不部署、不進Phase3。
+- [x] 教師已確認Phase2驗收，PR #2已合併；本輪新授權另列Phase2.5。
 
 最終結果：兩次各91/91通過；build／Apache smoke及44/44完整瀏覽器通過。新增12項Modal檢查，保存九個一般視窗與兩個長內容量測，內文對比8.39:1。執行時只修改style.css及共用內容區HTML屬性，3D／相機／JSON均未更動。
