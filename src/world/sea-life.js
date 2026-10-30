@@ -103,12 +103,14 @@ function patrol(bounds) {
 function water(bounds, seaY) {
   const surface = new Mesh(
     new PlaneGeometry(
-      Math.max(260, bounds.max.x - bounds.min.x + 140),
-      Math.max(260, bounds.max.z - bounds.min.z + 140),
+      // Portrait overview and low-elevation orbit see much farther across the
+      // water. Keep its finite edge beyond those rays; still just two triangles.
+      Math.max(2048, bounds.max.x - bounds.min.x + 140),
+      Math.max(2048, bounds.max.z - bounds.min.z + 140),
     ),
     new ShaderMaterial({
       toneMapped: false,
-      uniforms: { time: { value: 0 }, mint: { value: new Color('#d0e7dc') } },
+      uniforms: { time: { value: 0 }, mint: { value: new Color('#d0e7dc') }, night: { value: 0 } },
       vertexShader: `
         varying vec2 waterPosition;
         void main() {
@@ -120,6 +122,7 @@ function water(bounds, seaY) {
       fragmentShader: `
         uniform float time;
         uniform vec3 mint;
+        uniform float night;
         varying vec2 waterPosition;
         void main() {
           vec2 p = waterPosition;
@@ -128,7 +131,9 @@ function water(bounds, seaY) {
                        * sin(p.y * 0.28 - p.x * 0.13 + time * 0.19);
           float gleam = pow(max(0.0, sin(p.x * 0.79 + p.y * 0.47 - time * 0.48)), 16.0)
                       * max(0.0, sin(p.y * 0.19 - p.x * 0.04 + time * 0.12));
-          gl_FragColor = vec4(mint + swell * 0.009 + ripple * 0.009 + gleam * 0.04, 1.0);
+          vec3 flowing = mint + (swell * 0.009 + ripple * 0.009) * (1.0 - night * 0.7);
+          vec3 moonGleam = mix(vec3(0.04), vec3(0.025, 0.038, 0.055), night);
+          gl_FragColor = vec4(flowing + gleam * moonGleam, 1.0);
           #include <tonemapping_fragment>
           #include <colorspace_fragment>
         }
@@ -285,7 +290,19 @@ export function createSeaLife({ bounds, seaY = -2.55, count = 4 }) {
     : null;
   if (wakes) root.add(wakes, spray);
   decorative(root);
-  let time = 0;
+  let time = 0,
+    nightBlend = 0;
+  const daySea = new Color('#d0e7dc'),
+    nightSea = new Color('#264e67');
+  const dayWake = mint.clone(),
+    nightWake = new Color('#6a9cb4');
+  function setNightBlend(value) {
+    if (!Number.isFinite(value)) throw new Error('Night blend must be finite');
+    nightBlend = Math.max(0, Math.min(1, value));
+    surface.material.uniforms.night.value = nightBlend;
+    surface.material.uniforms.mint.value.copy(daySea).lerp(nightSea, nightBlend);
+    mint.copy(dayWake).lerp(nightWake, nightBlend);
+  }
 
   function update(seconds) {
     if (!Number.isFinite(seconds))
@@ -387,5 +404,12 @@ export function createSeaLife({ bounds, seaY = -2.55, count = 4 }) {
     };
   }
   update(0);
-  return { root, whales: motions.map((motion) => motion.root), update, snapshot, route };
+  return {
+    root,
+    whales: motions.map((motion) => motion.root),
+    update,
+    setNightBlend,
+    snapshot,
+    route,
+  };
 }

@@ -6,6 +6,7 @@ import { CameraRig } from './camera.js';
 import { attachInteraction } from './interaction.js';
 import { attachLabels, createDialog, layoutIslandLabels } from './ui.js';
 import { getPreset } from './world/presets.js';
+import { createDayNight } from './world/day-night.js';
 import './style.css';
 
 const $ = (selector) => document.querySelector(selector),
@@ -16,12 +17,14 @@ const host = $('#canvas-host'),
 let renderer,
   labelRenderer,
   world,
+  lighting,
   rig,
   config,
   fixture,
   labels = [],
   mode,
   demo,
+  interaction,
   activeNpc = null;
 let animationFrame,
   lastTime = 0,
@@ -55,7 +58,8 @@ function showAbout(source) {
     '群島操作說明',
     [
       `本課程「${config.courseTitle}」包含 ${config.totalUnits} 座單元島。用左下導覽或點島嶼標牌前往各島。`,
-      '滾輪縮放、拖曳平移，按「返回總覽」看完整群島。橋樑與動物是純環境裝飾。',
+      '左鍵單擊探索；左鍵拖曳旋轉，右鍵或 Shift＋左鍵拖曳平移，滾輪縮放。觸控單指仍可平移。按「返回總覽」恢復標準方向與完整群島。',
+      '右上太陽／月亮按鈕切換白天與夜晚，約 1.25 秒平滑點燈；重新整理回到白天。內容視窗開啟時，相機暫停操作。',
       demo
         ? '目前是本機視覺 Demo，開放狀態與角色數只供測試，不會發布正式課程。'
         : '島嶼是否開放依教師發布清單；未開放島仍可欣賞地貌與動物。',
@@ -173,12 +177,16 @@ async function start() {
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.domElement.tabIndex = 0;
-  renderer.domElement.setAttribute('aria-label', '課程群島，可拖曳平移及滾輪縮放');
+  renderer.domElement.setAttribute(
+    'aria-label',
+    '課程群島，左拖旋轉、右拖或 Shift 左拖平移、滾輪縮放',
+  );
   host.append(renderer.domElement);
   labelRenderer = new CSS2DRenderer();
   labelHost.append(labelRenderer.domElement);
   world = createIslandScene(config, demo ? fixture : null, { manifest });
   world.optimize();
+  lighting = createDayNight(world);
   labels = attachLabels(world.labels, onAction);
   rig = new CameraRig(world.bounds, host.clientWidth / host.clientHeight, world.framingPoints);
   const nav = $('#unit-navigation');
@@ -196,7 +204,7 @@ async function start() {
     option.textContent = text;
     nav.append(option);
   }
-  attachInteraction({
+  interaction = attachInteraction({
     canvas: renderer.domElement,
     rig,
     getPickables: () => world.visiblePickables(),
@@ -204,6 +212,18 @@ async function start() {
     onAction,
     onHover: updateHover,
   });
+  // The second finger may land on a CSS label rather than the canvas. Cancel
+  // both gesture owners before either surface receives that non-primary touch.
+  document.addEventListener(
+    'pointerdown',
+    (event) => {
+      if (event.pointerType === 'touch' && event.isPrimary === false) {
+        interaction.cancel();
+        labels.forEach((item) => item.cancelGesture());
+      }
+    },
+    { capture: true },
+  );
   const resize = () => {
     const w = host.clientWidth,
       h = host.clientHeight;
@@ -230,6 +250,17 @@ async function start() {
     if (!dialog.open) rig.zoom(140);
   });
   $('#about').addEventListener('click', (event) => showAbout(event.currentTarget));
+  $('#day-night').addEventListener('click', () => {
+    if (dialog.open) return;
+    const night = $('#day-night').getAttribute('aria-pressed') !== 'true';
+    lighting.setMode(night ? 'night' : 'day');
+    document.documentElement.dataset.time = night ? 'night' : 'day';
+    const button = $('#day-night');
+    button.setAttribute('aria-pressed', String(night));
+    button.setAttribute('aria-label', night ? '切換至白天模式' : '切換至夜晚模式');
+    button.title = button.getAttribute('aria-label');
+    button.firstElementChild.textContent = night ? '☾' : '☀';
+  });
   renderer.domElement.addEventListener('keydown', (event) => {
     if (dialog.open) return;
     if (['Home', 'Escape'].includes(event.key)) {
@@ -251,7 +282,8 @@ async function start() {
       fpsStart = timestamp;
       frames = 0;
     }
-    rig.update(elapsed);
+    if (!dialog.open) rig.update(elapsed);
+    lighting.update(elapsed, { view: rig.view });
     const pixels = (host.clientHeight * rig.camera.zoom) / rig.height,
       near = world.update(time, rig.view, pixels, rig.target);
     for (const item of labels) {
@@ -262,13 +294,8 @@ async function start() {
     }
     renderer.render(world.scene, rig.camera);
     labelRenderer.render(world.scene, rig.camera);
-    if (rig.view === 'overview' && (++labelFrame % 4 === 0 || labelFrame < 4))
-      layoutIslandLabels(labels, host.getBoundingClientRect());
-    if (rig.view !== 'overview') {
-      for (const item of labels) item.element.style.translate = '';
-      const leaders = $('#label-lines');
-      if (leaders) leaders.style.display = 'none';
-    }
+    if (++labelFrame % 4 === 0 || labelFrame < 4 || rig.view !== 'overview')
+      layoutIslandLabels(labels, host.getBoundingClientRect(), rig.view);
     $('#zoom-level').textContent = `${Math.round(rig.camera.zoom * 100)}%`;
     animationFrame = requestAnimationFrame(draw);
   }
@@ -284,12 +311,17 @@ async function start() {
   window.addEventListener('pagehide', (event) => {
     if (!event.persisted) {
       cancelAnimationFrame(animationFrame);
+      lighting.dispose();
       world.dispose();
       renderer.dispose();
     }
   });
   if (import.meta.env.DEV)
     window.__islandLab = {
+      inspectPick: (x, y) => {
+        const action = Number.isFinite(x) && Number.isFinite(y) ? interaction.pick(x, y) : null;
+        return action ? { ...action } : null;
+      },
       snapshot: () => {
         const rect = renderer.domElement.getBoundingClientRect();
         const project = (point) => {
@@ -309,6 +341,19 @@ async function start() {
           goalZoom: rig.zoomGoal,
           target: rig.target.toArray(),
           goalTarget: rig.goal.toArray(),
+          azimuth: rig.azimuth,
+          elevation: rig.elevation,
+          azimuthGoal: rig.azimuthGoal,
+          elevationGoal: rig.elevationGoal,
+          lighting: lighting.snapshot(),
+          framingExtent: world.framingPoints.reduce((max, point) => {
+            const p = point.clone().project(rig.camera);
+            return Math.max(max, Math.abs(p.x), Math.abs(p.y));
+          }, 0),
+          lectureScreens: [...world.records].map(([id, r]) => ({
+            id,
+            screen: project(r.house.localToWorld(new Vector3(0.5, 0.9, 0.85))),
+          })),
           totalUnits: config.totalUnits,
           npcCount: world.npcs.length,
           shark: world.shark.position.toArray(),
@@ -362,6 +407,7 @@ async function start() {
             position: entry.npc.position.toArray(),
             ...entry.motion.getState(),
             screen: project(entry.npc.localToWorld(new Vector3(0, 0.85, 0.24))),
+            bodyScreen: project(entry.npc.localToWorld(new Vector3(0, 0.65, 0))),
             headScreen: project(entry.npc.localToWorld(new Vector3(0, 2, 0))),
           })),
           landmarks: [...world.records].map(([id, r]) => {

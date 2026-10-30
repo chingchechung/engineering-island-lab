@@ -196,11 +196,20 @@ export async function checkArchipelago(page, base, pass) {
   pass(
     'moving NPC model raycast stops immediately, Modal freezes it, closing resumes bounded roaming',
   );
-  const moved = (await state()).npcs.find((n) => n.unitId === key.unitId && n.id === key.id),
-    head = await page.locator(`[data-label="${key.id}"]`).boundingBox();
+  const { moved, head, offset } = await page.evaluate((key) => {
+    const element = document.querySelector(`[data-label="${key.id}"]`);
+    const rect = element.getBoundingClientRect();
+    return {
+      moved: window.__islandLab
+        .snapshot()
+        .npcs.find((n) => n.unitId === key.unitId && n.id === key.id),
+      head: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+      offset: element.style.translate.split(' ').map((value) => parseFloat(value) || 0),
+    };
+  }, key);
   assert.ok(
-    Math.abs(head.x + head.width / 2 - moved.headScreen.x) < 3 &&
-      Math.abs(head.y + head.height / 2 - moved.headScreen.y) < 3,
+    Math.abs(head.x + head.width / 2 - (offset[0] || 0) - moved.headScreen.x) < 3 &&
+      Math.abs(head.y + head.height / 2 - (offset[1] || 0) - moved.headScreen.y) < 3,
   );
   await page.mouse.click(head.x + head.width / 2, head.y + head.height / 2);
   await page.waitForFunction(() => window.__islandLab.snapshot().dialog);

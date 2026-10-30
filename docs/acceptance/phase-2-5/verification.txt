@@ -1,0 +1,272 @@
+Node v24.19.0 / npm 11.9.0; base main d136c9c; final Phase2.5
+
+$ npm test
+
+> engineering-island-lab@0.0.0 test
+> node --test test/*.test.js
+
+✔ 1 units have a connected bridge tree, exact unit range, distinct scenery and one academy (365.870173ms)
+✔ overview fits every 1-unit world at aspect 3.02 (205.52084ms)
+✔ overview fits every 1-unit world at aspect 2.51 (177.247247ms)
+✔ overview fits every 1-unit world at aspect 0.85 (167.666353ms)
+✔ 12 units have a connected bridge tree, exact unit range, distinct scenery and one academy (728.099433ms)
+✔ overview fits every 12-unit world at aspect 3.02 (643.94196ms)
+✔ overview fits every 12-unit world at aspect 2.51 (679.832224ms)
+✔ overview fits every 12-unit world at aspect 0.85 (677.385695ms)
+✔ 15 units have a connected bridge tree, exact unit range, distinct scenery and one academy (675.290402ms)
+✔ overview fits every 15-unit world at aspect 3.02 (658.48359ms)
+✔ overview fits every 15-unit world at aspect 2.51 (754.478585ms)
+✔ overview fits every 15-unit world at aspect 0.85 (648.624115ms)
+✔ all bridge ends rest on actual island terrain and island bodies never overlap (744.101357ms)
+✔ 15 themes change terrain geometry and landmarks, rather than recolouring one mesh (683.330143ms)
+✔ Manifest controls fences and content targets independently of fixture presence (2760.567497ms)
+✔ video-only creates no NPC geometry, labels or targets on any island (2139.785347ms)
+✔ five visual NPCs fit every opened theme without exposing actual assignments (2043.5255ms)
+✔ static batching preserves actions and all animals remain autonomous and unpickable (1567.609232ms)
+✔ all 75 NPC bodies remain visible and pickable after batching and themed animal animation (3018.280605ms)
+✔ course and empty manifest remain relative to / (40.538481ms)
+✔ course and empty manifest remain relative to /~wildwolf/engineering-island-lab/ (9.019719ms)
+✔ course and empty manifest remain relative to /~wildwolf/engineering-island-lab/index.html (7.833801ms)
+✔ HTTP and malformed JSON failures are explicit (6.043931ms)
+✔ course configuration accepts 1, 12, 15 units and both explicit modes (0.399005ms)
+✔ course configuration rejects invalid ranges, missing title and implicit modes (0.64034ms)
+✔ manifest validates unit range, duplicates and exact safe filenames (0.398423ms)
+✔ Demo requires explicit opt-in AND a development build (0.162293ms)
+✔ sea covers desktop and portrait corner rays throughout low-elevation orbit and maximum zoom-out (2016.044605ms)
+✔ day/night transitions are reversible, smooth and retain exact daylight without mutating original materials (298.083698ms)
+✔ 15 cottages, academy and all six trunk bridges have independent fixtures in six instanced batches (1456.43607ms)
+✔ fixtures leave framing, picking, locked status, geometry and all background life independent (1439.989194ms)
+✔ only one unshadowed porch light is active in focused night views, with none in overview or day (1411.102575ms)
+✔ sea night color preserves the same absolute whale route, phase and spouting schedule (274.609402ms)
+✔ video-only retains the same cottage and environment lights without generating any NPC (1447.362156ms)
+✔ fireflies move only in the decorative layer and reverse mid-transition without a discontinuity (243.460071ms)
+✔ owned fixture GPU resources dispose exactly once and are detached before world disposal (294.026723ms)
+✔ every theme has rich static dressing with finite local geometry and instanced plants (2495.75424ms)
+✔ new surface props preserve cottage, complete NPC roam discs, animal clearings and bridge height (2097.748108ms)
+✔ dressing is identical between quiz and video-only and adding it twice is idempotent (4082.838964ms)
+✔ static batching keeps decorative bounds, materials, instances and has no interactive geometry (1525.895878ms)
+✔ all fifteen islands contain exactly three independent animals of unique representative species (335.455765ms)
+✔ S01 retains the accepted shark object, all original geometry and its exact autonomous pose (84.730626ms)
+✔ animal paths and appendage poses depend only on absolute time and never move in synchrony (170.733972ms)
+✔ world and animal batching retain independent roots and articulated motion (269.469874ms)
+✔ all forty-five bodies remain exposed to the fixed camera through sampled autonomous poses (506.956687ms)
+✔ replacing source fauna releases dedicated geometry while retaining shared primitives (79.784986ms)
+✔ 12 quiz: background life stays separate from fauna, framing and picking (3888.456235ms)
+✔ 15 quiz: background life stays separate from fauna, framing and picking (4466.681534ms)
+✔ 15 video-only: background life stays separate from fauna, framing and picking (3170.070642ms)
+✔ empty official Manifest keeps all gates and zero visitors, with four background whales (490.144145ms)
+✔ a paused question NPC stays frozen while visitors, whales and all island fauna animate (1415.912324ms)
+✔ NPC motion preserves the model, action identity and attached labels through batching (27.432292ms)
+✔ seeded roaming uses idle, turn and walk phases inside its finite circle at a clickable speed (19.513534ms)
+✔ near and 6 Hz overview updates produce the same deterministic route (1.900806ms)
+✔ safe endpoints across an unsafe wall are rejected and every travelled segment stays on land (8.554819ms)
+✔ walking rechecks safety immediately when the environment changes (2.145584ms)
+✔ ground height follows gentle slopes while missing ground and a cliff remain impassable (6.93415ms)
+✔ pause immediately freezes root and limbs and resume never replays Modal time (2.36905ms)
+✔ independent NPCs keep their personal space when their roaming circles overlap (18.375211ms)
+✔ late first frames and long tab gaps cannot teleport or replay an entire route (1.068314ms)
+✔ a blocked or zero-radius clearing stays put and returned state is a detached snapshot (2.635557ms)
+✔ 1 islands retain every framing corner through full orbit and both elevation limits (454.233242ms)
+✔ 12 islands retain every framing corner through full orbit and both elevation limits (1378.090039ms)
+✔ 15 islands retain every framing corner through full orbit and both elevation limits (1475.098512ms)
+✔ focus preserves orbit direction, manual zoom survives refit, reset takes nearest standard direction (1.213263ms)
+✔ portrait depth refit keeps every sea corner ray in front and preserves exact screen XY (7.264561ms)
+✔ orbit ignores non-finite inputs and bounded ground pan keeps the camera above sea (0.450467ms)
+✔ left single click picks its exact NPC; maximum excursion prevents drag-return clicks (2.913289ms)
+✔ right and Shift-left drag pan; a single touch preserves pan and never orbits (1.355894ms)
+✔ multiple touches cancel the whole gesture until release, then a fresh single click works (1.113332ms)
+✔ multi-touch cancellation recovers when releases happen outside the canvas (0.817823ms)
+✔ cancel, capture loss and Modal blocking suppress all camera gestures and selection (1.153252ms)
+✔ wheel pixel/line/page units remain normalized and context menu is suppressed (0.517515ms)
+✔ all 1–15 radial prefixes connect through at most two unit hops and six trunks (2.326842ms)
+✔ actual 1-island framing stays visible at desktop and phone aspects (340.406213ms)
+✔ actual 12-island framing stays visible at desktop and phone aspects (1369.659964ms)
+✔ actual 15-island framing stays visible at desktop and phone aspects (1700.58892ms)
+✔ readable labels pack without clipping or overlaps at desktop and narrow sizes (2.9582ms)
+✔ only explicit development Demo accepts bounded count, open, question and mode queries (1.175123ms)
+✔ 75 roaming NPCs keep safe ground, separation, local bounds and movable roots after batching (4528.399871ms)
+✔ one lit world contains two islands, four labelled NPCs and a lecture target (500.602563ms)
+✔ video-only builds no NPC, Q label, or NPC pick target; landscape and shark persist (273.036877ms)
+✔ without Demo fixture no curriculum targets or question labels are generated (70.054526ms)
+✔ decorative shark and every descendant are absent from the entire pick registry (295.00025ms)
+✔ terrain has deterministic irregular coastline and substantial sloping depth (3.916302ms)
+✔ orthographic overview fits BOTH islands including title anchors at aspect 2.50 (290.845912ms)
+✔ orthographic overview fits BOTH islands including title anchors at aspect 0.79 (372.428096ms)
+✔ orthographic overview fits BOTH islands including title anchors at aspect 2.19 (306.769897ms)
+✔ focus, continuous zoom, pan and overview operate on the same camera (301.499999ms)
+✔ zoom clamps extreme inputs and wheel increments remain continuous (0.548483ms)
+✔ click/drag tracks maximum excursion, exact threshold, cancellation and orphan releases (0.421128ms)
+✔ scenic bridge lands on both banks and curves above the water inside the overview (252.710395ms)
+✔ bridge stays decorative in both modes and clear of the Lecture/NPC interaction areas (504.24999ms)
+✔ bridge leaves direct camera sightlines to both island signs, Lecture and all NPCs (237.051031ms)
+✔ sea life is a separate decorative system with four large shadow-free articulated whales (44.415395ms)
+✔ rounded offshore routes and all moving geometry clear the whole supplied box (213.178958ms)
+✔ water, whales, joints, wakes and spray depend only on absolute time (11.549949ms)
+✔ spouts are visible immediately, then intermittent and staggered across all four whales (17.784863ms)
+✔ local batching holds the cost to nineteen draws and preserves world batching and motion (9.012535ms)
+✔ existing scene disposal releases each dedicated geometry/material exactly once (8.173783ms)
+✔ zero whales retains water and malformed inputs fail before creating scene resources (1.585841ms)
+✔ no published units means no visitors, and disconnected units cannot traverse a locked parent (332.23081ms)
+✔ ground grid routes around water/buildings with cardinal neighbors and real height (185.733964ms)
+✔ tourists cross exact existing centerlines early, visit multiple units, and return (1324.169995ms)
+✔ single open island makes a safe academy transit loop without dwelling there (265.49525ms)
+✔ opposing bridge queues yield without deadlock, and followers keep a gap (461.714356ms)
+✔ 6 Hz and 60 Hz use the same bounded deterministic clock, including invalid and late times (535.100968ms)
+✔ local batching retains small unmarked tourists, limb movement and frozen CPU ground (194.965645ms)
+✔ tourists yield around a moving question root without changing its transform or state (130.220353ms)
+✔ real 1-theme quiz terrain remains safe after batching at overview cadence (568.106907ms)
+✔ real 12-theme quiz terrain remains safe after batching at overview cadence (2502.103698ms)
+✔ real 15-theme quiz terrain remains safe after batching at overview cadence (3344.907086ms)
+ℹ tests 112
+ℹ suites 0
+ℹ pass 112
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32970.855968
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+$ npm run build
+
+> engineering-island-lab@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 41 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                    3.03 kB │ gzip:   1.31 kB
+dist/assets/index-D8CJfjFp.css     9.26 kB │ gzip:   2.81 kB
+dist/assets/fixture-BISgQAaE.js    0.61 kB │ gzip:   0.44 kB
+dist/assets/index-DXDaDbFr.js    719.01 kB │ gzip: 200.11 kB
+
+✓ built in 360ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+$ npm run test:smoke
+
+> engineering-island-lab@0.0.0 test:smoke
+> npm run build && node scripts/smoke-test.js
+
+
+> engineering-island-lab@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 41 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                    3.03 kB │ gzip:   1.31 kB
+dist/assets/index-D8CJfjFp.css     9.26 kB │ gzip:   2.81 kB
+dist/assets/fixture-BISgQAaE.js    0.61 kB │ gzip:   0.44 kB
+dist/assets/index-DXDaDbFr.js    719.01 kB │ gzip: 200.11 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 366ms
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+Smoke test passed: built HTML, JavaScript, CSS, favicon, and JSON load under an Apache-style subdirectory.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+$ npm run test:browser
+
+> engineering-island-lab@0.0.0 test:browser
+> node scripts/browser-test.js
+
+PASS 1 Quiz fixture, independent animals and empty animal pick registry
+PASS 2 island label smoothly focuses S01 with readable Q labels
+PASS 3 NPC Modal isolation, pause, autonomous animals and Escape focus restoration
+PASS 4 Lecture placeholder has no external course link or embedded player
+PASS 5 drag pans without opening content
+PASS 6 wheel zoom and return to overview
+PASS 7 video-only removes every NPC and retains Lecture and three animals
+PASS 8 returning to Quiz restores current geometry and click targets
+PASS 9 narrow viewport navigation and bounded Modal
+PASS 10 default empty Manifest locks all curriculum and fetches no material
+PASS 11 no application JavaScript or Console errors
+PASS 12 Apache production renders, ignores every Demo override and exposes only student controls
+PASS 13 1366x768 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 14 1366x768 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 15 1366x768 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 16 1920x1080 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 17 1920x1080 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 18 1920x1080 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 19 390x844 lecture Modal has readable type, contrast, centered bounds and visible close button
+PASS 20 390x844 npc Modal has readable type, contrast, centered bounds and visible close button
+PASS 21 390x844 about Modal has readable type, contrast, centered bounds and visible close button
+PASS 22 all five question Modals pause and resume; animals, whales and visitors keep moving while camera input stays isolated
+PASS 23 1366x768 long content wraps and scrolls internally with keyboard/wheel, without page or camera movement
+PASS 24 390x320 long content wraps and scrolls internally with keyboard/wheel, without page or camera movement
+PASS 25 12-unit overview, label collisions, exact unit range and isolated Demo opening
+PASS 26 single compact course header, one lower-left navigation, readable fonts and larger 3D viewport
+PASS 27 complete bridge, cute gate and locked-content blocking
+PASS 28 three independent autonomous animals per island, no animal interactions
+PASS 29 opening clears gates; five NPCs and themed Lecture targets remain usable
+PASS 30 15-unit radial world and extended islands, 45 animals and 15 distinct species
+PASS 31 video-only retains all 45 fauna and identical rich static dressing, with no NPCs
+PASS 32 moving NPC model raycast stops immediately, Modal freezes it, closing resumes bounded roaming
+PASS 33 head label follows the roaming root and clicking it uses the same pause mechanism
+METRIC {"name":"15-unit overview / 1366x768","mode":"quiz","totalUnits":15,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":45,"fps":3.087626850003088,"drawCalls":359,"triangles":347806,"geometries":310,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"15-unit S01 focus / 1366x768","mode":"quiz","totalUnits":15,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":45,"fps":4.255560599182931,"drawCalls":125,"triangles":134510,"geometries":332,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit overview / 1366x768","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":3.7976125675658574,"drawCalls":293,"triangles":272982,"geometries":262,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit S01 focus / 1366x768","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":4.33751662714707,"drawCalls":124,"triangles":124886,"geometries":284,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+METRIC {"name":"12-unit overview / 1920x1080","mode":"quiz","totalUnits":12,"openUnits":4,"questions":4,"npcCount":16,"visitors":4,"whales":4,"fauna":36,"fps":3.0406535378003925,"drawCalls":293,"triangles":272982,"geometries":284,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1920,1080],"dpr":1}
+PASS 34 12/15 overview and focused FPS, draw calls, triangles and GPU identity measured
+PASS 35 narrow 15-unit labels stay readable and navigation/Modal remain usable
+PASS 36 course title is read from JSON, with no second large page heading
+PASS 37 flowing sea and four autonomous offshore whales coexist with original fauna, gates and NPCs
+PASS 38 background whale click has no interaction or camera action
+PASS 39 small unnumbered visitors visibly travel on bridges only between allowed nodes
+PASS 40 background systems do not interrupt question-NPC Modal pause and resume
+PASS 41 all-open fifteen-island Quiz supports 75 question NPCs, 45 fauna, four whales and eight visitors
+PASS 42 Video-only retains visitors, whales and all island fauna with zero question NPCs
+LIFE_METRIC {"name":"12-unit overview / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":12,"npcCount":0,"visitors":4,"whales":4,"fauna":36,"fps":3.0151965908177214,"drawCalls":293,"triangles":272982,"geometries":262,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+LIFE_METRIC {"name":"15-unit overview / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":15,"npcCount":0,"visitors":4,"whales":4,"fauna":45,"fps":3.119735446434142,"drawCalls":359,"triangles":347806,"geometries":310,"textures":1,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+LIFE_METRIC {"name":"15-unit S01 focus / Video-only / 1366x768","mode":"video-only","openUnits":4,"questions":4,"totalUnits":15,"npcCount":0,"visitors":4,"whales":4,"fauna":45,"fps":4.489001945234176,"drawCalls":85,"triangles":120430,"geometries":312,"textures":3,"renderer":"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)","viewport":[1366,768],"dpr":1}
+PASS 43 12/15 overview, single-island focus and both course modes have measured software/hardware renderer identity
+PASS 44 official empty Manifest produces no visitors and keeps every locked gate
+PASS 45 Day/Night transitions continuously with identical camera and unchanged publication/background motion
+PASS 46 compact Day/Night toggle supports accessible names, keyboard and complete Day restoration
+PASS 47 left drag rotates 90/180/270/360 degrees, all 12 island framing points remain visible
+PASS 48 continuous multiple revolutions, 25–70 degree elevation limits and standard-angle overview reset
+PASS 49 180-degree view preserves exact Q01–Q05 identity, pause/resume and Lecture; Modal freezes all camera inputs while life continues
+PASS 50 right drag and Shift+left drag pan without rotation, wheel remains continuous
+PASS 51 drag from a CSS2D label and back neither opens content nor leaks into camera; keyboard activation still works
+PASS 52 15-island Night world retains 45 fauna, four whales, 75 NPCs and fits every quadrant
+PASS 53 Video-only Night retains lighting and background life, no question NPCs, locked gates unchanged
+PASS 54 reload defaults to Day, single-unit focus/orbit/reset also fits
+PASS 55 390px layout retains accessible lighting control, navigation and large readable Modal
+PASS 56 real browser single-finger pan is retained and multi-touch over an NPC cannot activate it
+56 browser acceptance checks passed. Screenshots and metrics: test-results/
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -76,6 +76,46 @@ a:focus-visible {
 .icon-button:hover {
   background: #fff9e8;
 }
+#day-night {
+  width: 36px;
+  height: 36px;
+  font-size: 23px;
+}
+.site-header,
+.site-footer,
+.unit-navigation,
+.view-toolbar {
+  transition:
+    background-color 1.25s,
+    color 1.25s,
+    border-color 1.25s;
+}
+:root[data-time='night'] {
+  background: #263c59;
+}
+:root[data-time='night'] .site-header,
+:root[data-time='night'] .site-footer {
+  background: #253a51ed;
+  color: #f5ecd2;
+  border-color: #b9cbd349;
+}
+:root[data-time='night'] .course-summary {
+  color: #c4d5d6;
+}
+:root[data-time='night'] .unit-navigation {
+  color: #d5dfd0;
+}
+:root[data-time='night'] .unit-navigation select {
+  color: #315854;
+}
+:root[data-time='night'] .site-header .icon-button {
+  background: #38526a;
+  color: #fff1bd;
+  border-color: #839bad;
+}
+:root[data-time='night'] .site-header .icon-button:hover {
+  background: #49647b;
+}
 #world {
   position: absolute;
   inset: 54px 0 76px;

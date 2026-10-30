@@ -1,5 +1,6 @@
 import { arrangeLabels } from './label-layout.js';
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import { PointerGesture } from './interaction.js';
 
 export function attachLabels(labels, onAction) {
   return labels.map((item) => {
@@ -14,18 +15,59 @@ export function attachLabels(labels, onAction) {
       element.append(code, name);
     } else element.textContent = item.text;
     element.dataset.label = item.id;
+    let cancelGesture = () => {};
     if (item.action) {
       element.type = 'button';
       element.setAttribute('aria-label', item.text);
+      // A drag starting on a DOM label belongs to the label, never the canvas.
+      // Native buttons can emit click after moving away and back: track excursion.
+      const gesture = new PointerGesture();
+      let active = null,
+        validClick = false;
+      cancelGesture = () => {
+        const pointerId = active;
+        gesture.cancel();
+        active = null;
+        validClick = false;
+        if (pointerId !== null && element.hasPointerCapture(pointerId))
+          element.releasePointerCapture(pointerId);
+      };
+      element.addEventListener('pointerdown', (event) => {
+        event.stopPropagation();
+        validClick = false;
+        if (active !== null || event.button !== 0 || event.isPrimary === false) {
+          cancelGesture();
+          return;
+        }
+        active = event.pointerId;
+        gesture.begin(event.clientX, event.clientY);
+        element.setPointerCapture(event.pointerId);
+      });
+      element.addEventListener('pointermove', (event) => {
+        if (active === event.pointerId) gesture.move(event.clientX, event.clientY);
+      });
+      element.addEventListener('pointerup', (event) => {
+        if (active !== event.pointerId) return;
+        validClick = gesture.end(event.clientX, event.clientY);
+        active = null;
+      });
+      for (const type of ['pointercancel', 'lostpointercapture'])
+        element.addEventListener(type, () => {
+          if (active === null) return;
+          gesture.cancel();
+          active = null;
+          validClick = false;
+        });
       element.addEventListener('click', (event) => {
         event.stopPropagation();
+        if (event.detail > 0 && !validClick) return;
         onAction(item.action, element);
       });
       element.style.pointerEvents = 'auto';
     }
     const object = new CSS2DObject(element);
     item.anchor.add(object);
-    return { ...item, element, object };
+    return { ...item, element, object, cancelGesture };
   });
 }
 
@@ -60,11 +102,16 @@ export function createDialog() {
 }
 
 // Labels can grow to readable sizes; fine leader lines keep displaced titles attached.
-export function layoutIslandLabels(labels, viewport) {
-  const items = labels.filter(
-    (item) => item.id === 'academy' || ['unit', 'locked'].includes(item.kind),
-  );
-  items.forEach((item) => (item.element.style.translate = ''));
+export function layoutIslandLabels(labels, viewport, view = 'overview') {
+  const items =
+    view === 'overview'
+      ? labels.filter((item) => item.id === 'academy' || ['unit', 'locked'].includes(item.kind))
+      : [
+          ...labels.filter((item) => item.unitId === view && item.kind === 'question'),
+          ...labels.filter((item) => item.unitId === view && item.kind === 'lecture'),
+          ...labels.filter((item) => item.id === view),
+        ];
+  labels.forEach((item) => (item.element.style.translate = ''));
   const entries = items
     .map((item) => ({ id: item.id, rect: item.element.getBoundingClientRect(), item }))
     .filter(
@@ -95,7 +142,10 @@ export function layoutIslandLabels(labels, viewport) {
       y = (rect.top + rect.bottom) / 2 - viewport.top;
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     line.setAttribute('d', `M ${x} ${y} L ${x + position.dx} ${y + position.dy}`);
-    line.setAttribute('stroke', '#688f7e');
+    line.setAttribute(
+      'stroke',
+      document.documentElement.dataset.time === 'night' ? '#bdd5ce' : '#688f7e',
+    );
     line.setAttribute('stroke-width', '1.2');
     line.setAttribute('opacity', '0.55');
     line.setAttribute('fill', 'none');
