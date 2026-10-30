@@ -1,0 +1,10 @@
+
+> engineering-island-lab@0.0.0 validate:content
+> node scripts/validate-content.js
+
+Engineering Island Lab — Content Validator（唯讀）
+課程：數位電子學；12 單元；模式 quiz
+範圍：Manifest 已開放單元的完整內容
+注意：Manifest 沒有開放單元；沒有教材將被發布。
+結果：指定範圍的資料檢查通過。
+本工具不更動 Manifest、不寫入教材、不部署網站。

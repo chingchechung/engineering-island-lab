@@ -1,0 +1,123 @@
+[
+  {
+    "name": "ci",
+    "command": [
+      "npm",
+      "ci"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 2.083
+  },
+  {
+    "name": "test",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 37.484
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 1.017
+  },
+  {
+    "name": "smoke",
+    "command": [
+      "npm",
+      "run",
+      "test:smoke"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 1.012
+  },
+  {
+    "name": "content",
+    "command": [
+      "npm",
+      "run",
+      "validate:content"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 0.18
+  },
+  {
+    "name": "parity",
+    "command": [
+      "node",
+      "scripts/legacy-parity.mjs"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 0.875
+  },
+  {
+    "name": "release-scan",
+    "command": [
+      "npm",
+      "run",
+      "check:release",
+      "--",
+      "--json"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 0.201
+  },
+  {
+    "name": "package",
+    "command": [
+      "npm",
+      "run",
+      "package:rc"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 0.251
+  },
+  {
+    "name": "apache",
+    "command": [
+      "npm",
+      "run",
+      "test:apache"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 7.265
+  },
+  {
+    "name": "rc-browser",
+    "command": [
+      "npm",
+      "run",
+      "test:rc"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 46.579
+  },
+  {
+    "name": "apache-browser",
+    "command": [
+      "node",
+      "scripts/release-browser.js",
+      "--apache",
+      "--root",
+      "dist"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 53.53
+  },
+  {
+    "name": "browser",
+    "command": [
+      "npm",
+      "run",
+      "test:browser"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 1579.09
+  }
+]

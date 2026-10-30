@@ -1,0 +1,116 @@
+{
+  "kind": "docker-apache-2.4.69",
+  "image": "httpd@sha256:d3accb516506c05ae0068bb54ba6798a10b249b64db91268fca692326cb02b4b",
+  "source": "independently extracted RC ZIP; container-only config cache fixture",
+  "responses": [
+    {
+      "path": "assets/index-CZk6bhiz.js",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"b1952-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "assets/index-DMKLz-CI.css",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/css",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"2e7e-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "assets/quiz-runtime-Cm_WjxME.css",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/css",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"b2f-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "assets/quiz-runtime-DWfR14Vi.js",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "etag": "\"3fbd-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "assignments/manifest.json",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "application/json",
+      "cacheControl": "no-cache, max-age=0, must-revalidate",
+      "etag": "\"28-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "course-config.json",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "application/json",
+      "cacheControl": "no-cache, max-age=0, must-revalidate",
+      "etag": "\"57-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "image/svg+xml",
+      "cacheControl": null,
+      "etag": "\"1a3-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/html",
+      "cacheControl": "no-cache, max-age=0, must-revalidate",
+      "etag": "\"c1e-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "status": 200,
+      "server": "Apache/2.4.69 (Unix)",
+      "type": "text/plain",
+      "cacheControl": null,
+      "etag": "\"2685-65f09e72b8f80\"",
+      "sha256MatchesZip": true
+    },
+    {
+      "path": "missing.js",
+      "status": 404,
+      "type": "text/html; charset=iso-8859-1"
+    },
+    {
+      "path": "assets/missing.css",
+      "status": 404,
+      "type": "text/html; charset=iso-8859-1"
+    },
+    {
+      "path": "course-videos/S99.json",
+      "status": 404,
+      "type": "text/html; charset=iso-8859-1"
+    },
+    {
+      "path": "assignments/S99.json",
+      "status": 404,
+      "type": "text/html; charset=iso-8859-1"
+    },
+    {
+      "path": "missing-page/",
+      "status": 404,
+      "type": "text/html; charset=iso-8859-1"
+    }
+  ],
+  "unchangedManifestConditionalStatus": 304,
+  "changedConfigConditionalStatus": 200,
+  "schoolDeployment": false
+}

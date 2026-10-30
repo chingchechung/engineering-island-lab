@@ -17,6 +17,7 @@ dist-ssr
 coverage/
 playwright-report/
 test-results/
+/release-candidate/
 
 # Editor directories and files
 .vscode/*

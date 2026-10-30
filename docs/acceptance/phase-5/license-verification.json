@@ -1,0 +1,7 @@
+{
+  "inventory": "docs/DEPENDENCY_INVENTORY.json",
+  "afterFinalNpmCi": true,
+  "referencedLocalNoticeFiles": 27,
+  "packageLockMatchesInventory": true,
+  "mismatches": []
+}

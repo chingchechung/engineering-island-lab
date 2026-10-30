@@ -1,0 +1,37 @@
+✔ autocrlf=true preserves all 14 pinned hashes in fresh and refreshed checkouts (223.304106ms)
+ℹ autocrlf=true fresh + refreshed SHA256 js/assignment-rules.js: ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924
+ℹ autocrlf=true fresh + refreshed SHA256 js/assignment-validator.js: 4cfe95d6d8d15ffe1b50c9c742635bac4f2360802f54c059723826fd56dc9d07
+ℹ autocrlf=true fresh + refreshed SHA256 tools/assignment_data.py: 4db0995f130a9a348727585b5875de4707127e3cec3373daf9c7faf1f112f6c5
+ℹ autocrlf=true fresh + refreshed SHA256 tests/contract_cases.py: 7d37b5e631b343a5140ef47276727d706986b52c40568fb70528ea45de1690bd
+ℹ autocrlf=true fresh + refreshed SHA256 tests/contract_cases_v2.py: 5432d55079401abbe5a294135b9b0fba752f058233f6939023d33c115c435391
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/S01.json: 4ade964b84c7b810b4f20e63676971ec74074d7035c5aa9a79fdba10fc2ddbf3
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/S02.json: d68784eb77c6270eb71a5df08ed16d17f74c03e95962c454259763c2ebe77f0a
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/manifest.json: 47b24d9705683d9d3e7f7cf844bcf1ba07d15faf222b97e2e8027ef35b61b4c9
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/v2/S01.json: d3e7146591cca97ab5d34f56b2c0a3e4ceb2006348ae1d07fb0ab3cc9a3a9dbe
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/v2/S02.json: cbc3bd2336e2e5444f351fe5476a44423d1c8819cb3daf9d2653b6df30c3d70a
+ℹ autocrlf=true fresh + refreshed SHA256 tests/fixtures/v2/manifest.json: 442f998fb382eb76ad01243b5d0bbfb6a85f182b1c4e0c7b6548fbac08fac6d4
+ℹ autocrlf=true fresh + refreshed SHA256 schemas/assignment-v1.schema.json: 7d7d1a4543267906f6e2ae35d40840b53b32e0760164721575daa67c98d89146
+ℹ autocrlf=true fresh + refreshed SHA256 schemas/assignment-v2.schema.json: 29d60748aca1f780dcc08f2c70f05703d2bc21da13d216d97e44ede074234826
+ℹ autocrlf=true fresh + refreshed SHA256 schemas/manifest-v1.schema.json: 4c82728bcb6158c99032eec9345089e2d97f6d90be915c0c84afe8060ec83f6b
+✔ all 364 pinned validation cases and 76 answer selections preserve legacy semantics (134.351895ms)
+✔ 14 pinned reference files retain original SHA256 bytes and exact URL rules (10.902847ms)
+✔ v1 accepts the exact original 4-question synthetic assignment (0.636558ms)
+✔ v1 accepts the exact original 5-question synthetic assignment (0.289113ms)
+✔ v1 accepts matching S12–S15 filenames and rejects S16 (1.089489ms)
+✔ v2 accepts the exact original 4-question synthetic assignment (0.483099ms)
+✔ v2 accepts the exact original 5-question synthetic assignment (0.498425ms)
+✔ v2 accepts matching S12–S15 filenames and rejects S16 (0.952172ms)
+✔ v2 keeps three options and accepts either A or C as one selection (0.604869ms)
+✔ required explanation URL remains required even though watching is optional (0.81787ms)
+✔ unknown metadata, nonsequential IDs and mixed answer fields are rejected (0.906117ms)
+✔ normalization trims ordinary text while IDs, answers and original choice order remain exact (0.599213ms)
+✔ Manifest v1 extends only the allowlist ceiling and exact matching filenames to 15 (2.540333ms)
+✔ validateOrThrow preserves the full ordered issue list beyond its short summary (2.151284ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 306.05456

@@ -1,0 +1,6180 @@
+[
+  {
+    "case": "12-day-night-identical-camera",
+    "day": {
+      "mode": "quiz",
+      "demo": true,
+      "view": "overview",
+      "zoom": 1,
+      "goalZoom": 1,
+      "target": [
+        -12.18305080521185,
+        1.4039130712706414,
+        2.374830656704452
+      ],
+      "goalTarget": [
+        -12.18305080521185,
+        1.4039130712706414,
+        2.374830656704452
+      ],
+      "azimuth": 0.23109066719589708,
+      "elevation": 0.725881280618328,
+      "azimuthGoal": 0.23109066719589708,
+      "elevationGoal": 0.725881280618328,
+      "lighting": {
+        "mode": "day",
+        "blend": 0,
+        "duration": 1.25,
+        "background": "#d5e9df",
+        "seaColor": "#d0e7dc",
+        "ambientIntensity": 1.8,
+        "directionalIntensity": 2.4,
+        "academyWindows": 9,
+        "academyEntrance": 2,
+        "cottages": {
+          "S01": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S02": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S03": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S04": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S05": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S06": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S07": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S08": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S09": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S10": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S11": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S12": {
+            "windows": 4,
+            "lamps": 2
+          }
+        },
+        "bridges": [
+          {
+            "from": "academy",
+            "to": "S01",
+            "main": true,
+            "lamps": 6
+          },
+          {
+            "from": "academy",
+            "to": "S02",
+            "main": true,
+            "lamps": 8
+          },
+          {
+            "from": "academy",
+            "to": "S03",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "academy",
+            "to": "S04",
+            "main": true,
+            "lamps": 12
+          },
+          {
+            "from": "academy",
+            "to": "S05",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "academy",
+            "to": "S06",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "S01",
+            "to": "S07",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S02",
+            "to": "S08",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S03",
+            "to": "S09",
+            "main": false,
+            "lamps": 4
+          },
+          {
+            "from": "S04",
+            "to": "S10",
+            "main": false,
+            "lamps": 8
+          },
+          {
+            "from": "S05",
+            "to": "S11",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S06",
+            "to": "S12",
+            "main": false,
+            "lamps": 4
+          }
+        ],
+        "themes": [
+          {
+            "id": "S01",
+            "kind": "fireflies",
+            "fixtures": 18
+          },
+          {
+            "id": "S02",
+            "kind": "flower-lights",
+            "fixtures": 26
+          },
+          {
+            "id": "S03",
+            "kind": "lighthouse",
+            "fixtures": 17
+          },
+          {
+            "id": "S04",
+            "kind": "lake-reflections",
+            "fixtures": 5
+          },
+          {
+            "id": "S05",
+            "kind": "lava",
+            "fixtures": 28
+          },
+          {
+            "id": "S06",
+            "kind": "candy-lights",
+            "fixtures": 12
+          },
+          {
+            "id": "S07",
+            "kind": "ice-crystals",
+            "fixtures": 9
+          },
+          {
+            "id": "S08",
+            "kind": "windmill-lights",
+            "fixtures": 12
+          },
+          {
+            "id": "S09",
+            "kind": "stars-and-flowers",
+            "fixtures": 20
+          },
+          {
+            "id": "S10",
+            "kind": "oasis-camp",
+            "fixtures": 10
+          },
+          {
+            "id": "S11",
+            "kind": "cloud-lights",
+            "fixtures": 22
+          },
+          {
+            "id": "S12",
+            "kind": "festival-lights",
+            "fixtures": 26
+          }
+        ],
+        "fixtures": {
+          "panes": 116,
+          "bulbs": 209,
+          "halos": 213,
+          "pools": 66,
+          "crystals": 4,
+          "surfaces": 1
+        },
+        "batches": 6,
+        "actualLocalLights": 0,
+        "localShadowLights": 0,
+        "shadowLights": 0
+      },
+      "lecture": {
+        "status": "idle",
+        "unitId": null,
+        "videoCount": 0
+      },
+      "quiz": {
+        "status": "idle",
+        "unitId": null,
+        "questionId": null,
+        "result": null,
+        "passed": false,
+        "count": 0,
+        "total": 0,
+        "complete": false
+      },
+      "quizSessions": [
+        {
+          "unitId": "S01",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S02",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S03",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S04",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S05",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S06",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S07",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S08",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S09",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S10",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S11",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S12",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        }
+      ],
+      "quizFailures": [],
+      "framingExtent": 0.8333333333333344,
+      "lectureScreens": [
+        {
+          "id": "S01",
+          "screen": {
+            "x": 847.159598360493,
+            "y": 391.2538815729008,
+            "z": -0.2599004365811647
+          }
+        },
+        {
+          "id": "S02",
+          "screen": {
+            "x": 849.261166256688,
+            "y": 286.44171321405895,
+            "z": -0.18065177378649122
+          }
+        },
+        {
+          "id": "S03",
+          "screen": {
+            "x": 619.1101861155174,
+            "y": 250.49511812028916,
+            "z": -0.15347249071460822
+          }
+        },
+        {
+          "id": "S04",
+          "screen": {
+            "x": 498.87105225971357,
+            "y": 332.74311675030475,
+            "z": -0.21566034553172508
+          }
+        },
+        {
+          "id": "S05",
+          "screen": {
+            "x": 562.3101044781132,
+            "y": 439.28675076621363,
+            "z": -0.2962181725212244
+          }
+        },
+        {
+          "id": "S06",
+          "screen": {
+            "x": 800.575381996056,
+            "y": 480.8932063855649,
+            "z": -0.3276768859806274
+          }
+        },
+        {
+          "id": "S07",
+          "screen": {
+            "x": 1026.3003817498964,
+            "y": 415.1207305068604,
+            "z": -0.27794620257145686
+          }
+        },
+        {
+          "id": "S08",
+          "screen": {
+            "x": 1012.2847771900174,
+            "y": 254.8012206575637,
+            "z": -0.15672834233259414
+          }
+        },
+        {
+          "id": "S09",
+          "screen": {
+            "x": 630.9128004817313,
+            "y": 160.09576819897808,
+            "z": -0.08512138500859467
+          }
+        },
+        {
+          "id": "S10",
+          "screen": {
+            "x": 309.29155900240306,
+            "y": 267.99316020319395,
+            "z": -0.16670279076762817
+          }
+        },
+        {
+          "id": "S11",
+          "screen": {
+            "x": 386.74621578068167,
+            "y": 470.95233012139397,
+            "z": -0.3293538129009279
+          }
+        },
+        {
+          "id": "S12",
+          "screen": {
+            "x": 806.4766891791629,
+            "y": 578.4501916280313,
+            "z": -0.40143989220215603
+          }
+        }
+      ],
+      "totalUnits": 12,
+      "npcCount": 60,
+      "shark": [
+        0.46829716141688127,
+        1.5809523810663837,
+        0.5889178142612588
+      ],
+      "dialog": false,
+      "time": 0.25,
+      "sea": {
+        "seaTime": 0.25,
+        "seaY": -2.585,
+        "whales": [
+          {
+            "id": "offshore-whale-1",
+            "position": [
+              -13.346271376549211,
+              -2.4232527965500585,
+              -48.43563663482665
+            ],
+            "heading": 1.5707963267948966,
+            "spouting": true,
+            "spoutPhase": 0.47727272727272757,
+            "routeDistance": 55.54813543206279,
+            "screen": {
+              "x": 762.6099874922222,
+              "y": 141.15352602482778,
+              "z": -0.04258159799188965
+            }
+          },
+          {
+            "id": "offshore-whale-2",
+            "position": [
+              48.48186405551361,
+              -2.3655241743870667,
+              1.2184064102172414
+            ],
+            "heading": 0,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 164.23190595987222,
+            "screen": {
+              "x": 1132.510053085511,
+              "y": 455.1952288712299,
+              "z": -0.28047133665797463
+            }
+          },
+          {
+            "id": "offshore-whale-3",
+            "position": [
+              -13.586271376549199,
+              -2.3745339084242754,
+              50.63244945526124
+            ],
+            "heading": -1.5707963267948966,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 272.91567648768176,
+            "screen": {
+              "x": 588.8892400254985,
+              "y": 625.6948485405582,
+              "z": -0.4093173717594646
+            }
+          },
+          {
+            "id": "offshore-whale-4",
+            "position": [
+              -75.414406808612,
+              -2.44220830717192,
+              0.9784064102173389
+            ],
+            "heading": 3.141592653589793,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 381.5994470154912,
+            "screen": {
+              "x": 218.98917443221012,
+              "y": 311.7095159511626,
+              "z": -0.17139405981055855
+            }
+          }
+        ]
+      },
+      "visitors": [
+        {
+          "id": "visitor-1",
+          "unitId": "S01",
+          "phase": "dwell",
+          "from": "S01",
+          "to": "S01",
+          "position": [
+            6.84,
+            0.8450167179686373,
+            0.72
+          ],
+          "home": "S01",
+          "trips": 0,
+          "visited": [
+            "S01"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 826.1983370815312,
+            "y": 386.58115025665535,
+            "z": -0.25318817528866766
+          }
+        },
+        {
+          "id": "visitor-2",
+          "unitId": "S02",
+          "phase": "dwell",
+          "from": "S02",
+          "to": "S02",
+          "position": [
+            5.04,
+            0.8525249458869363,
+            -15.84
+          ],
+          "home": "S02",
+          "trips": 0,
+          "visited": [
+            "S02"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 841.663233258438,
+            "y": 303.3775302480563,
+            "z": -0.19033529427417495
+          }
+        },
+        {
+          "id": "visitor-3",
+          "unitId": "S03",
+          "phase": "dwell",
+          "from": "S03",
+          "to": "S03",
+          "position": [
+            -24.119999999999997,
+            0.8190003667161349,
+            -16.919999999999998
+          ],
+          "home": "S03",
+          "trips": 0,
+          "visited": [
+            "S03"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 628.4351193041181,
+            "y": 264.68300149526226,
+            "z": -0.1608214608436861
+          }
+        },
+        {
+          "id": "visitor-4",
+          "unitId": "S04",
+          "phase": "dwell",
+          "from": "S04",
+          "to": "S04",
+          "position": [
+            -34.199999999999996,
+            0.8276256377646586,
+            5.04
+          ],
+          "home": "S04",
+          "trips": 0,
+          "visited": [
+            "S04"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 515.9631471084328,
+            "y": 360.54930918399054,
+            "z": -0.23337222132068702
+          }
+        },
+        {
+          "id": "visitor-5",
+          "unitId": "S05",
+          "phase": "dwell",
+          "from": "S05",
+          "to": "S05",
+          "position": [
+            -22.68,
+            0.8508653947747805,
+            14.04
+          ],
+          "home": "S05",
+          "trips": 0,
+          "visited": [
+            "S05"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 585.320863295772,
+            "y": 417.7593238414431,
+            "z": -0.27680685347559186
+          }
+        },
+        {
+          "id": "visitor-6",
+          "unitId": "S06",
+          "phase": "dwell",
+          "from": "S06",
+          "to": "S06",
+          "position": [
+            7.92,
+            0.8922957874175653,
+            23.4
+          ],
+          "home": "S06",
+          "trips": 0,
+          "visited": [
+            "S06"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 794.7999115102358,
+            "y": 498.6117295563695,
+            "z": -0.33825689770734235
+          }
+        },
+        {
+          "id": "visitor-7",
+          "unitId": "S07",
+          "phase": "dwell",
+          "from": "S07",
+          "to": "S07",
+          "position": [
+            35.28,
+            0.843043396119944,
+            3.96
+          ],
+          "home": "S07",
+          "trips": 0,
+          "visited": [
+            "S07"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 1030.3662088311987,
+            "y": 435.2239300456081,
+            "z": -0.2899519480052012
+          }
+        }
+      ],
+      "visitorRoutes": [
+        {
+          "from": "academy",
+          "to": "S01",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S02",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S03",
+          "enabled": false,
+          "reason": "bank-deck-height"
+        },
+        {
+          "from": "academy",
+          "to": "S04",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S05",
+          "enabled": false,
+          "reason": "blocked-to-bank"
+        },
+        {
+          "from": "academy",
+          "to": "S06",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S01",
+          "to": "S07",
+          "enabled": false,
+          "reason": "blocked-from-bank"
+        },
+        {
+          "from": "S02",
+          "to": "S08",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S03",
+          "to": "S09",
+          "enabled": false,
+          "reason": "blocked-from-bank"
+        },
+        {
+          "from": "S04",
+          "to": "S10",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S05",
+          "to": "S11",
+          "enabled": false,
+          "reason": "bank-deck-height"
+        },
+        {
+          "from": "S06",
+          "to": "S12",
+          "enabled": false,
+          "reason": "blocked-to-bank"
+        }
+      ],
+      "pickableBackground": 0,
+      "gates": [],
+      "open": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "pickableAnimals": 0,
+      "fps": 0.6730380939561179,
+      "drawCalls": 300,
+      "triangles": 270754,
+      "geometries": 269,
+      "textures": 1,
+      "animals": [
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark",
+          "position": [
+            0.46829716141688127,
+            1.5809523810663837,
+            0.5889178142612588
+          ]
+        },
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark-2",
+          "position": [
+            2.011673302006423,
+            1.7398117448818813,
+            -0.3611312903493159
+          ]
+        },
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark-3",
+          "position": [
+            0.21523388518920342,
+            1.7644904172493208,
+            -1.335806944154783
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-1",
+          "position": [
+            0.44297143345543,
+            1.8090088310195083,
+            0.38773668625216995
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-2",
+          "position": [
+            2.0136424938426782,
+            2.1331596730369853,
+            -0.39029850837236724
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-3",
+          "position": [
+            0.15381652455854,
+            2.3854065033111653,
+            -1.358238859754576
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-1",
+          "position": [
+            0.4727926458222143,
+            1.0441452841158558,
+            0.3705257910671701
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-2",
+          "position": [
+            1.9980040842375688,
+            1.0920019307590572,
+            -0.4202575672738703
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-3",
+          "position": [
+            0.08785838348540101,
+            1.080418493718866,
+            -1.371677929528209
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-1",
+          "position": [
+            0.4923240259336824,
+            1.5037470029363065,
+            0.34883399022159794
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-2",
+          "position": [
+            1.9664407344426913,
+            1.7069680200281316,
+            -0.4485631928188215
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-3",
+          "position": [
+            0.02621612127812209,
+            1.723567675295404,
+            -1.3747545133550212
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-1",
+          "position": [
+            0.4999288745908218,
+            1.0413571162834554,
+            0.32403948751474665
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-2",
+          "position": [
+            1.9223485970727618,
+            1.1591882827397895,
+            -0.47290506487739664
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-3",
+          "position": [
+            -0.022833125890529188,
+            3.3195335904878616,
+            -1.3671550618067585
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-1",
+          "position": [
+            0.49496991733403406,
+            1.3833072969646532,
+            0.297717619087467
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-2",
+          "position": [
+            1.8704718969515235,
+            1.0737385554009855,
+            -0.4912963869760387
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-3",
+          "position": [
+            -0.05270317374617503,
+            2.4705802843996367,
+            -1.3496540714751382
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-1",
+          "position": [
+            0.47786270704917766,
+            1.0241127207254896,
+            0.2715407633342149
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-2",
+          "position": [
+            1.8163924621138512,
+            0.9377773245408775,
+            -0.502236049676587
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-3",
+          "position": [
+            -0.05938316277887587,
+            2.232284366587093,
+            -1.3240351523058813
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-1",
+          "position": [
+            0.4500408012836847,
+            1.7440033520785874,
+            0.24717208516736977
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-2",
+          "position": [
+            1.7659291303960307,
+            2.0612100654437633,
+            -0.504831151922662
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-3",
+          "position": [
+            -0.311976124303895,
+            2.298374826979878,
+            -0.8729092513461595
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-1",
+          "position": [
+            0.4138356323593624,
+            1.8357123796248236,
+            0.22615986566660767
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-2",
+          "position": [
+            1.7245116542506551,
+            2.0284928572317,
+            -0.4988698800962065
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-3",
+          "position": [
+            -0.002819422698573326,
+            4.237738556313879,
+            -1.259448558596043
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-1",
+          "position": [
+            0.37228113697911464,
+            0.9956895942889242,
+            0.20983913095325896
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-2",
+          "position": [
+            1.69659647036205,
+            1.0429007966444042,
+            -0.4848387963570333
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-3",
+          "position": [
+            0.05282909880327248,
+            2.2380813398598884,
+            -1.2270632138961335
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-1",
+          "position": [
+            0.32885951706190736,
+            2.942832089820684,
+            0.19924683036819785
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-2",
+          "position": [
+            1.6851871960702531,
+            2.865566949151665,
+            -0.4638831251819654
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-3",
+          "position": [
+            0.11749712536778574,
+            2.9394820841546783,
+            -1.1990537632045646
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-1",
+          "position": [
+            0.2872094366515881,
+            1.0233449981675329,
+            0.19505595316729651
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-2",
+          "position": [
+            1.6915114462187435,
+            1.0724910727153112,
+            -0.4377132795372469
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-3",
+          "position": [
+            0.1825012303533753,
+            1.0404642570191542,
+            -1.1782747841127206
+          ]
+        }
+      ],
+      "dressing": [
+        {
+          "id": "S01",
+          "count": 49
+        },
+        {
+          "id": "S02",
+          "count": 64
+        },
+        {
+          "id": "S03",
+          "count": 39
+        },
+        {
+          "id": "S04",
+          "count": 50
+        },
+        {
+          "id": "S05",
+          "count": 47
+        },
+        {
+          "id": "S06",
+          "count": 61
+        },
+        {
+          "id": "S07",
+          "count": 46
+        },
+        {
+          "id": "S08",
+          "count": 64
+        },
+        {
+          "id": "S09",
+          "count": 66
+        },
+        {
+          "id": "S10",
+          "count": 49
+        },
+        {
+          "id": "S11",
+          "count": 54
+        },
+        {
+          "id": "S12",
+          "count": 65
+        }
+      ],
+      "npcs": [
+        {
+          "unitId": "S01",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.8981098879287986,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 835.866066790327,
+            "y": 398.8790071339399,
+            "z": -0.2648086133316331
+          },
+          "bodyScreen": {
+            "x": 836.282629650311,
+            "y": 398.83738163093636,
+            "z": -0.26324493342413213
+          },
+          "headScreen": {
+            "x": 836.282629650311,
+            "y": 391.1859080319601,
+            "z": -0.267802036775728
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            1.0099311329909553,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 847.9724249086125,
+            "y": 405.8205154151333,
+            "z": -0.27091376617235374
+          },
+          "bodyScreen": {
+            "x": 848.3889877685967,
+            "y": 405.7788899121297,
+            "z": -0.2693500862648528
+          },
+          "headScreen": {
+            "x": 848.3889877685967,
+            "y": 398.12741631315345,
+            "z": -0.27390718961644855
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.8890460784752009,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 864.7217232371368,
+            "y": 407.5713870504906,
+            "z": -0.27131149875304605
+          },
+          "bodyScreen": {
+            "x": 865.1382860971207,
+            "y": 407.52976154748706,
+            "z": -0.2697478188455451
+          },
+          "headScreen": {
+            "x": 865.1382860971207,
+            "y": 399.87828794851083,
+            "z": -0.27430492219714087
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q04",
+          "position": [
+            3,
+            1.0536924431366204,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 879.5183831594857,
+            "y": 402.2312969611856,
+            "z": -0.2685352087398606
+          },
+          "bodyScreen": {
+            "x": 879.9349460194697,
+            "y": 402.18967145818203,
+            "z": -0.26697152883235964
+          },
+          "headScreen": {
+            "x": 879.9349460194697,
+            "y": 394.53819785920575,
+            "z": -0.2715286321839555
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q05",
+          "position": [
+            4.292909649383465,
+            0.8988789830512881,
+            0.3870125742738173
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 890.9874928490325,
+            "y": 399.14852553092913,
+            "z": -0.26501828872421973
+          },
+          "bodyScreen": {
+            "x": 891.4040557090165,
+            "y": 399.1069000279256,
+            "z": -0.2634546088167188
+          },
+          "headScreen": {
+            "x": 891.4040557090165,
+            "y": 391.4554264289493,
+            "z": -0.26801171216831454
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            1.0375417468688024,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 838.6691877023028,
+            "y": 293.106249243961,
+            "z": -0.18590183932836635
+          },
+          "bodyScreen": {
+            "x": 839.0857505622868,
+            "y": 293.0646237409575,
+            "z": -0.1843381594208654
+          },
+          "headScreen": {
+            "x": 839.0857505622868,
+            "y": 285.4131501419812,
+            "z": -0.18889526277246116
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.8929545239269657,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 850.7755458205883,
+            "y": 301.5010187277369,
+            "z": -0.1911414515106289
+          },
+          "bodyScreen": {
+            "x": 851.1921086805723,
+            "y": 301.4593932247334,
+            "z": -0.18957777160312783
+          },
+          "headScreen": {
+            "x": 851.1921086805723,
+            "y": 293.8079196257571,
+            "z": -0.1941348749547236
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q03",
+          "position": [
+            1.3,
+            1.073083590741387,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 867.5248441491125,
+            "y": 301.5458151021485,
+            "z": -0.19255529702553698
+          },
+          "bodyScreen": {
+            "x": 867.9414070090966,
+            "y": 301.5041895991449,
+            "z": -0.19099161711803603
+          },
+          "headScreen": {
+            "x": 867.9414070090966,
+            "y": 293.8527160001687,
+            "z": -0.1955487204696318
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q04",
+          "position": [
+            3,
+            0.8797810264563374,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 882.3215040714615,
+            "y": 298.2344929977439,
+            "z": -0.18857070311323898
+          },
+          "bodyScreen": {
+            "x": 882.7380669314455,
+            "y": 298.1928674947404,
+            "z": -0.18700702320573803
+          },
+          "headScreen": {
+            "x": 882.7380669314455,
+            "y": 290.54139389576414,
+            "z": -0.1915641265573338
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q05",
+          "position": [
+            3.6,
+            1.0254767094160941,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 889.1774344753652,
+            "y": 291.24480574180194,
+            "z": -0.18440196799712671
+          },
+          "bodyScreen": {
+            "x": 889.5939973353493,
+            "y": 291.2031802387985,
+            "z": -0.18283828808962577
+          },
+          "headScreen": {
+            "x": 889.5939973353493,
+            "y": 283.55170663982216,
+            "z": -0.18739539144122142
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            1.0045587462497938,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 608.518207561132,
+            "y": 257.34659382311816,
+            "z": -0.15861121778043408
+          },
+          "bodyScreen": {
+            "x": 608.9347704211161,
+            "y": 257.30496832011465,
+            "z": -0.15704753787293313
+          },
+          "headScreen": {
+            "x": 608.9347704211161,
+            "y": 249.65349472113832,
+            "z": -0.16160464122452878
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.8985125406150098,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 620.6245656794176,
+            "y": 265.5229221391885,
+            "z": -0.1639809302583588
+          },
+          "bodyScreen": {
+            "x": 621.0411285394017,
+            "y": 265.481296636185,
+            "z": -0.16241725035085786
+          },
+          "headScreen": {
+            "x": 621.0411285394017,
+            "y": 257.8298230372087,
+            "z": -0.16697435370245362
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.9305736022386307,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 637.3738640079417,
+            "y": 266.40693216735593,
+            "z": -0.16489495266014165
+          },
+          "bodyScreen": {
+            "x": 637.7904268679258,
+            "y": 266.36530666435243,
+            "z": -0.1633312727526407
+          },
+          "headScreen": {
+            "x": 637.7904268679258,
+            "y": 258.7138330653762,
+            "z": -0.16788837610423635
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q04",
+          "position": [
+            3,
+            0.9120748930796215,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 652.1705239302909,
+            "y": 262.1048640759172,
+            "z": -0.16150043225455968
+          },
+          "bodyScreen": {
+            "x": 652.5870867902748,
+            "y": 262.06323857291363,
+            "z": -0.15993675234705873
+          },
+          "headScreen": {
+            "x": 652.5870867902748,
+            "y": 254.41176497393744,
+            "z": -0.16449385569865438
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.95235255426289,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 659.0264543341945,
+            "y": 255.71266067958942,
+            "z": -0.15697584467892423
+          },
+          "bodyScreen": {
+            "x": 659.4430171941785,
+            "y": 255.67103517658586,
+            "z": -0.15541216477142328
+          },
+          "headScreen": {
+            "x": 659.4430171941785,
+            "y": 248.01956157760964,
+            "z": -0.15996926812301904
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.898977686376078,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 488.27907370532824,
+            "y": 340.1930003732639,
+            "z": -0.22044266978139138
+          },
+          "bodyScreen": {
+            "x": 488.6956365653122,
+            "y": 340.1513748702603,
+            "z": -0.21887898987389043
+          },
+          "headScreen": {
+            "x": 488.6956365653122,
+            "y": 332.4999012712841,
+            "z": -0.2234360932254862
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            1.0483645805603177,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 500.38543182361377,
+            "y": 346.9215956378009,
+            "z": -0.2266746304336077
+          },
+          "bodyScreen": {
+            "x": 500.8019946835978,
+            "y": 346.87997013479736,
+            "z": -0.22511095052610675
+          },
+          "headScreen": {
+            "x": 500.8019946835978,
+            "y": 339.2284965358211,
+            "z": -0.2296680538777024
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.9755913067201839,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 517.1347301521378,
+            "y": 348.3997813326848,
+            "z": -0.22723477068612807
+          },
+          "bodyScreen": {
+            "x": 517.551293012122,
+            "y": 348.35815582968127,
+            "z": -0.22567109077862713
+          },
+          "headScreen": {
+            "x": 517.551293012122,
+            "y": 340.706682230705,
+            "z": -0.23022819413022289
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q04",
+          "position": [
+            3,
+            0.9304105457572577,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 531.9313900744869,
+            "y": 344.24894065972325,
+            "z": -0.22375018148965498
+          },
+          "bodyScreen": {
+            "x": 532.347952934471,
+            "y": 344.2073151567197,
+            "z": -0.22218650158215403
+          },
+          "headScreen": {
+            "x": 532.347952934471,
+            "y": 336.5558415577434,
+            "z": -0.2267436049337499
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.8925452323629405,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 538.7873204783905,
+            "y": 338.29963275000716,
+            "z": -0.21896181197968545
+          },
+          "bodyScreen": {
+            "x": 539.2038833383746,
+            "y": 338.25800724700366,
+            "z": -0.2173981320721845
+          },
+          "headScreen": {
+            "x": 539.2038833383746,
+            "y": 330.6065336480274,
+            "z": -0.22195523542378026
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.8785056902093568,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 551.7181259237278,
+            "y": 446.85266471375644,
+            "z": -0.3009313908432276
+          },
+          "bodyScreen": {
+            "x": 552.1346887837119,
+            "y": 446.8110392107529,
+            "z": -0.29936771093572667
+          },
+          "headScreen": {
+            "x": 552.1346887837119,
+            "y": 439.1595656117766,
+            "z": -0.30392481428732243
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            1.075671183743806,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 563.8244840420134,
+            "y": 453.31046242901624,
+            "z": -0.3073246344696908
+          },
+          "bodyScreen": {
+            "x": 564.2410469019974,
+            "y": 453.2688369260128,
+            "z": -0.3057609545621899
+          },
+          "headScreen": {
+            "x": 564.2410469019974,
+            "y": 445.6173633270365,
+            "z": -0.31031805791378564
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.8816779725274969,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 580.5737823705375,
+            "y": 455.4756934205693,
+            "z": -0.3074755808089541
+          },
+          "bodyScreen": {
+            "x": 580.9903452305215,
+            "y": 455.43406791756576,
+            "z": -0.30591190090145315
+          },
+          "headScreen": {
+            "x": 580.9903452305215,
+            "y": 447.78259431858953,
+            "z": -0.3104690042530489
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q04",
+          "position": [
+            3,
+            1.061531250144126,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 595.3704422928865,
+            "y": 450.0494142253392,
+            "z": -0.30475062373946926
+          },
+          "bodyScreen": {
+            "x": 595.7870051528705,
+            "y": 450.0077887223357,
+            "z": -0.3031869438319683
+          },
+          "headScreen": {
+            "x": 595.7870051528705,
+            "y": 442.3563151233594,
+            "z": -0.3077440471835641
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.8737237782263126,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 602.2263726967901,
+            "y": 444.9499422173388,
+            "z": -0.29945610466420114
+          },
+          "bodyScreen": {
+            "x": 602.6429355567742,
+            "y": 444.90831671433523,
+            "z": -0.2978924247567002
+          },
+          "headScreen": {
+            "x": 602.6429355567742,
+            "y": 437.256843115359,
+            "z": -0.30244952810829584
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.8825194283186802,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 789.9834034416706,
+            "y": 488.43637143593975,
+            "z": -0.3324036532058826
+          },
+          "bodyScreen": {
+            "x": 790.3999663016547,
+            "y": 488.3947459329362,
+            "z": -0.33083997329838166
+          },
+          "headScreen": {
+            "x": 790.3999663016547,
+            "y": 480.74327233395996,
+            "z": -0.33539707664997753
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            1.0896046359366243,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 802.0897615599562,
+            "y": 494.83794661014826,
+            "z": -0.33883038213775096
+          },
+          "bodyScreen": {
+            "x": 802.5063244199403,
+            "y": 494.7963211071448,
+            "z": -0.33726670223025
+          },
+          "headScreen": {
+            "x": 802.5063244199403,
+            "y": 487.14484750816854,
+            "z": -0.3418238055818458
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.8785858676316022,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 818.8390598884803,
+            "y": 497.09967434286585,
+            "z": -0.33892385645977585
+          },
+          "bodyScreen": {
+            "x": 819.2556227484642,
+            "y": 497.05804883986235,
+            "z": -0.3373601765522749
+          },
+          "headScreen": {
+            "x": 819.2556227484642,
+            "y": 489.4065752408861,
+            "z": -0.3419172799038708
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q04",
+          "position": [
+            3,
+            1.0783967339913165,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 833.6357198108294,
+            "y": 491.5602803599566,
+            "z": -0.33626626886773614
+          },
+          "bodyScreen": {
+            "x": 834.0522826708133,
+            "y": 491.5186548569531,
+            "z": -0.3347025889602352
+          },
+          "headScreen": {
+            "x": 834.0522826708133,
+            "y": 483.8671812579768,
+            "z": -0.33925969231183095
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.8957584700778595,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 840.491650214733,
+            "y": 486.431510530791,
+            "z": -0.33098919913700264
+          },
+          "bodyScreen": {
+            "x": 840.908213074717,
+            "y": 486.38988502778744,
+            "z": -0.3294255192295017
+          },
+          "headScreen": {
+            "x": 840.908213074717,
+            "y": 478.73841142881116,
+            "z": -0.33398262258109745
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.9205439342500358,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1015.708403195511,
+            "y": 422.4483818511257,
+            "z": -0.28280132653998824
+          },
+          "bodyScreen": {
+            "x": 1016.1249660554951,
+            "y": 422.40675634812226,
+            "z": -0.2812376466324873
+          },
+          "headScreen": {
+            "x": 1016.1249660554951,
+            "y": 414.7552827491459,
+            "z": -0.28579474998408294
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.9911587937294415,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1027.8147613137967,
+            "y": 429.62343796298256,
+            "z": -0.2887673817823041
+          },
+          "bodyScreen": {
+            "x": 1028.2313241737804,
+            "y": 429.581812459979,
+            "z": -0.28720370187480315
+          },
+          "headScreen": {
+            "x": 1028.2313241737804,
+            "y": 421.9303388610027,
+            "z": -0.2917608052263989
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.9159569084022204,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1044.5640596423207,
+            "y": 431.11538844058913,
+            "z": -0.28931932393590054
+          },
+          "bodyScreen": {
+            "x": 1044.9806225023046,
+            "y": 431.07376293758557,
+            "z": -0.2877556440283996
+          },
+          "headScreen": {
+            "x": 1044.9806225023046,
+            "y": 423.4222893386093,
+            "z": -0.29231274737999524
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q04",
+          "position": [
+            3.25,
+            1.0300856326327954,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1061.2048780593907,
+            "y": 426.3496537376983,
+            "z": -0.28659028767036165
+          },
+          "bodyScreen": {
+            "x": 1061.6214409193747,
+            "y": 426.30802823469475,
+            "z": -0.2850266077628607
+          },
+          "headScreen": {
+            "x": 1061.6214409193747,
+            "y": 418.6565546357185,
+            "z": -0.2895837111144566
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.9589049244146407,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1066.2166499685734,
+            "y": 420.30113581636294,
+            "z": -0.28147167492686875
+          },
+          "bodyScreen": {
+            "x": 1066.6332128285576,
+            "y": 420.25951031335944,
+            "z": -0.2799079950193678
+          },
+          "headScreen": {
+            "x": 1066.6332128285576,
+            "y": 412.60803671438316,
+            "z": -0.2844650983709637
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.925052176042218,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1001.692798635632,
+            "y": 262.103320377347,
+            "z": -0.16159868446688908
+          },
+          "bodyScreen": {
+            "x": 1002.1093614956161,
+            "y": 262.0616948743435,
+            "z": -0.16003500455938813
+          },
+          "headScreen": {
+            "x": 1002.1093614956161,
+            "y": 254.41022127536726,
+            "z": -0.1645921079109839
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.9467469672863844,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1013.7991567539176,
+            "y": 269.55564360813867,
+            "z": -0.16739960355593453
+          },
+          "bodyScreen": {
+            "x": 1014.2157196139016,
+            "y": 269.51401810513516,
+            "z": -0.16583592364843358
+          },
+          "headScreen": {
+            "x": 1014.2157196139016,
+            "y": 261.8625445061589,
+            "z": -0.17039302700002945
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.9836657224698929,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1030.5484550824417,
+            "y": 270.41212140369475,
+            "z": -0.1683300237440899
+          },
+          "bodyScreen": {
+            "x": 1030.965017942426,
+            "y": 270.37049590069125,
+            "z": -0.16676634383658895
+          },
+          "headScreen": {
+            "x": 1030.965017942426,
+            "y": 262.719022301715,
+            "z": -0.1713234471881847
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q04",
+          "position": [
+            3,
+            0.9696271614497357,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1045.3451150047908,
+            "y": 266.08477427097307,
+            "z": -0.1649505591577911
+          },
+          "bodyScreen": {
+            "x": 1045.7616778647748,
+            "y": 266.04314876796957,
+            "z": -0.16338687925029016
+          },
+          "headScreen": {
+            "x": 1045.7616778647748,
+            "y": 258.3916751689933,
+            "z": -0.16794398260188592
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q05",
+          "position": [
+            3.6,
+            1.054514237459105,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1052.2010454086944,
+            "y": 259.43973549700996,
+            "z": -0.1605765565553532
+          },
+          "bodyScreen": {
+            "x": 1052.6176082686784,
+            "y": 259.3981099940064,
+            "z": -0.15901287664785224
+          },
+          "headScreen": {
+            "x": 1052.6176082686784,
+            "y": 251.74663639503015,
+            "z": -0.1635699799994481
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            1.0264367621069876,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 620.320821927346,
+            "y": 166.82324459756313,
+            "z": -0.09033396420730144
+          },
+          "bodyScreen": {
+            "x": 620.73738478733,
+            "y": 166.78161909455957,
+            "z": -0.0887702842998005
+          },
+          "headScreen": {
+            "x": 620.73738478733,
+            "y": 159.13014549558335,
+            "z": -0.09332738765139625
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.8931769839300461,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 632.4271800456315,
+            "y": 175.1538128631447,
+            "z": -0.09561181367586258
+          },
+          "bodyScreen": {
+            "x": 632.8437429056155,
+            "y": 175.11218736014115,
+            "z": -0.09404813376836163
+          },
+          "headScreen": {
+            "x": 632.8437429056155,
+            "y": 167.46071376116487,
+            "z": -0.09860523711995739
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q03",
+          "position": [
+            1.3,
+            1.05122702362807,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 649.1764783741556,
+            "y": 175.3237478250171,
+            "z": -0.09695112851782839
+          },
+          "bodyScreen": {
+            "x": 649.5930412341397,
+            "y": 175.28212232201358,
+            "z": -0.09538744861032744
+          },
+          "headScreen": {
+            "x": 649.5930412341397,
+            "y": 167.63064872303727,
+            "z": -0.0999445519619232
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q04",
+          "position": [
+            3,
+            0.8963498041396495,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 663.9731382965047,
+            "y": 171.79464015672892,
+            "z": -0.09309624443335185
+          },
+          "bodyScreen": {
+            "x": 664.3897011564886,
+            "y": 171.75301465372536,
+            "z": -0.09153256452585079
+          },
+          "headScreen": {
+            "x": 664.3897011564886,
+            "y": 164.10154105474908,
+            "z": -0.09608966787744677
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q05",
+          "position": [
+            3.6,
+            1.083171507334443,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 670.8290687004082,
+            "y": 164.57186056148376,
+            "z": -0.08906633563179567
+          },
+          "bodyScreen": {
+            "x": 671.2456315603923,
+            "y": 164.53023505848017,
+            "z": -0.08750265572429472
+          },
+          "headScreen": {
+            "x": 671.2456315603923,
+            "y": 156.8787614595039,
+            "z": -0.09205975907589048
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            1.03839285227855,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 298.6995804480177,
+            "y": 274.6528723734125,
+            "z": -0.17195572932825554
+          },
+          "bodyScreen": {
+            "x": 299.1161433080017,
+            "y": 274.611246870409,
+            "z": -0.1703920494207546
+          },
+          "headScreen": {
+            "x": 299.1161433080017,
+            "y": 266.9597732714327,
+            "z": -0.17494915277235024
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.874160434040718,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 310.80593856630327,
+            "y": 283.1589860743396,
+            "z": -0.17712902655842455
+          },
+          "bodyScreen": {
+            "x": 311.2225014262873,
+            "y": 283.1173605713361,
+            "z": -0.1755653466509236
+          },
+          "headScreen": {
+            "x": 311.2225014262873,
+            "y": 275.46588697235984,
+            "z": -0.18012245000251936
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q03",
+          "position": [
+            1.3,
+            1.0443640673002186,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 327.5552368948274,
+            "y": 283.2600374063837,
+            "z": -0.17850936746109614
+          },
+          "bodyScreen": {
+            "x": 327.97179975481146,
+            "y": 283.2184119033801,
+            "z": -0.1769456875535952
+          },
+          "headScreen": {
+            "x": 327.97179975481146,
+            "y": 275.5669383044039,
+            "z": -0.18150279090519095
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q04",
+          "position": [
+            3,
+            0.8794518598994289,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 342.35189681717645,
+            "y": 279.78780562333804,
+            "z": -0.1746206089491762
+          },
+          "bodyScreen": {
+            "x": 342.7684596771604,
+            "y": 279.74618012033454,
+            "z": -0.17305692904167524
+          },
+          "headScreen": {
+            "x": 342.7684596771604,
+            "y": 272.09470652135826,
+            "z": -0.177614032393271
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q05",
+          "position": [
+            3.6,
+            1.0813499177608983,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 349.2078272210801,
+            "y": 272.47957689498116,
+            "z": -0.17064159237456933
+          },
+          "bodyScreen": {
+            "x": 349.6243900810642,
+            "y": 272.43795139197755,
+            "z": -0.16907791246706827
+          },
+          "headScreen": {
+            "x": 349.6243900810642,
+            "y": 264.7864777930013,
+            "z": -0.17363501581866403
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            2.185379525800615,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 376.15423722629635,
+            "y": 477.9125090086051,
+            "z": -0.3344277979743169
+          },
+          "bodyScreen": {
+            "x": 376.5708000862803,
+            "y": 477.8708835056015,
+            "z": -0.33286411806681593
+          },
+          "headScreen": {
+            "x": 376.5708000862803,
+            "y": 470.2194099066253,
+            "z": -0.3374212214184117
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            2.0810621596232437,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 388.2605953445819,
+            "y": 486.0790386806271,
+            "z": -0.33980334637823084
+          },
+          "bodyScreen": {
+            "x": 388.6771582045659,
+            "y": 486.03741317762353,
+            "z": -0.3382396664707299
+          },
+          "headScreen": {
+            "x": 388.6771582045659,
+            "y": 478.3859395786472,
+            "z": -0.34279676982232565
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q03",
+          "position": [
+            1.3,
+            2.220099395849015,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 405.0098936731061,
+            "y": 486.35673361569246,
+            "z": -0.34107848099025107
+          },
+          "bodyScreen": {
+            "x": 405.42645653309006,
+            "y": 486.3151081126889,
+            "z": -0.3395148010827501
+          },
+          "headScreen": {
+            "x": 405.42645653309006,
+            "y": 478.6636345137127,
+            "z": -0.3440719044343459
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q04",
+          "position": [
+            3,
+            2.0856546097586603,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 419.80655359545506,
+            "y": 482.71181985502784,
+            "z": -0.33729256928408535
+          },
+          "bodyScreen": {
+            "x": 420.2231164554391,
+            "y": 482.6701943520243,
+            "z": -0.3357288893765844
+          },
+          "headScreen": {
+            "x": 420.2231164554391,
+            "y": 475.018720753048,
+            "z": -0.34028599272818016
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q05",
+          "position": [
+            3.6,
+            2.2022148807094117,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 426.6624839993587,
+            "y": 475.88726507003565,
+            "z": -0.3330254837355906
+          },
+          "bodyScreen": {
+            "x": 427.0790468593428,
+            "y": 475.8456395670321,
+            "z": -0.33146180382808943
+          },
+          "headScreen": {
+            "x": 427.0790468593428,
+            "y": 468.19416596805587,
+            "z": -0.3360189071796852
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q01",
+          "position": [
+            -2.8,
+            0.9530586387822114,
+            2
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 795.8847106247775,
+            "y": 585.593557488366,
+            "z": -0.4064047738514278
+          },
+          "bodyScreen": {
+            "x": 796.3012734847616,
+            "y": 585.5519319853623,
+            "z": -0.40484109394392687
+          },
+          "headScreen": {
+            "x": 796.3012734847616,
+            "y": 577.9004583863862,
+            "z": -0.4093981972955226
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q02",
+          "position": [
+            -0.9,
+            0.9941106059373902,
+            3.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 807.9910687430631,
+            "y": 592.9361689262437,
+            "z": -0.41227103564508194
+          },
+          "bodyScreen": {
+            "x": 808.4076316030472,
+            "y": 592.8945434232401,
+            "z": -0.410707355737581
+          },
+          "headScreen": {
+            "x": 808.4076316030472,
+            "y": 585.2430698242639,
+            "z": -0.41526445908917675
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q03",
+          "position": [
+            1.3,
+            0.9661655412177049,
+            2.8
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 824.7403670715872,
+            "y": 594.1602791703316,
+            "z": -0.4129824994398459
+          },
+          "bodyScreen": {
+            "x": 825.1569299315712,
+            "y": 594.118653667328,
+            "z": -0.41141881953234494
+          },
+          "headScreen": {
+            "x": 825.1569299315712,
+            "y": 586.4671800683517,
+            "z": -0.4159759228839407
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q04",
+          "position": [
+            3,
+            0.936219579253155,
+            1.5
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 839.5370269939361,
+            "y": 589.9230913400946,
+            "z": -0.40954933732009613
+          },
+          "bodyScreen": {
+            "x": 839.9535898539203,
+            "y": 589.8814658370911,
+            "z": -0.4079856574125952
+          },
+          "headScreen": {
+            "x": 839.9535898539203,
+            "y": 582.2299922381147,
+            "z": -0.41254276076419094
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q05",
+          "position": [
+            3.6,
+            0.9355791976469988,
+            0.1
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 846.3929573978398,
+            "y": 583.7628015171928,
+            "z": -0.40488662548524856
+          },
+          "bodyScreen": {
+            "x": 846.8095202578239,
+            "y": 583.7211760141893,
+            "z": -0.4033229455777476
+          },
+          "headScreen": {
+            "x": 846.8095202578239,
+            "y": 576.069702415213,
+            "z": -0.4078800489293434
+          }
+        }
+      ],
+      "landmarks": [
+        {
+          "id": "S01",
+          "x": 0.2597489926174507,
+          "y": -0.08791388013985138,
+          "z": -0.25305363802725633
+        },
+        {
+          "id": "S02",
+          "x": 0.2638531227960389,
+          "y": 0.24118484031512585,
+          "z": -0.17367619336347506
+        },
+        {
+          "id": "S03",
+          "x": -0.07311756555120952,
+          "y": 0.3538700913927739,
+          "z": -0.14649691029159206
+        },
+        {
+          "id": "S04",
+          "x": -0.24916314952749638,
+          "y": 0.09603937468426108,
+          "z": -0.20868476510870893
+        },
+        {
+          "id": "S05",
+          "x": -0.15628020338049836,
+          "y": -0.23795320843771015,
+          "z": -0.28924259209820824
+        },
+        {
+          "id": "S06",
+          "x": 0.1925708617995057,
+          "y": -0.36838096899993983,
+          "z": -0.3207013055576112
+        },
+        {
+          "id": "S07",
+          "x": 0.5230613446016146,
+          "y": -0.16219765903534902,
+          "z": -0.2709706221484407
+        },
+        {
+          "id": "S08",
+          "x": 0.5025406937086733,
+          "y": 0.34037133735743075,
+          "z": -0.14975276190957798
+        },
+        {
+          "id": "S09",
+          "x": -0.05583701743083782,
+          "y": 0.6372536334658494,
+          "z": -0.07814580458557874
+        },
+        {
+          "id": "S10",
+          "x": -0.5267319537109669,
+          "y": 0.29901729489463996,
+          "z": -0.15972721034461201
+        },
+        {
+          "id": "S11",
+          "x": -0.4133283566710276,
+          "y": -0.35853906806447217,
+          "z": -0.31832747394315997
+        },
+        {
+          "id": "S12",
+          "x": 0.20121113585969155,
+          "y": -0.6742022393524991,
+          "z": -0.3944643117791399
+        }
+      ]
+    },
+    "night": {
+      "mode": "quiz",
+      "demo": true,
+      "view": "overview",
+      "zoom": 1,
+      "goalZoom": 1,
+      "target": [
+        -12.18305080521185,
+        1.4039130712706414,
+        2.374830656704452
+      ],
+      "goalTarget": [
+        -12.18305080521185,
+        1.4039130712706414,
+        2.374830656704452
+      ],
+      "azimuth": 0.23109066719589708,
+      "elevation": 0.725881280618328,
+      "azimuthGoal": 0.23109066719589708,
+      "elevationGoal": 0.725881280618328,
+      "lighting": {
+        "mode": "night",
+        "blend": 1,
+        "duration": 1.25,
+        "background": "#172d48",
+        "seaColor": "#264e67",
+        "ambientIntensity": 0.6799999999999999,
+        "directionalIntensity": 0.48,
+        "academyWindows": 9,
+        "academyEntrance": 2,
+        "cottages": {
+          "S01": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S02": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S03": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S04": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S05": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S06": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S07": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S08": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S09": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S10": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S11": {
+            "windows": 4,
+            "lamps": 2
+          },
+          "S12": {
+            "windows": 4,
+            "lamps": 2
+          }
+        },
+        "bridges": [
+          {
+            "from": "academy",
+            "to": "S01",
+            "main": true,
+            "lamps": 6
+          },
+          {
+            "from": "academy",
+            "to": "S02",
+            "main": true,
+            "lamps": 8
+          },
+          {
+            "from": "academy",
+            "to": "S03",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "academy",
+            "to": "S04",
+            "main": true,
+            "lamps": 12
+          },
+          {
+            "from": "academy",
+            "to": "S05",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "academy",
+            "to": "S06",
+            "main": true,
+            "lamps": 10
+          },
+          {
+            "from": "S01",
+            "to": "S07",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S02",
+            "to": "S08",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S03",
+            "to": "S09",
+            "main": false,
+            "lamps": 4
+          },
+          {
+            "from": "S04",
+            "to": "S10",
+            "main": false,
+            "lamps": 8
+          },
+          {
+            "from": "S05",
+            "to": "S11",
+            "main": false,
+            "lamps": 6
+          },
+          {
+            "from": "S06",
+            "to": "S12",
+            "main": false,
+            "lamps": 4
+          }
+        ],
+        "themes": [
+          {
+            "id": "S01",
+            "kind": "fireflies",
+            "fixtures": 18
+          },
+          {
+            "id": "S02",
+            "kind": "flower-lights",
+            "fixtures": 26
+          },
+          {
+            "id": "S03",
+            "kind": "lighthouse",
+            "fixtures": 17
+          },
+          {
+            "id": "S04",
+            "kind": "lake-reflections",
+            "fixtures": 5
+          },
+          {
+            "id": "S05",
+            "kind": "lava",
+            "fixtures": 28
+          },
+          {
+            "id": "S06",
+            "kind": "candy-lights",
+            "fixtures": 12
+          },
+          {
+            "id": "S07",
+            "kind": "ice-crystals",
+            "fixtures": 9
+          },
+          {
+            "id": "S08",
+            "kind": "windmill-lights",
+            "fixtures": 12
+          },
+          {
+            "id": "S09",
+            "kind": "stars-and-flowers",
+            "fixtures": 20
+          },
+          {
+            "id": "S10",
+            "kind": "oasis-camp",
+            "fixtures": 10
+          },
+          {
+            "id": "S11",
+            "kind": "cloud-lights",
+            "fixtures": 22
+          },
+          {
+            "id": "S12",
+            "kind": "festival-lights",
+            "fixtures": 26
+          }
+        ],
+        "fixtures": {
+          "panes": 116,
+          "bulbs": 209,
+          "halos": 213,
+          "pools": 66,
+          "crystals": 4,
+          "surfaces": 1
+        },
+        "batches": 6,
+        "actualLocalLights": 0,
+        "localShadowLights": 0,
+        "shadowLights": 0
+      },
+      "lecture": {
+        "status": "idle",
+        "unitId": null,
+        "videoCount": 0
+      },
+      "quiz": {
+        "status": "idle",
+        "unitId": null,
+        "questionId": null,
+        "result": null,
+        "passed": false,
+        "count": 0,
+        "total": 0,
+        "complete": false
+      },
+      "quizSessions": [
+        {
+          "unitId": "S01",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S02",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S03",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S04",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S05",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S06",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S07",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S08",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S09",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S10",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S11",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        },
+        {
+          "unitId": "S12",
+          "total": 5,
+          "count": 0,
+          "complete": false,
+          "passedIds": [],
+          "formUrl": null
+        }
+      ],
+      "quizFailures": [],
+      "framingExtent": 0.8333333333333344,
+      "lectureScreens": [
+        {
+          "id": "S01",
+          "screen": {
+            "x": 847.159598360493,
+            "y": 391.2538815729008,
+            "z": -0.2599004365811647
+          }
+        },
+        {
+          "id": "S02",
+          "screen": {
+            "x": 849.261166256688,
+            "y": 286.44171321405895,
+            "z": -0.18065177378649122
+          }
+        },
+        {
+          "id": "S03",
+          "screen": {
+            "x": 619.1101861155174,
+            "y": 250.49511812028916,
+            "z": -0.15347249071460822
+          }
+        },
+        {
+          "id": "S04",
+          "screen": {
+            "x": 498.87105225971357,
+            "y": 332.74311675030475,
+            "z": -0.21566034553172508
+          }
+        },
+        {
+          "id": "S05",
+          "screen": {
+            "x": 562.3101044781132,
+            "y": 439.28675076621363,
+            "z": -0.2962181725212244
+          }
+        },
+        {
+          "id": "S06",
+          "screen": {
+            "x": 800.575381996056,
+            "y": 480.8932063855649,
+            "z": -0.3276768859806274
+          }
+        },
+        {
+          "id": "S07",
+          "screen": {
+            "x": 1026.3003817498964,
+            "y": 415.1207305068604,
+            "z": -0.27794620257145686
+          }
+        },
+        {
+          "id": "S08",
+          "screen": {
+            "x": 1012.2847771900174,
+            "y": 254.8012206575637,
+            "z": -0.15672834233259414
+          }
+        },
+        {
+          "id": "S09",
+          "screen": {
+            "x": 630.9128004817313,
+            "y": 160.09576819897808,
+            "z": -0.08512138500859467
+          }
+        },
+        {
+          "id": "S10",
+          "screen": {
+            "x": 309.29155900240306,
+            "y": 267.99316020319395,
+            "z": -0.16670279076762817
+          }
+        },
+        {
+          "id": "S11",
+          "screen": {
+            "x": 386.74621578068167,
+            "y": 470.95233012139397,
+            "z": -0.3293538129009279
+          }
+        },
+        {
+          "id": "S12",
+          "screen": {
+            "x": 806.4766891791629,
+            "y": 578.4501916280313,
+            "z": -0.40143989220215603
+          }
+        }
+      ],
+      "totalUnits": 12,
+      "npcCount": 60,
+      "shark": [
+        0.9884232648552569,
+        1.13,
+        0.2116935522604161
+      ],
+      "dialog": false,
+      "time": 5.7499,
+      "sea": {
+        "seaTime": 5.7499,
+        "seaY": -2.585,
+        "whales": [
+          {
+            "id": "offshore-whale-1",
+            "position": [
+              -10.706319376549217,
+              -2.5192369517231956,
+              -48.43563663482665
+            ],
+            "heading": 1.5707963267948966,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 58.18808743206279,
+            "screen": {
+              "x": 782.0839471180442,
+              "y": 144.73912067645944,
+              "z": -0.044557334471831966
+            }
+          },
+          {
+            "id": "offshore-whale-2",
+            "position": [
+              48.48186405551361,
+              -2.4745427161773352,
+              3.8583584102172352
+            ],
+            "heading": 0,
+            "spouting": true,
+            "spoutPhase": 0.9317727272727276,
+            "routeDistance": 166.87185795987222,
+            "screen": {
+              "x": 1127.9279449382586,
+              "y": 468.7398331925838,
+              "z": -0.28987724079224064
+            }
+          },
+          {
+            "id": "offshore-whale-3",
+            "position": [
+              -16.226223376549193,
+              -2.398894488817451,
+              50.63244945526124
+            ],
+            "heading": -1.5707963267948966,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 275.55562848768176,
+            "screen": {
+              "x": 569.4152803996766,
+              "y": 622.7913387533424,
+              "z": -0.4069353957255991
+            }
+          },
+          {
+            "id": "offshore-whale-4",
+            "position": [
+              -75.414406808612,
+              -2.360081224004338,
+              -1.661545589782655
+            ],
+            "heading": 3.141592653589793,
+            "spouting": false,
+            "spoutPhase": null,
+            "routeDistance": 384.2393990154912,
+            "screen": {
+              "x": 223.57128257946226,
+              "y": 298.3173259155047,
+              "z": -0.16189738000501952
+            }
+          }
+        ]
+      },
+      "visitors": [
+        {
+          "id": "visitor-1",
+          "unitId": "S01",
+          "phase": "bridge",
+          "from": "S01",
+          "to": "academy",
+          "position": [
+            3.554411369110135,
+            1.617143548667718,
+            0.5081900897825866
+          ],
+          "home": "S01",
+          "trips": 0,
+          "visited": [
+            "S01"
+          ],
+          "bridgeT": 0.6060621060933169,
+          "screen": {
+            "x": 802.3293862711632,
+            "y": 377.38233982847083,
+            "z": -0.2521482285970347
+          }
+        },
+        {
+          "id": "visitor-2",
+          "unitId": "S02",
+          "phase": "bridge",
+          "from": "S02",
+          "to": "academy",
+          "position": [
+            3.158129994407025,
+            1.3377959826630315,
+            -14.079599781287722
+          ],
+          "home": "S02",
+          "trips": 0,
+          "visited": [
+            "S02"
+          ],
+          "bridgeT": 0.8466953351524219,
+          "screen": {
+            "x": 824.7258780737418,
+            "y": 307.0788895069172,
+            "z": -0.19685157634075812
+          }
+        },
+        {
+          "id": "visitor-3",
+          "unitId": "S03",
+          "phase": "walk",
+          "from": "S03",
+          "to": "S03",
+          "position": [
+            -26.440218273643527,
+            0.9908936278105999,
+            -17.95120812161943
+          ],
+          "home": "S03",
+          "trips": 0,
+          "visited": [
+            "S03"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 613.1095641999179,
+            "y": 255.9861643837174,
+            "z": -0.1555626472883237
+          }
+        },
+        {
+          "id": "visitor-4",
+          "unitId": "S04",
+          "phase": "walk",
+          "from": "S04",
+          "to": "S10",
+          "position": [
+            -35.735212830040105,
+            0.8343260664372782,
+            3.888590377470071
+          ],
+          "home": "S04",
+          "trips": 0,
+          "visited": [
+            "S04"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 506.6369210039333,
+            "y": 353.10460169067653,
+            "z": -0.22779459724811846
+          }
+        },
+        {
+          "id": "visitor-5",
+          "unitId": "S05",
+          "phase": "walk",
+          "from": "S05",
+          "to": "S05",
+          "position": [
+            -24.00401375011835,
+            0.90369723042356,
+            14.569605500047318
+          ],
+          "home": "S05",
+          "trips": 0,
+          "visited": [
+            "S05"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 574.6348735541275,
+            "y": 418.52769507577744,
+            "z": -0.27779256678943964
+          }
+        },
+        {
+          "id": "visitor-6",
+          "unitId": "S06",
+          "phase": "walk",
+          "from": "S06",
+          "to": "S08",
+          "position": [
+            7.482825357857626,
+            0.8511629388837559,
+            22.72239364001406
+          ],
+          "home": "S06",
+          "trips": 0,
+          "visited": [
+            "S06"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 792.7511410372149,
+            "y": 495.0232286727259,
+            "z": -0.33522850579823593
+          }
+        },
+        {
+          "id": "visitor-7",
+          "unitId": "S07",
+          "phase": "yield",
+          "from": "S07",
+          "to": "S07",
+          "position": [
+            35.30159109907667,
+            0.8330574795065682,
+            4.019950041411756
+          ],
+          "home": "S07",
+          "trips": 0,
+          "visited": [
+            "S07"
+          ],
+          "bridgeT": null,
+          "screen": {
+            "x": 1030.4214244633447,
+            "y": 435.59895331685493,
+            "z": -0.2901590013065536
+          }
+        }
+      ],
+      "visitorRoutes": [
+        {
+          "from": "academy",
+          "to": "S01",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S02",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S03",
+          "enabled": false,
+          "reason": "bank-deck-height"
+        },
+        {
+          "from": "academy",
+          "to": "S04",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "academy",
+          "to": "S05",
+          "enabled": false,
+          "reason": "blocked-to-bank"
+        },
+        {
+          "from": "academy",
+          "to": "S06",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S01",
+          "to": "S07",
+          "enabled": false,
+          "reason": "blocked-from-bank"
+        },
+        {
+          "from": "S02",
+          "to": "S08",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S03",
+          "to": "S09",
+          "enabled": false,
+          "reason": "blocked-from-bank"
+        },
+        {
+          "from": "S04",
+          "to": "S10",
+          "enabled": true,
+          "reason": null
+        },
+        {
+          "from": "S05",
+          "to": "S11",
+          "enabled": false,
+          "reason": "bank-deck-height"
+        },
+        {
+          "from": "S06",
+          "to": "S12",
+          "enabled": false,
+          "reason": "blocked-to-bank"
+        }
+      ],
+      "pickableBackground": 0,
+      "gates": [],
+      "open": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "pickableAnimals": 0,
+      "fps": 3.1169640769890146,
+      "drawCalls": 306,
+      "triangles": 281970,
+      "geometries": 275,
+      "textures": 1,
+      "animals": [
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark",
+          "position": [
+            0.9884232648552569,
+            1.13,
+            0.2116935522604161
+          ]
+        },
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark-2",
+          "position": [
+            1.7839998789681955,
+            1.8663906279692524,
+            -0.5048667402106352
+          ]
+        },
+        {
+          "unitId": "S01",
+          "kind": "shark",
+          "name": "decorative-shark-3",
+          "position": [
+            -0.051218665361445925,
+            1.8838045410811075,
+            -1.3049902091224805
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-1",
+          "position": [
+            0.4281635138671566,
+            1.642643343151099,
+            0.23352720391114767
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-2",
+          "position": [
+            1.7386173373975662,
+            2.1869805761040246,
+            -0.5020824558603992
+          ]
+        },
+        {
+          "unitId": "S02",
+          "kind": "fish",
+          "name": "decorative-fish-3",
+          "position": [
+            -0.01971753710298138,
+            2.5789367219965733,
+            -1.272008066453766
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-1",
+          "position": [
+            0.38821808282289205,
+            1.022935578394526,
+            0.21531470270855668
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-2",
+          "position": [
+            1.705219345099738,
+            1.0876294024309812,
+            -0.490966147464214
+          ]
+        },
+        {
+          "unitId": "S03",
+          "kind": "penguin",
+          "name": "decorative-penguin-3",
+          "position": [
+            0.030544438647360353,
+            1.079080064135477,
+            -1.2388212720921623
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-1",
+          "position": [
+            0.3450700360296621,
+            1.5812257786675747,
+            0.20248274133768576
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-2",
+          "position": [
+            1.6873994585129743,
+            1.5256633672084983,
+            -0.47242513399357716
+          ]
+        },
+        {
+          "unitId": "S04",
+          "kind": "jellyfish",
+          "name": "decorative-jellyfish-3",
+          "position": [
+            0.0928182360962204,
+            1.6308362527215445,
+            -1.20881205157853
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-1",
+          "position": [
+            0.30233511253009415,
+            1.354016499683448,
+            0.19584660747518395
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-2",
+          "position": [
+            1.6870750614010044,
+            1.3651024920944708,
+            -0.44797274277561394
+          ]
+        },
+        {
+          "unitId": "S05",
+          "kind": "dinosaur",
+          "name": "decorative-dinosaur-3",
+          "position": [
+            0.15874191843235236,
+            3.555637815963681,
+            -1.1850387886475744
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-1",
+          "position": [
+            0.26359443227896917,
+            1.024622845662604,
+            0.19582793254607803
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-2",
+          "position": [
+            1.7042810582371233,
+            0.9322653159149389,
+            -0.41960479091613195
+          ]
+        },
+        {
+          "unitId": "S06",
+          "kind": "sheep",
+          "name": "decorative-sheep-3",
+          "position": [
+            0.21946345336220402,
+            2.3091293328726654,
+            -1.1699243306583558
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-1",
+          "position": [
+            0.23209440387487812,
+            1.00984267000567,
+            0.20242790307510283
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-2",
+          "position": [
+            1.737166118553445,
+            0.93,
+            -0.3896366856517163
+          ]
+        },
+        {
+          "unitId": "S07",
+          "kind": "arctic-fox",
+          "name": "decorative-arctic-fox-3",
+          "position": [
+            0.26682933718171364,
+            1.2853076731996755,
+            -1.1650090645880065
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-1",
+          "position": [
+            0.21047468058162525,
+            1.6159160542928248,
+            0.21522718530001878
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-2",
+          "position": [
+            1.7821918763557332,
+            1.748910805333162,
+            -0.3605144395862967
+          ]
+        },
+        {
+          "unitId": "S08",
+          "kind": "duck",
+          "name": "decorative-duck-3",
+          "position": [
+            0.02447942254587826,
+            2.4276810636864172,
+            -0.7507939287996037
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-1",
+          "position": [
+            0.2005469615006048,
+            1.8532120568775565,
+            0.23341256783666336
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-2",
+          "position": [
+            1.8345136511495665,
+            1.874478860836987,
+            -0.3346150258485462
+          ]
+        },
+        {
+          "unitId": "S09",
+          "kind": "butterfly",
+          "name": "decorative-butterfly-3",
+          "position": [
+            0.2987009397808946,
+            1.969414614157737,
+            -1.1866893600086166
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-1",
+          "position": [
+            0.203143174010998,
+            1.0250283486234142,
+            0.255828629635303
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-2",
+          "position": [
+            1.8885017257652694,
+            1.1985106740268932,
+            -0.31405236828777006
+          ]
+        },
+        {
+          "unitId": "S10",
+          "kind": "camel",
+          "name": "decorative-camel-3",
+          "position": [
+            0.278927036345037,
+            2.200328695095991,
+            -1.2110753785076849
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-1",
+          "position": [
+            0.21804575955258154,
+            3.0767211970144017,
+            0.28105115046839574
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-2",
+          "position": [
+            1.9383470925417037,
+            3.035433910097901,
+            -0.30050480189112105
+          ]
+        },
+        {
+          "unitId": "S11",
+          "kind": "whale",
+          "name": "decorative-whale-3",
+          "position": [
+            0.23781289207020984,
+            2.9708005207734898,
+            -1.2414666880760064
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-1",
+          "position": [
+            0.24400590469384564,
+            1.0327124780860484,
+            0.307477599762874
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-2",
+          "position": [
+            1.9786864908044024,
+            1.0451227906667209,
+            -0.2950780861941588
+          ]
+        },
+        {
+          "unitId": "S12",
+          "kind": "flamingo",
+          "name": "decorative-flamingo-3",
+          "position": [
+            0.180879189660193,
+            1.0449634280042333,
+            -1.274765964448929
+          ]
+        }
+      ],
+      "dressing": [
+        {
+          "id": "S01",
+          "count": 49
+        },
+        {
+          "id": "S02",
+          "count": 64
+        },
+        {
+          "id": "S03",
+          "count": 39
+        },
+        {
+          "id": "S04",
+          "count": 50
+        },
+        {
+          "id": "S05",
+          "count": 47
+        },
+        {
+          "id": "S06",
+          "count": 61
+        },
+        {
+          "id": "S07",
+          "count": 46
+        },
+        {
+          "id": "S08",
+          "count": 64
+        },
+        {
+          "id": "S09",
+          "count": 66
+        },
+        {
+          "id": "S10",
+          "count": 49
+        },
+        {
+          "id": "S11",
+          "count": 54
+        },
+        {
+          "id": "S12",
+          "count": 65
+        }
+      ],
+      "npcs": [
+        {
+          "unitId": "S01",
+          "id": "Q01",
+          "position": [
+            -2.5138397515394,
+            0.9378720726560553,
+            1.5701549636217347
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -2.3335935107754535,
+            "y": 0.9799731141879658,
+            "z": 1.2994047377080586
+          },
+          "screen": {
+            "x": 840.4674330262976,
+            "y": 394.87839793462314,
+            "z": -0.262088365205393
+          },
+          "bodyScreen": {
+            "x": 839.1396018862766,
+            "y": 396.8369473325509,
+            "z": -0.26203702101936677
+          },
+          "headScreen": {
+            "x": 839.1396018862766,
+            "y": 389.1854737335746,
+            "z": -0.2665941243709624
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q02",
+          "position": [
+            -1.4936965735457874,
+            0.9406025618182867,
+            3.198340568436392
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 842.0241517629922,
+            "y": 404.7550349119268,
+            "z": -0.26957702597245226
+          },
+          "bodyScreen": {
+            "x": 843.8388178325307,
+            "y": 405.9693408308121,
+            "z": -0.26896295799746806
+          },
+          "headScreen": {
+            "x": 843.8388178325307,
+            "y": 398.3178672318358,
+            "z": -0.2735200613490638
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q03",
+          "position": [
+            1.395723399965108,
+            0.8795525270982644,
+            2.276627216282594
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 1.4596729004887155,
+            "y": 0.9095487392501893,
+            "z": 1.9269799187714254
+          },
+          "screen": {
+            "x": 867.481091271211,
+            "y": 402.8913178629802,
+            "z": -0.2677001598808678
+          },
+          "bodyScreen": {
+            "x": 866.7528095136406,
+            "y": 405.131122699981,
+            "z": -0.2678614734215087
+          },
+          "headScreen": {
+            "x": 866.7528095136406,
+            "y": 397.4796491010047,
+            "z": -0.27241857677310444
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q04",
+          "position": [
+            3.6449966990374993,
+            0.969442749891766,
+            2.0578458511758697
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 3.648529289565939,
+            "y": 0.968995391161357,
+            "z": 2.0609011241301873
+          },
+          "screen": {
+            "x": 884.7911593150769,
+            "y": 405.9861766192574,
+            "z": -0.27072884001895925
+          },
+          "bodyScreen": {
+            "x": 883.7246094892074,
+            "y": 406.141833338803,
+            "z": -0.26931432554305834
+          },
+          "headScreen": {
+            "x": 883.7246094892074,
+            "y": 398.4903597398267,
+            "z": -0.2738714288946541
+          }
+        },
+        {
+          "unitId": "S01",
+          "id": "Q05",
+          "position": [
+            3.9074014578604235,
+            0.9512077456911237,
+            0.8239647288859623
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 886.3182612353837,
+            "y": 400.0704655320599,
+            "z": -0.2661162615903361
+          },
+          "bodyScreen": {
+            "x": 887.801894387617,
+            "y": 400.5057234259168,
+            "z": -0.2649131540486389
+          },
+          "headScreen": {
+            "x": 887.801894387617,
+            "y": 392.85424982694053,
+            "z": -0.26947025740023467
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q01",
+          "position": [
+            -3.2661026566181577,
+            0.9613619011852799,
+            1.7017423791282567
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -3.345778560946477,
+            "y": 0.9542719956916437,
+            "z": 1.6507580190772067
+          },
+          "screen": {
+            "x": 834.8984647892572,
+            "y": 289.4990679299507,
+            "z": -0.18259082687795958
+          },
+          "bodyScreen": {
+            "x": 836.1651612326726,
+            "y": 291.4989400056916,
+            "z": -0.1825707268404998
+          },
+          "headScreen": {
+            "x": 836.1651612326726,
+            "y": 283.8474664067154,
+            "z": -0.18712783019209556
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q02",
+          "position": [
+            -0.9225978579345337,
+            0.8992305884330298,
+            2.8573329779629644
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -0.9764753704653943,
+            "y": 0.9667645258889043,
+            "z": 2.2787694894011716
+          },
+          "screen": {
+            "x": 851.6972190040134,
+            "y": 297.8802449289227,
+            "z": -0.18845185928710173
+          },
+          "bodyScreen": {
+            "x": 851.4466045068973,
+            "y": 300.20954982647277,
+            "z": -0.18868084397919038
+          },
+          "headScreen": {
+            "x": 851.4466045068973,
+            "y": 292.5580762274965,
+            "z": -0.19323794733078603
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q03",
+          "position": [
+            0.916108178723331,
+            0.963549493172996,
+            3.2320565443166367
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 862.8723532139792,
+            "y": 303.3595873743666,
+            "z": -0.19308754895383007
+          },
+          "bodyScreen": {
+            "x": 864.3596662653209,
+            "y": 303.7983031241,
+            "z": -0.1918870559029754
+          },
+          "headScreen": {
+            "x": 864.3596662653209,
+            "y": 296.14682952512374,
+            "z": -0.19644415925457115
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q04",
+          "position": [
+            2.5757161557636183,
+            0.8784943430520297,
+            1.212859167589438
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 878.8739529709255,
+            "y": 294.28411176237375,
+            "z": -0.18557395566506674
+          },
+          "bodyScreen": {
+            "x": 880.1066645025563,
+            "y": 296.30532246694054,
+            "z": -0.18556998980197603
+          },
+          "headScreen": {
+            "x": 880.1066645025563,
+            "y": 288.65384886796426,
+            "z": -0.1901270931535718
+          }
+        },
+        {
+          "unitId": "S02",
+          "id": "Q05",
+          "position": [
+            4.013899117499787,
+            1.0142276987230072,
+            -0.0967103752904577
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 894.7664082917541,
+            "y": 289.3923439401142,
+            "z": -0.18291513935395387
+          },
+          "bodyScreen": {
+            "x": 892.988605614826,
+            "y": 290.78059794011085,
+            "z": -0.1824325938256437
+          },
+          "headScreen": {
+            "x": 892.988605614826,
+            "y": 283.12912434113457,
+            "z": -0.18698969717723946
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q01",
+          "position": [
+            -3.1822197922690054,
+            0.9633030650481275,
+            2.4271485164508717
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 603.8829077218955,
+            "y": 258.74780803216356,
+            "z": -0.15935461710622145
+          },
+          "bodyScreen": {
+            "x": 605.3738823821848,
+            "y": 259.18999018248445,
+            "z": -0.15815674500687993
+          },
+          "headScreen": {
+            "x": 605.3738823821848,
+            "y": 251.5385165835082,
+            "z": -0.1627138483584759
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q02",
+          "position": [
+            -0.06101851015423742,
+            0.8763891403800895,
+            3.0819091430704693
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 0.09896225431523797,
+            "y": 0.8803623605362093,
+            "z": 3.0784594970931405
+          },
+          "screen": {
+            "x": 629.040348744944,
+            "y": 265.602285080813,
+            "z": -0.16387144859601444
+          },
+          "bodyScreen": {
+            "x": 627.261387817978,
+            "y": 266.4847230304466,
+            "z": -0.16300645467226504
+          },
+          "headScreen": {
+            "x": 627.261387817978,
+            "y": 258.83324943147034,
+            "z": -0.1675635580238608
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q03",
+          "position": [
+            0.9098143277525674,
+            0.9265640462330383,
+            2.4000678394057617
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 0.7360495689598027,
+            "y": 0.9301891035907872,
+            "z": 2.2219625926937265
+          },
+          "screen": {
+            "x": 634.6681688944448,
+            "y": 261.81237810190424,
+            "z": -0.16139028499527142
+          },
+          "bodyScreen": {
+            "x": 635.6063236658548,
+            "y": 263.9801891019713,
+            "z": -0.16149716387058866
+          },
+          "headScreen": {
+            "x": 635.6063236658548,
+            "y": 256.328715502995,
+            "z": -0.16605426722218442
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q04",
+          "position": [
+            2.974438637667521,
+            0.9328766323938843,
+            2.0525320839328796
+          ],
+          "paused": false,
+          "phase": "turn",
+          "target": {
+            "x": 2.0646065344874143,
+            "y": 1.0668095248769045,
+            "z": 1.7594185656375902
+          },
+          "screen": {
+            "x": 650.8090640980266,
+            "y": 264.6202673643234,
+            "z": -0.16356169588727731
+          },
+          "bodyScreen": {
+            "x": 651.4395118716964,
+            "y": 264.6214020433291,
+            "z": -0.16203034702776598
+          },
+          "headScreen": {
+            "x": 651.4395118716964,
+            "y": 256.9699284443529,
+            "z": -0.16658745037936173
+          }
+        },
+        {
+          "unitId": "S03",
+          "id": "Q05",
+          "position": [
+            4.115390405638691,
+            0.9787724080065204,
+            -0.3387751458420287
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 665.6245062367153,
+            "y": 252.28179292212232,
+            "z": -0.15458416299702127
+          },
+          "bodyScreen": {
+            "x": 664.0064361963113,
+            "y": 253.96659902823518,
+            "z": -0.15432584103193525
+          },
+          "headScreen": {
+            "x": 664.0064361963113,
+            "y": 246.3151254292589,
+            "z": -0.1588829443835309
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q01",
+          "position": [
+            -3.0824533172803177,
+            0.8741710749438331,
+            1.7084528151980232
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -3.359546332468615,
+            "y": 0.8840991062184335,
+            "z": 1.422438512784054
+          },
+          "screen": {
+            "x": 486.18542892624123,
+            "y": 336.36897847321444,
+            "z": -0.21736127587903853
+          },
+          "bodyScreen": {
+            "x": 487.1181140322863,
+            "y": 338.53896692592485,
+            "z": -0.21746980113008663
+          },
+          "headScreen": {
+            "x": 487.1181140322863,
+            "y": 330.88749332694863,
+            "z": -0.22202690448168239
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q02",
+          "position": [
+            -0.927250603639065,
+            0.9956983818738667,
+            3.6474527636236758
+          ],
+          "paused": false,
+          "phase": "turn",
+          "target": {
+            "x": -0.555349356752022,
+            "y": 1.054983913300686,
+            "z": 2.354771161566309
+          },
+          "screen": {
+            "x": 500.111021693453,
+            "y": 349.86213744848754,
+            "z": -0.22849450167436192
+          },
+          "bodyScreen": {
+            "x": 499.6507749176769,
+            "y": 349.82771462691636,
+            "z": -0.22693626772681963
+          },
+          "headScreen": {
+            "x": 499.6507749176769,
+            "y": 342.17624102794014,
+            "z": -0.2314933710784154
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q03",
+          "position": [
+            1.7027383707836985,
+            1.0713124411885548,
+            2.4595593225049157
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 2.0522714215954942,
+            "y": 1.1202694855243989,
+            "z": 2.164093885740743
+          },
+          "screen": {
+            "x": 522.7340144733254,
+            "y": 344.9316120208943,
+            "z": -0.2253458046993243
+          },
+          "bodyScreen": {
+            "x": 521.1130421554462,
+            "y": 346.6126482365799,
+            "z": -0.22508463231352915
+          },
+          "headScreen": {
+            "x": 521.1130421554462,
+            "y": 338.9611746376036,
+            "z": -0.2296417356651249
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q04",
+          "position": [
+            2.4744506583477412,
+            1.015954411667067,
+            1.4379489515054649
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 2.215470471245909,
+            "y": 1.0554826488493765,
+            "z": 1.4073714378918836
+          },
+          "screen": {
+            "x": 526.8695325245267,
+            "y": 341.26718101952525,
+            "z": -0.22215102230148753
+          },
+          "bodyScreen": {
+            "x": 528.5788684792001,
+            "y": 342.8131323091276,
+            "z": -0.22178771196812908
+          },
+          "headScreen": {
+            "x": 528.5788684792001,
+            "y": 335.1616587101513,
+            "z": -0.22634481531972495
+          }
+        },
+        {
+          "unitId": "S04",
+          "id": "Q05",
+          "position": [
+            3.9122360147756963,
+            0.8776241554922678,
+            0.5246799467670276
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 541.4831120928137,
+            "y": 340.7588448488778,
+            "z": -0.22070691564827272
+          },
+          "bodyScreen": {
+            "x": 540.7700262460538,
+            "y": 340.78178987628564,
+            "z": -0.2191920576311227
+          },
+          "headScreen": {
+            "x": 540.7700262460538,
+            "y": 333.1303162773094,
+            "z": -0.22374916098271835
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q01",
+          "position": [
+            -2.250630680582952,
+            0.8852159851233251,
+            1.5389033907236846
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -2.0476438745936543,
+            "y": 0.8995042200636517,
+            "z": 1.3685325224181728
+          },
+          "screen": {
+            "x": 558.6113553433428,
+            "y": 443.47090212081224,
+            "z": -0.29842584206207
+          },
+          "bodyScreen": {
+            "x": 556.9875006818177,
+            "y": 445.14816171340533,
+            "z": -0.2981618141649861
+          },
+          "headScreen": {
+            "x": 556.9875006818177,
+            "y": 437.49668811442905,
+            "z": -0.30271891751658186
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q02",
+          "position": [
+            -1.6185554484356302,
+            1.0003420884075274,
+            3.012604919709417
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -1.6807378759075118,
+            "y": 0.9933775841074194,
+            "z": 3.0050419149985057
+          },
+          "screen": {
+            "x": 557.3850693594023,
+            "y": 450.8900475772517,
+            "z": -0.3049174558328197
+          },
+          "bodyScreen": {
+            "x": 559.0922161344984,
+            "y": 452.4399752784329,
+            "z": -0.3045571520711724
+          },
+          "headScreen": {
+            "x": 559.0922161344984,
+            "y": 444.7885016794567,
+            "z": -0.30911425542276816
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q03",
+          "position": [
+            1.607654982047654,
+            0.8964448642257655,
+            3.221538651737539
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 583.2353620447612,
+            "y": 457.7476348239741,
+            "z": -0.3093065293144338
+          },
+          "bodyScreen": {
+            "x": 582.5281478150271,
+            "y": 457.76892677770456,
+            "z": -0.307790421405401
+          },
+          "headScreen": {
+            "x": 582.5281478150271,
+            "y": 450.1174531787284,
+            "z": -0.3123475247569968
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q04",
+          "position": [
+            3.880848073448746,
+            0.9563167308135037,
+            1.7161519722381708
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 3.90918507865776,
+            "y": 0.9542570062910622,
+            "z": 1.7231056112911234
+          },
+          "screen": {
+            "x": 603.5296344740988,
+            "y": 452.0924400234675,
+            "z": -0.30548930709301947
+          },
+          "bodyScreen": {
+            "x": 601.9095286327621,
+            "y": 452.67737817257904,
+            "z": -0.3043993730526574
+          },
+          "headScreen": {
+            "x": 601.9095286327621,
+            "y": 445.02590457360276,
+            "z": -0.30895647640425317
+          }
+        },
+        {
+          "unitId": "S05",
+          "id": "Q05",
+          "position": [
+            2.947031684114724,
+            0.9225748322749782,
+            0.5118231532403579
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 595.3917710117287,
+            "y": 445.1551292187992,
+            "z": -0.2999854964970019
+          },
+          "bodyScreen": {
+            "x": 597.1114346635077,
+            "y": 445.895654947721,
+            "z": -0.299013202496346
+          },
+          "headScreen": {
+            "x": 597.1114346635077,
+            "y": 438.2441813487448,
+            "z": -0.30357030584794187
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q01",
+          "position": [
+            -2.4969313392817067,
+            0.8869462520940915,
+            2.4183274394015473
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 792.6108448206572,
+            "y": 490.7475492505675,
+            "z": -0.33418505281861144
+          },
+          "bodyScreen": {
+            "x": 791.9095109048818,
+            "y": 490.7672018085808,
+            "z": -0.3326677053596254
+          },
+          "headScreen": {
+            "x": 791.9095109048818,
+            "y": 483.1157282096046,
+            "z": -0.33722480871122107
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q02",
+          "position": [
+            -0.8230193091383983,
+            1.108246669848997,
+            2.704688350821173
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -0.7150058693193369,
+            "y": 1.083160155329753,
+            "z": 2.150017165742843
+          },
+          "screen": {
+            "x": 804.507598348306,
+            "y": 490.60947555948866,
+            "z": -0.3357760450767303
+          },
+          "bodyScreen": {
+            "x": 803.7603167630633,
+            "y": 492.8436829386633,
+            "z": -0.33593312636977335
+          },
+          "headScreen": {
+            "x": 803.7603167630633,
+            "y": 485.192209339687,
+            "z": -0.3404902297213691
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q03",
+          "position": [
+            0.7066718992178849,
+            0.9070644403906968,
+            3.1713065330085652
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 0.6486170818213983,
+            "y": 0.9085341247934247,
+            "z": 3.207637414595869
+          },
+          "screen": {
+            "x": 812.5126603246916,
+            "y": 497.2866432593372,
+            "z": -0.33928339929579254
+          },
+          "bodyScreen": {
+            "x": 814.2343897224383,
+            "y": 498.0311743927209,
+            "z": -0.3383141337884168
+          },
+          "headScreen": {
+            "x": 814.2343897224383,
+            "y": 490.3797007937447,
+            "z": -0.34287123714001255
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q04",
+          "position": [
+            3.4775870005941987,
+            1.0261115459524737,
+            1.6271077450056934
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 838.9583485118005,
+            "y": 492.423536961272,
+            "z": -0.3365184200841985
+          },
+          "bodyScreen": {
+            "x": 837.3546489764959,
+            "y": 492.98763125635844,
+            "z": -0.3354127259695545
+          },
+          "headScreen": {
+            "x": 837.3546489764959,
+            "y": 485.3361576573821,
+            "z": -0.3399698293211503
+          }
+        },
+        {
+          "unitId": "S06",
+          "id": "Q05",
+          "position": [
+            3.811909362390282,
+            0.9373398136830832,
+            0.45352879038215665
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 842.4106886759321,
+            "y": 488.1460167786475,
+            "z": -0.3326040963785476
+          },
+          "bodyScreen": {
+            "x": 841.8577785277342,
+            "y": 488.1294390848222,
+            "z": -0.3310593551631317
+          },
+          "headScreen": {
+            "x": 841.8577785277342,
+            "y": 480.47796548584597,
+            "z": -0.33561645851472743
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q01",
+          "position": [
+            -3.4497620809645912,
+            0.8974964671814856,
+            2.40345909680193
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1008.9078597264883,
+            "y": 423.01579550766957,
+            "z": -0.2830537815646601
+          },
+          "bodyScreen": {
+            "x": 1010.6316336973182,
+            "y": 423.7643368294761,
+            "z": -0.28208754816772585
+          },
+          "headScreen": {
+            "x": 1010.6316336973182,
+            "y": 416.11286323049984,
+            "z": -0.2866446515193217
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q02",
+          "position": [
+            -0.42826242292683264,
+            0.9926110861301419,
+            3.2273240634464804
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1033.09084724775,
+            "y": 430.1801729622312,
+            "z": -0.28919945614496234
+          },
+          "bodyScreen": {
+            "x": 1031.4901659638763,
+            "y": 430.7405377091241,
+            "z": -0.28809094211244246
+          },
+          "headScreen": {
+            "x": 1031.4901659638763,
+            "y": 423.08906411014783,
+            "z": -0.2926480454640382
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q03",
+          "position": [
+            0.998389701687424,
+            0.9455845703130296,
+            2.231641768682339
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 0.8531827476500854,
+            "y": 0.9651941172441701,
+            "z": 1.9580119621624195
+          },
+          "screen": {
+            "x": 1043.2803221484844,
+            "y": 425.47410297364695,
+            "z": -0.2852809167066209
+          },
+          "bodyScreen": {
+            "x": 1043.7422409371122,
+            "y": 427.7753382084178,
+            "z": -0.2854886778778608
+          },
+          "headScreen": {
+            "x": 1043.7422409371122,
+            "y": 420.1238646094415,
+            "z": -0.29004578122945657
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q04",
+          "position": [
+            3.0059952188441033,
+            0.955609167779407,
+            2.209104317950391
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1057.6207877723884,
+            "y": 429.8089024912285,
+            "z": -0.28863526494296854
+          },
+          "bodyScreen": {
+            "x": 1058.5907297817214,
+            "y": 429.9211964706226,
+            "z": -0.28718796382381884
+          },
+          "headScreen": {
+            "x": 1058.5907297817214,
+            "y": 422.2697228716463,
+            "z": -0.2917450671754146
+          }
+        },
+        {
+          "unitId": "S07",
+          "id": "Q05",
+          "position": [
+            3.064144463819211,
+            0.9610309307661644,
+            -0.07314446803984088
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 2.7792747557496096,
+            "y": 0.9459606807901744,
+            "z": -0.16519094462552422
+          },
+          "screen": {
+            "x": 1061.4243717423622,
+            "y": 417.02427262979444,
+            "z": -0.27901032037895646
+          },
+          "bodyScreen": {
+            "x": 1062.9809258175812,
+            "y": 418.7822687371445,
+            "z": -0.2788073375011043
+          },
+          "headScreen": {
+            "x": 1062.9809258175812,
+            "y": 411.1307951381682,
+            "z": -0.2833644408527001
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q01",
+          "position": [
+            -3.5473203637652024,
+            0.926324152766283,
+            2.1048656119913405
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -3.587043361581274,
+            "y": 0.9242182589175347,
+            "z": 2.1104396290770344
+          },
+          "screen": {
+            "x": 994.6035382091104,
+            "y": 260.4628763666518,
+            "z": -0.16036808655407897
+          },
+          "bodyScreen": {
+            "x": 996.4146397102994,
+            "y": 261.7069540369055,
+            "z": -0.15977652905208584
+          },
+          "headScreen": {
+            "x": 996.4146397102994,
+            "y": 254.05548043792916,
+            "z": -0.1643336324036816
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q02",
+          "position": [
+            -1.1452820849857483,
+            0.904686227139312,
+            3.8047737243443893
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1010.2077715363921,
+            "y": 272.80622709975285,
+            "z": -0.16953514662893643
+          },
+          "bodyScreen": {
+            "x": 1011.1831027919906,
+            "y": 272.92078516409816,
+            "z": -0.16808955738835618
+          },
+          "headScreen": {
+            "x": 1011.1831027919906,
+            "y": 265.2693115651219,
+            "z": -0.17264666073995205
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q03",
+          "position": [
+            1.7197106438804943,
+            0.933096148073258,
+            2.6142850752945312
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1036.1709502997496,
+            "y": 268.87509688873615,
+            "z": -0.16678046160813476
+          },
+          "bodyScreen": {
+            "x": 1034.383411156778,
+            "y": 270.2313087193867,
+            "z": -0.1662736889398514
+          },
+          "headScreen": {
+            "x": 1034.383411156778,
+            "y": 262.5798351204104,
+            "z": -0.17083079229144726
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q04",
+          "position": [
+            2.4318612568637117,
+            0.9707926257206841,
+            1.2579797538020325
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 2.136720636604843,
+            "y": 0.9713715719119548,
+            "z": 1.1322534124091577
+          },
+          "screen": {
+            "x": 1040.5252841365686,
+            "y": 262.3483935873232,
+            "z": -0.16213440388560163
+          },
+          "bodyScreen": {
+            "x": 1041.9907956654781,
+            "y": 264.1969015481527,
+            "z": -0.16199985717759147
+          },
+          "headScreen": {
+            "x": 1041.9907956654781,
+            "y": 256.54542794917637,
+            "z": -0.16655696052918723
+          }
+        },
+        {
+          "unitId": "S08",
+          "id": "Q05",
+          "position": [
+            3.849809707088928,
+            1.0577877365009343,
+            0.7869218851489019
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 1053.481669923434,
+            "y": 263.0962976811983,
+            "z": -0.16336636796996507
+          },
+          "bodyScreen": {
+            "x": 1053.2680874378154,
+            "y": 263.0309330535988,
+            "z": -0.16178473886906797
+          },
+          "headScreen": {
+            "x": 1053.2680874378154,
+            "y": 255.37945945462252,
+            "z": -0.16634184222066373
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q01",
+          "position": [
+            -2.3851627118457257,
+            1.051994864737467,
+            1.8181783319289608
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 625.9017760432193,
+            "y": 164.87235801918067,
+            "z": -0.08905469696447399
+          },
+          "bodyScreen": {
+            "x": 624.1130715980814,
+            "y": 166.224407494117,
+            "z": -0.08854477713179565
+          },
+          "headScreen": {
+            "x": 624.1130715980814,
+            "y": 158.57293389514075,
+            "z": -0.0931018804833913
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q02",
+          "position": [
+            -1.6451673406336302,
+            0.876803975639292,
+            2.7794757490500825
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": -1.7592890304757969,
+            "y": 0.8879474545583351,
+            "z": 2.7303877561132306
+          },
+          "screen": {
+            "x": 626.4415177890178,
+            "y": 170.92506780299698,
+            "z": -0.09228901800831324
+          },
+          "bodyScreen": {
+            "x": 627.9032432585345,
+            "y": 172.77698274697713,
+            "z": -0.09215704732618901
+          },
+          "headScreen": {
+            "x": 627.9032432585345,
+            "y": 165.12550914800084,
+            "z": -0.09671415067778477
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q03",
+          "position": [
+            1.5461230515084332,
+            0.9735618902746603,
+            3.484245603819962
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 650.4282178667676,
+            "y": 179.42218828261758,
+            "z": -0.09945497125195102
+          },
+          "bodyScreen": {
+            "x": 650.2209704586386,
+            "y": 179.35633385512898,
+            "z": -0.09787297181250576
+          },
+          "headScreen": {
+            "x": 650.2209704586386,
+            "y": 171.70486025615267,
+            "z": -0.10243007516410152
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q04",
+          "position": [
+            3.186375297681438,
+            0.9451186191329924,
+            1.136703617605219
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 3.1950208600726664,
+            "y": 0.9479657209632846,
+            "z": 1.1198510540972062
+          },
+          "screen": {
+            "x": 667.5738232538608,
+            "y": 167.85947830006498,
+            "z": -0.09049448125706983
+          },
+          "bodyScreen": {
+            "x": 666.395089260491,
+            "y": 169.91242751134212,
+            "z": -0.09051451293410528
+          },
+          "headScreen": {
+            "x": 666.395089260491,
+            "y": 162.26095391236586,
+            "z": -0.09507161628570104
+          }
+        },
+        {
+          "unitId": "S09",
+          "id": "Q05",
+          "position": [
+            4.296119598887425,
+            1.0111559271469692,
+            0.44155293083648095
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 677.1937190235635,
+            "y": 167.04520434691992,
+            "z": -0.09038472136425468
+          },
+          "bodyScreen": {
+            "x": 675.7878249398073,
+            "y": 167.41286366081786,
+            "z": -0.08913050241867726
+          },
+          "headScreen": {
+            "x": 675.7878249398073,
+            "y": 159.7613900618416,
+            "z": -0.09368760577027291
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q01",
+          "position": [
+            -2.5575483336834592,
+            0.980077779135145,
+            2.6815334394653654
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 299.9226072953535,
+            "y": 278.62460618249537,
+            "z": -0.17451201041347875
+          },
+          "bodyScreen": {
+            "x": 299.72169751332905,
+            "y": 278.55827670475617,
+            "z": -0.1729296517877127
+          },
+          "headScreen": {
+            "x": 299.72169751332905,
+            "y": 270.9068031057799,
+            "z": -0.17748675513930856
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q02",
+          "position": [
+            -0.7066267444624688,
+            0.8824622999092353,
+            2.7262953335109463
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 314.48116017810065,
+            "y": 279.41302826208357,
+            "z": -0.17436030221763976
+          },
+          "bodyScreen": {
+            "x": 313.29757633978477,
+            "y": 281.4632279942262,
+            "z": -0.17437825500871962
+          },
+          "headScreen": {
+            "x": 313.29757633978477,
+            "y": 273.8117543952499,
+            "z": -0.17893535836031538
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q03",
+          "position": [
+            0.538429026287845,
+            0.9965554653617872,
+            3.0140495296914107
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 0.41406160319048024,
+            "y": 0.978968572747674,
+            "z": 3.049004628220393
+          },
+          "screen": {
+            "x": 320.1653824884433,
+            "y": 282.5782848578466,
+            "z": -0.17762762985028546
+          },
+          "bodyScreen": {
+            "x": 321.98244824835103,
+            "y": 283.6600561542905,
+            "z": -0.17691335221675752
+          },
+          "headScreen": {
+            "x": 321.98244824835103,
+            "y": 276.0085825553142,
+            "z": -0.18147045556835328
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q04",
+          "position": [
+            3.6049605855515536,
+            0.8798413261249095,
+            1.8670021687257994
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 347.89161153341735,
+            "y": 281.95041258949857,
+            "z": -0.17625874355166682
+          },
+          "bodyScreen": {
+            "x": 346.59403468415553,
+            "y": 282.23802099675447,
+            "z": -0.17494399797634574
+          },
+          "headScreen": {
+            "x": 346.59403468415553,
+            "y": 274.58654739777825,
+            "z": -0.1795011013279414
+          }
+        },
+        {
+          "unitId": "S10",
+          "id": "Q05",
+          "position": [
+            3.8887308048502818,
+            1.0072437201898778,
+            0.46200928939335684
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 351.90416482524404,
+            "y": 274.92083672031976,
+            "z": -0.17191970307821958
+          },
+          "bodyScreen": {
+            "x": 351.1259197763294,
+            "y": 274.96322846193175,
+            "z": -0.1704195487555027
+          },
+          "headScreen": {
+            "x": 351.1259197763294,
+            "y": 267.31175486295547,
+            "z": -0.17497665210709834
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q01",
+          "position": [
+            -3.6839229157041036,
+            2.111654011065381,
+            2.245096845528752
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 367.80768678789667,
+            "y": 477.38447673119197,
+            "z": -0.33346373817875574
+          },
+          "bodyScreen": {
+            "x": 369.6250149259731,
+            "y": 478.47047806393965,
+            "z": -0.3327526588830342
+          },
+          "headScreen": {
+            "x": 369.6250149259731,
+            "y": 470.81900446496337,
+            "z": -0.33730976223462994
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q02",
+          "position": [
+            -0.2996538021828976,
+            2.079917353274058,
+            3.4670890647584827
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 393.7616435692424,
+            "y": 488.2484658941213,
+            "z": -0.34143488366729247
+          },
+          "bodyScreen": {
+            "x": 392.46854373862453,
+            "y": 488.53305903756296,
+            "z": -0.3401178582457569
+          },
+          "headScreen": {
+            "x": 392.46854373862453,
+            "y": 480.88158543858674,
+            "z": -0.34467496159735267
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q03",
+          "position": [
+            1.2271155097160669,
+            2.2613673434320978,
+            2.4453674978720614
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 1.2223055808812446,
+            "y": 2.264231760212351,
+            "z": 2.4219639302391522
+          },
+          "screen": {
+            "x": 405.5559730050989,
+            "y": 481.9204203647551,
+            "z": -0.3380403319731422
+          },
+          "bodyScreen": {
+            "x": 405.5043423644017,
+            "y": 484.2607552466503,
+            "z": -0.3382776564555784
+          },
+          "headScreen": {
+            "x": 405.5043423644017,
+            "y": 476.6092816476741,
+            "z": -0.34283475980717415
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q04",
+          "position": [
+            2.4767503136689393,
+            2.1801244737529015,
+            2.2382406197579456
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 413.718346346972,
+            "y": 484.8120800181058,
+            "z": -0.33960431648273537
+          },
+          "bodyScreen": {
+            "x": 415.0819466067976,
+            "y": 485.14675594963325,
+            "z": -0.33832515874437985
+          },
+          "headScreen": {
+            "x": 415.0819466067976,
+            "y": 477.49528235065696,
+            "z": -0.3428822620959755
+          }
+        },
+        {
+          "unitId": "S11",
+          "id": "Q05",
+          "position": [
+            4.281188821467881,
+            2.159681247146383,
+            0.007539248775120605
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 434.07474315114393,
+            "y": 475.40117589764805,
+            "z": -0.33233209925567075
+          },
+          "bodyScreen": {
+            "x": 432.2644096115122,
+            "y": 476.41879035763407,
+            "z": -0.3315693125265097
+          },
+          "headScreen": {
+            "x": 432.2644096115122,
+            "y": 468.7673167586578,
+            "z": -0.33612641587810543
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q01",
+          "position": [
+            -2.8749455507433344,
+            0.9246392357305756,
+            1.62874147281901
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 796.4508187109844,
+            "y": 581.4685577582198,
+            "z": -0.4030681323689602
+          },
+          "bodyScreen": {
+            "x": 796.3928130630654,
+            "y": 583.8087650354872,
+            "z": -0.4033053603693154
+          },
+          "headScreen": {
+            "x": 796.3928130630654,
+            "y": 576.157291436511,
+            "z": -0.40786246372091106
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q02",
+          "position": [
+            -1.424066907919062,
+            0.9500309094364014,
+            3.8339246280843104
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 801.9001123219593,
+            "y": 595.7964403242372,
+            "z": -0.41409599577203815
+          },
+          "bodyScreen": {
+            "x": 803.2679245841849,
+            "y": 596.1342953206797,
+            "z": -0.41281924173019435
+          },
+          "headScreen": {
+            "x": 803.2679245841849,
+            "y": 588.4828217217034,
+            "z": -0.4173763450817901
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q03",
+          "position": [
+            1.8890299816973766,
+            1.0501217587551492,
+            2.7221510319727167
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 1.977532851955897,
+            "y": 1.0603903848732803,
+            "z": 2.710454077095779
+          },
+          "screen": {
+            "x": 831.4468192185972,
+            "y": 592.9268577038816,
+            "z": -0.4126930987576135
+          },
+          "bodyScreen": {
+            "x": 829.6371092956757,
+            "y": 593.9402588298984,
+            "z": -0.41192712631930994
+          },
+          "headScreen": {
+            "x": 829.6371092956757,
+            "y": 586.2887852309221,
+            "z": -0.4164842296709057
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q04",
+          "position": [
+            2.7314249032849194,
+            0.9321624750196932,
+            1.279286590084641
+          ],
+          "paused": false,
+          "phase": "idle",
+          "target": null,
+          "screen": {
+            "x": 837.2521930058085,
+            "y": 586.4209759109748,
+            "z": -0.40687030013963366
+          },
+          "bodyScreen": {
+            "x": 838.3554972082396,
+            "y": 588.514286918467,
+            "z": -0.40692084944098805
+          },
+          "headScreen": {
+            "x": 838.3554972082396,
+            "y": 580.8628133194908,
+            "z": -0.4114779527925838
+          }
+        },
+        {
+          "unitId": "S12",
+          "id": "Q05",
+          "position": [
+            3.579456243901814,
+            1.001492280022838,
+            -0.2804089882193911
+          ],
+          "paused": false,
+          "phase": "walk",
+          "target": {
+            "x": 3.5595380024944587,
+            "y": 1.047486587614119,
+            "z": -0.649235313097369
+          },
+          "screen": {
+            "x": 847.6387311247676,
+            "y": 579.1392976476433,
+            "z": -0.4018957485304593
+          },
+          "bodyScreen": {
+            "x": 847.3182442222707,
+            "y": 581.4612276404282,
+            "z": -0.40211915704422785
+          },
+          "headScreen": {
+            "x": 847.3182442222707,
+            "y": 573.809754041452,
+            "z": -0.4066762603958236
+          }
+        }
+      ],
+      "landmarks": [
+        {
+          "id": "S01",
+          "x": 0.2597489926174507,
+          "y": -0.08791388013985138,
+          "z": -0.25305363802725633
+        },
+        {
+          "id": "S02",
+          "x": 0.2638531227960389,
+          "y": 0.24118484031512585,
+          "z": -0.17367619336347506
+        },
+        {
+          "id": "S03",
+          "x": -0.07311756555120952,
+          "y": 0.3538700913927739,
+          "z": -0.14649691029159206
+        },
+        {
+          "id": "S04",
+          "x": -0.24916314952749638,
+          "y": 0.09603937468426108,
+          "z": -0.20868476510870893
+        },
+        {
+          "id": "S05",
+          "x": -0.15628020338049836,
+          "y": -0.23795320843771015,
+          "z": -0.28924259209820824
+        },
+        {
+          "id": "S06",
+          "x": 0.1925708617995057,
+          "y": -0.36838096899993983,
+          "z": -0.3207013055576112
+        },
+        {
+          "id": "S07",
+          "x": 0.5230613446016146,
+          "y": -0.16219765903534902,
+          "z": -0.2709706221484407
+        },
+        {
+          "id": "S08",
+          "x": 0.5025406937086733,
+          "y": 0.34037133735743075,
+          "z": -0.14975276190957798
+        },
+        {
+          "id": "S09",
+          "x": -0.05583701743083782,
+          "y": 0.6372536334658494,
+          "z": -0.07814580458557874
+        },
+        {
+          "id": "S10",
+          "x": -0.5267319537109669,
+          "y": 0.29901729489463996,
+          "z": -0.15972721034461201
+        },
+        {
+          "id": "S11",
+          "x": -0.4133283566710276,
+          "y": -0.35853906806447217,
+          "z": -0.31832747394315997
+        },
+        {
+          "id": "S12",
+          "x": 0.20121113585969155,
+          "y": -0.6742022393524991,
+          "z": -0.3944643117791399
+        }
+      ]
+    }
+  },
+  {
+    "case": "12-orbit-90",
+    "azimuth": 1.8018864854239656,
+    "elevation": 0.725881280618328,
+    "extent": 0.8333333333333331
+  },
+  {
+    "case": "12-orbit-180",
+    "azimuth": 3.372682383941635,
+    "elevation": 0.725881280618328,
+    "extent": 0.8333333333333318
+  },
+  {
+    "case": "12-orbit-270",
+    "azimuth": 4.943477386334146,
+    "elevation": 0.725881280618328,
+    "extent": 0.8333333333333336
+  },
+  {
+    "case": "12-orbit-360",
+    "azimuth": 6.514274180816636,
+    "elevation": 0.725881280618328,
+    "extent": 0.8333333333333336
+  },
+  {
+    "case": "15-lighting",
+    "lighting": {
+      "mode": "night",
+      "blend": 1,
+      "duration": 1.25,
+      "background": "#172d48",
+      "seaColor": "#264e67",
+      "ambientIntensity": 0.6799999999999999,
+      "directionalIntensity": 0.48,
+      "academyWindows": 9,
+      "academyEntrance": 2,
+      "cottages": {
+        "S01": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S02": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S03": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S04": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S05": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S06": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S07": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S08": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S09": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S10": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S11": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S12": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S13": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S14": {
+          "windows": 4,
+          "lamps": 2
+        },
+        "S15": {
+          "windows": 4,
+          "lamps": 2
+        }
+      },
+      "bridges": [
+        {
+          "from": "academy",
+          "to": "S01",
+          "main": true,
+          "lamps": 6
+        },
+        {
+          "from": "academy",
+          "to": "S02",
+          "main": true,
+          "lamps": 8
+        },
+        {
+          "from": "academy",
+          "to": "S03",
+          "main": true,
+          "lamps": 10
+        },
+        {
+          "from": "academy",
+          "to": "S04",
+          "main": true,
+          "lamps": 12
+        },
+        {
+          "from": "academy",
+          "to": "S05",
+          "main": true,
+          "lamps": 10
+        },
+        {
+          "from": "academy",
+          "to": "S06",
+          "main": true,
+          "lamps": 10
+        },
+        {
+          "from": "S01",
+          "to": "S07",
+          "main": false,
+          "lamps": 6
+        },
+        {
+          "from": "S02",
+          "to": "S08",
+          "main": false,
+          "lamps": 6
+        },
+        {
+          "from": "S03",
+          "to": "S09",
+          "main": false,
+          "lamps": 4
+        },
+        {
+          "from": "S04",
+          "to": "S10",
+          "main": false,
+          "lamps": 8
+        },
+        {
+          "from": "S05",
+          "to": "S11",
+          "main": false,
+          "lamps": 6
+        },
+        {
+          "from": "S06",
+          "to": "S12",
+          "main": false,
+          "lamps": 4
+        },
+        {
+          "from": "S02",
+          "to": "S13",
+          "main": false,
+          "lamps": 4
+        },
+        {
+          "from": "S04",
+          "to": "S14",
+          "main": false,
+          "lamps": 8
+        },
+        {
+          "from": "S06",
+          "to": "S15",
+          "main": false,
+          "lamps": 8
+        }
+      ],
+      "themes": [
+        {
+          "id": "S01",
+          "kind": "fireflies",
+          "fixtures": 18
+        },
+        {
+          "id": "S02",
+          "kind": "flower-lights",
+          "fixtures": 26
+        },
+        {
+          "id": "S03",
+          "kind": "lighthouse",
+          "fixtures": 17
+        },
+        {
+          "id": "S04",
+          "kind": "lake-reflections",
+          "fixtures": 5
+        },
+        {
+          "id": "S05",
+          "kind": "lava",
+          "fixtures": 28
+        },
+        {
+          "id": "S06",
+          "kind": "candy-lights",
+          "fixtures": 12
+        },
+        {
+          "id": "S07",
+          "kind": "ice-crystals",
+          "fixtures": 9
+        },
+        {
+          "id": "S08",
+          "kind": "windmill-lights",
+          "fixtures": 12
+        },
+        {
+          "id": "S09",
+          "kind": "stars-and-flowers",
+          "fixtures": 20
+        },
+        {
+          "id": "S10",
+          "kind": "oasis-camp",
+          "fixtures": 10
+        },
+        {
+          "id": "S11",
+          "kind": "cloud-lights",
+          "fixtures": 22
+        },
+        {
+          "id": "S12",
+          "kind": "festival-lights",
+          "fixtures": 26
+        },
+        {
+          "id": "S13",
+          "kind": "bamboo-lanterns",
+          "fixtures": 9
+        },
+        {
+          "id": "S14",
+          "kind": "crystals",
+          "fixtures": 12
+        },
+        {
+          "id": "S15",
+          "kind": "coral-fluorescence",
+          "fixtures": 24
+        }
+      ],
+      "fixtures": {
+        "panes": 140,
+        "bulbs": 250,
+        "halos": 258,
+        "pools": 86,
+        "crystals": 8,
+        "surfaces": 1
+      },
+      "batches": 6,
+      "actualLocalLights": 0,
+      "localShadowLights": 0,
+      "shadowLights": 0
+    }
+  }
+]

@@ -1,4 +1,6 @@
-# Windows：更新 Phase4 後重新取出原始參考檔
+# Windows：安全重新取出原始參考檔
+
+Phase4 EOL修正已經教師Windows驗收並合併；本文件保留相同備份／重取方法，預設更新本輪Phase5分支。若重演歷史Phase4才把下方 `$validationBranch` 改為 `feature/phase-4-quiz-integration`。
 
 教師已在 Windows11 確認 `core.autocrlf=true` 將原始參考檔取成 CRLF，導致逐 byte SHA256 不符。以 `js/assignment-rules.js` 為例：
 
@@ -15,14 +17,15 @@
 
 ```powershell
 git status --short
-git stash push --include-untracked -m "Before Phase4 EOL checkout fix"
+git stash push --include-untracked -m "Before reference byte checkout refresh"
 if ($LASTEXITCODE -ne 0) { throw "備份失敗，停止更新。" }
 
-git fetch origin
+$validationBranch = 'feature/phase-5-release-readiness'
+git fetch origin "refs/heads/${validationBranch}:refs/remotes/origin/${validationBranch}"
 if ($LASTEXITCODE -ne 0) { throw "Fetch 失敗，停止更新。" }
-git switch feature/phase-4-quiz-integration
+git switch $validationBranch
 if ($LASTEXITCODE -ne 0) { throw "切換分支失敗，停止更新。" }
-git pull --ff-only origin feature/phase-4-quiz-integration
+git pull --ff-only origin $validationBranch
 if ($LASTEXITCODE -ne 0) { throw "Pull 失敗，停止更新。" }
 
 $referencePaths = @(git ls-files -- 'test/fixtures/legacy/reference/' 'src/legacy-assignment/*.js')
@@ -65,4 +68,4 @@ node scripts/legacy-parity.mjs
 
 新增測試在臨時 Git repository 中以 `core.autocrlf=true` 實際 clone，先重現教師提供的 CRLF hash，再驗證新 clone 及既有 checkout 更新流程的全部14個原始hash、兩份移植JS的LF、一般文字仍會轉CRLF，以及 tracked／untracked 個人修改仍可從stash取回。測試僅設定臨時repository，不更動本專案或全域Git config，也不在hash斷言前轉換換行。
 
-本輪雲端在 Linux Git 上執行同一 `core.autocrlf=true` checkout 路徑；Windows 原生問題由教師重現，修正後的 Windows 實機重驗仍由教師確認。測試結果附於 [Phase4驗收](PHASE_4_ACCEPTANCE.md)。本輪仍只更新 Draft PR #5，不合併、部署或進 Phase5。
+Phase4雲端在Linux Git上執行同一 `core.autocrlf=true` checkout路徑；教師後續已確認Windows修正驗收、PR #5合併，原始證據保留於 [Phase4驗收](PHASE_4_ACCEPTANCE.md)。Phase5再次保留並執行全部14hash／checkout回歸，見 [Phase5驗收](PHASE_5_ACCEPTANCE.md)；本輪只交RC與Draft PR #6，不合併、部署或進下一階段。

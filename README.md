@@ -1,8 +1,36 @@
 # Engineering Island Lab
 
-童話微型模型風格的 Three.js 課程群島。教師已在 Windows 11 Chrome／Edge 驗收 Phase0–3，PR #1–#4 合併至 main `dd3f96f4`。本輪 Phase4 整合舊 Maze／City v1/v2 題庫：每島獨立四／五位 NPC、單選作答、錯答重試、答對解說及全題完成後的 Google Form。Lecture、島形、日夜、相機與背景生命保留。
+童話微型模型風格的 Three.js 課程群島。教師已在 Windows 11 Chrome／Edge 驗收 Phase0–4（含 Windows EOL），PR #1–#5 合併至 main `046efcab`。本輪 **Phase5** 只做 Release Candidate、靜態部署驗證與教師操作文件；保留已驗收15主題島、日夜、相機、Lecture、v1/v2四／五題Quiz及背景生命。
 
-正式 `public/assignments/manifest.json` 繼續維持 `{"schemaVersion":1,"units":[]}`，沒有發布任何教材。只交付唯一 Draft PR #5 後等待教師驗收，不合併／部署／Tag／Release／進 Phase5。
+正式設定維持「數位電子學／12／quiz」，`public/assignments/manifest.json` 仍是 `{"schemaVersion":1,"units":[]}`，正式入口全部鎖定，沒有發布任何教材。本輪只交付 RC 與唯一 **[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)** 後等待教師驗收；不合併／Tag／GitHub Release／改Repo可見性／部署學校／開放課程／進下一功能階段。
+
+## 本機開發
+
+Node24、npm11+、Git；`npm ci` 後 `npm run dev` 是正式空清單，`npm run demo` 是明確DEV合成測試。Vite顯示本機網址，Ctrl+C停止。不要直接以 `file://` 開啟 HTML。完整測試命令及 Windows 操作見下方。
+
+## 正式建置與 Release Candidate
+
+```powershell
+npm ci
+npm test
+npm run build
+npm run validate:content -- --root dist
+npm run check:release
+npm run package:rc
+```
+
+`dist/` 是網站內容，保持 `base:'./'`；Apache 不需要 Node。`package:rc` 使用 Node24標準庫，先驗證實際build再產生 `release-candidate/engineering-island-lab-v1.0.0-rc.zip`，解壓即網站根內容。ZIP旁提供SHA256、逐檔inventory與scan receipt；不包含它們自己、Repo、測試、私稿、Demo或憑證。工具不部署／Tag／Release；版本名稱是RC標記，沒有發布npm套件。
+
+本輪可下載的 [RC ZIP](artifacts/release-candidate/engineering-island-lab-v1.0.0-rc.zip)、[SHA256](artifacts/release-candidate/engineering-island-lab-v1.0.0-rc.sha256)、[inventory](artifacts/release-candidate/engineering-island-lab-v1.0.0-rc.files.json) 與 [scan receipt](artifacts/release-candidate/engineering-island-lab-v1.0.0-rc.report.json) 已保存於版本控制。實際bytes、資源大小、截圖及測試見 [Phase5驗收](docs/PHASE_5_ACCEPTANCE.md)。
+
+## Apache、每週更新與回復
+
+- **取得另行授權後部署**：依 [APACHE_DEPLOYMENT](docs/APACHE_DEPLOYMENT.md) 備份、私人staging、核對SHA／MIME／真404／cache後切換。範例子目錄不是寫死路徑；不需要SPA Rewrite，不預置.htaccess，學校AllowOverride與實機仍待確認。
+- **新增Lecture／Quiz及開放新島**：依 [TEACHER_OPERATIONS](docs/TEACHER_OPERATIONS.md) 準備完整PDF／原影片順序與教師核准題庫，先候選、再完整驗證；核准內容先上傳並驗HTTP，**最後換完整Manifest**。Manifest不是私稿保密措施。
+- **回復上一版**：使用公開目錄外的完整一致備份，先還原內容及資源、驗HTTP、最後還原對應Manifest；可由管理員原子切換已驗證的完整版本目錄。細節及撤回流程見同份SOP。
+- **改用其他課程**：在私人staging替換課名、1–15單元與明確quiz/video-only，準備一致Manifest及教材；無需改Three.js。Video-only不需要Quiz JSON；不要留下舊學期或未核准檔案。
+
+教師本輪RC檢查與未來v1.0.0建議流程見 [RELEASE_CHECKLIST](docs/RELEASE_CHECKLIST.md)。只有教師之後明確批准，才可合併、Tag／Release或正式部署。
 
 ## Windows 11 Chrome／Edge 本機驗收
 
@@ -11,7 +39,7 @@
 需要 Node24、npm11+、Git、支援 WebGL2 且開啟硬體加速的瀏覽器。PowerShell：
 
 ```powershell
-git clone --branch feature/phase-4-quiz-integration https://github.com/chingchechung/engineering-island-lab.git
+git clone --branch feature/phase-5-release-readiness https://github.com/chingchechung/engineering-island-lab.git
 cd engineering-island-lab
 npm ci
 npm test
@@ -21,7 +49,7 @@ npm run validate:content
 npm run demo
 ```
 
-既有 clone 先保留自己的修改，再 fetch／switch 指定分支，乾淨時 `git pull --ff-only origin feature/phase-4-quiz-integration`。Vite 預設 localhost:5173，停止按 Ctrl+C。
+既有 clone 先保留自己的修改，再 fetch／switch 指定分支，乾淨時 `git pull --ff-only origin feature/phase-5-release-readiness`。Vite 預設 localhost:5173，停止按 Ctrl+C。
 
 | 情境 | 本機網址 |
 |---|---|
@@ -41,7 +69,7 @@ Demo 只在 Vite Development 且 `demo=1` 時有效。`units=1–15`、`open=0�
 6. Video-only沒有Q、Quiz、進度或Form，也不下載Quiz程式／題庫；Lecture保留。Lecture S01=1／S02=4／S03=10／S04異序，影片數任意、原序、不嵌入／自動播放／追蹤。
 7. 正式入口全部鎖定、不載教材；`npm run preview` 的 production 同樣忽略全部Demo參數。每島3隻動物、4隻外海鯨魚與已開放島的背景旅人均不可點擊／控制；未開放島保留柵欄／鎖牌。
 
-完整截圖、效能、失敗資料及驗收步驟見 [Phase4驗收](docs/PHASE_4_ACCEPTANCE.md)；原 [Phase3 Lecture](docs/PHASE_3_ACCEPTANCE.md)、[Phase2.5日夜／環繞](docs/PHASE_2_5_ACCEPTANCE.md) 與 [Phase2場景](docs/PHASE_2_ACCEPTANCE.md) 是已驗收的歷史紀錄。雲端Linux／SwiftShader測試不代表本輪Windows實機驗收。
+本輪RC、截圖及效能見 [Phase5驗收](docs/PHASE_5_ACCEPTANCE.md)；原 [Phase4 Quiz](docs/PHASE_4_ACCEPTANCE.md)、[Phase3 Lecture](docs/PHASE_3_ACCEPTANCE.md)、[Phase2.5日夜／環繞](docs/PHASE_2_5_ACCEPTANCE.md) 與 [Phase2場景](docs/PHASE_2_ACCEPTANCE.md) 是已驗收的歷史紀錄。雲端Linux／SwiftShader不代表本RC的Windows實機驗收。
 
 ## Quiz 契約與暫時進度
 
@@ -53,7 +81,7 @@ Manifest是唯一開放權威。只有已開放且題庫驗證成功才生成NPC
 
 ## 教師每週準備與發布
 
-完整流程見 [TEACHER_PUBLISHING](docs/TEACHER_PUBLISHING.md) 及 [CONTENT_AND_RELEASE](docs/CONTENT_AND_RELEASE.md)。Notion先捲到底，確認動態卡片齊全再存完整PDF；提供單元與順序。AI不得猜缺漏連結、引用舊學期或混入Quiz影片。
+完整操作見 [TEACHER_OPERATIONS](docs/TEACHER_OPERATIONS.md)，原規格見 [TEACHER_PUBLISHING](docs/TEACHER_PUBLISHING.md) 及 [CONTENT_AND_RELEASE](docs/CONTENT_AND_RELEASE.md)。Notion先捲到底，確認動態卡片齊全再存完整PDF；提供單元與順序。AI不得猜缺漏連結、引用舊學期或混入Quiz影片。
 
 Lecture Prompt（可直接複製，替換PDF／S04）：
 
@@ -114,9 +142,9 @@ CLI唯讀，保留原序，不造題、不改檔、不部署。Video-only不讀�
 | camera／interaction／ui／label-layout | 原正交環繞、拖曳／縮放／聚焦、拾取與標牌避讓、共用Modal |
 | world/islands／layout／bridge | 已驗收15主題島、六主幹放射橋與鎖定柵欄 |
 | world/fauna／sea-life／visitors／day-night | 每島三動物、海面／四鯨魚／背景旅人、日夜燈光 |
-| src/demo／test/fixtures | 只有合成資料；不進正式教材 |
+| src/demo／test/fixtures | DEV合成教材與固定Legacy參考，只用於開發驗證；不進正式教材 |
 
-先凍結 [PHASE_4_INTERFACES](docs/PHASE_4_INTERFACES.md)，實際spawn三位Subagents：A Legacy契約與parity；B Loader／Session；C Quiz UI。Main負責共享核心、場景、CLI、整體回歸／截圖／文件與唯一PR。三者全部完成並停止後由Main審查整合，沒有各自PR、改正式資料或來源Repository。
+Phase4實際三位Subagents的歷史交付見 [PHASE_4_INTERFACES](docs/PHASE_4_INTERFACES.md)。本輪先凍結 [PHASE_5_INTERFACES](docs/PHASE_5_INTERFACES.md)，再實際spawn A封裝／靜態HTTP、B build檢查／教師SOP、C品質／授權／audit三位。Main審查全部實際結果、整合Apache與RC browser／完整回歸／文件及唯一PR；各組不動共享產品核心，不各建PR，不改其他Repository。
 
 ## 測試與效能
 
@@ -127,6 +155,9 @@ npm run test:smoke
 npx playwright install chromium
 npm run test:browser
 npm run validate:content
+npm run check:release
+npm run package:rc
+npm run test:rc
 # 額外跨語言驗證，Python3 + 測試用jsonschema
 python -m pip install jsonschema
 node scripts/legacy-parity.mjs
@@ -134,10 +165,10 @@ node scripts/legacy-parity.mjs
 
 一般網站不需Python；Windows wrapper預設python，可用 `$env:PYTHON` 指定。Playwright可用 `$env:CHROMIUM_PATH` 指定Chrome／Edge；測試外連全部攔截，不向Google提交。固定Node24、Vite8.3.5、Three0.186.1、Playwright1.64.1及lockfile，沒有新增依賴。
 
-本輪單元 **212/212**、完整瀏覽器 **76/76組**、build、三段Apache smoke、內容驗證及Legacy parity全部通過。20張真實截圖、三尺寸量測、軟體GPU FPS／Draw Calls／Triangles及命令原始結果見[Phase4驗收](docs/PHASE_4_ACCEPTANCE.md)。雲端沒有實體GPU數據，Windows本輪須教師確認。既有Three.js主包>500kB提示保留；Quiz另拆動態chunk，Video-only不下載。
+Phase4基準212個Node／76組browser完整保留，本輪總計 **238/238 Node、82/82 browser** 通過，含新增發布／封裝／HTTP測試及6組效能採樣；完整命令、效能及截圖見[Phase5驗收](docs/PHASE_5_ACCEPTANCE.md)。`test:smoke`是嚴格Node靜態HTTP模擬；另有Linux本機Docker真正Apache `npm run test:apache` 與 `node scripts/release-browser.js --apache --root dist`，不等於學校部署。可用 `node scripts/deployment-server.js --root <RC解壓目錄>` 檢查RC，本機工具需要Node，Apache本身不需要。雲端無實體GPU，本RC仍待Windows教師驗收；既有Three.js主包>500kB提示保留，未因此重寫。Quiz另拆動態chunk，Video-only不下載。
 
 ## 素材與停止點
 
-`base:'./'`、固定相對URL與靜態dist保留，未部署Apache。模型／角色／動物為程式原創；Three.js／Vite MIT、Playwright Apache2.0，系統字體，參考圖不進public/dist。移植題庫程式依教師明示重用授權，原Maze沒有根LICENSE，不推定MIT；headers與來源說明保留。
+`base:'./'`、固定相對URL與靜態dist保留，未部署學校。完整版本、來源與權限見 [THIRD_PARTY_NOTICES](docs/THIRD_PARTY_NOTICES.md)，正式RC含完整runtime聲明。模型／角色／動物為程式原創，系統字體，參考圖不進public/dist。Maze沒有根LICENSE；City有MIT根LICENSE但Maze-origin元件不推定blanketMIT，仍依教師明示重用範圍。安全／Registry audit證據與限制見 [PHASE_5_SECURITY](docs/PHASE_5_SECURITY.md)，掃描不代替教師審查與發布許可。
 
-未修改舊GUI／Maze／City／Cyberpunk，沒有加入學生化身、WASD、DB、登入、追蹤或新3D玩法。本輪只交付Phase4唯一Draft PR #5，停止等待教師Windows驗收。
+未修改舊GUI／Maze／City／Cyberpunk或已驗收產品功能，沒有新增依賴、學生化身、WASD、DB、登入、追蹤或新玩法。本輪交付Phase5 RC與唯一Draft PR #6後停止，等待教師Windows及RC驗收。
