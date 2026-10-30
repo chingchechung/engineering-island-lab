@@ -1,0 +1,20 @@
+{
+  "baseMain": "046efcab7b359cce046038fe66c95c5821edfad4",
+  "method": "Compare working file bytes to git show base:path; new Phase5 test files are additional and not part of the accepted baseline",
+  "baselineFileCount": 96,
+  "mismatches": [],
+  "protected": "all tracked src, index, Vite config, .gitattributes, dependency lock, schemas, original tests/fixtures, legacy parity wrapper",
+  "newRuntimeFile": "public/THIRD_PARTY_NOTICES.txt only; no accepted runtime code changed",
+  "officialDataChecks": [
+    {
+      "path": "public/course-config.json",
+      "sha256": "bfa2a0679528b8767b39f0a0d1a691d49cb6239ff32a6d5ada25abea93af2e7a",
+      "matchesBaseBlob": true
+    },
+    {
+      "path": "public/assignments/manifest.json",
+      "sha256": "b998c2c037f95966bc4301f941d3ec18f5eeb2bcb6a6e6e21258fe4e7dcb5508",
+      "matchesBaseBlob": true
+    }
+  ]
+}

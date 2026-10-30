@@ -9,6 +9,7 @@ import { checkModalReadability } from './modal-browser.js';
 import { checkPhase25 } from './phase25-browser.js';
 import { checkLectures } from './lecture-browser.js';
 import { checkQuiz } from './quiz-browser.js';
+import { checkPhase5Quality } from './quality-browser.js';
 const executablePath =
   process.env.CHROMIUM_PATH || (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
 const browser = await chromium.launch({
@@ -178,6 +179,7 @@ try {
   await checkArchipelago(page, base, pass);
   await checkBackgroundLife(page, base, pass);
   await checkPhase25(page, base, pass);
+  await checkPhase5Quality(page, base, pass);
   assert.deepEqual(errors, []);
   console.log(`${checks} browser acceptance checks passed. Screenshots and metrics: test-results/`);
 } finally {

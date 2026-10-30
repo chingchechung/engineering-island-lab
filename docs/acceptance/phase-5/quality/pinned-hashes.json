@@ -1,0 +1,105 @@
+{
+  "platform": "Linux",
+  "files": [
+    {
+      "path": "test/fixtures/legacy/reference/js/assignment-rules.js",
+      "expected": "ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924",
+      "checkoutSha256": "ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924",
+      "gitBlobSha256": "ff057feb3cf4d229b11280931f49cd46a76303f2545ec9e319f51cd537b8d924",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/js/assignment-validator.js",
+      "expected": "4cfe95d6d8d15ffe1b50c9c742635bac4f2360802f54c059723826fd56dc9d07",
+      "checkoutSha256": "4cfe95d6d8d15ffe1b50c9c742635bac4f2360802f54c059723826fd56dc9d07",
+      "gitBlobSha256": "4cfe95d6d8d15ffe1b50c9c742635bac4f2360802f54c059723826fd56dc9d07",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tools/assignment_data.py",
+      "expected": "4db0995f130a9a348727585b5875de4707127e3cec3373daf9c7faf1f112f6c5",
+      "checkoutSha256": "4db0995f130a9a348727585b5875de4707127e3cec3373daf9c7faf1f112f6c5",
+      "gitBlobSha256": "4db0995f130a9a348727585b5875de4707127e3cec3373daf9c7faf1f112f6c5",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/contract_cases.py",
+      "expected": "7d37b5e631b343a5140ef47276727d706986b52c40568fb70528ea45de1690bd",
+      "checkoutSha256": "7d37b5e631b343a5140ef47276727d706986b52c40568fb70528ea45de1690bd",
+      "gitBlobSha256": "7d37b5e631b343a5140ef47276727d706986b52c40568fb70528ea45de1690bd",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/contract_cases_v2.py",
+      "expected": "5432d55079401abbe5a294135b9b0fba752f058233f6939023d33c115c435391",
+      "checkoutSha256": "5432d55079401abbe5a294135b9b0fba752f058233f6939023d33c115c435391",
+      "gitBlobSha256": "5432d55079401abbe5a294135b9b0fba752f058233f6939023d33c115c435391",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/S01.json",
+      "expected": "4ade964b84c7b810b4f20e63676971ec74074d7035c5aa9a79fdba10fc2ddbf3",
+      "checkoutSha256": "4ade964b84c7b810b4f20e63676971ec74074d7035c5aa9a79fdba10fc2ddbf3",
+      "gitBlobSha256": "4ade964b84c7b810b4f20e63676971ec74074d7035c5aa9a79fdba10fc2ddbf3",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/S02.json",
+      "expected": "d68784eb77c6270eb71a5df08ed16d17f74c03e95962c454259763c2ebe77f0a",
+      "checkoutSha256": "d68784eb77c6270eb71a5df08ed16d17f74c03e95962c454259763c2ebe77f0a",
+      "gitBlobSha256": "d68784eb77c6270eb71a5df08ed16d17f74c03e95962c454259763c2ebe77f0a",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/manifest.json",
+      "expected": "47b24d9705683d9d3e7f7cf844bcf1ba07d15faf222b97e2e8027ef35b61b4c9",
+      "checkoutSha256": "47b24d9705683d9d3e7f7cf844bcf1ba07d15faf222b97e2e8027ef35b61b4c9",
+      "gitBlobSha256": "47b24d9705683d9d3e7f7cf844bcf1ba07d15faf222b97e2e8027ef35b61b4c9",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/S01.json",
+      "expected": "d3e7146591cca97ab5d34f56b2c0a3e4ceb2006348ae1d07fb0ab3cc9a3a9dbe",
+      "checkoutSha256": "d3e7146591cca97ab5d34f56b2c0a3e4ceb2006348ae1d07fb0ab3cc9a3a9dbe",
+      "gitBlobSha256": "d3e7146591cca97ab5d34f56b2c0a3e4ceb2006348ae1d07fb0ab3cc9a3a9dbe",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/S02.json",
+      "expected": "cbc3bd2336e2e5444f351fe5476a44423d1c8819cb3daf9d2653b6df30c3d70a",
+      "checkoutSha256": "cbc3bd2336e2e5444f351fe5476a44423d1c8819cb3daf9d2653b6df30c3d70a",
+      "gitBlobSha256": "cbc3bd2336e2e5444f351fe5476a44423d1c8819cb3daf9d2653b6df30c3d70a",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/tests/fixtures/v2/manifest.json",
+      "expected": "442f998fb382eb76ad01243b5d0bbfb6a85f182b1c4e0c7b6548fbac08fac6d4",
+      "checkoutSha256": "442f998fb382eb76ad01243b5d0bbfb6a85f182b1c4e0c7b6548fbac08fac6d4",
+      "gitBlobSha256": "442f998fb382eb76ad01243b5d0bbfb6a85f182b1c4e0c7b6548fbac08fac6d4",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/assignment-v1.schema.json",
+      "expected": "7d7d1a4543267906f6e2ae35d40840b53b32e0760164721575daa67c98d89146",
+      "checkoutSha256": "7d7d1a4543267906f6e2ae35d40840b53b32e0760164721575daa67c98d89146",
+      "gitBlobSha256": "7d7d1a4543267906f6e2ae35d40840b53b32e0760164721575daa67c98d89146",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/assignment-v2.schema.json",
+      "expected": "29d60748aca1f780dcc08f2c70f05703d2bc21da13d216d97e44ede074234826",
+      "checkoutSha256": "29d60748aca1f780dcc08f2c70f05703d2bc21da13d216d97e44ede074234826",
+      "gitBlobSha256": "29d60748aca1f780dcc08f2c70f05703d2bc21da13d216d97e44ede074234826",
+      "matches": true
+    },
+    {
+      "path": "test/fixtures/legacy/reference/schemas/manifest-v1.schema.json",
+      "expected": "4c82728bcb6158c99032eec9345089e2d97f6d90be915c0c84afe8060ec83f6b",
+      "checkoutSha256": "4c82728bcb6158c99032eec9345089e2d97f6d90be915c0c84afe8060ec83f6b",
+      "gitBlobSha256": "4c82728bcb6158c99032eec9345089e2d97f6d90be915c0c84afe8060ec83f6b",
+      "matches": true
+    }
+  ],
+  "passed": 14,
+  "note": "Linux raw bytes and Git blobs; separate core.autocrlf=true clone/refreshed-checkout simulation in eol-contract.txt. Windows OS execution remains teacher acceptance."
+}

@@ -1,0 +1,5 @@
+
+> engineering-island-lab@0.0.0 test:rc
+> node scripts/release-browser.js
+
+RC browser passed (node-http-simulation): exact production RC: 12 locked, all query overrides ignored, no material requests/debug API; direct nested entry/reload and 1366/1920/390 help Modal fit; same-URL Manifest replacement discovered on reload; video-only Lecture works with zero Quiz chunk/JSON

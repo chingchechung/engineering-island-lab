@@ -1,15 +1,26 @@
 # Engineering Island Lab 開發與驗收計畫
 
-## Phase4 Windows EOL修正（同一分支／Draft PR #5）
+## Phase5（目前授權，2026-10-30）
+
+教師確認Phase0–4 Windows驗收、PR #5合併046efcab，乾淨分支feature/phase-5-release-readiness。完整原文PHASE_5_BRIEF、凍結介面PHASE_5_INTERFACES。正式Manifest仍空。
+
+- [x] 讀完整指示／指定文件、確認合併及最新main、建立分支。
+- [x] 凍結A封裝／靜態HTTP、B release scan／教師SOP、C品質／授權／audit所有權，實際三位平行。
+- [x] 檢查所有交付，整合check:release／package:rc、選用隔離Apache及RC browser，不重做功能。
+- [x] npm ci、238/238 Node／82/82 browser、parity、release／package／真正Apache／RC及ZIP獨立驗證；軟體GPU六情境與16張截圖保存。
+- [x] ZIP／inventory／SHA／scan、教師操作／回復／跨課程SOP、授權／安全及Phase5驗收與代表截圖。
+- [ ] 唯一Draft PR #6後停止等教師RC驗收，不合併／Tag／Release／改可見性／部署學校。
+
+## Phase4 Windows EOL修正（歷史，已驗收且PR #5合併）
 
 - [x] 教師提供的CRLF hash已用Git core.autocrlf=true實際clone重現。
 - [x] 新增最小.gitattributes範圍，原始14份內容／hash及移植驗證／判答不變。
 - [x] 新clone、既有CRLF安全重取、14/14 hash、兩份移植JS LF、一般文字仍CRLF及stash備份回歸通過。
 - [x] Windows PowerShell備份、ff-only更新、指定檔案重取指令已文件化，不改全域設定。
 - [x] 212/212單元、76/76瀏覽器、build、三段smoke、內容及Legacy parity全部通過；EOL逐檔hash／命令紀錄與同一Draft PR #5交付資料完成。
-- [ ] 教師Windows原生重驗；同一Draft PR #5更新後停止，不合併／部署／進Phase5。
+- [x] 教師已確認Windows EOL及Phase4驗收，PR #5已合併046efcab。
 
-## Phase 4（目前授權，2026-10-30）
+## Phase 4（歷史，教師已驗收且PR #5合併）
 
 - [x] 完整讀取教師Phase4指示、PR #4已合併dd3f96f4；建立指定分支。
 - [x] 固定City v1.0.0／Maze commit來源，閱讀驗證器／Schema／Loader／Session／UI與發布文件，凍結PHASE_4_INTERFACES及三位所有權。
@@ -18,7 +29,7 @@
 - [x] native Dialog關閉重開保留534px舊捲動已重現並修正：顯示後重設新內容至頂部，三尺寸原生helper驗0px、外連返回仍保留位置。
 - [x] 全部指定命令通過：211/211單元、76/76瀏覽器、三段Apache smoke、內容及Legacy parity；20張實際截圖、三尺寸／五情境效能與原始輸出已保存。
 - [x] README／發布／相容／驗收文件及唯一Draft PR #5交付資料完成；不進Phase5。
-- [ ] 教師本輪Windows Chrome／Edge實機驗收；Draft PR交付後停止，不合併／部署／Tag／Release。
+- [x] 教師已於Phase5指示確認Windows Chrome／Edge全部主要功能驗收，PR #5合併。
 
 正式public JSON保持原狀，不讀取／產生真實教材、不修改舊GUI或來源Repository。
 
@@ -76,7 +87,7 @@ scene anchors → CSS2D accessible labels
 - [x] Phase 2（已通過教師驗收，PR #2合併）：其餘 11/14 座主題島、1–15 島整體布局/fit、鎖定外觀、遠景效能。
 - [x] Phase 3（教師已驗收且PR #4合併）：正式影片載入、任意長清單、Manifest 開放/鎖定流程與發布驗證。
 - [x] Phase 4（本輪已完成開發，教師驗收待辦見頂部）：舊題庫 v1/v2 相容、四/五題、解答及 Form；舊 GUI S13–S15 為獨立待辦。
-- [ ] Phase 5（未授權）：Windows/Apache 完整回歸、素材授權、正式發布準備。
+- [ ] Phase 5（本輪已授權，見頂部）：Windows/Apache 完整回歸、素材授權、正式發布準備。
 
 ## Phase 1 驗證門檻
 

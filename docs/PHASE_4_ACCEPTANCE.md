@@ -1,5 +1,7 @@
 # Phase 4 — NPC Quiz 與 Google Forms 驗收
 
+> 歷史狀態更新：教師已確認Phase4（含Windows EOL）驗收，PR #5已合併main `046efcab`；本文件保留原始證據。最新授權與RC驗收見 [Phase5](PHASE_5_ACCEPTANCE.md)，不受下方歷史Phase5停止條件限制。舊「Apache smoke」當時使用Vite preview，本輪另提供真正Apache與嚴格HTTP模擬的分開證據。
+
 > 最新修正：Windows `core.autocrlf=true` checkout 的參考檔 bytes，詳見本文件末尾「Windows EOL 修正驗證」及 [安全重新 checkout 指令](WINDOWS_EOL_CHECKOUT.md)。原Phase4功能／截圖與效能紀錄保留，下方211項是初版基準。
 
 2026-10-30（台北）。教師已確認Phase0–3在Windows11 Chrome／Edge驗收，GitHub確認PR #4合併於main `dd3f96f4c301f0f4ecfbe1a4ffc7e360ecacd159`。本輪在 `feature/phase-4-quiz-integration` 開發，只交付唯一Draft PR #5；不合併、部署、Tag／Release或進Phase5。

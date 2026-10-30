@@ -1,0 +1,7 @@
+
+> engineering-island-lab@0.0.0 package:rc
+> node scripts/package-release.js
+
+Release candidate prepared: engineering-island-lab-v1.0.0-rc.zip (216989 bytes)
+SHA256 a19b086ed83e587a516769680407ff206e5291f8ed4088ade05fa2044e9448ad
+ZIP inventory and scan receipt are stored beside the archive. No deployment or publication performed.

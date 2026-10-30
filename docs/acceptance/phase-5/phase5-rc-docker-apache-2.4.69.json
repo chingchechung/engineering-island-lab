@@ -1,0 +1,186 @@
+{
+  "kind": "docker-apache-2.4.69",
+  "browser": "154.0.8037.57",
+  "source": "production-static-build",
+  "checks": [
+    "exact production RC: 12 locked, all query overrides ignored, no material requests/debug API",
+    "direct nested entry/reload and 1366/1920/390 help Modal fit",
+    "same-URL Manifest replacement discovered on reload; video-only Lecture works with zero Quiz chunk/JSON"
+  ],
+  "privateFixture": "cache/Video-only stage only; synthetic links are not opened or included in RC",
+  "responses": [
+    {
+      "path": "/teaching/2026/lab/",
+      "status": 200,
+      "type": "text/html",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-DMKLz-CI.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-CZk6bhiz.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/course-config.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assignments/manifest.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/quiz-runtime-Cm_WjxME.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/quiz-runtime-DWfR14Vi.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/",
+      "status": 200,
+      "type": "text/html",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-CZk6bhiz.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-DMKLz-CI.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/course-config.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml"
+    },
+    {
+      "path": "/teaching/2026/lab/assignments/manifest.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/quiz-runtime-DWfR14Vi.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/quiz-runtime-Cm_WjxME.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/",
+      "status": 200,
+      "type": "text/html",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-DMKLz-CI.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-CZk6bhiz.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/course-config.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assignments/manifest.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml"
+    },
+    {
+      "path": "/teaching/2026/lab/",
+      "status": 200,
+      "type": "text/html",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-CZk6bhiz.js",
+      "status": 200,
+      "type": "text/javascript",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/assets/index-DMKLz-CI.css",
+      "status": 200,
+      "type": "text/css",
+      "cache": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/teaching/2026/lab/course-config.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml"
+    },
+    {
+      "path": "/teaching/2026/lab/assignments/manifest.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/teaching/2026/lab/course-videos/S01.json",
+      "status": 200,
+      "type": "application/json",
+      "cache": "no-cache, max-age=0, must-revalidate"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "limitation": "Local validation only; no school server or Windows hardware GPU acceptance."
+}

@@ -1,0 +1,24 @@
+{
+  "dateUTC": "2026-10-30T07:26:31.652545+00:00",
+  "os": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "architecture": "x86_64",
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "chromium": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+  "dependencies": {
+    "vite": "8.3.5",
+    "three": "0.186.1",
+    "playwright": "1.64.1"
+  },
+  "baseMain": "046efcab7b359cce046038fe66c95c5821edfad4",
+  "branch": "feature/phase-5-release-readiness",
+  "hardwareGpuDevices": {
+    "dri": false,
+    "nvidia0": false
+  },
+  "apache": "2.4.69",
+  "apacheImage": "httpd@sha256:d3accb516506c05ae0068bb54ba6798a10b249b64db91268fca692326cb02b4b",
+  "dockerServer": "28.4.0",
+  "npmCache": "Process-local writable cache override; no global Git/npm settings changed",
+  "scope": "Local isolated tests; school Apache and Windows RC acceptance not performed"
+}

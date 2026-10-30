@@ -1,0 +1,1 @@
+PASS actual extracted ZIP: 9/9 HTTP response SHA256s, Apache header, five true404s, conditional304 and config replacement200; isolated local container only
