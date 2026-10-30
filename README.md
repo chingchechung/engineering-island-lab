@@ -1,5 +1,7 @@
 # Engineering Island Lab
 
+> **v1.0.0正式檔案已準備，尚未Tag／Release。** 教師已確認Phase5 Windows11 Chrome／Edge十項最終驗收通過，PR #6已合併main `a116165b`。本輪從乾淨merged main重新建置／驗證；[正式ZIP與新檢查報告](docs/releases/v1.0.0/PREPARATION.md)、[繁中／英文Release Notes](docs/releases/v1.0.0/RELEASE_NOTES.md)、[核准前清單](docs/releases/v1.0.0/APPROVAL_CHECKLIST.md)供教師審查。提交於獨立分支release/prepare-v1.0.0，沒有Tag／GitHub Release／學校部署／教材發布。下方Phase5 RC與本機驗收流程保留為歷史。
+
 童話微型模型風格的 Three.js 課程群島。教師已在 Windows 11 Chrome／Edge 驗收 Phase0–4（含 Windows EOL），PR #1–#5 合併至 main `046efcab`。本輪 **Phase5** 只做 Release Candidate、靜態部署驗證與教師操作文件；保留已驗收15主題島、日夜、相機、Lecture、v1/v2四／五題Quiz及背景生命。
 
 正式設定維持「數位電子學／12／quiz」，`public/assignments/manifest.json` 仍是 `{"schemaVersion":1,"units":[]}`，正式入口全部鎖定，沒有發布任何教材。本輪只交付 RC 與唯一 **[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)** 後等待教師驗收；不合併／Tag／GitHub Release／改Repo可見性／部署學校／開放課程／進下一功能階段。

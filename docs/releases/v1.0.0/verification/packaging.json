@@ -1,0 +1,13 @@
+{
+  "startedAtUTC": "2026-10-30T08:29:56.078Z",
+  "completedAtUTC": "2026-10-30T08:29:56.162Z",
+  "mainCommit": "a116165be990c45f83bdcab9b9cea499d8fb3e9d",
+  "source": "fresh dist from clean merged main; no RC archive/report used as input",
+  "api": "packageRelease({root:dist, name:engineering-island-lab-v1.0.0})",
+  "archive": "engineering-island-lab-v1.0.0.zip",
+  "bytes": 216989,
+  "sha256": "a19b086ed83e587a516769680407ff206e5291f8ed4088ade05fa2044e9448ad",
+  "fileCount": 9,
+  "publicationStatus": "prepared-for-teacher-approval; no tag or GitHub Release created",
+  "originalReceiptKind": "release-candidate-only is retained by the unchanged Phase5 tool as an unpublished-state label"
+}

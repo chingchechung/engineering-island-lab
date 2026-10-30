@@ -1,0 +1,8 @@
+
+> engineering-island-lab@0.0.0 check:release
+> node scripts/check-release.js
+
+Release Candidate 實際檔案檢查：通過（9 檔）
+課程：12 單元／quiz；已開放 0 單元
+注意：Manifest 沒有開放單元；空清單有效，但沒有教材已發布或作業已準備完成。
+注意：檔案掃描與格式通過不等於教師發布許可，也無法判定任意文字是否為未公開教材；仍須人工核對內容與網址。

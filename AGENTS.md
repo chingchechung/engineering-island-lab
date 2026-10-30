@@ -1,6 +1,8 @@
 # Engineering Island Lab 開發規範
 
-> **最新授權 Phase5（2026-10-30）**：教師已驗收Phase0–4（含Windows EOL），PR #1–#5已合併main 046efcab。本輪依docs/PHASE_5_BRIEF.md在feature/phase-5-release-readiness做RC封裝、Apache／快取／MIME／404驗證、build掃描、教師SOP、授權與安全證據；三位Subagents所有權及介面先定於docs/PHASE_5_INTERFACES.md。以下Phase停止條件均為歷史，不限制本輪明確授權。正式course-config／空Manifest、14份pinned內容與hash、.gitattributes及已驗收功能不改，無理由不動src或依賴。只交唯一Draft PR #6與RC ZIP後停止，不Merge／Tag／GitHub Release／公開Repo／學校部署／發布真實教材／下一功能階段。
+> **最新授權：v1.0.0正式封裝準備（2026-10-30）**：教師確認Phase5 Windows11 Chrome／Edge十項最終驗收全過並批准PR #6合併；PR #6已合併main `a116165be990c45f83bdcab9b9cea499d8fb3e9d`。從乾淨merged main重測／重建，重用既有工具，只交正式ZIP、全新SHA／inventory／scan、雙語Release Notes及核准清單於release/prepare-v1.0.0。不得修改已驗收程式／工具／依賴／正式資料／原14hash，不改Private；本輪不建／推Tag、不建GitHub Release、不部署／發布教材。所有下方Phase停止條件為歷史；最新證據見docs/releases/v1.0.0/PREPARATION.md。提交審查檔案後停止等教師明確批准Tag與Release。
+
+> **Phase5歷史授權（2026-10-30，已驗收合併）**：教師已驗收Phase0–4（含Windows EOL），PR #1–#5已合併main 046efcab。本輪依docs/PHASE_5_BRIEF.md在feature/phase-5-release-readiness做RC封裝、Apache／快取／MIME／404驗證、build掃描、教師SOP、授權與安全證據；三位Subagents所有權及介面先定於docs/PHASE_5_INTERFACES.md。以下Phase停止條件均為歷史，不限制本輪明確授權。正式course-config／空Manifest、14份pinned內容與hash、.gitattributes及已驗收功能不改，無理由不動src或依賴。只交唯一Draft PR #6與RC ZIP後停止，不Merge／Tag／GitHub Release／公開Repo／學校部署／發布真實教材／下一功能階段。
 
 > Phase5交付已完成：唯一[Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6)，238/238 Node、82/82 browser、RC ZIP與本機真正Apache驗證／16張截圖已保存。停止等待教師RC／Windows及實體GPU驗收；不得自行合併、Tag／Release、公開化、部署學校或下一功能階段。
 

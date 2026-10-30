@@ -1,0 +1,178 @@
+[
+  {
+    "name": "01-ci",
+    "command": [
+      "npm",
+      "ci"
+    ],
+    "startedAtUTC": "2026-10-30T08:25:54.248477+00:00",
+    "exitCode": 0,
+    "durationSeconds": 1.867,
+    "status": "passed"
+  },
+  {
+    "name": "02-test",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "startedAtUTC": "2026-10-30T08:25:56.115469+00:00",
+    "exitCode": 0,
+    "durationSeconds": 36.552,
+    "status": "passed"
+  },
+  {
+    "name": "03-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "startedAtUTC": "2026-10-30T08:26:32.670501+00:00",
+    "exitCode": 0,
+    "durationSeconds": 0.704,
+    "status": "passed"
+  },
+  {
+    "name": "04-test",
+    "command": [
+      "npm",
+      "run",
+      "test"
+    ],
+    "startedAtUTC": "2026-10-30T08:26:33.374463+00:00",
+    "exitCode": 0,
+    "durationSeconds": 33.587,
+    "status": "passed"
+  },
+  {
+    "name": "05-test",
+    "command": [
+      "npm",
+      "run",
+      "test"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:06.962258+00:00",
+    "exitCode": 0,
+    "durationSeconds": 33.792,
+    "status": "passed"
+  },
+  {
+    "name": "06-validate-requested",
+    "command": [
+      "npm",
+      "run",
+      "validate"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:40.754192+00:00",
+    "exitCode": 1,
+    "durationSeconds": 0.14,
+    "status": "unavailable-script",
+    "existingEquivalent": [
+      "npm",
+      "run",
+      "validate:content"
+    ]
+  },
+  {
+    "name": "06-validate-content",
+    "command": [
+      "npm",
+      "run",
+      "validate:content"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:40.894690+00:00",
+    "exitCode": 0,
+    "durationSeconds": 0.174,
+    "status": "passed"
+  },
+  {
+    "name": "07-check-requested",
+    "command": [
+      "npm",
+      "run",
+      "check"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:41.069139+00:00",
+    "exitCode": 1,
+    "durationSeconds": 0.132,
+    "status": "unavailable-script",
+    "existingEquivalent": [
+      "npm",
+      "run",
+      "check:release"
+    ]
+  },
+  {
+    "name": "07-check-release",
+    "command": [
+      "npm",
+      "run",
+      "check:release"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:41.201466+00:00",
+    "exitCode": 0,
+    "durationSeconds": 0.209,
+    "status": "passed"
+  },
+  {
+    "name": "08-test",
+    "command": [
+      "npm",
+      "run",
+      "test"
+    ],
+    "startedAtUTC": "2026-10-30T08:27:41.410766+00:00",
+    "exitCode": 0,
+    "durationSeconds": 35.706,
+    "status": "passed"
+  },
+  {
+    "name": "09-legacy-parity",
+    "command": [
+      "node",
+      "scripts/legacy-parity.mjs"
+    ],
+    "startedAtUTC": "2026-10-30T08:28:17.117517+00:00",
+    "exitCode": 0,
+    "durationSeconds": 0.979,
+    "status": "passed"
+  },
+  {
+    "name": "10-static-smoke",
+    "command": [
+      "npm",
+      "run",
+      "test:smoke"
+    ],
+    "startedAtUTC": "2026-10-30T08:28:18.096352+00:00",
+    "exitCode": 0,
+    "durationSeconds": 1.38,
+    "status": "passed"
+  },
+  {
+    "name": "11-production-browser",
+    "command": [
+      "npm",
+      "run",
+      "test:rc"
+    ],
+    "startedAtUTC": "2026-10-30T08:28:19.476576+00:00",
+    "exitCode": 0,
+    "durationSeconds": 50.837,
+    "status": "passed"
+  },
+  {
+    "name": "12-production-audit",
+    "command": [
+      "npm",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "startedAtUTC": "2026-10-30T08:29:10.314342+00:00",
+    "exitCode": 0,
+    "durationSeconds": 0.545,
+    "status": "passed"
+  }
+]

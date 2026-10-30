@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "archive": "engineering-island-lab-v1.0.0.zip",
+  "sha256": "a19b086ed83e587a516769680407ff206e5291f8ed4088ade05fa2044e9448ad",
+  "bytes": 216989,
+  "uncompressedBytes": 771969,
+  "files": [
+    {
+      "path": "assets/index-CZk6bhiz.js",
+      "bytes": 727378,
+      "sha256": "08663dfd74460eb0462dec04327b01df531454729241793304edd4e2659f6290"
+    },
+    {
+      "path": "assets/index-DMKLz-CI.css",
+      "bytes": 11902,
+      "sha256": "67680c81e2eb169d83ed9579b5f5f9e7e8d7dde0fce116286111a6c23e2cd68f"
+    },
+    {
+      "path": "assets/quiz-runtime-Cm_WjxME.css",
+      "bytes": 2863,
+      "sha256": "5702dc32c6a8d965846347c7767cb074c1697259555a701f3433303e9842c51c"
+    },
+    {
+      "path": "assets/quiz-runtime-DWfR14Vi.js",
+      "bytes": 16317,
+      "sha256": "67fc7f358c2ae46b95b8efad179806ee0f9d55b91ed944c23164624c03d5e1a5"
+    },
+    {
+      "path": "assignments/manifest.json",
+      "bytes": 40,
+      "sha256": "b998c2c037f95966bc4301f941d3ec18f5eeb2bcb6a6e6e21258fe4e7dcb5508"
+    },
+    {
+      "path": "course-config.json",
+      "bytes": 87,
+      "sha256": "bfa2a0679528b8767b39f0a0d1a691d49cb6239ff32a6d5ada25abea93af2e7a"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 419,
+      "sha256": "3db875ccadfe9a6c1667d333ab4107e5b6471033cdc18a879557e12a92e6bbda"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3102,
+      "sha256": "d966e892ab9c4938b9edccbe06ed38d24aaa18a28f56d4f5bf730933192af362"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "bytes": 9861,
+      "sha256": "17a64a5be97f20090a88eae05d8dad6b750bf99445984fb9db72d26e6b19b368"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "release-candidate-only",
+  "archive": "engineering-island-lab-v1.0.0.zip",
+  "sha256": "a19b086ed83e587a516769680407ff206e5291f8ed4088ade05fa2044e9448ad",
+  "bytes": 216989,
+  "uncompressedBytes": 771969,
+  "fileCount": 9,
+  "course": {
+    "courseTitle": "數位電子學",
+    "totalUnits": 12,
+    "assignmentMode": "quiz"
+  },
+  "manifest": {
+    "schemaVersion": 1,
+    "units": []
+  },
+  "scan": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "Manifest 沒有開放單元；空清單有效，但沒有教材已發布或作業已準備完成。",
+      "檔案掃描與格式通過不等於教師發布許可，也無法判定任意文字是否為未公開教材；仍須人工核對內容與網址。"
+    ]
+  },
+  "content": {
+    "ok": true,
+    "scope": "published",
+    "releaseReady": false,
+    "quizCompleteness": "checked"
+  },
+  "deployment": "Not deployed. Teacher approval and server acceptance are separate steps."
+}

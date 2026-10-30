@@ -1,5 +1,7 @@
 # Phase5 — Release Readiness & Deployment Validation
 
+> 後續教師已確認Windows11 Chrome／Edge十項最終驗收全過，PR #6已合併main `a116165b`。本文件保留當時RC實測與待驗歷史，不代表目前仍待Windows驗收；最新正式封裝準備見 [v1.0.0](releases/v1.0.0/PREPARATION.md)。本輪仍未Tag／Release／部署。
+
 2026-10-30 UTC；基準 main `046efcab7b359cce046038fe66c95c5821edfad4`。教師已確認Phase0–4及Windows EOL驗收，PR #1–#5合併。本輪分支 `feature/phase-5-release-readiness`，只交RC與唯一Draft PR #6；未合併、Tag、Release、改可見性、部署學校或發布真實教材。
 
 交付：唯一 [Draft PR #6](https://github.com/chingchechung/engineering-island-lab/pull/6) 已建立並維持Draft；Main停止等待教師RC／Windows驗收。

@@ -1,0 +1,11 @@
+Archive:  /tmp/island-v1-final/package/engineering-island-lab-v1.0.0.zip
+    testing: assets/index-CZk6bhiz.js   OK
+    testing: assets/index-DMKLz-CI.css   OK
+    testing: assets/quiz-runtime-Cm_WjxME.css   OK
+    testing: assets/quiz-runtime-DWfR14Vi.js   OK
+    testing: assignments/manifest.json   OK
+    testing: course-config.json       OK
+    testing: favicon.svg              OK
+    testing: index.html               OK
+    testing: THIRD_PARTY_NOTICES.txt   OK
+No errors detected in compressed data of /tmp/island-v1-final/package/engineering-island-lab-v1.0.0.zip.

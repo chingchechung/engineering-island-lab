@@ -1,0 +1,1 @@
+PASS freshly extracted final ZIP: actual Apache 2.4.69, 9/9 HTTP SHA256 and MIME/cache checks, five genuine404s and conditional304; no school deployment

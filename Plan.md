@@ -1,6 +1,17 @@
 # Engineering Island Lab 開發與驗收計畫
 
-## Phase5（目前授權，2026-10-30）
+## v1.0.0正式封裝準備（目前，尚未Tag／Release）
+
+教師確認Phase5 Windows11 Chrome／Edge十項全過並批准PR #6合併。實際合併main `a116165be990c45f83bdcab9b9cea499d8fb3e9d`，只做正式檔案準備；不開新功能階段。
+
+- [x] 確認乾淨工作目錄，合併已批准的PR #6，取得最新main並記錄commit／tree。
+- [x] npm ci、刪除dist後build、四輪各238/238、內容／release檢查、Legacy parity；缺少validate/check簡寫如實記錄並跑既有對應命令。
+- [x] 新build重用原封裝API產生engineering-island-lab-v1.0.0.zip，SHA／inventory／scan重新計算；獨立解壓CRC／hash、正式設定／完整notice及14hash通過。
+- [x] 新build production browser、三段HTTP模擬／真正Apache及解壓ZIP9/9 HTTP hash／MIME／cache／404通過；不冒充學校部署或新增硬體GPU量測。
+- [x] 正式封裝、原始報告、雙語Release Notes與核准清單存獨立審查分支，詳見[PREPARATION](docs/releases/v1.0.0/PREPARATION.md)；程式／工具／JSON不改。
+- [ ] 等待教師明確批准v1.0.0 Tag及GitHub Release。此框不由本輪自行完成，學校部署／教材公開亦未授權。
+
+## Phase5（歷史，已驗收且PR #6合併）
 
 教師確認Phase0–4 Windows驗收、PR #5合併046efcab，乾淨分支feature/phase-5-release-readiness。完整原文PHASE_5_BRIEF、凍結介面PHASE_5_INTERFACES。正式Manifest仍空。
 

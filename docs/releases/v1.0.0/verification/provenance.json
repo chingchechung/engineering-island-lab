@@ -1,0 +1,17 @@
+{
+  "preparedAtUTC": "2026-10-30T08:25:11.641435+00:00",
+  "mainCommit": "a116165be990c45f83bdcab9b9cea499d8fb3e9d",
+  "mainTree": "07ca3b2593f7ab8c0b4a8eb0c1bce87ed9be875d",
+  "pr": 6,
+  "merged": true,
+  "mergeCommit": "a116165be990c45f83bdcab9b9cea499d8fb3e9d",
+  "mergedHead": "7d5185ddfc005592dff1a8f84d0514c9a6261e66",
+  "cleanWorkingTreeBeforeBuild": true,
+  "sourceBranch": "main",
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "os": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "teacherAcceptance": "User confirmed Phase5 Windows11 Chrome/Edge final acceptance: all ten items passed; numerical hardware-GPU measurements were not supplied",
+  "authorization": "Merge PR6 and prepare v1.0.0 files only. Tag/GitHub Release/visibility changes/school deployment/material publication remain unauthorized.",
+  "dependencyChanges": false
+}
